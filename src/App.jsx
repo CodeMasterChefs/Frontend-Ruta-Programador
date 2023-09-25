@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import './App.css'
+import Button from './Components/Button/Button'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,6 +16,7 @@ function App() {
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
+        <Button/>
       </div>
       
     </>
