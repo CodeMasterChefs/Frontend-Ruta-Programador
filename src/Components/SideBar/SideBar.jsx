@@ -4,7 +4,7 @@ const SideBar = () => {
   const elements = (
     <>
       <li className="nav-item">
-        <NavLink to={"/tu_cuenta"} className="nav-link">
+        <NavLink to={"/mi_cuenta"} className="nav-link">
           Tu cuenta
         </NavLink>
       </li>
@@ -14,7 +14,7 @@ const SideBar = () => {
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink to={"/"} className="nav-link">
+        <NavLink to={"/comunidad"} className="nav-link">
           Comunidad
         </NavLink>
       </li>

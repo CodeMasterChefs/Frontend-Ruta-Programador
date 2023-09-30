@@ -5,6 +5,8 @@ import HomePage from "./Pages/HomePage/HomePage";
 import SideBar from "./Components/SideBar/SideBar";
 import MisPlaylistsPage from "./Pages/MisPlaylistsPage/MisPlaylistsPage";
 import NavBar from "./Components/NavBar/NavBar";
+import ComunidadPage from "./Pages/ComunidadPage/ComunidadPage";
+import TuCuentaPage from "./Pages/TuCuentaPage/TuCuentaPage";
 //import CrearPlaylist from "./Components/CrearPlaylist/CrearPlaylist";
 function App() {
   return (
@@ -17,11 +19,13 @@ function App() {
           </div>
           <div className="col-sm-9">
             <Routes>
-              <Route path="/home" element={<HomePage></HomePage>}></Route>
+              <Route path="/" element={<HomePage></HomePage>}></Route>
               <Route
                 path="/mis_playlists"
                 element={<MisPlaylistsPage />}
               ></Route>
+              <Route path="/comunidad" element={<ComunidadPage />}></Route>
+              <Route path="/mi_cuenta" element={<TuCuentaPage />}></Route>
             </Routes>
           </div>
         </div>
