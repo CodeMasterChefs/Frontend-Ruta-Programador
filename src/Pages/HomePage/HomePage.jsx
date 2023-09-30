@@ -1,7 +1,7 @@
 //import SideBar from "../../Components/SideBar/SideBar.jsx";
 
 const HomePage = () => {
-  return <></>;
+  return <>La ruta del programador</>;
 };
 
 export default HomePage;

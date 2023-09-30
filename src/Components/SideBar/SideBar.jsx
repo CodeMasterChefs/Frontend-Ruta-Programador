@@ -4,12 +4,12 @@ const SideBar = () => {
   const elements = (
     <>
       <li className="nav-item">
-        <NavLink to={"/"} className="nav-link">
+        <NavLink to={"/tu_cuenta"} className="nav-link">
           Tu cuenta
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink to={"/"} className="nav-link">
+        <NavLink to="/mis_playlists" className="nav-link">
           Tus Playlists
         </NavLink>
       </li>

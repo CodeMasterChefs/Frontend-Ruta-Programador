@@ -7,10 +7,10 @@
     }
   }
 .sm-sidebar {
-    display: block;
+    display: none;
   }
-  @media only screen and (min-width: 576x) {
+  @media only screen and (max-width: 576px) {
     .sm-sidebar  {
-      display: none;
+      display: block;
     }
   }
