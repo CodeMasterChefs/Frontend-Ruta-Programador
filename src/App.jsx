@@ -1,20 +1,16 @@
-import { useState } from 'react'
-
 import './App.css'
-import Button from './Components/Button/Button'
-import ButtonRedSocial from './Components/Button/Button'
 import { Aniadir } from './Components/AniadirElemento/Aniadir'
 import { Playlist } from './Components/NewPlaylist/Playlist'
-
-
+import { Eliminar } from './Components/EliminarElemento/Eliminar'
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
+      <Aniadir />
       <Playlist />
+      <Eliminar />
+
     </>
   )
 }

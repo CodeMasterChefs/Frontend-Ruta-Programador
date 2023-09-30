@@ -1,27 +1,42 @@
-import React from 'react'
 import Button from '../Button/Button'
-import { Anuncio } from '../Anuncio/Anuncio'
+import { ModalConf } from '../ModalConfirmacion/ModalConf'
 
 export const Aniadir = () => {
   return (
     <div>
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
+      <ModalConf Texto="Tu video fue agregado correctamente, revisa hasta el final de tu Playlist para encontrarlo" ide= "ModalConfirmacionAniadir"/>
+      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AniadirModal" data-bs-whatever="@fat">Boton de añadir</button>
 
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div className="modal fade" id="AniadirModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <Anuncio/>
+            <div className="modal-body">
+              <form>
+                <div className="mb-3">
+                <label htmlFor="basic-url" className="form-label">Ingresa la URL del video que quieras añadir a tu playlist</label>
+                  <label htmlFor="message-text" className="col-form-label"></label>
+                  <form className="form-floating">
+                    <div className="input-group mb-3">
+                      <div className="input-group mb-3">
+                        <span className="input-group-text" id="basic-addon1">Enlace</span>
+                        <input type="text" className="form-control" placeholder="URL" aria-label="URL" aria-describedby="basic-addon1"/>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </form>
+              <div className="d-flex justify-content-end">
+                <Button Letra= "Añadir" Direccion="#ModalConfirmacionAniadir" />
+              </div>
             </div>
-            <div class="modal-footer">
-              <Button />
-            </div>
+            
           </div>
         </div>
-      </div></div>
+      </div>
+      </div>
   )
 }
