@@ -1,4 +1,6 @@
 import React from 'react'
+import Button from '../Button/Button'
+import { Anuncio } from '../Anuncio/Anuncio'
 
 export const Aniadir = () => {
   return (
@@ -13,26 +15,10 @@ export const Aniadir = () => {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form>
-                <div class="mb-3">
-                <label for="basic-url" class="form-label">Ingresa la URL del video que quieras añadir a tu playlist</label>
-                  <label for="message-text" class="col-form-label"></label>
-                  <form class="form-floating">
-                    <div class="input-group mb-3">
-                      <div class="input-group mb-3">
-                        <span class="input-group-text" id="basic-addon1">Enlace</span>
-                        <input type="text" class="form-control" placeholder="URL" aria-label="URL" aria-describedby="basic-addon1"/>
-                      </div>
-
-                    </div>
-
-                  </form>
-
-                </div>
-              </form>
+              <Anuncio/>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary">Añadir</button>
+              <Button />
             </div>
           </div>
         </div>

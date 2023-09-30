@@ -4,6 +4,7 @@ import './App.css'
 import Button from './Components/Button/Button'
 import ButtonRedSocial from './Components/Button/Button'
 import { Aniadir } from './Components/AniadirElemento/Aniadir'
+import { Playlist } from './Components/NewPlaylist/Playlist'
 
 
 
@@ -13,7 +14,7 @@ function App() {
 
   return (
     <>
-      <Aniadir />
+      <Playlist />
     </>
   )
 }
