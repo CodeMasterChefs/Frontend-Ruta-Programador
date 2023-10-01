@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Planet } from "../IconPlanet/Planet";
+import { Navigate } from "react-router-dom";
+
 const Playlist = () => {
   const [planetSelected, setPlanetSelected] = useState("");
+
+  const handleCrear = () => {
+    Navigate();
+  };
   return (
     <>
       <button
@@ -84,6 +90,7 @@ const Playlist = () => {
                 className="btn btn-primary"
                 data-bs-target="#exampleModalToggle2"
                 data-bs-toggle="modal"
+                onClick={handleCrear}
               >
                 Aceptar
               </button>
