@@ -26,7 +26,7 @@ a:hover {
 body {
   background: url(./assets/Space.svg), #100626;
   background-repeat: no-repeat;
-  background-size: 0%;
+  background-size: 70%;
   color: var(--White, #F2F2F2);
   margin: 0;
   display: flex;
