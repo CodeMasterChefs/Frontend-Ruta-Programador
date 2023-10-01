@@ -1,4 +1,3 @@
-import Button from '../Button/Button'
 import { ModalConf } from '../ModalConfirmacion/ModalConf'
 
 export const Aniadir = () => {
@@ -30,7 +29,7 @@ export const Aniadir = () => {
                 </div>
               </form>
               <div className="d-flex justify-content-end">
-                <Button Letra= "Añadir" Direccion="#ModalConfirmacionAniadir" />
+                <button className="btn btn-primary" data-bs-target="#ModalConfirmacionAniadir" data-bs-toggle="modal"type="submit">Añadir</button>
               </div>
             </div>
             

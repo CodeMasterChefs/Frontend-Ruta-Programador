@@ -1,4 +1,3 @@
-import Button from "../Button/Button"
 import { ModalConf } from "../ModalConfirmacion/ModalConf"
 export const Eliminar = () => {
   return (
@@ -24,7 +23,7 @@ export const Eliminar = () => {
                 </div>
               </form>
               <div className="d-flex justify-content-end">
-                <Button Letra= "Eliminar" Direccion="#ModalConfirmacionEliminar" />
+                <button className="btn btn-primary" data-bs-target="#ModalConfirmacionEliminar" data-bs-toggle="modal"type="submit">Eliminar</button>
               </div>
             </div>
             
