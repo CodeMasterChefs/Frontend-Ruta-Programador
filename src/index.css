@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: poppins;
   line-height: 1.5;
   font-weight: 400;
 
@@ -24,6 +24,10 @@ a:hover {
 }
 
 body {
+  background: url(./assets/Space.svg), #100626;
+  background-repeat: no-repeat;
+  background-size: 0%;
+  color: var(--White, #F2F2F2);
   margin: 0;
   display: flex;
   place-items: center;
@@ -34,6 +38,14 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+h2 {
+  font-family: Poppins;
+  font-size: 3.4375rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 button {
@@ -47,6 +59,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
