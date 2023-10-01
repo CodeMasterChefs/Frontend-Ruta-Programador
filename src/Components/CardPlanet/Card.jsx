@@ -6,6 +6,7 @@ export const Card = ({ Descripcion, Titulo }) => {
         <div className="card">
           <img src="..." className="card-img-top" alt="..." />
           <div className="position-absolute top-0 end-0">
+            <button>
             <svg
               width="24"
               height="24"
@@ -21,6 +22,8 @@ export const Card = ({ Descripcion, Titulo }) => {
                 />
               </g>
             </svg>
+            </button>
+            
           </div>
           <div className="card-body">
             <h5 className="card-title">{Titulo}</h5>
