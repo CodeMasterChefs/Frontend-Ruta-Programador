@@ -1,6 +1,7 @@
-import Button from "../Button/Button";
+import { useState } from "react";
 import { Planet } from "../IconPlanet/Planet";
 const Playlist = () => {
+  const [planetSelected, setPlanetSelected] = useState("");
   return (
     <>
       <button
@@ -54,19 +55,38 @@ const Playlist = () => {
                     id="message-text"
                   ></textarea>
                 </div>
-                <div>
-                  <Planet />
-                  <select className="form-select">
-                    <option>Selecciona un Planeta</option>
-                    <option>One</option>
-                    <option>Two</option>
-                    <option>Three</option>
-                  </select>
+                <div className="row">
+                  <div className="col-auto">
+                    <Planet planetIcon={planetSelected} />
+                    {planetSelected}
+                  </div>
+                  <div className="col-auto">
+                    <select
+                      className="form-select"
+                      value={planetSelected}
+                      onChange={(e) => {
+                        setPlanetSelected(e.target.value);
+                      }}
+                    >
+                      <option value="the moon">The moon</option>
+                      <option value="the earth">The earth</option>
+                      <option value="uranus">Uranus</option>
+                      <option value="neptune">Neptune</option>
+                      <option value="mars">Mars</option>
+                      <option value="haumea">Haumea</option>
+                    </select>
+                  </div>
                 </div>
               </form>
             </div>
             <div className="modal-footer">
-              <Button Letra="Aceptar" Direccion="#exampleModalToggle2" />
+              <button
+                className="btn btn-primary"
+                data-bs-target="#exampleModalToggle2"
+                data-bs-toggle="modal"
+              >
+                Aceptar
+              </button>
             </div>
           </div>
         </div>

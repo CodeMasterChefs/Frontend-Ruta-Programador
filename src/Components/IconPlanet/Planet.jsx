@@ -1,9 +1,14 @@
-
-export const Planet = () => {
-    return (
-        <div><figure className="figure">
-            <img src="..." className="figure-img img-fluid rounded" alt="..." />
-            <figcaption className="figure-caption">A caption for the above image.</figcaption>
-        </figure></div>
-    )
-}
+export const Planet = (planetIcon = "") => {
+  return (
+    <div>
+      <figure className="figure">
+        {/*        <img
+          src={planetIcon}
+          className="figure-img img-fluid rounded"
+          alt={planetIcon}
+        />*/}
+        <figcaption className="figure-caption">{"" + planetIcon}</figcaption>
+      </figure>
+    </div>
+  );
+};
