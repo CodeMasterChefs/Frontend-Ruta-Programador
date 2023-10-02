@@ -1,3 +1,4 @@
+import "./Playlist.css";
 import { useState } from "react";
 import { Planet } from "../IconPlanet/Planet";
 import { Navigate } from "react-router-dom";

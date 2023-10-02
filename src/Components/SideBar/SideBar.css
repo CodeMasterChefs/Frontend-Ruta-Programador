@@ -14,3 +14,15 @@
       display: block;
     }
   }
+
+  .lg-sidebar {
+    background-color: var(--Color-1, #100626);
+    --bs-dark-rgb: no var(--bs-dark-rgb);
+    --bs-border-radius: no var(--bs-border-radius);
+    --bs-link-color:#F2F2F2;
+  }
+ 
+  .nav-link:focus-visible {
+    border: 1px solid #100626;
+    background: linear-gradient(90deg, #FBCD99 5%, #923A9E 49.02%, #100626 100%,) !important;
+  }
