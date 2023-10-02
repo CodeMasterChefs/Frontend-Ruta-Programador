@@ -1,13 +1,7 @@
-
+//import SideBar from "../../Components/SideBar/SideBar.jsx";
 
 const HomePage = () => {
-  return (
-    <div>
-      
-      <h1>La Ruta del Programador</h1>
-      
-    </div>
-  )
-}
+  return <>La ruta del programador</>;
+};
 
-export default HomePage
+export default HomePage;
