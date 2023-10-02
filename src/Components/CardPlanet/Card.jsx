@@ -1,4 +1,5 @@
 // eslint-disable-next-line react/prop-types
+import "./Card.css"
 export const Card = ({ Descripcion, Titulo }) => {
   return (
     <>
