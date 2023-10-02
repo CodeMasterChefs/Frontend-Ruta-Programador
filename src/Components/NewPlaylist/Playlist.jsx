@@ -1,3 +1,4 @@
+import "./Playlist.css"
 import Button from "../Button/Button";
 import { Planet } from "../IconPlanet/Planet";
 const Playlist = () => {
