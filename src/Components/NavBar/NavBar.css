@@ -26,3 +26,17 @@
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: #227593;
 }
+
+.input-container {
+ position: relative;
+ top: 120;
+ left: 120;
+ padding: 5px;
+
+}
+
+.Icons{
+   background-color: transparent;
+   border-width: 1;
+   border-color: gray;
+}
