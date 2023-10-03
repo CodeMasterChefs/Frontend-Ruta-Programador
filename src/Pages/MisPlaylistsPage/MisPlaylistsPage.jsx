@@ -4,19 +4,61 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const MisPlaylistsPage = () => {
-  const [playlist, setPlaylists] = useState([]);
-  
+  const [playlists, setPlaylists] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const url = "https://backend-rutadelprogramador-production.up.railway.app/api/playlist/2";
 
+  // Función para cargar los datos desde la API
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(url);
+      setPlaylists(response.data);
+      setLoading(false);
+    } catch (error) {
+      setError("Error al cargar las playlists.");
+      setLoading(false);
+    }
+  };
+
+  // Llamar a fetchData cuando se monta el componente
   useEffect(() => {
-    axios.get(url).then(
-      (response) => {
-        setPlaylists(response.data);
-        console.log(response.data);
-      }
-    )
-  }, [])
+    fetchData();
+  }, []);
+
+  // Datos de las tarjetas de planetas
+  const planetCards = [
+    {
+      Titulo: "Saturno",
+      Descripcion:
+        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
+    },
+    {
+      Titulo: "Jupiter",
+      Descripcion: "x",
+    },
+    {
+      Titulo: "Tierra",
+      Descripcion:
+        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
+    },
+    {
+      Titulo: "Mercurio",
+      Descripcion:
+        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
+    },
+    {
+      Titulo: "Venus",
+      Descripcion:
+        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
+    },
+    {
+      Titulo: "Marte",
+      Descripcion:
+        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
+    },
+  ];
 
   return (
     <main className="col-sm-11">
@@ -28,38 +70,28 @@ const MisPlaylistsPage = () => {
       </div>
       <div className="d-flex p-2"></div>
       <div className="col-12">
-        <div className="row row-cols-1 row-cols-md-5 g-4">
-          {
-            playlist.map((playlist) => {
-              return <Card
+        {loading ? (
+          <p>Cargando...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : (
+          <div className="row row-cols-1 row-cols-md-5 g-4">
+            {playlists.map((playlist) => (
+              <Card
                 key={playlist.idPlaylist}
                 Titulo={playlist.tituloPlaylist}
                 Descripcion={playlist.descripcionPlaylist}
               ></Card>
-            })
-          }
-          <Card
-            Descripcion="El planeta con mas anillos del sistema solar, el 2do planeta mas grande de nuestro astro sol"
-            Titulo="Saturno"
-          />
-          <Card Descripcion="x" Titulo="Jupiter" />
-          <Card
-            Descripcion="El planeta con mas anillos del sistema solar, el 2do planeta mas grande de nuestro astro sol"
-            Titulo="Tierra"
-          />
-          <Card
-            Descripcion="El planeta con mas anillos del sistema solar, el 2do planeta mas grande de nuestro astro sol"
-            Titulo="Mercurio"
-          />
-          <Card
-            Descripcion="El planeta con mas anillos del sistema solar, el 2do planeta mas grande de nuestro astro sol"
-            Titulo="Venus"
-          />
-          <Card
-            Descripcion="El planeta con mas anillos del sistema solar, el 2do planeta mas grande de nuestro astro sol"
-            Titulo="Marte"
-          />
-        </div>
+            ))}
+            {planetCards.map((planetCard, index) => (
+              <Card
+                Titulo={planetCard.Titulo}
+                Descripcion={planetCard.Descripcion}
+                key={index}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </main>
   );
