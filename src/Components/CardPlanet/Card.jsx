@@ -1,10 +1,10 @@
 // eslint-disable-next-line react/prop-types
-export const Card = ({ Descripcion, Titulo }) => {
+export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
   return (
     <>
       <div className="col">
         <div className="card">
-          <img src="..." className="card-img-top" alt="..." />
+          <img src={UrlImagen} className="card-img-top" alt="..." />
           <div className="position-absolute top-0 end-0">
             <button>
             <svg
@@ -12,7 +12,7 @@ export const Card = ({ Descripcion, Titulo }) => {
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              // xmlns="http://www.w3.org/2000/svg"
             >
               <g id="bx-dots-vertical-rounded">
                 <path
