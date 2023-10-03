@@ -7,10 +7,9 @@
 
 .card-text {
     border-radius: 0.625rem;
-    opacity: 0.3; 
-    background: var(--Degrd-3, linear-gradient(90deg, #100626 0%, #923A9E 49.02%, #FBCD99 100%));
+    background: var(--Degrd-3, linear-gradient(90deg, rgba(16, 6, 38, 0.3) 0%, rgba(146, 58, 158, 0.3) 50%, rgba(251, 205, 153, 0.3) 100%));
 }
 
-button {
-    background-color: transparent;  
+.option-button {
+    background-color: transparent;
 }

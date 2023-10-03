@@ -16,7 +16,7 @@ const MisPlaylistsPage = () => {
             Descripcion="El planeta con mas anillos del sistema solar, el 2do planeta mas grande de nuestro astro sol"
             Titulo="Saturno"
           />
-        <Card Descripcion="x" Titulo="Jupiter" />
+        <Card Descripcion="El planeta con mas anillos del sistema solar, el 2do planeta mas grande de nuestro astro sol" Titulo="Jupiter" />
         <Card
             Descripcion="El planeta con mas anillos del sistema solar, el 2do planeta mas grande de nuestro astro sol"
             Titulo="Tierra"

@@ -7,7 +7,7 @@ export const Card = ({ Descripcion, Titulo }) => {
         <div className="card">
           <img src="..." className="card-img-top" alt="..." />
           <div className="position-absolute top-0 end-0">
-            <button>
+            <button className="option-button">
             <svg
               width="24"
               height="24"

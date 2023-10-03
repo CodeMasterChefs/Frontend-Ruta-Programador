@@ -38,3 +38,15 @@
     --bs-nav-link-hover-color: #bcbcbc;
     --bs-nav-item-focus-color: linear-gradient(90deg, #100626 0%, #923A9E 49.02%, #FBCD99 100%);
 }
+
+.nav-link.active{
+  background: var(--Degrd-3, linear-gradient(90deg,  rgba(251, 205, 153, 0.5) 0%,  rgba(146, 58, 158, 0.5) 50%, rgba(16, 6, 38, 0.5) 100%)) !important;
+  color: #f2f2f2 !important;
+}
+
+.navbar-toggle-menu-bg{
+  background-color: #1f0b4a;
+}
+.navbar-toggler-icon{
+  color: #f2f2f2;
+}

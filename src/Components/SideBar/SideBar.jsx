@@ -32,7 +32,7 @@ const SideBar = () => {
       </div>
       <div className="sm-sidebar">
         <div className="">
-          <nav className="navbar bg-body-tertiary">
+          <nav className="navbar navbar-toggle-menu-bg">
             <button
               className="navbar-toggler"
               type="button"

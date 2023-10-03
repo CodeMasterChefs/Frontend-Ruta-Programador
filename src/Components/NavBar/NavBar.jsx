@@ -1,7 +1,8 @@
 import "./NavBar.css"
+
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary ">
+    <nav className="navbar navbar-expand-lg custom-navbar-bg" data-bs-theme="dark">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           La Ruta del Programador
