@@ -1,6 +1,6 @@
 import Playlist from "../../Components/NewPlaylist/Playlist";
 import { Card } from "../../Components/CardPlanet/Card";
-import axios from "axios";
+import api from "../../config/site.config"; // Importa la instancia 'api' en lugar de axios
 import { useEffect, useState } from "react";
 
 const MisPlaylistsPage = () => {
@@ -8,12 +8,10 @@ const MisPlaylistsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const url = "https://backend-rutadelprogramador-production.up.railway.app/api/playlist/2";
-
   // Función para cargar los datos desde la API
   const fetchData = async () => {
     try {
-      const response = await axios.get(url);
+      const response = await api.get('/playlist/2'); // Utiliza api.get en lugar de axios.get
       setPlaylists(response.data);
       setLoading(false);
     } catch (error) {
