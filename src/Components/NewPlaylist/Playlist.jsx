@@ -1,13 +1,63 @@
 import "./Playlist.css";
 import { useState } from "react";
 import { Planet } from "../IconPlanet/Planet";
-import { Navigate } from "react-router-dom";
+import api from "../../config/site.config";
+//import { Navigate } from "react-router-dom";
 
 const Playlist = () => {
   const [planetSelected, setPlanetSelected] = useState("");
+  const [formState, setFormState] = useState({
+    title: "",
+    description: "",
+    idMundo: 1,
+  });
+  const { title, description } = formState;
+  const [error, setError] = useState({
+    titleError: "",
+    descriptionError: "",
+  });
 
-  const handleCrear = () => {
-    Navigate();
+  const onInpuntChange = ({ target }) => {
+    const { name, value } = target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+    setError({
+      titleError: "",
+      descriptionError: "",
+    });
+  };
+
+  const fetchData = async () => {
+    api
+      .post("playlist", {
+        tituloPlaylist: formState.title,
+        descripcionPlaylist: formState.description,
+        idMundo: formState.idMundo,
+      })
+      .then((response) => {
+        console.log(response);
+        setFormState({
+          title: "",
+          description: "",
+          idMundo: 1,
+        });
+        setError({
+          titleError: "",
+          descriptionError: "",
+        });
+      })
+      .catch((error) => {
+        setError({
+          titleError: error.response.data.errors.tituloPlaylist[0],
+          descriptionError: error.response.data.errors.descripcionPlaylist[0],
+        });
+      });
+  };
+  const handleCrear = (event) => {
+    event.preventDefault();
+    fetchData();
   };
   return (
     <>
@@ -21,16 +71,10 @@ const Playlist = () => {
         Nueva Playlist
       </button>
 
-      <div
-        className="modal fade"
-        id="exampleModal1"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
+      <div className="modal fade" id="exampleModal1" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
+            <div className="modal-header" data-bs-theme="dark">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
                 Crear una nueva Playlist
               </h1>
@@ -51,7 +95,13 @@ const Playlist = () => {
                     type="text"
                     className="form-control"
                     id="recipient-name"
+                    name="title"
+                    value={title}
+                    onInput={onInpuntChange}
                   />
+                  <em>
+                    <small>{error.titleError}</small>
+                  </em>
                 </div>
                 <div className="mb-3">
                   <label htmlFor="message-text" className="col-form-label">
@@ -60,14 +110,20 @@ const Playlist = () => {
                   <textarea
                     className="form-control"
                     id="message-text"
+                    name="description"
+                    value={description}
+                    onInput={onInpuntChange}
                   ></textarea>
+                  <em>
+                    <small>{error.descriptionError}</small>
+                  </em>
                 </div>
                 <div className="row">
                   <div className="col-auto">
                     <Planet planetIcon={planetSelected} />
                     {planetSelected}
                   </div>
-                  <div className="col-auto">
+                  <div className="col-auto" data-bs-theme="dark">
                     <select
                       className="form-select"
                       value={planetSelected}
@@ -87,12 +143,7 @@ const Playlist = () => {
               </form>
             </div>
             <div className="modal-footer">
-              <button
-                className="btn btn-primary"
-                data-bs-target="#exampleModalToggle2"
-                data-bs-toggle="modal"
-                onClick={handleCrear}
-              >
+              <button className="btn btn-primary" onClick={handleCrear}>
                 Aceptar
               </button>
             </div>
