@@ -56,7 +56,7 @@ const Playlist = () => {
           titleError: "",
           descriptionError: "",
         });
-        "#exampleModal1".modal("hide");
+        window.location.reload();
       })
       .catch((error) => {
         setError({
@@ -141,6 +141,7 @@ const Playlist = () => {
                     name="description"
                     value={description}
                     onInput={onInpuntChange}
+                    rows={5}
                   ></textarea>
                   <em>
                     <small>{error.descriptionError}</small>
