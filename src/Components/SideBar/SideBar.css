@@ -15,6 +15,17 @@
     }
   }
 
+  .offcanvas {
+    background-color: #100626;
+    color:#F2F2F2
+  }
+
+  .nav-link {
+    color: #f2f2f2;
+    background: transparent;
+}
+
+
   .lg-sidebar {
     background-color: var(--Color-1, #100626);
     --bs-dark-rgb: no var(--bs-dark-rgb);
@@ -22,7 +33,20 @@
     --bs-link-color:#F2F2F2;
   }
  
-  .nav-link:focus-visible {
-    border: 1px solid #100626;
-    background: linear-gradient(90deg, #FBCD99 5%, #923A9E 49.02%, #100626 100%,) !important;
-  }
+  .nav {
+    --bs-nav-link-color: #f2f2f2;
+    --bs-nav-link-hover-color: #bcbcbc;
+    --bs-nav-item-focus-color: linear-gradient(90deg, #100626 0%, #923A9E 49.02%, #FBCD99 100%);
+}
+
+.nav-link.active{
+  background: var(--Degrd-3, linear-gradient(90deg,  rgba(251, 205, 153, 0.5) 0%,  rgba(146, 58, 158, 0.5) 50%, rgba(16, 6, 38, 0.5) 100%)) !important;
+  color: #f2f2f2 !important;
+}
+
+.navbar-toggle-menu-bg{
+  background-color: #1f0b4a;
+}
+.navbar-toggler-icon{
+  color: #f2f2f2;
+}

@@ -1,13 +1,10 @@
-.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+.navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
     background-color: #100626;
-    }
-
-.navbar-brand {
-    color: #f2f2f2;
 }
 
-.navbar-brand:hover {
-    color: #f2f2f2;
+.me-2 {
+    border-radius: 3rem;
+    background: rgba(242, 242, 242, 0.2) !important;
 }
 
 .btn-outline-success {
@@ -16,23 +13,34 @@
     --bs-btn-hover-color: #f2f2f2;
     --bs-btn-hover-bg: #227593;
     --bs-btn-hover-border-color: #227593;
-    --bs-btn-focus-shadow-rgb: 25,135,84;
     --bs-btn-active-color: #f2f2f2;
-    --bs-btn-active-bg: #206f8b;
-    --bs-btn-active-border-color: #206f8b;
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #4DDAC5;
+    --bs-btn-active-bg: #1e6984;
+    --bs-btn-active-border-color: #1e6984;
+    --bs-btn-disabled-color: #227593;
     --bs-btn-disabled-bg: transparent;
-    --bs-btn-disabled-border-color: #4DDAC5;
-    --bs-gradient: none;
+    --bs-btn-disabled-border-color: #227593;
+}
+.custom-navbar-bg{
+    background-color: #100626 !important;
+    border: #227593 !important;
 }
 
-.form-control {
-    border-radius: 0.9375rem;
-    /* opacity: 0.2; */
-    background: var(--White, #F2F2F2);
+.input-container {
+    position: relative;
+    top: 120;
+    left: 120;
+    padding: 5px;
    
-}
+   }
+   
+   .Icons{
+      background-color: transparent;
+      border-width: 1;
+      border-color: transparent;
+   }
 
-
-
+   .Icons:hover{
+    background-color: transparent;
+    border-width: 1;
+    border-color: #4DDAC5;
+ }

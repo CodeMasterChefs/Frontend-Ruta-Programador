@@ -24,9 +24,7 @@ a:hover {
 }
 
 body {
-  background: url(./assets/Space.svg), #100626;
-  background-repeat: no-repeat;
-  background-size: 70%;
+  background:#100626;
   color: var(--White, #F2F2F2);
   margin: 0;
   display: flex;
@@ -98,12 +96,12 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #f2f2f2;
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #f2f2f2;
   }
 }
