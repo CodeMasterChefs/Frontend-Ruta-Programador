@@ -1,4 +1,4 @@
-import { HamburguerMenuIcon } from "../icons";
+import { HamburguerMenuIcon, HomeIcon, LupaIcon } from "../icons";
 import "./NavBar.css"
 
 
@@ -11,13 +11,25 @@ const NavBar = () => {
         </a>
         
         <div className="d-flex">
+        <button
+            className="Icons"         
+          >
+            <LupaIcon />
+          </button>
           <form className="d-flex formulario-buscador" role="search">
             <input
-              className="form-control me-2 input-container"
+              className="form-control me-2 input-container  "
               type="search"
-              placeholder="¿Qué quieres buscar?"
+              placeholder="¿Qué quieres buscar?"             
             />
           </form>
+          
+          <button
+            className="Icons"
+            type="button"            
+          >
+            <HomeIcon />
+          </button>
           <button
             className="Icons"
             type="button"
