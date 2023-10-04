@@ -24,40 +24,7 @@ const MisPlaylistsPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  // Datos de las tarjetas de planetas
-  const planetCards = [
-    {
-      Titulo: "Saturno",
-      Descripcion:
-        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
-    },
-    {
-      Titulo: "Jupiter",
-      Descripcion: "x",
-    },
-    {
-      Titulo: "Tierra",
-      Descripcion:
-        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
-    },
-    {
-      Titulo: "Mercurio",
-      Descripcion:
-        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
-    },
-    {
-      Titulo: "Venus",
-      Descripcion:
-        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
-    },
-    {
-      Titulo: "Marte",
-      Descripcion:
-        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
-    },
-  ];
-
+  
   return (
     <main className="col-sm-11">
       <div className="row">
@@ -80,13 +47,6 @@ const MisPlaylistsPage = () => {
                 Titulo={playlist.tituloPlaylist}
                 Descripcion={playlist.descripcionPlaylist}
               ></Card>
-            ))}
-            {planetCards.map((planetCard, index) => (
-              <Card
-                Titulo={planetCard.Titulo}
-                Descripcion={planetCard.Descripcion}
-                key={index}
-              />
             ))}
           </div>
         )}

@@ -1,14 +1,42 @@
 import "./Playlist.css";
-import { useState } from "react";
-import { Planet } from "../IconPlanet/Planet";
+import { useState, useEffect } from "react";
+// import { Planet } from "../IconPlanet/Planet";
 import { Navigate } from "react-router-dom";
 
+const iconMap = {
+  "the moon": "moon.svg",
+  "the earth": "earth.svg",
+  uranus: "uranus.svg",
+  neptune: "neptune.svg",
+  mars: "mars.svg",
+  haumea: "haumea.svg",
+};
+
 const Playlist = () => {
-  const [planetSelected, setPlanetSelected] = useState("");
+  const [planetSelected, setPlanetSelected] = useState("the moon");
+  const [selectedIcon, setSelectedIcon] = useState(iconMap["the moon"]);
 
   const handleCrear = () => {
     Navigate();
   };
+
+  useEffect(() => {
+    setSelectedIcon(iconMap[planetSelected]);
+  }, [planetSelected]);
+
+  const loadSelectedIcon = () => {
+    if (selectedIcon) {
+      return (
+        <img
+          src={`/iconoMundos/${selectedIcon}`}
+          alt={planetSelected}
+          className="selected-icon"
+        />
+      );
+    }
+    return null;
+  };
+
   return (
     <>
       <button
@@ -64,15 +92,17 @@ const Playlist = () => {
                 </div>
                 <div className="row">
                   <div className="col-auto">
-                    <Planet planetIcon={planetSelected} />
-                    {planetSelected}
+                    {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
+                    {/* {planetSelected} */}
                   </div>
                   <div className="col-auto">
                     <select
                       className="form-select"
                       value={planetSelected}
                       onChange={(e) => {
-                        setPlanetSelected(e.target.value);
+                        const selected = e.target.value;
+                        setPlanetSelected(selected);
+                        setSelectedIcon(iconMap[selected]); // Asigna el nombre del ícono
                       }}
                     >
                       <option value="the moon">The moon</option>
