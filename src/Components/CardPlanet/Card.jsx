@@ -2,13 +2,16 @@ import PropTypes from "prop-types";
 
 import "./Card.css";
 import { Link } from "react-router-dom";
-export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
+export const Card = ({ Descripcion, Titulo, UrlImagen, id }) => {
   return (
     <>
       <div className="col">
         <div className="card">
           <img src={UrlImagen} className="card-img-top" alt="..." />
-          <div className="position-absolute top-0 end-0">
+          <div
+            className="position-absolute top-0 end-0 dropdown"
+            data-bs-toggle="dropdown"
+          >
             <button className="option-button">
               <svg
                 width="24"
@@ -26,9 +29,16 @@ export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
                 </g>
               </svg>
             </button>
+            <ul className="dropdown-menu">
+              <li>Reproducir Playlist</li>
+              <li>Me gusta</li>
+              <li>Compartir</li>
+              <li>Editar Playlist</li>
+              <li>Eliminar Playlist</li>
+            </ul>
           </div>
           <div className="card-body">
-            <Link to={"/mis_playlists/1"} className="text-white">
+            <Link to={"/mis_playlists/" + id} className="text-white">
               <h5 className="card-title">{Titulo}</h5>
             </Link>
             <p className="card-text">{Descripcion}</p>
@@ -43,4 +53,5 @@ Card.propTypes = {
   Titulo: PropTypes.string.isRequired,
   Descripcion: PropTypes.string.isRequired,
   UrlImagen: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
