@@ -11,7 +11,7 @@ const MisPlaylistsPage = () => {
   // Función para cargar los datos desde la API
   const fetchData = async () => {
     try {
-      const response = await api.get('/playlist/2'); // Utiliza api.get en lugar de axios.get
+      const response = await api.get("/playlist/2"); // Utiliza api.get en lugar de axios.get
       setPlaylists(response.data);
       setLoading(false);
     } catch (error) {
@@ -24,40 +24,7 @@ const MisPlaylistsPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  // Datos de las tarjetas de planetas
-  const planetCards = [
-    {
-      Titulo: "Saturno",
-      Descripcion:
-        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
-    },
-    {
-      Titulo: "Jupiter",
-      Descripcion: "x",
-    },
-    {
-      Titulo: "Tierra",
-      Descripcion:
-        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
-    },
-    {
-      Titulo: "Mercurio",
-      Descripcion:
-        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
-    },
-    {
-      Titulo: "Venus",
-      Descripcion:
-        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
-    },
-    {
-      Titulo: "Marte",
-      Descripcion:
-        "El planeta con más anillos del sistema solar, el 2do planeta más grande de nuestro astro sol",
-    },
-  ];
-
+  
   return (
     <main className="col-sm-11">
       <div className="row">
@@ -81,13 +48,6 @@ const MisPlaylistsPage = () => {
                 Descripcion={playlist.descripcionPlaylist}
                 UrlImagen={"https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" + playlist.iconoMundo}
               ></Card>
-            ))}
-            {planetCards.map((planetCard, index) => (
-              <Card
-                Titulo={planetCard.Titulo}
-                Descripcion={planetCard.Descripcion}
-                key={index}
-              />
             ))}
           </div>
         )}

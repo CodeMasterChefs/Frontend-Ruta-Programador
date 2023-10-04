@@ -23,7 +23,6 @@ export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
               </g>
             </svg>
             </button>
-            
           </div>
           <div className="card-body">
             <h5 className="card-title">{Titulo}</h5>
