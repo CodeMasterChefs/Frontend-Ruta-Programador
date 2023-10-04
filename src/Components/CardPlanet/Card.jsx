@@ -1,20 +1,24 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import "./Card.css"
-export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
+import "./Card.css";
+import { Link } from "react-router-dom";
+export const Card = ({ Descripcion, Titulo, UrlImagen, id }) => {
   return (
     <>
       <div className="col">
         <div className="card">
           <img src={UrlImagen} className="card-img-top" alt="..." />
-          <div className="position-absolute top-0 end-0">
+          <div
+            className="position-absolute top-0 end-0 dropdown"
+            data-bs-toggle="dropdown"
+          >
             <button className="option-button">
               <svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-              // xmlns="http://www.w3.org/2000/svg"
+                // xmlns="http://www.w3.org/2000/svg"
               >
                 <g id="bx-dots-vertical-rounded">
                   <path
@@ -25,9 +29,18 @@ export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
                 </g>
               </svg>
             </button>
+            <ul className="dropdown-menu">
+              <li>Reproducir Playlist</li>
+              <li>Me gusta</li>
+              <li>Compartir</li>
+              <li>Editar Playlist</li>
+              <li>Eliminar Playlist</li>
+            </ul>
           </div>
           <div className="card-body">
-            <h5 className="card-title">{Titulo}</h5>
+            <Link to={"/mis_playlists/" + id} className="text-white">
+              <h5 className="card-title">{Titulo}</h5>
+            </Link>
             <p className="card-text">{Descripcion}</p>
           </div>
         </div>
@@ -39,5 +52,6 @@ export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
 Card.propTypes = {
   Titulo: PropTypes.string.isRequired,
   Descripcion: PropTypes.string.isRequired,
-  UrlImagen: PropTypes.string.isRequired
+  UrlImagen: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
