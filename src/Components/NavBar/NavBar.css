@@ -2,8 +2,8 @@
     background-color: #100626;
 }
 
-.form-control {
-    border-radius: 0.9375rem;
+.me-2 {
+    border-radius: 3rem;
     background: rgba(242, 242, 242, 0.2) !important;
 }
 
@@ -36,5 +36,11 @@
    .Icons{
       background-color: transparent;
       border-width: 1;
-      border-color: gray;
+      border-color: transparent;
    }
+
+   .Icons:hover{
+    background-color: transparent;
+    border-width: 1;
+    border-color: #4DDAC5;
+ }
