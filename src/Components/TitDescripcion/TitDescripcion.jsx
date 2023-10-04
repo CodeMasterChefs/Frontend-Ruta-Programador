@@ -1,6 +1,5 @@
-
 // eslint-disable-next-line react/prop-types
-export const TitDescripcion = ({Descripcion}) => {
+export const TitDescripcion = ({ Titulo, Descripcion }) => {
   return (
     <>
       <div className="d-flex mb-3">
@@ -9,7 +8,7 @@ export const TitDescripcion = ({Descripcion}) => {
         </div>
         <div className="p-2">
           <div className="align-self-start">
-            <h3>Titulo de la Playlist</h3>
+            <h3>Titulo de la Playlist{Titulo}</h3>
           </div>
           <div className="align-self-end">
             <button>

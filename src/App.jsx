@@ -24,7 +24,10 @@ function App() {
                 path="/mis_playlists"
                 element={<MisPlaylistsPage />}
               ></Route>
-              <Route path="/mis_playlists/1" element={<MiPlaylist />} />
+              <Route
+                path="/mis_playlists/:idPlaylist"
+                element={<MiPlaylist />}
+              />
               <Route path="/comunidad" element={<ComunidadPage />}></Route>
               <Route path="/mi_cuenta" element={<TuCuentaPage />}></Route>
             </Routes>

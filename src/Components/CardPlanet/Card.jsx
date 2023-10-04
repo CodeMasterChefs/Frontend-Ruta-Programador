@@ -1,6 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import "./Card.css"
+import "./Card.css";
+import { Link } from "react-router-dom";
 export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
   return (
     <>
@@ -14,7 +15,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-              // xmlns="http://www.w3.org/2000/svg"
+                // xmlns="http://www.w3.org/2000/svg"
               >
                 <g id="bx-dots-vertical-rounded">
                   <path
@@ -27,7 +28,9 @@ export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
             </button>
           </div>
           <div className="card-body">
-            <h5 className="card-title">{Titulo}</h5>
+            <Link to={"/mis_playlists/1"} className="text-white">
+              <h5 className="card-title">{Titulo}</h5>
+            </Link>
             <p className="card-text">{Descripcion}</p>
           </div>
         </div>
@@ -39,5 +42,5 @@ export const Card = ({ Descripcion, Titulo, UrlImagen }) => {
 Card.propTypes = {
   Titulo: PropTypes.string.isRequired,
   Descripcion: PropTypes.string.isRequired,
-  UrlImagen: PropTypes.string.isRequired
+  UrlImagen: PropTypes.string.isRequired,
 };
