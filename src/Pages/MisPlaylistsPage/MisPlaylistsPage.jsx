@@ -11,7 +11,7 @@ const MisPlaylistsPage = () => {
   // Función para cargar los datos desde la API
   const fetchData = async () => {
     try {
-      const response = await api.get('/playlist/2'); // Utiliza api.get en lugar de axios.get
+      const response = await api.get("/playlist/2"); // Utiliza api.get en lugar de axios.get
       setPlaylists(response.data);
       setLoading(false);
     } catch (error) {
@@ -79,6 +79,7 @@ const MisPlaylistsPage = () => {
                 key={playlist.idPlaylist}
                 Titulo={playlist.tituloPlaylist}
                 Descripcion={playlist.descripcionPlaylist}
+                Imagen={playlist.iconoMundo}
               ></Card>
             ))}
             {planetCards.map((planetCard, index) => (

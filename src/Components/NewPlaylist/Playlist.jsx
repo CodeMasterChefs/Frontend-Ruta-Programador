@@ -47,6 +47,7 @@ const Playlist = () => {
           titleError: "",
           descriptionError: "",
         });
+        "#exampleModal1".modal("hide");
       })
       .catch((error) => {
         setError({
