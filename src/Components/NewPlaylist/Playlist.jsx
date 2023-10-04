@@ -1,27 +1,26 @@
 import "./Playlist.css";
 import { useState, useEffect } from "react";
-// import { Planet } from "../IconPlanet/Planet";
 import api from "../../config/site.config";
 //import { Navigate } from "react-router-dom";
 
 const iconMap = {
-  "the moon": "moon.svg",
-  "the earth": "earth.svg",
-  uranus: "uranus.svg",
-  neptune: "neptune.svg",
-  mars: "mars.svg",
-  haumea: "haumea.svg",
+  1: "moon.svg",
+  2: "earth.svg",
+  3: "uranus.svg",
+  4: "neptune.svg",
+  5: "mars.svg",
+  6: "haumea.svg",
 };
 
 const Playlist = () => {
-  const [planetSelected, setPlanetSelected] = useState("the moon");
-  const [selectedIcon, setSelectedIcon] = useState(iconMap["the moon"]);
+  const [planetSelected, setPlanetSelected] = useState(1);
+  const [selectedIcon, setSelectedIcon] = useState(iconMap[1]);
   const [formState, setFormState] = useState({
     title: "",
     description: "",
-    idMundo: 1,
+    idMundo: planetSelected,
   });
-  const { title, description } = formState;
+  const { title, description, idMundo } = formState;
   const [error, setError] = useState({
     titleError: "",
     descriptionError: "",
@@ -150,24 +149,27 @@ const Playlist = () => {
                 <div className="row">
                   <div className="col-auto">
                     {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
-                    {/* {planetSelected} */}
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
                     <select
                       className="form-select"
-                      value={planetSelected}
+                      value={idMundo}
                       onChange={(e) => {
                         const selected = e.target.value;
                         setPlanetSelected(selected);
                         setSelectedIcon(iconMap[selected]); // Asigna el nombre del ícono
+                        setFormState({
+                          ...formState,
+                          idMundo: selected,
+                        });
                       }}
                     >
-                      <option value="the moon">The moon</option>
-                      <option value="the earth">The earth</option>
-                      <option value="uranus">Uranus</option>
-                      <option value="neptune">Neptune</option>
-                      <option value="mars">Mars</option>
-                      <option value="haumea">Haumea</option>
+                      <option value="1">The moon</option>
+                      <option value="2">The earth</option>
+                      <option value="3">Uranus</option>
+                      <option value="4">Neptune</option>
+                      <option value="5">Mars</option>
+                      <option value="6">Haumea</option>
                     </select>
                   </div>
                 </div>
