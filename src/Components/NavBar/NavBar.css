@@ -20,8 +20,21 @@
     --bs-btn-disabled-bg: transparent;
     --bs-btn-disabled-border-color: #227593;
 }
-
 .custom-navbar-bg{
     background-color: #100626 !important;
     border: #227593 !important;
 }
+
+.input-container {
+    position: relative;
+    top: 120;
+    left: 120;
+    padding: 5px;
+   
+   }
+   
+   .Icons{
+      background-color: transparent;
+      border-width: 1;
+      border-color: gray;
+   }
