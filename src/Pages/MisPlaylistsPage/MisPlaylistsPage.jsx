@@ -11,7 +11,7 @@ const MisPlaylistsPage = () => {
   // Función para cargar los datos desde la API
   const fetchData = async () => {
     try {
-      const response = await api.get("/playlist/2"); // Utiliza api.get en lugar de axios.get
+      const response = await api.get("/playlist/2");
       setPlaylists(response.data);
       setLoading(false);
     } catch (error) {
@@ -24,7 +24,7 @@ const MisPlaylistsPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  
+
   return (
     <main className="col-sm-11">
       <div className="row">

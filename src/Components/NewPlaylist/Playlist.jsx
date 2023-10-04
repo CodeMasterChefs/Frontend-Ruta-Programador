@@ -59,10 +59,12 @@ const Playlist = () => {
         window.location.reload();
       })
       .catch((error) => {
-        setError({
-          titleError: error.response.data.errors.tituloPlaylist[0],
-          descriptionError: error.response.data.errors.descripcionPlaylist[0],
-        });
+        if (error.response && error.response.data) {
+          setError({
+            titleError: error.response.data.errors?.tituloPlaylist?.[0] || "",
+            descriptionError: error.response.data.errors?.descripcionPlaylist?.[0] || "",
+          });
+        }
       });
   };
   const handleCrear = (event) => {
