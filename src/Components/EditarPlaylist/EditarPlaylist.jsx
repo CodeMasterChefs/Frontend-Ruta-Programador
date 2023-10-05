@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import "../NewPlaylist/Playlist.css";
 import { useState, useEffect } from "react";
 import api from "../../config/site.config";
@@ -12,7 +14,7 @@ const iconMap = {
   6: "haumea.svg",
 };
 
-const Playlist = () => {
+const EditarPlaylist = ({IdPlaylist}) => {
   const [planetSelected, setPlanetSelected] = useState(1);
   const [selectedIcon, setSelectedIcon] = useState(iconMap[1]);
   const [formState, setFormState] = useState({
@@ -44,6 +46,7 @@ const Playlist = () => {
         tituloPlaylist: formState.title,
         descripcionPlaylist: formState.description,
         idMundo: formState.idMundo,
+        idPlaylist: IdPlaylist
       })
       .then((response) => {
         console.log(response);
@@ -95,18 +98,18 @@ const Playlist = () => {
         type="button"
         className="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal1"
+        data-bs-target="#modalEditarPlaylist"
         data-bs-whatever="@mdo"
       >
-        Nueva Playlist
+        Editar playlist
       </button>
 
-      <div className="modal fade" id="exampleModal1" tabIndex="-1">
+      <div className="modal fade" id="modalEditarPlaylist" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header" data-bs-theme="dark">
               <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Crear una nueva Playlist
+                Edita tu Playlist
               </h1>
               <button
                 type="button"
@@ -119,7 +122,7 @@ const Playlist = () => {
               <form>
                 <div className="mb-3">
                   <label htmlFor="recipient-name" className="col-form-label">
-                    Dale un nombre a tu Playlist:
+                    Edita el nombre de tu Playlist:
                   </label>
                   <input
                     type="text"
@@ -135,7 +138,7 @@ const Playlist = () => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="message-text" className="col-form-label">
-                    Añade una descripción a tu Playlist:
+                    Edita la descripción de tu Playlist:
                   </label>
                   <textarea
                     className="form-control"
@@ -189,4 +192,9 @@ const Playlist = () => {
     </>
   );
 };
-export default Playlist;
+
+EditarPlaylist.propTypes = {
+  IdPlaylist: PropTypes.number.isRequired
+};
+
+export default EditarPlaylist;

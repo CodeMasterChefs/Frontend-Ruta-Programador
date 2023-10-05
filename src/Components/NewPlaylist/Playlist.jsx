@@ -95,13 +95,13 @@ const Playlist = () => {
         type="button"
         className="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#exampleModal1"
+        data-bs-target="#modalCrearPlaylist"
         data-bs-whatever="@mdo"
       >
         Nueva Playlist
       </button>
 
-      <div className="modal fade" id="exampleModal1" tabIndex="-1">
+      <div className="modal fade" id="modalCrearPlaylist" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header" data-bs-theme="dark">

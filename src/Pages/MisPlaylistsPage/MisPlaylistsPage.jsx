@@ -2,6 +2,7 @@ import Playlist from "../../Components/NewPlaylist/Playlist";
 import { Card } from "../../Components/CardPlanet/Card";
 import api from "../../config/site.config"; // Importa la instancia 'api' en lugar de axios
 import { useEffect, useState } from "react";
+import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 
 const MisPlaylistsPage = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -41,6 +42,7 @@ const MisPlaylistsPage = () => {
           <p>{error}</p>
         ) : (
           <div className="row row-cols-1 row-cols-md-5 g-4">
+            <EditarPlaylist IdPlaylist={1}></EditarPlaylist>
             {playlists.map((playlist) => (
               <Card
                 key={playlist.idPlaylist}

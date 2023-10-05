@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 
 import "./Card.css";
 import { Link } from "react-router-dom";
+import EditarPlaylist from "../EditarPlaylist/EditarPlaylist";
 export const Card = ({ Descripcion, Titulo, UrlImagen, id }) => {
   return (
     <>
@@ -29,11 +30,12 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id }) => {
                 </g>
               </svg>
             </button>
-            <ul className="dropdown-menu">
+            {/* Verificar el error del modal en el dropdown-menu */}
+            <ul className="dropdown-menu"> 
               <li>Reproducir Playlist</li>
               <li>Me gusta</li>
               <li>Compartir</li>
-              <li>Editar Playlist</li>
+              <li><EditarPlaylist IdPlaylist={id}></EditarPlaylist></li>
               <li>Eliminar Playlist</li>
             </ul>
           </div>
