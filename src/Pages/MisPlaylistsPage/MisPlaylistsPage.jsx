@@ -44,9 +44,13 @@ const MisPlaylistsPage = () => {
             {playlists.map((playlist) => (
               <Card
                 key={playlist.idPlaylist}
+                id={playlist.idPlaylist}
                 Titulo={playlist.tituloPlaylist}
                 Descripcion={playlist.descripcionPlaylist}
-                UrlImagen={"https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" + playlist.iconoMundo}
+                UrlImagen={
+                  "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
+                  playlist.iconoMundo
+                }
               ></Card>
             ))}
           </div>
