@@ -1,0 +1,18 @@
+.color-fl{
+    opacity: 0.6;
+    background: var(--Degrd-3, linear-gradient(90deg, #100626 0%, #923A9E 49.02%, #FBCD99 100%));  
+}
+
+.titulo-link {
+color: #FFFFFF !important;
+font-family: Poppins;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+padding-top: 10px;
+}
+
+.icon{
+padding-top: 3px;
+}
