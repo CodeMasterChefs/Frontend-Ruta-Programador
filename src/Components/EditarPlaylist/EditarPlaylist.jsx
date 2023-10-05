@@ -14,7 +14,7 @@ const iconMap = {
   6: "haumea.svg",
 };
 
-const EditarPlaylist = ({IdPlaylist}) => {
+const EditarPlaylist = ({ IdPlaylist }) => {
   const [planetSelected, setPlanetSelected] = useState(1);
   const [selectedIcon, setSelectedIcon] = useState(iconMap[1]);
   const [formState, setFormState] = useState({
@@ -94,16 +94,6 @@ const EditarPlaylist = ({IdPlaylist}) => {
 
   return (
     <>
-      <button
-        type="button"
-        className="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#modalEditarPlaylist"
-        data-bs-whatever="@mdo"
-      >
-        Editar playlist
-      </button>
-
       <div className="modal fade" id="modalEditarPlaylist" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">

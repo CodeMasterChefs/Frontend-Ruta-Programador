@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import "./Card.css";
 import { Link } from "react-router-dom";
-import EditarPlaylist from "../EditarPlaylist/EditarPlaylist";
+// import EditarPlaylist from "../EditarPlaylist/EditarPlaylist";
 export const Card = ({ Descripcion, Titulo, UrlImagen, id }) => {
   return (
     <>
@@ -19,7 +19,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id }) => {
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                // xmlns="http://www.w3.org/2000/svg"
+              // xmlns="http://www.w3.org/2000/svg"
               >
                 <g id="bx-dots-vertical-rounded">
                   <path
@@ -31,11 +31,22 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id }) => {
               </svg>
             </button>
             {/* Verificar el error del modal en el dropdown-menu */}
-            <ul className="dropdown-menu"> 
+            <ul className="dropdown-menu">
               <li>Reproducir Playlist</li>
               <li>Me gusta</li>
               <li>Compartir</li>
-              <li><EditarPlaylist IdPlaylist={id}></EditarPlaylist></li>
+              <li>
+                {/* button esencial para entrar al modal */}
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalEditarPlaylist"
+                  data-bs-whatever="@mdo"
+                >
+                  Editar playlist
+                </button>
+              </li>
               <li>Eliminar Playlist</li>
             </ul>
           </div>
