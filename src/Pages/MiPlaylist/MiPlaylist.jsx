@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Fileplaylist from "../../Components/FilePlaylist/FilePlaylist";
 import { TitDescripcion } from "../../Components/TitDescripcion/TitDescripcion";
-import { Eliminar } from "../../Components/EliminarElemento/Eliminar";
+import { MoreIcon } from "../../Components/icons/MoreIcon";
 const MiPlaylist = () => {
   let params = useParams();
   console.log(params);
@@ -19,10 +19,6 @@ const MiPlaylist = () => {
         Descripcion="Aqui va la descripcion de la playlist con todos sus elementosst Aqui va la descripcion de la playlist con todos sus elementos playlist con todos sus elementos"
       />
       <br></br>
-      <div>
-        <button className="btn btn-primary">Añadir elemento</button>
-        {/*Agregar icono, falta funcionalidd*/}
-      </div>
       <div className="container text-center">
         <div className="row">
           <div className="col-md-4"></div>
@@ -60,7 +56,10 @@ const MiPlaylist = () => {
         </div>
       </div>
       <br></br>
-      <Eliminar></Eliminar>
+
+      <div className="d-flex justify-content-end"> 
+        <button className="btn btn-primary "> <MoreIcon/></button>       
+      </div>
     </>
   );
 };
