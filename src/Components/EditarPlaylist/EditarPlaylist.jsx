@@ -1,7 +1,7 @@
-import "./Playlist.css";
+import "../NewPlaylist/Playlist.css";
 import { useState, useEffect } from "react";
 import api from "../../config/site.config";
-// import { Navigate } from "react-router-dom";
+//import { Navigate } from "react-router-dom";
 
 const iconMap = {
   1: "moon.svg",
