@@ -1,6 +1,6 @@
 .card {
     background-color: transparent;
-    border-radius: 0.9375rem;
+    border-radius: 0.3125rem;
     border: 2px solid var(--Degrd-3, #FBCD99);
     color: #f2f2f2;
 }

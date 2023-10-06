@@ -180,7 +180,7 @@ const Playlist = () => {
             </div>
             <div className="modal-footer">
               <button className="btn btn-primary" onClick={handleCrear}>
-                Aceptar
+                Crear
               </button>
             </div>
           </div>
