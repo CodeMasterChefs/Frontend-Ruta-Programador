@@ -6,7 +6,6 @@ import api from "../../config/site.config";
 //import { Navigate } from "react-router-dom";
 
 const iconMap = {
-  0: "Mantener imagen",
   1: "moon.svg",
   2: "earth.svg",
   3: "uranus.svg",
@@ -16,8 +15,8 @@ const iconMap = {
 };
 
 const EditarPlaylist = ({ IdPlaylist }) => {
-  const [planetSelected, setPlanetSelected] = useState(0);
-  const [selectedIcon, setSelectedIcon] = useState(iconMap[0]);
+  const [planetSelected, setPlanetSelected] = useState();
+  const [selectedIcon, setSelectedIcon] = useState();
   const [formState, setFormState] = useState({
     title: "",
     description: "",
@@ -28,6 +27,26 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     titleError: "",
     descriptionError: "",
   });
+
+  // Llamar a fetchData cuando se monta el componente
+  useEffect(() => {
+    const fetchDataPlaylist = async () => {
+      const response = await api.get(`/playlist/valores/${IdPlaylist}`);
+      // Actualiza el estado utilizando setFormState
+      setFormState({
+        title: response.data.tituloPlaylist,
+        description: response.data.descripcionPlaylist,
+        idMundo: response.data.idMundo,
+      });
+    };
+
+    fetchDataPlaylist();
+  }, [IdPlaylist]);
+
+
+  useEffect(() => {
+    setSelectedIcon(iconMap[formState.idMundo]); // Se ejecutará una vez al montar el componente
+  }, [formState.idMundo]);
 
   const onInputChange = ({ target }) => {
     const { name, value } = target;
@@ -102,10 +121,6 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     event.preventDefault();
     fetchData();
   };
-
-  useEffect(() => {
-    setSelectedIcon(iconMap[planetSelected]);
-  }, [planetSelected]);
 
   const loadSelectedIcon = () => {
     if (selectedIcon) {
@@ -188,7 +203,6 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                         });
                       }}
                     >
-                      <option value="0">Mantener ícono</option>
                       <option value="1">The moon</option>
                       <option value="2">The earth</option>
                       <option value="3">Uranus</option>

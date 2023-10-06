@@ -8,7 +8,7 @@ const MisPlaylistsPage = () => {
   const [playlists, setPlaylists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [selectedPlaylistId, setSelectedPlaylistId] = useState(0); // Nuevo estado para el IdPlaylist seleccionado
+  const [selectedPlaylistId, setSelectedPlaylistId] = useState(17); // Nuevo estado para el IdPlaylist seleccionado
 
   // Función para cargar los datos desde la API
   const fetchData = async () => {
