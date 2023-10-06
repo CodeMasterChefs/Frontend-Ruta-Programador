@@ -7,24 +7,24 @@ import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 const MisPlaylistsPage = () => {
   const [playlists, setPlaylists] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedPlaylistId, setSelectedPlaylistId] = useState(17); // Nuevo estado para el IdPlaylist seleccionado
+  const [errorCargarPlaylists, setErrorCargarPlaylists] = useState(null);
+  const [selectedPlaylistId, setSelectedPlaylistId] = useState(0); // Nuevo estado para el IdPlaylist seleccionado
 
   // Función para cargar los datos desde la API
-  const fetchData = async () => {
+  const fetchDataCargarPlaylists = async () => {
     try {
       const response = await api.get("/playlist/2");
       setPlaylists(response.data);
       setLoading(false);
     } catch (error) {
-      setError("Error al cargar las playlists.");
+      setErrorCargarPlaylists("Error al cargar las playlists.");
       setLoading(false);
     }
   };
 
   // Llamar a fetchData cuando se monta el componente
   useEffect(() => {
-    fetchData();
+    fetchDataCargarPlaylists();
   }, []);
 
   // Función para manejar el clic en el botón "Editar playlist"
@@ -37,15 +37,15 @@ const MisPlaylistsPage = () => {
       <div className="row">
         <div className="d-flex justify-content-between align-items-center">
           <h3>Mis Playlists</h3>
-          <Playlist />
+          <Playlist CantPlaylists={playlists.length} />
         </div>
       </div>
       <div className="d-flex p-2"></div>
       <div className="col-12">
         {loading ? (
           <p>Cargando...</p>
-        ) : error ? (
-          <p>{error}</p>
+        ) : errorCargarPlaylists ? (
+          <p>{errorCargarPlaylists}</p>
         ) : (
           <div className="row row-cols-1 row-cols-md-5 g-4">
             {/* <EditarPlaylist IdPlaylist={1}></EditarPlaylist> */}
