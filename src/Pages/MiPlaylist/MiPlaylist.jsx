@@ -2,15 +2,23 @@ import { useParams } from "react-router-dom";
 import Fileplaylist from "../../Components/FilePlaylist/FilePlaylist";
 import { TitDescripcion } from "../../Components/TitDescripcion/TitDescripcion";
 import { Eliminar } from "../../Components/EliminarElemento/Eliminar";
+import { useEffect, useState } from "react";
+import api from "../../config/site.config";
 const MiPlaylist = () => {
   let params = useParams();
-  console.log(params);
-  const videos = [
-    { titulo: "titulo video 1", fecha: "2023-10-04", duracion: "15:02" },
-    { titulo: "titulo video 1", fecha: "2023-10-04", duracion: "15:02" },
-    { titulo: "titulo video 1", fecha: "2023-10-04", duracion: "15:02" },
-    { titulo: "titulo video 1", fecha: "2023-10-04", duracion: "15:02" },
-  ];
+
+  const [elementos, setElementos] = useState([]);
+
+  useEffect(() => {
+    api
+      .get("/elemento_playlists/" + params.idPlaylist)
+      .then((response) => {
+        setElementos(response.data.elementos);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [params.idPlaylist]);
   return (
     <>
       <br></br>
@@ -48,13 +56,14 @@ const MiPlaylist = () => {
       </div>
       <div className="table">
         <div>
-          {videos.map((video, index) => (
+          {elementos.map((elemento, index) => (
             <Fileplaylist
               key={index}
-              titulo={video.titulo}
-              fecha={video.fecha}
-              duracion={video.duracion}
-              id={index}
+              Titulo={elemento.tituloElemento}
+              Fecha={elemento.fechaAgregado}
+              Duracion={elemento.duracionElemento}
+              UrlImg={elemento.urlImg}
+              Id={index + 1}
             />
           ))}
         </div>

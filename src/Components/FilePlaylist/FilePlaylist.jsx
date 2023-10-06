@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
 
-const Fileplaylist = ({ titulo, fecha, duracion, id }) => {
+const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
   return (
     <>
       <div className="d-flex inline">
-        <div scope="row">{id}</div>
-        <div>{titulo}</div>
-        <div>{fecha}</div>
-        <div>{duracion}</div>
+        <div scope="row">{Id}</div>
+        <div>
+          <img src={UrlImg} className="img-fluid" alt={UrlImg} />
+        </div>
+        <div>{Titulo}</div>
+        <div>{Fecha}</div>
+        <div>{Duracion}</div>
         <div className="dropdown">
           <button data-bs-toggle="dropdown">
             <svg
@@ -38,10 +41,11 @@ const Fileplaylist = ({ titulo, fecha, duracion, id }) => {
   );
 };
 Fileplaylist.propTypes = {
-  titulo: PropTypes.string.isRequired,
-  fecha: PropTypes.string.isRequired,
-  duracion: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  Titulo: PropTypes.string.isRequired,
+  Fecha: PropTypes.string.isRequired,
+  Duracion: PropTypes.string.isRequired,
+  UrlImg: PropTypes.string.isRequired,
+  Id: PropTypes.number.isRequired,
 };
 
 export default Fileplaylist;
