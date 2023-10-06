@@ -4,10 +4,12 @@ import { TitDescripcion } from "../../Components/TitDescripcion/TitDescripcion";
 import { Eliminar } from "../../Components/EliminarElemento/Eliminar";
 import { useEffect, useState } from "react";
 import api from "../../config/site.config";
+
 const MiPlaylist = () => {
   let params = useParams();
 
   const [elementos, setElementos] = useState([]);
+  const [playlist, setPlaylist] = useState({});
 
   useEffect(() => {
     api
@@ -18,13 +20,23 @@ const MiPlaylist = () => {
       .catch((error) => {
         console.log(error);
       });
+    api
+      .get("/playlist/valores/" + params.idPlaylist)
+      .then((response) => {
+        setPlaylist(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [params.idPlaylist]);
+
   return (
     <>
       <br></br>
       <TitDescripcion
-        Titulo={params.idPlaylist}
-        Descripcion="Aqui va la descripcion de la playlist con todos sus elementosst Aqui va la descripcion de la playlist con todos sus elementos playlist con todos sus elementos"
+        Titulo={playlist.tituloPlaylist}
+        Descripcion={playlist.descripcionPlaylist}
+        UrlIcon={playlist.idMundo}
       />
       <br></br>
       <div>

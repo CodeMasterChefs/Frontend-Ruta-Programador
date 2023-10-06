@@ -1,14 +1,30 @@
 // eslint-disable-next-line react/prop-types
-export const TitDescripcion = ({ Titulo, Descripcion }) => {
+export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
+  const iconMap = {
+    1: "moon.svg",
+    2: "earth.svg",
+    3: "uranus.svg",
+    4: "neptune.svg",
+    5: "mars.svg",
+    6: "haumea.svg",
+  };
+
   return (
     <>
       <div className="d-flex mb-3">
         <div className="p-2">
-          <img src="..." className="img-thumbnail" alt="..." />
+          <img
+            src={
+              "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
+              iconMap[UrlIcon]
+            }
+            className="img-thumbnail"
+            alt="..."
+          />
         </div>
         <div className="p-2">
           <div className="align-self-start">
-            <h3>Titulo de la Playlist{Titulo}</h3>
+            <h3>{Titulo}</h3>
           </div>
           <div className="align-self-end">
             <button>
