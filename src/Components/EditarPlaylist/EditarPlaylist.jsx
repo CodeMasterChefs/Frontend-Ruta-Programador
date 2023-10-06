@@ -85,12 +85,10 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     }
 
     if (formState.idMundo !== 0) {
-      console.log("Mantener ícono");
-      console.log(planetSelected);
-      /* await api.put("playlist", {
-        iconoMundo: selectedIcon,
+      await api.put("playlist/iconoMundo", {
+        idMundo: formState.idMundo,
         idPlaylist: IdPlaylist,
-      }); */
+      });
       shouldReload = true; // Configuramos shouldReload en true si la llamada fue exitosa
     }
 
