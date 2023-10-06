@@ -41,7 +41,7 @@ const MiPlaylist = () => {
           </div>
         </div>
   <br></br>
-      <div className="style1 titulo-link">
+      <div className="titulo-link">
         <div>
           {videos.map((video, index) => (
             <Fileplaylist
@@ -57,7 +57,7 @@ const MiPlaylist = () => {
       </div>
       <br></br>
 
-      <div className="d-flex justify-content-end"> 
+      <div className="d-flex justify-content-end text-center"> 
         <button className="btn btn-primary"> <MoreIcon/></button>       
       </div>
     </>

@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./SideBar.css";
+import {  Usericon } from "../icons";
 const SideBar = () => {
   const elements = (
     <>
@@ -24,7 +25,8 @@ const SideBar = () => {
     <>
       <div className="lg-sidebar">
         <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark vh-100">
-          <div className="">
+          <div className="text-center">
+            <Usericon></Usericon>
             <p className="text-center">Username</p>
           </div>
           <ul className="nav nav-pills flex-column mb-auto">{elements}</ul>

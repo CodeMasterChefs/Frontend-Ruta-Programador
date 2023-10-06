@@ -1,22 +1,16 @@
+
 const SvgComponent = (props) => (
-  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }}>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={28}
-      height={28}
-      fill="none"
-      stroke="black"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={3}
-      className="icon icon-tabler icon-tabler-plus"
-      {...props}
-    >
-      <path stroke="none" d="M0 0h24v24H0z" />
-      <path d="M12 5v14M5 12h14" />
-    </svg>
-  </div>
-);
-
-export { SvgComponent as MoreIcon };
-
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={30}
+    height={30}
+    fill="none"
+    {...props}
+  >
+    <path
+      fill="#000"
+      d="M23.75 13.75h-7.5v-7.5h-2.5v7.5h-7.5v2.5h7.5v7.5h2.5v-7.5h7.5v-2.5Z"
+    />
+  </svg>
+)
+export { SvgComponent as MoreIcon }
