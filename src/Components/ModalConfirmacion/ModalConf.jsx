@@ -1,5 +1,5 @@
-// eslint-disable-next-line react/prop-types
-export const ModalConf = ({ Texto, ide }) => {
+import PropTypes from "prop-types"
+export const ModalConf = ({ Texto = "Texto", TxtButton = "Button", ide = "ide"}) => {
   return (
     <>
       <div
@@ -14,7 +14,9 @@ export const ModalConf = ({ Texto, ide }) => {
             <div className="modal-body">{Texto}</div>
             <div className="d-flex flex-row-reverse">
               <div className="p-2">
-                <button>Eliminar</button>
+                <button onClick = {() => window.location.reload()} data-bs-dismiss="modal">
+                  {TxtButton}
+                </button>
               </div>
             </div>
           </div>
@@ -23,3 +25,9 @@ export const ModalConf = ({ Texto, ide }) => {
     </>
   );
 };
+
+ModalConf.propTypes = {
+  Texto: PropTypes.string.isRequired,
+  TxtButton: PropTypes.string.isRequired,
+  ide: PropTypes.string.isRequired,
+}

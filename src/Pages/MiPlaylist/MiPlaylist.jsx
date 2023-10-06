@@ -3,6 +3,7 @@ import Fileplaylist from "../../Components/FilePlaylist/FilePlaylist";
 import { TitDescripcion } from "../../Components/TitDescripcion/TitDescripcion";
 import { MoreIcon } from "../../Components/icons/MoreIcon";
 import { ClockIcon } from "../../Components/icons";
+import { Aniadir } from "../../Components/AniadirElemento/Aniadir";
 import "./MiPlaylist.css"
 const MiPlaylist = () => {
   let params = useParams();
@@ -20,6 +21,7 @@ const MiPlaylist = () => {
         Titulo={params.idPlaylist}
         Descripcion="Aqui va la descripcion de la playlist con todos sus elementosst Aqui va la descripcion de la playlist con todos sus elementos playlist con todos sus elementos"
       />
+      <Aniadir idPlaylist={params.idPlaylist} ></Aniadir>
       <br></br>
         <div className="container text-center color-fl">
           <div className="row align-items-start">
