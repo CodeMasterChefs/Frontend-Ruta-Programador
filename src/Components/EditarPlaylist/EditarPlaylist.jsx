@@ -85,7 +85,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     }
 
     if (formState.idMundo !== 0) {
-      await api.put("playlist/iconoMundo", {
+      await api.put("playlist/icono", {
         idMundo: formState.idMundo,
         idPlaylist: IdPlaylist,
       });
