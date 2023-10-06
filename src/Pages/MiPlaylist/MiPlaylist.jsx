@@ -35,10 +35,13 @@ const MiPlaylist = () => {
             <div className="col">
             <ClockIcon className="icon"></ClockIcon>
             </div>
+            <div className="col">
+            <p className="titulo-link"></p>
+            </div>
           </div>
         </div>
   <br></br>
-      <div className="table">
+      <div className="style1 titulo-link">
         <div>
           {videos.map((video, index) => (
             <Fileplaylist
@@ -47,6 +50,7 @@ const MiPlaylist = () => {
               fecha={video.fecha}
               duracion={video.duracion}
               id={index}
+              className="fileplaylist-item"
             />
           ))}
         </div>
@@ -54,7 +58,7 @@ const MiPlaylist = () => {
       <br></br>
 
       <div className="d-flex justify-content-end"> 
-        <button className="btn btn-primary "> <MoreIcon/></button>       
+        <button className="btn btn-primary"> <MoreIcon/></button>       
       </div>
     </>
   );
