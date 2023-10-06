@@ -118,8 +118,8 @@ const Playlist = ({ CantPlaylists }) => {
       <div className="modal fade" id="modalCrearPlaylist" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header" data-bs-theme="dark">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
+            <div className="modal-header justify-content-center" data-bs-theme="dark">
+              <h1 className="modal-title fs-5 mx-auto" id="exampleModalLabel">
                 Crear una nueva Playlist
               </h1>
               <button
@@ -195,7 +195,7 @@ const Playlist = ({ CantPlaylists }) => {
             </div>
             <div className="modal-footer">
               <button className="btn btn-primary" onClick={handleCrear}>
-                Aceptar
+                Crear
               </button>
             </div>
           </div>
