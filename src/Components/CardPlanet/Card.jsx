@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./Card.css";
 import { Link } from "react-router-dom";
 // import EditarPlaylist from "../EditarPlaylist/EditarPlaylist";
-export const Card = ({ Descripcion, Titulo, UrlImagen, id }) => {
+export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
   return (
     <>
       <div className="col">
@@ -43,6 +43,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id }) => {
                   data-bs-toggle="modal"
                   data-bs-target="#modalEditarPlaylist"
                   data-bs-whatever="@mdo"
+                  onClick={() => onEditarClick(id)}
                 >
                   Editar playlist
                 </button>
@@ -67,4 +68,5 @@ Card.propTypes = {
   Descripcion: PropTypes.string.isRequired,
   UrlImagen: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  onEditarClick: PropTypes.func.isRequired,
 };

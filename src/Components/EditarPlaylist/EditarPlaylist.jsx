@@ -41,8 +41,14 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   };
 
   const fetchData = async () => {
-    api
-      .post("playlist", {
+    if(formState.title == "")
+      console.log("Título vacío")
+    else if(formState.description == "")
+      console.log("Descripción vacía")
+
+    
+    /* api
+      .put("playlist", {
         tituloPlaylist: formState.title,
         descripcionPlaylist: formState.description,
         idMundo: formState.idMundo,
@@ -68,9 +74,10 @@ const EditarPlaylist = ({ IdPlaylist }) => {
             descriptionError: error.response.data.errors?.descripcionPlaylist?.[0] || "",
           });
         }
-      });
+      }); */
   };
-  const handleCrear = (event) => {
+
+  const handleEditar = (event) => {
     event.preventDefault();
     fetchData();
   };
@@ -172,7 +179,8 @@ const EditarPlaylist = ({ IdPlaylist }) => {
               </form>
             </div>
             <div className="modal-footer">
-              <button className="btn btn-primary" onClick={handleCrear}>
+              {/* <button className="btn btn-primary" onClick={handleEditar}> */}
+              <button className="btn btn-primary" onClick={()=>{console.log("El idPlaylist es " + IdPlaylist)}}>
                 Aceptar
               </button>
             </div>
