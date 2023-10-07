@@ -6,7 +6,6 @@ import api from "../../config/site.config";
 //import { Navigate } from "react-router-dom";
 
 const iconMap = {
-  0: "Mantener imagen",
   1: "moon.svg",
   2: "earth.svg",
   3: "uranus.svg",
@@ -16,8 +15,8 @@ const iconMap = {
 };
 
 const EditarPlaylist = ({ IdPlaylist }) => {
-  const [planetSelected, setPlanetSelected] = useState(0);
-  const [selectedIcon, setSelectedIcon] = useState(iconMap[0]);
+  const [planetSelected, setPlanetSelected] = useState();
+  const [selectedIcon, setSelectedIcon] = useState();
   const [formState, setFormState] = useState({
     title: "",
     description: "",
@@ -28,6 +27,26 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     titleError: "",
     descriptionError: "",
   });
+
+  // Llamar a fetchData cuando se monta el componente
+  useEffect(() => {
+    const fetchDataPlaylist = async () => {
+      const response = await api.get(`/playlist/valores/${IdPlaylist}`);
+      // Actualiza el estado utilizando setFormState
+      setFormState({
+        title: response.data.tituloPlaylist,
+        description: response.data.descripcionPlaylist,
+        idMundo: response.data.idMundo,
+      });
+    };
+
+    fetchDataPlaylist();
+  }, [IdPlaylist]);
+
+
+  useEffect(() => {
+    setSelectedIcon(iconMap[formState.idMundo]); // Se ejecutará una vez al montar el componente
+  }, [formState.idMundo]);
 
   const onInputChange = ({ target }) => {
     const { name, value } = target;
@@ -42,8 +61,6 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   };
 
   const fetchData = async () => {
-    let shouldReload = false; // Variable para rastrear si debemos recargar la página al final
-
     const resetFormAndError = () => {
       setFormState({
         title: "",
@@ -56,46 +73,46 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       });
     };
 
-    if (formState.title !== "") {
-      try {
-        await api.put("playlist/titulo", {
-          tituloPlaylist: formState.title,
-          idPlaylist: IdPlaylist,
-        });
-        shouldReload = true; // Configuramos shouldReload en true si la llamada fue exitosa
-      } catch (error) {
-        setError({
-          titleError: error.response?.data.errors?.tituloPlaylist?.[0] || "",
-        });
-      }
-    }
+    const errors = {}; // Objeto para rastrear errores
 
-    if (formState.description !== "") {
-      try {
-        await api.put("playlist/descripcion", {
-          descripcionPlaylist: formState.description,
-          idPlaylist: IdPlaylist,
-        });
-        shouldReload = true; // Configuramos shouldReload en true si la llamada fue exitosa
-      } catch (error) {
-        setError({
-          descriptionError: error.response?.data.errors?.descripcionPlaylist?.[0] || "",
-        });
-      }
-    }
-
-    if (formState.idMundo !== 0) {
-      await api.put("playlist/icono", {
-        idMundo: formState.idMundo,
+    try {
+      await api.put("playlist/titulo", {
+        tituloPlaylist: formState.title,
         idPlaylist: IdPlaylist,
       });
-      shouldReload = true; // Configuramos shouldReload en true si la llamada fue exitosa
+    } catch (error) {
+      if (error.response && error.response.data) {
+        errors.titleError = error.response.data.errors?.tituloPlaylist?.[0] || "";
+      }
     }
 
-    resetFormAndError();
+    try {
+      await api.put("playlist/descripcion", {
+        descripcionPlaylist: formState.description,
+        idPlaylist: IdPlaylist,
+      });
+    } catch (error) {
+      if (error.response && error.response.data) {
+        errors.descriptionError = error.response.data.errors?.descripcionPlaylist?.[0] || "";
+      }
+    }
 
-    // Solo recargamos la página si no hubo errores en ninguna de las llamadas
-    shouldReload ? window.location.reload() : "No refrescar ventana";
+    await api.put("playlist/icono", {
+      idMundo: formState.idMundo,
+      idPlaylist: IdPlaylist,
+    });
+
+    // Actualizamos el estado de errores con el objeto de errores
+    setError({
+      titleError: errors.titleError,
+      descriptionError: errors.descriptionError,
+    });
+
+    // Solo recargamos la página si no hay errores
+    if (!errors.titleError && !errors.descriptionError) {
+      resetFormAndError();
+      window.location.reload();
+    }
   };
 
   const handleEditar = (event) => {
@@ -103,9 +120,11 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     fetchData();
   };
 
-  useEffect(() => {
-    setSelectedIcon(iconMap[planetSelected]);
-  }, [planetSelected]);
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  };
 
   const loadSelectedIcon = () => {
     if (selectedIcon) {
@@ -149,6 +168,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                     name="title"
                     value={title}
                     onInput={onInputChange}
+                    onKeyDown={handleKeyPress}
                   />
                   <em>
                     <small>{error.titleError}</small>
@@ -188,7 +208,6 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                         });
                       }}
                     >
-                      <option value="0">Mantener ícono</option>
                       <option value="1">The moon</option>
                       <option value="2">The earth</option>
                       <option value="3">Uranus</option>

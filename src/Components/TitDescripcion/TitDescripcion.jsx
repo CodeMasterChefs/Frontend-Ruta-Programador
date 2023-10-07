@@ -1,6 +1,7 @@
 import { Eliminar } from "../EliminarElemento/Eliminar";
 import PropTypes from "prop-types";
 
+import "./TitDescripcion.css";
 export const TitDescripcion = ({
   Titulo,
   Descripcion,
@@ -34,8 +35,8 @@ export const TitDescripcion = ({
           <div className="align-self-start">
             <h3>{Titulo}</h3>
           </div>
-          <div className="align-self-end">
-            <button>
+          <div className="d-flex flex-row">
+            <button className="play-button">
               <svg
                 width="30"
                 height="30"
@@ -46,7 +47,7 @@ export const TitDescripcion = ({
                 <path d="M8.75 7.5V22.5L21.25 15L8.75 7.5Z" fill="black" />
               </svg>
             </button>
-            <button>
+            <button className="heart-button">
               <svg
                 width="24"
                 height="24"
@@ -64,7 +65,7 @@ export const TitDescripcion = ({
               </svg>
             </button>
             <div className="dropdown">
-              <button data-bs-toggle="dropdown">
+              <button data-bs-toggle="dropdown" className="dropdown-button">
                 <svg
                   width="24"
                   height="24"

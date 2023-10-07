@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import "./Playlist.css";
 import { useState, useEffect } from "react";
 import api from "../../config/site.config";
@@ -12,7 +13,7 @@ const iconMap = {
   6: "haumea.svg",
 };
 
-const Playlist = () => {
+const Playlist = ({ CantPlaylists }) => {
   const [planetSelected, setPlanetSelected] = useState(1);
   const [selectedIcon, setSelectedIcon] = useState(iconMap[1]);
   const [formState, setFormState] = useState({
@@ -26,7 +27,7 @@ const Playlist = () => {
     descriptionError: "",
   });
 
-  const onInpuntChange = ({ target }) => {
+  const onInputChange = ({ target }) => {
     const { name, value } = target;
     setFormState({
       ...formState,
@@ -39,6 +40,12 @@ const Playlist = () => {
   };
 
   const fetchData = async () => {
+
+    if (CantPlaylists >= 100) {
+      alert("Límite de playlists creadas excedido")
+      return;
+    }
+
     api
       .post("playlist", {
         tituloPlaylist: formState.title,
@@ -72,6 +79,12 @@ const Playlist = () => {
     fetchData();
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  };
+
   useEffect(() => {
     setSelectedIcon(iconMap[planetSelected]);
   }, [planetSelected]);
@@ -97,6 +110,7 @@ const Playlist = () => {
         data-bs-toggle="modal"
         data-bs-target="#modalCrearPlaylist"
         data-bs-whatever="@mdo"
+        // disabled={CantPlaylists >= 100}
       >
         Nueva Playlist
       </button>
@@ -104,8 +118,8 @@ const Playlist = () => {
       <div className="modal fade" id="modalCrearPlaylist" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header" data-bs-theme="dark">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
+            <div className="modal-header justify-content-center" data-bs-theme="dark">
+              <h1 className="modal-title fs-5 mx-auto" id="exampleModalLabel">
                 Crear una nueva Playlist
               </h1>
               <button
@@ -127,7 +141,8 @@ const Playlist = () => {
                     id="recipient-name"
                     name="title"
                     value={title}
-                    onInput={onInpuntChange}
+                    onInput={onInputChange}
+                    onKeyDown={handleKeyPress}
                   />
                   <em>
                     <small>{error.titleError}</small>
@@ -142,7 +157,7 @@ const Playlist = () => {
                     id="message-text"
                     name="description"
                     value={description}
-                    onInput={onInpuntChange}
+                    onInput={onInputChange}
                     rows={5}
                   ></textarea>
                   <em>
@@ -180,7 +195,7 @@ const Playlist = () => {
             </div>
             <div className="modal-footer">
               <button className="btn btn-primary" onClick={handleCrear}>
-                Aceptar
+                Crear
               </button>
             </div>
           </div>
@@ -190,3 +205,7 @@ const Playlist = () => {
   );
 };
 export default Playlist;
+
+Playlist.propTypes = {
+  CantPlaylists: PropTypes.number
+};

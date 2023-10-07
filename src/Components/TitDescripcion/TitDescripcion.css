@@ -1,0 +1,19 @@
+.dropdown-menu {
+    border-radius: 0%;
+    background: #2D355C !important;
+    color: #f2f2f2    
+}
+
+.dropdown-button {
+    background: transparent !important;
+    
+}
+
+.heart-button {
+    background: transparent !important;
+}
+
+.play-button {
+    background: #4DDAC5;
+    border-radius: 50%;   
+}

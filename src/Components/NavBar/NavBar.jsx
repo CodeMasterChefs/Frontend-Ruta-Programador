@@ -1,4 +1,4 @@
-import { HamburguerMenuIcon, HomeIcon, LupaIcon } from "../icons";
+import { HamburguerMenuIcon, HomeIcon} from "../icons";
 import "./NavBar.css"
 
 
@@ -11,17 +11,20 @@ const NavBar = () => {
         </a>
         
         <div className="d-flex">
-        <button
-            className="Icons"         
-          >
-            <LupaIcon />
-          </button>
           <form className="d-flex formulario-buscador" role="search">
             <input
-              className="form-control me-2 input-container  "
+              className="form-control me-2 input-container ps-4 "
               type="search"
               placeholder="¿Qué quieres buscar?"             
             />
+             <svg xmlns="http://www.w3.org/2000/svg" 
+             className="position-absolute top-50  translate-middle-y search-icon" 
+             width="18"
+             height="18"
+             viewBox="0 0 20 20"            
+             fill="currentColor">
+               <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+            </svg>
           </form>
           
           <button
@@ -45,3 +48,6 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
+

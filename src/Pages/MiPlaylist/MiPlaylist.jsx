@@ -6,6 +6,9 @@ import api from "../../config/site.config";
 import Aniadir from "../../Components/AniadirElemento/Aniadir";
 import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 
+import { MoreIcon } from "../../Components/icons/MoreIcon";
+import { ClockIcon } from "../../Components/icons";
+import "./MiPlaylist.css"
 const MiPlaylist = () => {
   let params = useParams();
 
@@ -47,6 +50,23 @@ const MiPlaylist = () => {
       />
       <EditarPlaylist IdPlaylist={selectedPlaylistId} />
       <br></br>
+        <div className="container text-center color-fl">
+          <div className="row align-items-start">
+            <div className="col">
+            <p className="titulo-link">#</p>
+          </div>
+            <div className="col">
+              <p className="titulo-link">Videos</p>
+            </div>
+            <div className="col">
+            <p className="titulo-link">Añadido el:</p>
+            </div>
+            <div className="col">
+            <ClockIcon className="icon"></ClockIcon>
+            </div>
+            <div className="col">
+            <p className="titulo-link"></p>
+            </div>
 
       <div className="container text-center">
         <div className="row">
@@ -70,8 +90,8 @@ const MiPlaylist = () => {
             </svg>
           </div>
         </div>
-      </div>
-      <div className="table">
+  <br></br>
+      <div className="titulo-link">
         {elementos.length == 0 ? (
           <div className="d-flex d-inline">
             <Aniadir />
@@ -88,12 +108,17 @@ const MiPlaylist = () => {
                 Duracion={elemento.duracionElemento}
                 UrlImg={elemento.urlImg}
                 Id={index + 1}
+              className="fileplaylist-item"
               />
             ))}
           </div>
         )}
       </div>
       <br></br>
+
+      <div className="d-flex justify-content-end text-center"> 
+        <button className="btn btn-primary"> <MoreIcon/></button>       
+      </div>
     </>
   );
 };
