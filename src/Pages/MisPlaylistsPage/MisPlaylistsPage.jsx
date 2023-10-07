@@ -37,7 +37,8 @@ const MisPlaylistsPage = () => {
       <div className="row">
         <div className="d-flex justify-content-between align-items-center">
           <h3>Mis Playlists</h3>
-          <Playlist CantPlaylists={playlists.length} />
+          {/* <Playlist CantPlaylists={playlists.length} /> */}
+          <Playlist CantPlaylists={10}/>
         </div>
       </div>
       <div className="d-flex p-2"></div>
