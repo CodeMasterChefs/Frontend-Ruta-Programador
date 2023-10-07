@@ -222,7 +222,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
             <div className="modal-footer">
               {/* <button className="btn btn-primary" onClick={handleEditar}> */}
               <button className="btn btn-primary" onClick={handleEditar}>
-                Aceptar
+                Guardar
               </button>
             </div>
           </div>
