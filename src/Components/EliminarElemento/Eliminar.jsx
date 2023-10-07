@@ -1,4 +1,5 @@
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
+import "./Eliminar.css";
 export const Eliminar = () => {
   return (
     <>
@@ -7,6 +8,15 @@ export const Eliminar = () => {
           Texto="El video “Título de video” se eliminó correctamente de tu Playlist"
           ide="ModalConfirmacionEliminar"
         />
+        <button
+          type="button"
+          className="dropdown-item color-boton"
+          data-bs-toggle="modal"
+          data-bs-target="#EliminarModal"
+          data-bs-whatever="@fat"
+        >
+          Eliminar Playlist
+        </button>
 
         <div
           className="modal fade"

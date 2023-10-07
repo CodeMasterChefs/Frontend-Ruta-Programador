@@ -41,7 +41,7 @@ const Playlist = ({ CantPlaylists }) => {
 
   const fetchData = async () => {
     if (CantPlaylists >= 100) {
-      alert("Límite de playlists creadas excedido");
+      alert("Alcanzaste tu límite para crear Playlists");
       return;
     }
 
@@ -175,6 +175,7 @@ const Playlist = ({ CantPlaylists }) => {
                     {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
+                    <p className="col-form-label">Selecciona un ícono</p>
                     <select
                       className="form-select"
                       value={idMundo}

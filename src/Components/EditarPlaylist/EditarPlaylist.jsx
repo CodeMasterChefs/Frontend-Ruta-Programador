@@ -166,7 +166,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
               <form>
                 <div className="mb-3">
                   <label htmlFor="recipient-name" className="col-form-label">
-                    Edita el nombre de tu Playlist:
+                    Edita el nombre a tu Playlist:
                   </label>
                   <input
                     type="text"
@@ -183,7 +183,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="message-text" className="col-form-label">
-                    Edita la descripción de tu Playlist:
+                    Edita la descripción a tu Playlist:
                   </label>
                   <textarea
                     className="form-control"
@@ -202,8 +202,9 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                     {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
+                    <p className="col-form-label">Selecciona un ícono</p>
                     <select
-                      className="form-select"
+                      className="form-select custom-option"
                       value={idMundo}
                       onChange={(e) => {
                         const selected = e.target.value;
@@ -215,7 +216,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                         });
                       }}
                     >
-                      <option value="1">The moon</option>
+                      <option value="1"><img src="../../public/iconoMundos/moon.svg" />The moon</option>
                       <option value="2">The earth</option>
                       <option value="3">Uranus</option>
                       <option value="4">Neptune</option>
@@ -229,7 +230,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
             <div className="modal-footer">
               {/* <button className="btn btn-primary" onClick={handleEditar}> */}
               <button className="btn btn-primary" onClick={handleEditar}>
-                Aceptar
+                Guardar
               </button>
             </div>
           </div>

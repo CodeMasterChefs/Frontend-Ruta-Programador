@@ -8,4 +8,27 @@
     border-color: transparent;
  }
 
- 
+ .imagen-personalizada {
+    width: 200px;
+    height: 100px; 
+    margin-left: 30px;
+    margin-right: 0px;
+    margin-bottom: 5px;
+}
+
+.letras{
+    margin-top: 35px;
+    margin-right: 35px;
+}
+
+.botones{
+    margin-top: 25px;
+}
+
+div[scope="row"] {
+    margin-top: 35px; 
+}
+
+.color-boton{
+    color: white;
+}

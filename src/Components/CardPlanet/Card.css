@@ -8,6 +8,17 @@
 .card-text {
     border-radius: 0.625rem;
     background: var(--Degrd-3, linear-gradient(90deg, rgba(16, 6, 38, 0.3) 0%, rgba(146, 58, 158, 0.3) 50%, rgba(251, 205, 153, 0.3) 100%));
+    min-height: 100px;
+    max-height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-title{
+    min-height: 25px;
+    max-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .option-button {

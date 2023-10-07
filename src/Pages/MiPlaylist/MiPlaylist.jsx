@@ -45,18 +45,18 @@ const MiPlaylist = () => {
       <EditarPlaylist IdPlaylist={params.idPlaylist} />
       <Eliminar />
       <br></br>
-      <div className="container text-center color-fl">
+      <div className="container text-center color-fl ">
         <div className="row align-items-start">
-          <div className="col">
+          <div className="col-2">
             <p className="titulo-link">#</p>
           </div>
-          <div className="col">
+          <div className="col-3">
             <p className="titulo-link">Videos</p>
           </div>
-          <div className="col">
+          <div className="col-5">
             <p className="titulo-link">Añadido el:</p>
           </div>
-          <div className="col">
+          <div className="col-1">
             <ClockIcon className="icon"></ClockIcon>
           </div>
           <div className="col">
@@ -65,7 +65,7 @@ const MiPlaylist = () => {
         </div>
       </div>
       <br></br>
-      <div className="titulo-link">
+      <div className="titulo-link bloque">
         {elementos.length == 0 ? (
           <div className="d-flex d-inline justify-content-center">
             <Aniadir />

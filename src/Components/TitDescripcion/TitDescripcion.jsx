@@ -20,12 +20,12 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
               "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
               iconMap[UrlIcon]
             }
-            className="img-thumbnail"
+            className="img-thumbnail mi-div"
             alt="..."
           />
         </div>
         <div className="p-2">
-          <div className="align-self-start">
+          <div className="align-self-start titulo">
             <h3>{Titulo}</h3>
           </div>
           <div className="d-flex flex-row">
@@ -40,6 +40,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
                 <path d="M8.75 7.5V22.5L21.25 15L8.75 7.5Z" fill="black" />
               </svg>
             </button>
+            {/*
             <button className="heart-button">
               <svg
                 width="24"
@@ -57,7 +58,8 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
                 </g>
               </svg>
             </button>
-            <div className="dropdown ">
+          */}
+            <div className="dropdown">
               <button data-bs-toggle="dropdown" className="dropdown-button">
                 <svg
                   width="24"
@@ -77,19 +79,25 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
               </button>
               <ul className="dropdown-menu ">
                 <li>
-                  <button className="dropdown-item">Reproducir Playlist</button>
+                  <button className="dropdown-item color-boton">
+                    Reproducir Playlist
+                  </button>
                 </li>
                 <li>
-                  <button className="dropdown-item">Me gusta</button>
+                  <button className="dropdown-item color-boton">
+                    Me gusta
+                  </button>
                 </li>
                 <li>
-                  <button className="dropdown-item">Compartir</button>
+                  <button className="dropdown-item color-boton">
+                    Compartir
+                  </button>
                 </li>
                 <li>
                   {/* button esencial para entrar al modal */}
                   <button
                     type="button"
-                    className="dropdown-item"
+                    className="dropdown-item color-boton"
                     data-bs-toggle="modal"
                     data-bs-target="#modalEditarPlaylist"
                     data-bs-whatever="@mdo"
@@ -112,7 +120,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
             </div>
           </div>
         </div>
-        <div className="ms-auto p-2">{Descripcion}</div>
+        <div className="ms-auto p-2 mi-ti descrip">{Descripcion}</div>
       </div>
     </>
   );
