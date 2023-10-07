@@ -61,8 +61,6 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   };
 
   const fetchData = async () => {
-    let shouldReload = false; // Variable para rastrear si debemos recargar la página al final
-
     const resetFormAndError = () => {
       setFormState({
         title: "",
@@ -75,51 +73,57 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       });
     };
 
-    if (formState.title !== "") {
-      try {
-        await api.put("playlist/titulo", {
-          tituloPlaylist: formState.title,
-          idPlaylist: IdPlaylist,
-        });
-        shouldReload = true; // Configuramos shouldReload en true si la llamada fue exitosa
-      } catch (error) {
-        setError({
-          titleError: error.response?.data.errors?.tituloPlaylist?.[0] || "",
-        });
-      }
-    }
+    const errors = {}; // Objeto para rastrear errores
 
-    if (formState.description !== "") {
-      try {
-        await api.put("playlist/descripcion", {
-          descripcionPlaylist: formState.description,
-          idPlaylist: IdPlaylist,
-        });
-        shouldReload = true; // Configuramos shouldReload en true si la llamada fue exitosa
-      } catch (error) {
-        setError({
-          descriptionError: error.response?.data.errors?.descripcionPlaylist?.[0] || "",
-        });
-      }
-    }
-
-    if (formState.idMundo !== 0) {
-      await api.put("playlist/icono", {
-        idMundo: formState.idMundo,
+    try {
+      await api.put("playlist/titulo", {
+        tituloPlaylist: formState.title,
         idPlaylist: IdPlaylist,
       });
-      shouldReload = true; // Configuramos shouldReload en true si la llamada fue exitosa
+    } catch (error) {
+      if (error.response && error.response.data) {
+        errors.titleError = error.response.data.errors?.tituloPlaylist?.[0] || "";
+      }
     }
 
-    resetFormAndError();
+    try {
+      await api.put("playlist/descripcion", {
+        descripcionPlaylist: formState.description,
+        idPlaylist: IdPlaylist,
+      });
+    } catch (error) {
+      if (error.response && error.response.data) {
+        errors.descriptionError = error.response.data.errors?.descripcionPlaylist?.[0] || "";
+      }
+    }
 
-    // Solo recargamos la página si no hubo errores en ninguna de las llamadas
-    shouldReload ? window.location.reload() : "No refrescar ventana";
+    await api.put("playlist/icono", {
+      idMundo: formState.idMundo,
+      idPlaylist: IdPlaylist,
+    });
+
+    // Actualizamos el estado de errores con el objeto de errores
+    setError({
+      titleError: errors.titleError,
+      descriptionError: errors.descriptionError,
+    });
+
+    // Solo recargamos la página si no hay errores
+    if (!errors.titleError && !errors.descriptionError) {
+      resetFormAndError();
+      window.location.reload();
+    }
   };
 
   const handleEditar = (event) => {
     event.preventDefault();
     fetchData();
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
   };
 
   const loadSelectedIcon = () => {
@@ -164,6 +168,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                     name="title"
                     value={title}
                     onInput={onInputChange}
+                    onKeyDown={handleKeyPress}
                   />
                   <em>
                     <small>{error.titleError}</small>

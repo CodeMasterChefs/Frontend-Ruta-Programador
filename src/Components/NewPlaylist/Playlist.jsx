@@ -110,7 +110,7 @@ const Playlist = ({ CantPlaylists }) => {
         data-bs-toggle="modal"
         data-bs-target="#modalCrearPlaylist"
         data-bs-whatever="@mdo"
-        disabled={CantPlaylists >= 100}
+        // disabled={CantPlaylists >= 100}
       >
         Nueva Playlist
       </button>
