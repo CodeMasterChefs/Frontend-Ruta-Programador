@@ -159,7 +159,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
               <form>
                 <div className="mb-3">
                   <label htmlFor="recipient-name" className="col-form-label">
-                    Edita el nombre de tu Playlist:
+                    Edita el nombre a tu Playlist:
                   </label>
                   <input
                     type="text"
@@ -176,7 +176,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="message-text" className="col-form-label">
-                    Edita la descripción de tu Playlist:
+                    Edita la descripción a tu Playlist:
                   </label>
                   <textarea
                     className="form-control"

@@ -42,7 +42,7 @@ const Playlist = ({ CantPlaylists }) => {
   const fetchData = async () => {
 
     if (CantPlaylists >= 100) {
-      alert("Límite de playlists creadas excedido")
+      alert("Alcanzaste tu límite para crear Playlists")
       return;
     }
 
