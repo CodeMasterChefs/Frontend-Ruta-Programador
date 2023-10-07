@@ -195,6 +195,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                     {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
+                    <p className="col-form-label">Selecciona un ícono</p>
                     <select
                       className="form-select custom-option"
                       value={idMundo}
@@ -208,7 +209,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                         });
                       }}
                     >
-                      <option value="1"><img src="../../public/iconoMundos/moon.svg"/>The moon</option>
+                      <option value="1"><img src="../../public/iconoMundos/moon.svg" />The moon</option>
                       <option value="2">The earth</option>
                       <option value="3">Uranus</option>
                       <option value="4">Neptune</option>

@@ -110,7 +110,7 @@ const Playlist = ({ CantPlaylists }) => {
         data-bs-toggle="modal"
         data-bs-target="#modalCrearPlaylist"
         data-bs-whatever="@mdo"
-        // disabled={CantPlaylists >= 100}
+      // disabled={CantPlaylists >= 100}
       >
         Nueva Playlist
       </button>
@@ -169,6 +169,7 @@ const Playlist = ({ CantPlaylists }) => {
                     {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
+                    <p className="col-form-label">Selecciona un ícono</p>
                     <select
                       className="form-select"
                       value={idMundo}
