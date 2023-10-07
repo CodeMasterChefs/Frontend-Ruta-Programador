@@ -1,4 +1,5 @@
 // eslint-disable-next-line react/prop-types
+import "./TitDescripcion.css"
 export const TitDescripcion = ({ Titulo, Descripcion }) => {
   return (
     <>
@@ -10,8 +11,8 @@ export const TitDescripcion = ({ Titulo, Descripcion }) => {
           <div className="align-self-start">
             <h3>Titulo de la Playlist{Titulo}</h3>
           </div>
-          <div className="align-self-end">
-            <button>
+          <div className="d-flex flex-row">
+            <button className="play-button">
               <svg
                 width="30"
                 height="30"
@@ -22,7 +23,7 @@ export const TitDescripcion = ({ Titulo, Descripcion }) => {
                 <path d="M8.75 7.5V22.5L21.25 15L8.75 7.5Z" fill="black" />
               </svg>
             </button>
-            <button>
+            <button className="heart-button">
               <svg
                 width="24"
                 height="24"
@@ -40,7 +41,7 @@ export const TitDescripcion = ({ Titulo, Descripcion }) => {
               </svg>
             </button>
             <div className="dropdown">
-              <button data-bs-toggle="dropdown">
+              <button data-bs-toggle="dropdown" className="dropdown-button">
                 <svg
                   width="24"
                   height="24"
