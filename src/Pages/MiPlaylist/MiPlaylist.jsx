@@ -9,6 +9,7 @@ import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 import { MoreIcon } from "../../Components/icons/MoreIcon";
 import { ClockIcon } from "../../Components/icons";
 import "./MiPlaylist.css";
+import { Eliminar } from "../../Components/EliminarElemento/Eliminar";
 const MiPlaylist = () => {
   let params = useParams();
 
@@ -42,6 +43,7 @@ const MiPlaylist = () => {
         UrlIcon={playlist.idMundo}
       />
       <EditarPlaylist IdPlaylist={params.idPlaylist} />
+      <Eliminar />
       <br></br>
       <div className="container text-center color-fl">
         <div className="row align-items-start">
@@ -65,7 +67,7 @@ const MiPlaylist = () => {
       <br></br>
       <div className="titulo-link">
         {elementos.length == 0 ? (
-          <div className="d-flex d-inline">
+          <div className="d-flex d-inline justify-content-center">
             <Aniadir />
             <p>Añadir contenido</p>
             {/*Agregar icono, falta funcionalidd*/}

@@ -1,4 +1,3 @@
-import { Eliminar } from "../EliminarElemento/Eliminar";
 import PropTypes from "prop-types";
 
 import "./TitDescripcion.css";
@@ -58,7 +57,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
                 </g>
               </svg>
             </button>
-            <div className="dropdown">
+            <div className="dropdown ">
               <button data-bs-toggle="dropdown" className="dropdown-button">
                 <svg
                   width="24"
@@ -76,7 +75,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
                   </g>
                 </svg>
               </button>
-              <ul className="dropdown-menu">
+              <ul className="dropdown-menu ">
                 <li>
                   <button className="dropdown-item">Reproducir Playlist</button>
                 </li>
@@ -99,7 +98,15 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
                   </button>
                 </li>
                 <li>
-                  <Eliminar />
+                  <button
+                    type="button"
+                    className="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#EliminarModal"
+                    data-bs-whatever="@fat"
+                  >
+                    Eliminar Playlist
+                  </button>
                 </li>
               </ul>
             </div>

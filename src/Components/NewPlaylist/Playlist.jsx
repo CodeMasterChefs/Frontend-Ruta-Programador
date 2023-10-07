@@ -40,9 +40,8 @@ const Playlist = ({ CantPlaylists }) => {
   };
 
   const fetchData = async () => {
-
     if (CantPlaylists >= 100) {
-      alert("Límite de playlists creadas excedido")
+      alert("Límite de playlists creadas excedido");
       return;
     }
 
@@ -69,7 +68,8 @@ const Playlist = ({ CantPlaylists }) => {
         if (error.response && error.response.data) {
           setError({
             titleError: error.response.data.errors?.tituloPlaylist?.[0] || "",
-            descriptionError: error.response.data.errors?.descripcionPlaylist?.[0] || "",
+            descriptionError:
+              error.response.data.errors?.descripcionPlaylist?.[0] || "",
           });
         }
       });
@@ -118,18 +118,24 @@ const Playlist = ({ CantPlaylists }) => {
       <div className="modal fade" id="modalCrearPlaylist" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header justify-content-center" data-bs-theme="dark">
-              <h1 className="modal-title fs-5 mx-auto" id="exampleModalLabel">
-                Crear una nueva Playlist
-              </h1>
+            <div
+              className="modal-header p-2 mx-2 justify-content-center border-bottom border-secondary"
+              data-bs-theme="dark"
+            >
               <button
                 type="button"
-                className="btn-close"
+                className="btn-small btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">
+            <div className="modal-body py-2">
+              <h3
+                className="modal-title fs-5 mx-auto text-center"
+                id="exampleModalLabel"
+              >
+                Crear una nueva Playlist
+              </h3>
               <form>
                 <div className="mb-3">
                   <label htmlFor="recipient-name" className="col-form-label">
@@ -207,5 +213,5 @@ const Playlist = ({ CantPlaylists }) => {
 export default Playlist;
 
 Playlist.propTypes = {
-  CantPlaylists: PropTypes.number
+  CantPlaylists: PropTypes.number,
 };

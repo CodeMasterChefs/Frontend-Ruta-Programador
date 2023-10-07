@@ -26,7 +26,7 @@ const Aniadir = () => {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
+            <div className="modal-header border-bottom border-secondary mx-2">
               <button
                 type="button"
                 className="btn-close"

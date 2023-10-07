@@ -43,7 +43,6 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     fetchDataPlaylist();
   }, [IdPlaylist]);
 
-
   useEffect(() => {
     setSelectedIcon(iconMap[formState.idMundo]); // Se ejecutará una vez al montar el componente
   }, [formState.idMundo]);
@@ -82,7 +81,8 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       });
     } catch (error) {
       if (error.response && error.response.data) {
-        errors.titleError = error.response.data.errors?.tituloPlaylist?.[0] || "";
+        errors.titleError =
+          error.response.data.errors?.tituloPlaylist?.[0] || "";
       }
     }
 
@@ -93,7 +93,8 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       });
     } catch (error) {
       if (error.response && error.response.data) {
-        errors.descriptionError = error.response.data.errors?.descripcionPlaylist?.[0] || "";
+        errors.descriptionError =
+          error.response.data.errors?.descripcionPlaylist?.[0] || "";
       }
     }
 
@@ -144,10 +145,10 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       <div className="modal fade" id="modalEditarPlaylist" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header" data-bs-theme="dark">
-              <h1 className="modal-title fs-5" id="exampleModalLabel">
-                Edita tu Playlist
-              </h1>
+            <div
+              className="modal-header p-2 mx-2 border-bottom border-secondary"
+              data-bs-theme="dark"
+            >
               <button
                 type="button"
                 className="btn-close"
@@ -156,6 +157,12 @@ const EditarPlaylist = ({ IdPlaylist }) => {
               ></button>
             </div>
             <div className="modal-body">
+              <h3
+                className="modal-title fs-5 text-center"
+                id="exampleModalLabel"
+              >
+                Edita tu Playlist
+              </h3>
               <form>
                 <div className="mb-3">
                   <label htmlFor="recipient-name" className="col-form-label">
@@ -233,7 +240,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
 };
 
 EditarPlaylist.propTypes = {
-  IdPlaylist: PropTypes.number.isRequired
+  IdPlaylist: PropTypes.number.isRequired,
 };
 
 export default EditarPlaylist;

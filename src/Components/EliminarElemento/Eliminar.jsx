@@ -7,15 +7,6 @@ export const Eliminar = () => {
           Texto="El video “Título de video” se eliminó correctamente de tu Playlist"
           ide="ModalConfirmacionEliminar"
         />
-        <button
-          type="button"
-          className="dropdown-item"
-          data-bs-toggle="modal"
-          data-bs-target="#EliminarModal"
-          data-bs-whatever="@fat"
-        >
-          Eliminar Playlist
-        </button>
 
         <div
           className="modal fade"
@@ -26,7 +17,7 @@ export const Eliminar = () => {
         >
           <div className="modal-dialog">
             <div className="modal-content">
-              <div className="modal-header">
+              <div className="modal-header p-2 mx-2  border-bottom border-secondary">
                 <button
                   type="button"
                   className="btn-close"
