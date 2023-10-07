@@ -11,7 +11,7 @@ const SideBar = () => {
       </li>
       <li className="nav-item">
         <NavLink to="/mis_playlists" className="nav-link">
-          Tus Playlists
+          Mis Playlists
         </NavLink>
       </li>
       <li className="nav-item">

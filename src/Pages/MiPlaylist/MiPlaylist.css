@@ -1,16 +1,18 @@
 .color-fl{
-    opacity: 0.6;
-    background: var(--Degrd-3, linear-gradient(90deg, #100626 0%, #923A9E 49.02%, #FBCD99 100%));  
+    background: var(--Degrd-3, linear-gradient(90deg, rgba(16, 6, 38, 0.5)  0%, rgba(146, 58, 158, 0.5) 25%, rgba(251, 205, 153, 0.5) 50%, rgba(146, 58, 158, 0.5) 75%, rgba(16, 6, 38, 0.5) 100% ));  
 }
 
 .titulo-link {
 color: #FFFFFF !important;
-font-family: Poppins;
-font-size: 12px;
+font-size: 16px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 padding-top: 10px;
+}
+
+.text-center {
+    font-size: 14px;
 }
 
 .icon{
@@ -23,8 +25,12 @@ padding-top: 3px;
     
 }
 .fileplaylist-item {
-    margin: 5px; 
-  }
+    margin: 5px; }
+
+
+.plus-button {
+    border-radius: 50% !important;
+}
 
 .bloque{
     margin-left: 75px;

@@ -34,6 +34,7 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
         </div>
       </div>
       <div className="d-flex inline">
+      <div className="d-flex inline d-flex align-items-center video-elente-file">
         <div scope="row">{Id}</div>
         <div>
           <img src={UrlImg} className="img-fluid imagen-personalizada" alt={UrlImg} />

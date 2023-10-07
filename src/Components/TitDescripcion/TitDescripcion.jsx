@@ -30,7 +30,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
             <h3>{Titulo}</h3>
           </div>
           <div className="d-flex flex-row">
-            <button className="play-button">
+            <button className="btn btn-primary play-button">
               <svg
                 width="30"
                 height="30"
@@ -42,7 +42,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
               </svg>
             </button>
             {/*
-            <button className="heart-button">
+            {/* <button className="heart-button"> //no se muestra el icono del corazon para dar like
               <svg
                 width="24"
                 height="24"
@@ -58,13 +58,13 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
                   />
                 </g>
               </svg>
-            </button>
+            </button> 
           */}
             <div className="dropdown">
               <button data-bs-toggle="dropdown" className="dropdown-button">
                 <svg
-                  width="24"
-                  height="24"
+                  width="14"
+                  height="14"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +107,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
             </div>
           </div>
         </div>
-        <div className="ms-auto p-2 mi-ti descrip">{Descripcion}</div>
+        <div className="ms-auto p-2 text-center mi-ti descrip">{Descripcion}</div>
       </div>
     </>
   );
