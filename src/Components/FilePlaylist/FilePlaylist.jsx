@@ -4,35 +4,7 @@ import "./FilePlaylist.css";
 const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
   return (
     <>
-      <div className="d-flex align-items-center">
-        <div className="col text-center">
-          <div>
-            <ul className="dropdown-menu">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Reproducir video
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Mover
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Compartir
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Eliminar de esta Playlist
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="d-flex inline">
+      <div className="d-flex inline d-flex align-items-center video-elente-file">
         <div scope="row">{Id}</div>
         <div>
           <img
@@ -41,10 +13,10 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
             alt={UrlImg}
           />
         </div>
-        <div className="col text-center letras">{Titulo}</div>
-        <div className="col text-center letras">{Fecha}</div>
-        <div className="col text-center letras">{Duracion}</div>
-        <div className="dropdown botones">
+        <div className="col text-center">{Titulo}</div>
+        <div className="col text-center">{Fecha}</div>
+        <div className="col text-center">{Duracion}</div>
+        <div className="dropdown">
           <button
             data-bs-toggle="dropdown"
             className="dropdown-vertical-button"

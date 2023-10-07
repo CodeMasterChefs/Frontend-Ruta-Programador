@@ -13,23 +13,23 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
 
   return (
     <>
-      <div className="d-flex mb-3">
+      <div className="d-flex mb-3 d-flex align-items-center">
         <div className="p-2">
           <img
             src={
               "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
               iconMap[UrlIcon]
             }
-            className="img-thumbnail mi-div"
+            className="img-thumbnail"
             alt="..."
           />
         </div>
-        <div className="p-2">
-          <div className="align-self-start titulo">
+        <div className="p-2 d-flex align-items-center d-flex flex-column">
+          <div className="align-self-start">
             <h3>{Titulo}</h3>
           </div>
-          <div className="d-flex flex-row">
-            <button className="play-button">
+          <div className="d-flex justify-content-start">
+            <button className="btn btn-primary play-button">
               <svg
                 width="30"
                 height="30"
@@ -41,7 +41,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
               </svg>
             </button>
             {/*
-            <button className="heart-button">
+            {/* <button className="heart-button"> //no se muestra el icono del corazon para dar like
               <svg
                 width="24"
                 height="24"
@@ -57,7 +57,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
                   />
                 </g>
               </svg>
-            </button>
+            </button> 
           */}
             <div className="dropdown">
               <button data-bs-toggle="dropdown" className="dropdown-button">
@@ -184,7 +184,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
             </div>
           </div>
         </div>
-        <div className="ms-auto p-2 mi-ti descrip">{Descripcion}</div>
+        <div className="ms-auto p-2 text-center mi-ti">{Descripcion}</div>
       </div>
     </>
   );

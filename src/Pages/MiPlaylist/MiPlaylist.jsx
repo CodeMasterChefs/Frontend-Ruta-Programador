@@ -46,7 +46,7 @@ const MiPlaylist = () => {
       <Eliminar />
       <br></br>
       <div className="container text-center color-fl ">
-        <div className="row align-items-start">
+        <div className="row align-items-start align-items-center">
           <div className="col-2">
             <p className="titulo-link">#</p>
           </div>
@@ -67,9 +67,9 @@ const MiPlaylist = () => {
       <br></br>
       <div className="titulo-link bloque">
         {elementos.length == 0 ? (
-          <div className="d-flex d-inline justify-content-center">
+          <div className="d-flex justify-content-center align-items-center d-inline">
             <Aniadir />
-            <p>Añadir contenido</p>
+            <p className="m-0 ms-2">Añadir contenido</p>
             {/*Agregar icono, falta funcionalidd*/}
           </div>
         ) : (
@@ -91,7 +91,7 @@ const MiPlaylist = () => {
       <br></br>
 
       <div className="d-flex justify-content-end text-center">
-        <button className="btn btn-primary">
+        <button className="btn btn-primary plus-button">
           {" "}
           <MoreIcon />
         </button>
