@@ -2,13 +2,7 @@ import { Eliminar } from "../EliminarElemento/Eliminar";
 import PropTypes from "prop-types";
 
 import "./TitDescripcion.css";
-export const TitDescripcion = ({
-  Titulo,
-  Descripcion,
-  UrlIcon,
-  onEditarClick,
-  id,
-}) => {
+export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
   const iconMap = {
     1: "moon.svg",
     2: "earth.svg",
@@ -100,7 +94,6 @@ export const TitDescripcion = ({
                     data-bs-toggle="modal"
                     data-bs-target="#modalEditarPlaylist"
                     data-bs-whatever="@mdo"
-                    onClick={() => onEditarClick(id)}
                   >
                     Editar playlist
                   </button>
@@ -121,6 +114,4 @@ TitDescripcion.propTypes = {
   Titulo: PropTypes.string.isRequired,
   Descripcion: PropTypes.string.isRequired,
   UrlIcon: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  onEditarClick: PropTypes.func.isRequired,
 };

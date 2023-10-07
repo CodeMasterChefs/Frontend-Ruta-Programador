@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./SideBar.css";
-import {  Usericon } from "../icons";
+import { Usericon } from "../icons";
 const SideBar = () => {
   const elements = (
     <>

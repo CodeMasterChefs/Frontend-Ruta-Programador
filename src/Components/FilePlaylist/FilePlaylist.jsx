@@ -5,10 +5,6 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
   return (
     <>
       <div className="d-flex align-items-center">
-        <div className="col text-center ">{id}</div>
-        <div className="col text-center">{titulo}</div>
-        <div className="col text-center">{fecha}</div>
-        <div className="col text-center">{duracion}</div>
         <div className="col text-center">
           <div>
             <button className="Icons" type="button">
@@ -44,9 +40,9 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
         <div>
           <img src={UrlImg} className="img-fluid" alt={UrlImg} />
         </div>
-        <div>{Titulo}</div>
-        <div>{Fecha}</div>
-        <div>{Duracion}</div>
+        <div className="col text-center">{Titulo}</div>
+        <div className="col text-center">{Fecha}</div>
+        <div className="col text-center">{Duracion}</div>
         <div className="dropdown">
           <button
             data-bs-toggle="dropdown"
