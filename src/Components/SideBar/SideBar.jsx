@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./SideBar.css";
-import {  Usericon } from "../icons";
+import { Usericon } from "../icons";
 const SideBar = () => {
   const elements = (
     <>
@@ -11,7 +11,7 @@ const SideBar = () => {
       </li>
       <li className="nav-item">
         <NavLink to="/mis_playlists" className="nav-link">
-          Tus Playlists
+          Mis Playlists
         </NavLink>
       </li>
       <li className="nav-item">

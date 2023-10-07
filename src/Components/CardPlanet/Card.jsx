@@ -2,13 +2,10 @@ import PropTypes from "prop-types";
 
 import "./Card.css";
 import { Link } from "react-router-dom";
+import { Eliminar } from "../EliminarElemento/Eliminar";
 // import EditarPlaylist from "../EditarPlaylist/EditarPlaylist";
 
-
 export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
-
-  const superaLimiteDeCaracteres = (cadena) => cadena.length > 70;
-
   return (
     <>
       <div className="col">
@@ -22,9 +19,9 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
               <svg
                 width="24"
                 height="24"
-                viewBox="0 0 24 24"
+                viewBox="0 0 10 20"
                 fill="none"
-              // xmlns="http://www.w3.org/2000/svg"
+                // xmlns="http://www.w3.org/2000/svg"
               >
                 <g id="bx-dots-vertical-rounded">
                   <path
@@ -37,14 +34,20 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
             </button>
             {/* Verificar el error del modal en el dropdown-menu */}
             <ul className="dropdown-menu">
-              <li>Reproducir Playlist</li>
-              <li>Me gusta</li>
-              <li>Compartir</li>
+              <li>
+                <button className="dropdown-item">Reproducir Playlist</button>
+              </li>
+              <li>
+                <button className="dropdown-item">Me gusta</button>
+              </li>
+              <li>
+                <button className="dropdown-item">Compartir</button>
+              </li>
               <li>
                 {/* button esencial para entrar al modal */}
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="dropdown-item"
                   data-bs-toggle="modal"
                   data-bs-target="#modalEditarPlaylist"
                   data-bs-whatever="@mdo"
@@ -53,15 +56,17 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
                   Editar playlist
                 </button>
               </li>
-              <li>Eliminar Playlist</li>
+              <li>
+                <Eliminar />
+              </li>
             </ul>
           </div>
           <div className="card-body">
             <Link to={"/mis_playlists/" + id} className="text-white">
-              <h5 className="card-title">{Titulo}</h5>
+              <h5 className="card-title text-center">{Titulo}</h5>
             </Link>
-            
-            <p className="card-text">{superaLimiteDeCaracteres(Descripcion) ? (Descripcion.slice(0,70)+"...") : (Descripcion) } {console.log(Descripcion.length)}</p>
+
+            <p className="card-text">{Descripcion}</p>
           </div>
         </div>
       </div>

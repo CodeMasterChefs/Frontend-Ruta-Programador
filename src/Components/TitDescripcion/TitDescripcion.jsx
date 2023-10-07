@@ -1,17 +1,36 @@
-// eslint-disable-next-line react/prop-types
-export const TitDescripcion = ({ Titulo, Descripcion }) => {
+import { Eliminar } from "../EliminarElemento/Eliminar";
+import PropTypes from "prop-types";
+
+import "./TitDescripcion.css";
+export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
+  const iconMap = {
+    1: "moon.svg",
+    2: "earth.svg",
+    3: "uranus.svg",
+    4: "neptune.svg",
+    5: "mars.svg",
+    6: "haumea.svg",
+  };
+
   return (
     <>
-      <div className="d-flex mb-3">
+      <div className="d-flex mb-3 d-flex align-items-center">
         <div className="p-2">
-          <img src="..." className="img-thumbnail" alt="..." />
+          <img
+            src={
+              "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
+              iconMap[UrlIcon]
+            }
+            className="img-thumbnail"
+            alt="..."
+          />
         </div>
-        <div className="p-2">
+        <div className="p-2 d-flex align-items-center d-flex flex-column">
           <div className="align-self-start">
-            <h3>Titulo de la Playlist{Titulo}</h3>
+            <h3>{Titulo}</h3>
           </div>
-          <div className="align-self-end">
-            <button>
+          <div className="d-flex justify-content-start">
+            <button className="btn btn-primary play-button">
               <svg
                 width="30"
                 height="30"
@@ -22,7 +41,8 @@ export const TitDescripcion = ({ Titulo, Descripcion }) => {
                 <path d="M8.75 7.5V22.5L21.25 15L8.75 7.5Z" fill="black" />
               </svg>
             </button>
-            <button>
+            {/*
+            {/* <button className="heart-button"> //no se muestra el icono del corazon para dar like
               <svg
                 width="24"
                 height="24"
@@ -38,9 +58,10 @@ export const TitDescripcion = ({ Titulo, Descripcion }) => {
                   />
                 </g>
               </svg>
-            </button>
+            </button> 
+          */}
             <div className="dropdown">
-              <button data-bs-toggle="dropdown">
+              <button data-bs-toggle="dropdown" className="dropdown-button">
                 <svg
                   width="24"
                   height="24"
@@ -58,17 +79,41 @@ export const TitDescripcion = ({ Titulo, Descripcion }) => {
                 </svg>
               </button>
               <ul className="dropdown-menu">
-                <li>Reproducir Playlist</li>
-                <li>Me gusta</li>
-                <li>Compartir</li>
-                <li>Editar Playlist</li>
-                <li>Eliminar Playlist</li>
+                <li>
+                  <button className="dropdown-item color-boton">Reproducir Playlist</button>
+                </li>
+                <li>
+                  <button className="dropdown-item color-boton">Me gusta</button>
+                </li>
+                <li>
+                  <button className="dropdown-item color-boton">Compartir</button>
+                </li>
+                <li>
+                  {/* button esencial para entrar al modal */}
+                  <button
+                    type="button"
+                    className="dropdown-item color-boton"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalEditarPlaylist"
+                    data-bs-whatever="@mdo"
+                  >
+                    Editar playlist
+                  </button>
+                </li>
+                <li >
+                  <Eliminar/>
+                </li>
               </ul>
             </div>
           </div>
         </div>
-        <div className="ms-auto p-2">{Descripcion}</div>
+        <div className="ms-auto p-2 text-center mi-ti">{Descripcion}</div>
       </div>
     </>
   );
+};
+TitDescripcion.propTypes = {
+  Titulo: PropTypes.string.isRequired,
+  Descripcion: PropTypes.string.isRequired,
+  UrlIcon: PropTypes.string.isRequired,
 };

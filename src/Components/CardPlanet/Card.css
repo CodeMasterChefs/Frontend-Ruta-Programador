@@ -1,6 +1,6 @@
 .card {
     background-color: transparent;
-    border-radius: 0.9375rem;
+    border-radius: 0.3125rem;
     border: 2px solid var(--Degrd-3, #FBCD99);
     color: #f2f2f2;
 }
@@ -8,8 +8,28 @@
 .card-text {
     border-radius: 0.625rem;
     background: var(--Degrd-3, linear-gradient(90deg, rgba(16, 6, 38, 0.3) 0%, rgba(146, 58, 158, 0.3) 50%, rgba(251, 205, 153, 0.3) 100%));
+    min-height: 100px;
+    max-height: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-title{
+    min-height: 25px;
+    max-height: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .option-button {
     background-color: transparent;
+    padding: 0.10em 0.73em;
+}
+
+.option-button:hover {
+    border-color: transparent;
+}
+
+.ropdown-menu.show {
+    color: #f2f2f2;
 }

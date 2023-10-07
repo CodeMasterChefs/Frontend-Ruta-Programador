@@ -61,8 +61,6 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   };
 
   const fetchData = async () => {
-    let shouldReload = false; // Variable para rastrear si debemos recargar la página al final
-
     const resetFormAndError = () => {
       setFormState({
         title: "",
@@ -75,51 +73,57 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       });
     };
 
-    if (formState.title !== "") {
-      try {
-        await api.put("playlist/titulo", {
-          tituloPlaylist: formState.title,
-          idPlaylist: IdPlaylist,
-        });
-        shouldReload = true; // Configuramos shouldReload en true si la llamada fue exitosa
-      } catch (error) {
-        setError({
-          titleError: error.response?.data.errors?.tituloPlaylist?.[0] || "",
-        });
-      }
-    }
+    const errors = {}; // Objeto para rastrear errores
 
-    if (formState.description !== "") {
-      try {
-        await api.put("playlist/descripcion", {
-          descripcionPlaylist: formState.description,
-          idPlaylist: IdPlaylist,
-        });
-        shouldReload = true; // Configuramos shouldReload en true si la llamada fue exitosa
-      } catch (error) {
-        setError({
-          descriptionError: error.response?.data.errors?.descripcionPlaylist?.[0] || "",
-        });
-      }
-    }
-
-    if (formState.idMundo !== 0) {
-      await api.put("playlist/icono", {
-        idMundo: formState.idMundo,
+    try {
+      await api.put("playlist/titulo", {
+        tituloPlaylist: formState.title,
         idPlaylist: IdPlaylist,
       });
-      shouldReload = true; // Configuramos shouldReload en true si la llamada fue exitosa
+    } catch (error) {
+      if (error.response && error.response.data) {
+        errors.titleError = error.response.data.errors?.tituloPlaylist?.[0] || "";
+      }
     }
 
-    resetFormAndError();
+    try {
+      await api.put("playlist/descripcion", {
+        descripcionPlaylist: formState.description,
+        idPlaylist: IdPlaylist,
+      });
+    } catch (error) {
+      if (error.response && error.response.data) {
+        errors.descriptionError = error.response.data.errors?.descripcionPlaylist?.[0] || "";
+      }
+    }
 
-    // Solo recargamos la página si no hubo errores en ninguna de las llamadas
-    shouldReload ? window.location.reload() : "No refrescar ventana";
+    await api.put("playlist/icono", {
+      idMundo: formState.idMundo,
+      idPlaylist: IdPlaylist,
+    });
+
+    // Actualizamos el estado de errores con el objeto de errores
+    setError({
+      titleError: errors.titleError,
+      descriptionError: errors.descriptionError,
+    });
+
+    // Solo recargamos la página si no hay errores
+    if (!errors.titleError && !errors.descriptionError) {
+      resetFormAndError();
+      window.location.reload();
+    }
   };
 
   const handleEditar = (event) => {
     event.preventDefault();
     fetchData();
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
   };
 
   const loadSelectedIcon = () => {
@@ -155,7 +159,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
               <form>
                 <div className="mb-3">
                   <label htmlFor="recipient-name" className="col-form-label">
-                    Edita el nombre de tu Playlist:
+                    Edita el nombre a tu Playlist:
                   </label>
                   <input
                     type="text"
@@ -164,6 +168,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                     name="title"
                     value={title}
                     onInput={onInputChange}
+                    onKeyDown={handleKeyPress}
                   />
                   <em>
                     <small>{error.titleError}</small>
@@ -171,7 +176,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="message-text" className="col-form-label">
-                    Edita la descripción de tu Playlist:
+                    Edita la descripción a tu Playlist:
                   </label>
                   <textarea
                     className="form-control"
@@ -190,8 +195,9 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                     {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
+                    <p className="col-form-label">Selecciona un ícono</p>
                     <select
-                      className="form-select"
+                      className="form-select custom-option"
                       value={idMundo}
                       onChange={(e) => {
                         const selected = e.target.value;
@@ -203,7 +209,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                         });
                       }}
                     >
-                      <option value="1">The moon</option>
+                      <option value="1"><img src="../../public/iconoMundos/moon.svg" />The moon</option>
                       <option value="2">The earth</option>
                       <option value="3">Uranus</option>
                       <option value="4">Neptune</option>
@@ -217,7 +223,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
             <div className="modal-footer">
               {/* <button className="btn btn-primary" onClick={handleEditar}> */}
               <button className="btn btn-primary" onClick={handleEditar}>
-                Aceptar
+                Guardar
               </button>
             </div>
           </div>

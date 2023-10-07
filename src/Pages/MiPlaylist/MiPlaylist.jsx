@@ -1,66 +1,98 @@
 import { useParams } from "react-router-dom";
 import Fileplaylist from "../../Components/FilePlaylist/FilePlaylist";
 import { TitDescripcion } from "../../Components/TitDescripcion/TitDescripcion";
+import { useEffect, useState } from "react";
+import api from "../../config/site.config";
+import Aniadir from "../../Components/AniadirElemento/Aniadir";
+import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
+
 import { MoreIcon } from "../../Components/icons/MoreIcon";
 import { ClockIcon } from "../../Components/icons";
-import { Aniadir } from "../../Components/AniadirElemento/Aniadir";
-import "./MiPlaylist.css"
+import "./MiPlaylist.css";
 const MiPlaylist = () => {
   let params = useParams();
-  console.log(params);
-  const videos = [
-    { titulo: "titulo video 1", fecha: "2023-10-04", duracion: "15:02" },
-    { titulo: "titulo video 1", fecha: "2023-10-04", duracion: "15:02" },
-    { titulo: "titulo video 1", fecha: "2023-10-04", duracion: "15:02" },
-    { titulo: "titulo video 1", fecha: "2023-10-04", duracion: "15:02" },
-  ];
+
+  const [elementos, setElementos] = useState([]);
+  const [playlist, setPlaylist] = useState({});
+
+  useEffect(() => {
+    api
+      .get("/elemento_playlists/" + params.idPlaylist)
+      .then((response) => {
+        setElementos(response.data.elementos);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    api
+      .get("/playlist/valores/" + params.idPlaylist)
+      .then((response) => {
+        setPlaylist(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [params.idPlaylist]);
   return (
     <>
       <br></br>
       <TitDescripcion
-        Titulo={params.idPlaylist}
-        Descripcion="Aqui va la descripcion de la playlist con todos sus elementosst Aqui va la descripcion de la playlist con todos sus elementos playlist con todos sus elementos"
+        Titulo={playlist.tituloPlaylist}
+        Descripcion={playlist.descripcionPlaylist}
+        UrlIcon={playlist.idMundo}
       />
-      <Aniadir idPlaylist={params.idPlaylist} ></Aniadir>
+      <EditarPlaylist IdPlaylist={params.idPlaylist} />
       <br></br>
-        <div className="container text-center color-fl">
-          <div className="row align-items-start">
-            <div className="col">
+      <div className="container text-center color-fl ">
+        <div className="row align-items-start align-items-center">
+          <div className="col-2">
             <p className="titulo-link">#</p>
           </div>
-            <div className="col">
-              <p className="titulo-link">Videos</p>
-            </div>
-            <div className="col">
-            <p className="titulo-link">Añadido el:</p>
-            </div>
-            <div className="col">
-            <ClockIcon className="icon"></ClockIcon>
-            </div>
-            <div className="col">
-            <p className="titulo-link"></p>
-            </div>
+          <div className="col-3">
+            <p className="titulo-link">Videos</p>
           </div>
-        </div>
-  <br></br>
-      <div className="titulo-link">
-        <div>
-          {videos.map((video, index) => (
-            <Fileplaylist
-              key={index}
-              titulo={video.titulo}
-              fecha={video.fecha}
-              duracion={video.duracion}
-              id={index}
-              className="fileplaylist-item"
-            />
-          ))}
+          <div className="col-5">
+            <p className="titulo-link">Añadido el:</p>
+          </div>
+          <div className="col-1">
+            <ClockIcon className="icon"></ClockIcon>
+          </div>
+          <div className="col">
+            <p className="titulo-link"></p>
+          </div>
         </div>
       </div>
       <br></br>
+      <div className="titulo-link bloque">
+        {elementos.length == 0 ? (
+          <div className="d-flex justify-content-center align-items-center">
+            <Aniadir />
+            <p className="m-0 ms-2">Añadir contenido</p>
+            {/*Agregar icono, falta funcionalidd*/}
+          </div>
+        ) : (
+          <div>
+            {elementos.map((elemento, index) => (
+              <Fileplaylist
+                key={index}
+                Titulo={elemento.tituloElemento}
+                Fecha={elemento.fechaAgregado}
+                Duracion={elemento.duracionElemento}
+                UrlImg={elemento.urlImg}
+                Id={index + 1}
+                className="fileplaylist-item"
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      <br></br>
 
-      <div className="d-flex justify-content-end text-center"> 
-        <button className="btn btn-primary"> <MoreIcon/></button>       
+      <div className="d-flex justify-content-end text-center">
+        <button className="btn btn-primary plus-button">
+          {" "}
+          <MoreIcon />
+        </button>
       </div>
     </>
   );

@@ -37,7 +37,8 @@ const MisPlaylistsPage = () => {
       <div className="row">
         <div className="d-flex justify-content-between align-items-center">
           <h3>Mis Playlists</h3>
-          <Playlist CantPlaylists={playlists.length} />
+          {/* <Playlist CantPlaylists={playlists.length} /> */}
+          <Playlist CantPlaylists={10} />
         </div>
       </div>
       <div className="d-flex p-2"></div>
@@ -48,7 +49,6 @@ const MisPlaylistsPage = () => {
           <p>{errorCargarPlaylists}</p>
         ) : (
           <div className="row row-cols-1 row-cols-md-5 g-4">
-            {/* <EditarPlaylist IdPlaylist={1}></EditarPlaylist> */}
             {playlists.map((playlist) => (
               <Card
                 key={playlist.idPlaylist}

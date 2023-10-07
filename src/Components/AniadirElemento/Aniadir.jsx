@@ -1,4 +1,5 @@
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
+import "./Aniadir.css"
 import api from "../../config/site.config";
 import { useState } from "react";
 import PropTypes from "prop-types";
@@ -50,12 +51,19 @@ export const Aniadir = ({ idPlaylist }) => {
       />
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary new-plus-button"
         data-bs-toggle="modal"
         data-bs-target="#AniadirModal"
         data-bs-whatever="@fat"
       >
-        Boton de añadir
+        <svg xmlns="http://www.w3.org/2000/svg" 
+             width="20" 
+             height="20" 
+             viewBox="0 0 14 20" 
+             fill="none">
+          <path d="M14 6H8V0H6V6H0V8H6V14H8V8H14V6Z" fill="black"/>
+        </svg>
+       
       </button>
 
       <div
@@ -74,10 +82,24 @@ export const Aniadir = ({ idPlaylist }) => {
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
             <div className="modal-body">
               <form>
                 <div className="mb-3">
+                  <label htmlFor="basic-url" className="form-label">
+                    Ingresa la URL del video que quieras añadir a tu playlist
+                  </label>
+                  <label
+                    htmlFor="message-text"
+                    className="col-form-label"
+                  ></label>
+                  <div className="form-floating">
                   <label htmlFor="basic-url" className="form-label">
                     Ingresa la URL del video que quieras añadir a tu playlist
                   </label>
