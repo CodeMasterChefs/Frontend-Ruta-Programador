@@ -23,4 +23,13 @@
 
 .option-button {
     background-color: transparent;
+    padding: 0.10em 0.73em;
+}
+
+.option-button:hover {
+    border-color: transparent;
+}
+
+.ropdown-menu.show {
+    color: #f2f2f2;
 }

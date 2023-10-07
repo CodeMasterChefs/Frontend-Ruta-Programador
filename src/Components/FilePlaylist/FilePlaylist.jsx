@@ -4,38 +4,7 @@ import "./FilePlaylist.css";
 const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
   return (
     <>
-      <div className="d-flex align-items-center">
-        <div className="col text-center">
-          <div>
-            <button className="Icons" type="button">
-              <PointsMenu></PointsMenu>
-            </button>
-            <ul className="dropdown-menu">
-              <li>
-                <a className="dropdown-item" href="#">
-                  Reproducir video
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Mover
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Compartir
-                </a>
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Eliminar de esta Playlist
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div className="d-flex inline">
+      <div className="d-flex inline d-flex align-items-center video-elente-file">
         <div scope="row">{Id}</div>
         <div>
           <img src={UrlImg} className="img-fluid" alt={UrlImg} />
