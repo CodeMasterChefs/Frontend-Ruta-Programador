@@ -178,6 +178,7 @@ const Playlist = ({ CantPlaylists }) => {
                     <p className="col-form-label">Selecciona un ícono</p>
                     <select
                       className="form-select"
+                      id="planetIcon"
                       value={idMundo}
                       onChange={(e) => {
                         const selected = e.target.value;
