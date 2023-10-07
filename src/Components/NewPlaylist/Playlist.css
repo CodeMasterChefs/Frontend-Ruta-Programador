@@ -1,4 +1,4 @@
-.modal-content{
+.modal-content {
     border-radius: 0.625rem;
     background-color: var(--Color-2, #2D355C) !important;
     color: #F2F2F2;
@@ -6,13 +6,23 @@
     --bs-modal-footer-border-color: #2d355c;
 }
 
-.form-control{
+.custom-option {
+    display: flex;
+    align-items: center;
+}
+
+.custom-option img {
+    margin-right: 8px;
+    /* Ajusta el espaciado entre la imagen y el texto */
+}
+
+.form-control {
     border-radius: 0.3125rem;
     opacity: 0.6;
     background: var(--White, #F2F2F2);
 }
 
-.form-select{
+.form-select {
     background-color: #2D355C;
     border: #2D355C;
     color: #F2F2F2;

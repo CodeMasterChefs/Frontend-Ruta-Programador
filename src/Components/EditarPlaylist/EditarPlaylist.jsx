@@ -196,7 +196,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
                     <select
-                      className="form-select"
+                      className="form-select custom-option"
                       value={idMundo}
                       onChange={(e) => {
                         const selected = e.target.value;
@@ -208,7 +208,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                         });
                       }}
                     >
-                      <option value="1">The moon</option>
+                      <option value="1"><img src="../../public/iconoMundos/moon.svg"/>The moon</option>
                       <option value="2">The earth</option>
                       <option value="3">Uranus</option>
                       <option value="4">Neptune</option>
