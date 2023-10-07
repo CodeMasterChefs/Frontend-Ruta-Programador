@@ -44,7 +44,7 @@ const MiPlaylist = () => {
       <EditarPlaylist IdPlaylist={params.idPlaylist} />
       <br></br>
       <div className="container text-center color-fl ">
-        <div className="row align-items-start">
+        <div className="row align-items-start align-items-center">
           <div className="col-2">
             <p className="titulo-link">#</p>
           </div>

@@ -38,13 +38,7 @@
 .img-thumbnail{
     background: transparent !important;
     border-color: transparent !important;
-}
-
-
-.mi-div{
-    background: none;
-    border: none;
-}
+}   
 
 .mi-ti{
     border: 1px solid white; 
@@ -52,23 +46,4 @@
 
 .color-boton{
     color: white;
-}
-
-.titulo{
-color: #FFF;
-font-family: Poppins;
-font-size: 24px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-}
-
-.descrip{
-color: var(--White, #F2F2F2);
-text-align: justify;
-font-family: Poppins;
-font-size: 15px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 }
