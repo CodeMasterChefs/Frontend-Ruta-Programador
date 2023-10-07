@@ -30,10 +30,20 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
             </svg>
           </button>
           <ul className="dropdown-menu">
-            <li>Reproducir video</li>
-            <li>Mover</li>
-            <li>Compartir</li>
-            <li>Eliminar de esta Playlist</li>
+            <li>
+              <button className="dropdown-item">Reproducir video</button>
+            </li>
+            <li>
+              <button className="dropdown-item">Mover</button>
+            </li>
+            <li>
+              <button className="dropdown-item">Compartir</button>
+            </li>
+            <li>
+              <button className="dropdown-item">
+                Eliminar de esta Playlist
+              </button>
+            </li>
           </ul>
         </div>
       </div>

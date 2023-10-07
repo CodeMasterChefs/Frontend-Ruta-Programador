@@ -9,12 +9,12 @@ export const Eliminar = () => {
         />
         <button
           type="button"
-          className="btn btn-primary"
+          className="dropdown-item"
           data-bs-toggle="modal"
           data-bs-target="#EliminarModal"
           data-bs-whatever="@fat"
         >
-          Boton de Elminar
+          Eliminar Playlist
         </button>
 
         <div

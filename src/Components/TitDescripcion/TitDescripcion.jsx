@@ -1,5 +1,13 @@
-// eslint-disable-next-line react/prop-types
-export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
+import { Eliminar } from "../EliminarElemento/Eliminar";
+import PropTypes from "prop-types";
+
+export const TitDescripcion = ({
+  Titulo,
+  Descripcion,
+  UrlIcon,
+  onEditarClick,
+  id,
+}) => {
   const iconMap = {
     1: "moon.svg",
     2: "earth.svg",
@@ -74,11 +82,31 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
                 </svg>
               </button>
               <ul className="dropdown-menu">
-                <li>Reproducir Playlist</li>
-                <li>Me gusta</li>
-                <li>Compartir</li>
-                <li>Editar Playlist</li>
-                <li>Eliminar Playlist</li>
+                <li>
+                  <button className="dropdown-item">Reproducir Playlist</button>
+                </li>
+                <li>
+                  <button className="dropdown-item">Me gusta</button>
+                </li>
+                <li>
+                  <button className="dropdown-item">Compartir</button>
+                </li>
+                <li>
+                  {/* button esencial para entrar al modal */}
+                  <button
+                    type="button"
+                    className="dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalEditarPlaylist"
+                    data-bs-whatever="@mdo"
+                    onClick={() => onEditarClick(id)}
+                  >
+                    Editar playlist
+                  </button>
+                </li>
+                <li>
+                  <Eliminar />
+                </li>
               </ul>
             </div>
           </div>
@@ -87,4 +115,11 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
       </div>
     </>
   );
+};
+TitDescripcion.propTypes = {
+  Titulo: PropTypes.string.isRequired,
+  Descripcion: PropTypes.string.isRequired,
+  UrlIcon: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  onEditarClick: PropTypes.func.isRequired,
 };

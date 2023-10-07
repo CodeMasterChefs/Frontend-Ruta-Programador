@@ -1,15 +1,17 @@
 import { useParams } from "react-router-dom";
 import Fileplaylist from "../../Components/FilePlaylist/FilePlaylist";
 import { TitDescripcion } from "../../Components/TitDescripcion/TitDescripcion";
-import { Eliminar } from "../../Components/EliminarElemento/Eliminar";
 import { useEffect, useState } from "react";
 import api from "../../config/site.config";
+import Aniadir from "../../Components/AniadirElemento/Aniadir";
+import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 
 const MiPlaylist = () => {
   let params = useParams();
 
   const [elementos, setElementos] = useState([]);
   const [playlist, setPlaylist] = useState({});
+  const [selectedPlaylistId, setSelectedPlaylistId] = useState(0); // Nuevo estado para el IdPlaylist seleccionado
 
   useEffect(() => {
     api
@@ -30,6 +32,9 @@ const MiPlaylist = () => {
       });
   }, [params.idPlaylist]);
 
+  const handleEditarClick = (id) => {
+    setSelectedPlaylistId(id);
+  };
   return (
     <>
       <br></br>
@@ -37,12 +42,12 @@ const MiPlaylist = () => {
         Titulo={playlist.tituloPlaylist}
         Descripcion={playlist.descripcionPlaylist}
         UrlIcon={playlist.idMundo}
+        onEditarClick={() => handleEditarClick(playlist.idPlaylist)}
+        id={playlist.idPlaylist}
       />
+      <EditarPlaylist IdPlaylist={selectedPlaylistId} />
       <br></br>
-      <div>
-        <button className="btn btn-primary">Añadir elemento</button>
-        {/*Agregar icono, falta funcionalidd*/}
-      </div>
+
       <div className="container text-center">
         <div className="row">
           <div className="col-md-4"></div>
@@ -67,21 +72,28 @@ const MiPlaylist = () => {
         </div>
       </div>
       <div className="table">
-        <div>
-          {elementos.map((elemento, index) => (
-            <Fileplaylist
-              key={index}
-              Titulo={elemento.tituloElemento}
-              Fecha={elemento.fechaAgregado}
-              Duracion={elemento.duracionElemento}
-              UrlImg={elemento.urlImg}
-              Id={index + 1}
-            />
-          ))}
-        </div>
+        {elementos.length == 0 ? (
+          <div className="d-flex d-inline">
+            <Aniadir />
+            <p>Añadir contenido</p>
+            {/*Agregar icono, falta funcionalidd*/}
+          </div>
+        ) : (
+          <div>
+            {elementos.map((elemento, index) => (
+              <Fileplaylist
+                key={index}
+                Titulo={elemento.tituloElemento}
+                Fecha={elemento.fechaAgregado}
+                Duracion={elemento.duracionElemento}
+                UrlImg={elemento.urlImg}
+                Id={index + 1}
+              />
+            ))}
+          </div>
+        )}
       </div>
       <br></br>
-      <Eliminar></Eliminar>
     </>
   );
 };
