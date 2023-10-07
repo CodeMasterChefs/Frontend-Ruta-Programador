@@ -1,4 +1,5 @@
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
+import "./Eliminar.css"
 export const Eliminar = () => {
   return (
     <>
@@ -9,7 +10,7 @@ export const Eliminar = () => {
         />
         <button
           type="button"
-          className="dropdown-item"
+          className="dropdown-item color-boton"
           data-bs-toggle="modal"
           data-bs-target="#EliminarModal"
           data-bs-whatever="@fat"

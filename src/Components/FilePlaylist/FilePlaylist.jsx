@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { PointsMenu } from "../icons/PointsMenu";
+
 import "./FilePlaylist.css";
 const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
   return (
@@ -7,9 +7,7 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
       <div className="d-flex align-items-center">
         <div className="col text-center">
           <div>
-            <button className="Icons" type="button">
-              <PointsMenu></PointsMenu>
-            </button>
+           
             <ul className="dropdown-menu">
               <li>
                 <a className="dropdown-item" href="#">
@@ -38,12 +36,12 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
       <div className="d-flex inline">
         <div scope="row">{Id}</div>
         <div>
-          <img src={UrlImg} className="img-fluid" alt={UrlImg} />
+          <img src={UrlImg} className="img-fluid imagen-personalizada" alt={UrlImg} />
         </div>
-        <div className="col text-center">{Titulo}</div>
-        <div className="col text-center">{Fecha}</div>
-        <div className="col text-center">{Duracion}</div>
-        <div className="dropdown">
+        <div className="col text-center letras">{Titulo}</div>
+        <div className="col text-center letras">{Fecha}</div>
+        <div className="col text-center letras">{Duracion}</div>
+        <div className="dropdown botones">
           <button
             data-bs-toggle="dropdown"
             className="dropdown-vertical-button"
@@ -66,16 +64,16 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
           </button>
           <ul className="dropdown-menu">
             <li>
-              <button className="dropdown-item">Reproducir video</button>
+              <button className="dropdown-item color-boton">Reproducir video</button>
             </li>
             <li>
-              <button className="dropdown-item">Mover</button>
+              <button className="dropdown-item color-boton">Mover</button>
             </li>
             <li>
-              <button className="dropdown-item">Compartir</button>
+              <button className="dropdown-item color-boton">Compartir</button>
             </li>
             <li>
-              <button className="dropdown-item">
+              <button className="dropdown-item color-boton">
                 Eliminar de esta Playlist
               </button>
             </li>
