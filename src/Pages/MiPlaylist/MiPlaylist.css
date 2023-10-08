@@ -19,10 +19,9 @@ padding-top: 10px;
 padding-top: 3px;
 }
 
-.style1{   
+.style1 {
     opacity: 0.5;
     background: var(--Color-4, #227593);
-    
 }
 .fileplaylist-item {
     margin: 5px; }
@@ -39,4 +38,15 @@ padding-top: 3px;
 
 .letras{
     margin-left: 20px;
+}
+
+.add-playlist-container{
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 10;
+}
+
+.modal-backdrop {
+    z-index: 9;
 }
