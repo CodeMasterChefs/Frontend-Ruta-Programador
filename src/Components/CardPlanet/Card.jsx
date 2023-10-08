@@ -99,6 +99,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
                     data-bs-toggle="modal"
                     data-bs-target="#modalEditarPlaylist"
                     data-bs-whatever="@mdo"
+                    onClick={() => onEditarClick(id)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
