@@ -38,12 +38,25 @@
 .img-thumbnail{
     background: transparent !important;
     border-color: transparent !important;
-}   
-
-.mi-ti{
-    border: 1px solid white; 
 }
 
 .color-boton{
     color: white;
+}
+
+
+.title-container{
+    display: grid;
+    gap: 12px;
+    max-width: 100%;
+    grid-template-columns: 175px 300px 1fr;
+}
+
+.title-desc-container{
+    width: 100%;
+}
+
+.title-desc-container p{
+    width: 100%;
+    max-width: 100%;
 }

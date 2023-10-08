@@ -15,8 +15,8 @@
 }
 
 .card-title{
-    min-height: 25px;
-    max-height: 25px;
+    min-height: 20px;
+    max-height: 20px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
