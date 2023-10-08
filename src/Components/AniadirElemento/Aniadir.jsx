@@ -98,14 +98,16 @@ export const Aniadir = () => {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header border-bottom border-secondary mx-2">
+            <div
+              className="modal-header border-bottom border-secondary mx-2"
+              data-bs-theme="dark"
+            >
               <button
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
                 id="closeModal"
-                data-bs-theme="dark"
               ></button>
             </div>
             <div className="modal-body">

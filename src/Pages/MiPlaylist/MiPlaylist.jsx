@@ -6,7 +6,6 @@ import api from "../../config/site.config";
 import Aniadir from "../../Components/AniadirElemento/Aniadir";
 import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 
-import { MoreIcon } from "../../Components/icons/MoreIcon";
 import { ClockIcon } from "../../Components/icons";
 import "./MiPlaylist.css";
 const MiPlaylist = () => {
@@ -91,7 +90,6 @@ const MiPlaylist = () => {
               <div className="d-flex justify-content-center align-items-center d-inline">
                 <Aniadir />
                 <p className="m-0 ms-2">Añadir contenido</p>
-                {/*Agregar icono, falta funcionalidd*/}
               </div>
             ) : (
               <div>
@@ -107,10 +105,7 @@ const MiPlaylist = () => {
                   />
                 ))}
                 <div className="d-flex justify-content-end text-center">
-                  <button className="btn btn-primary plus-button">
-                    {" "}
-                    <MoreIcon />
-                  </button>
+                  <Aniadir />
                 </div>
               </div>
             )}
