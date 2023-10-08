@@ -9,7 +9,7 @@ const NavBar = () => {
       data-bs-theme="dark"
     >
       <div className="container-fluid d-flex justify-content-between align-items-centers">
-        <div className="d-flex inline">
+        <div className="d-flex inline arrow-button-navbar">
           <button
             className="btn btn-primary"
             onClick={() => window.history.back()}
@@ -27,7 +27,7 @@ const NavBar = () => {
               />
             </svg>
           </button>
-          <Link className="navbar-brand" to="/">
+          <Link className="navbar-brand navbar-text-title" to="/">
             La Ruta del Programador
           </Link>
         </div>
