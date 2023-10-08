@@ -24,7 +24,7 @@ export const Aniadir = () => {
       console.log(response);
 
       setUrl(url);
-      setError({ urlError: "" });
+      setError({ urlError: ""});
 
       // Actualiza el estado modalVisible después de que la solicitud tenga éxito.
       setModalVisible(true);

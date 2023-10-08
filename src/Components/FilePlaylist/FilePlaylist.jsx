@@ -1,23 +1,31 @@
 import PropTypes from "prop-types";
+import { dateFormater } from "../../utils/date-format";
 
 import "./FilePlaylist.css";
+
 const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
   return (
     <>
-      <div className="d-flex inline d-flex align-items-center video-elente-file">
-        <div scope="row">{Id}</div>
-        <div>
+      <div className="row video-elente-file">
+        <div  className="col-2 d-flex align-items-center justify-content-center">
+          <p className="text-center filePlayListId">{Id}</p>
+        </div>
+        <div className="col-5 d-flex align-items-center">
           <img
             src={UrlImg}
             className="img-fluid imagen-personalizada"
             alt={UrlImg}
           />
+          <div className="col mx-4">{Titulo}</div>
         </div>
-        <div className="col text-center">{Titulo}</div>
-        <div className="col text-center">{Fecha}</div>
-        <div className="col text-center">{Duracion}</div>
-        <div className="dropdown">
-          <button
+        <div className="col-3 d-flex align-items-center justify-content-center">
+          <p className="text-center">{dateFormater(Fecha)}</p>
+        </div>
+        <div className="col-1 d-flex align-items-center justify-content-center">
+          <p className="text-center">{Duracion}</p>
+        </div>
+        <div  className="col-1 d-flex align-items-center justify-content-center">
+           <button
             data-bs-toggle="dropdown"
             className="dropdown-vertical-button"
           >

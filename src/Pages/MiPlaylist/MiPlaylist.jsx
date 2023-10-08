@@ -43,7 +43,7 @@ const MiPlaylist = () => {
     fetchData();
   }, [params.idPlaylist]);
   return (
-    <>
+    <div className="container">
       {loading ? (
         <div className="d-flex inline justify-content-center">
           <div className="spinner-grow text-light" role="status">
@@ -65,27 +65,27 @@ const MiPlaylist = () => {
           />
           <EditarPlaylist IdPlaylist={params.idPlaylist} />
           <br></br>
-          <div className="container text-center color-fl ">
+          <div className=" text-center color-fl ">
             <div className="row align-items-start align-items-center">
               <div className="col-2">
                 <p className="titulo-link">#</p>
               </div>
-              <div className="col-3">
+              <div className="col-5">
                 <p className="titulo-link">Videos</p>
               </div>
-              <div className="col-5">
+              <div className="col-3">
                 <p className="titulo-link">Añadido el:</p>
               </div>
               <div className="col-1">
-                <ClockIcon className="icon"></ClockIcon>
+                <ClockIcon className="icon" />
               </div>
-              <div className="col">
+              <div className="col-1">
                 <p className="titulo-link"></p>
               </div>
             </div>
           </div>
           <br></br>
-          <div className="titulo-link bloque">
+          <div className="titulo-link">
             {elementos.length == 0 ? (
               <div className="d-flex justify-content-center align-items-center d-inline">
                 <Aniadir />
@@ -101,10 +101,10 @@ const MiPlaylist = () => {
                     Duracion={elemento.duracionElemento}
                     UrlImg={elemento.urlImg}
                     Id={index + 1}
-                    className="fileplaylist-item"
+                    className="fileplaylist-item" 
                   />
                 ))}
-                <div className="d-flex justify-content-end text-center">
+                <div className="add-playlist-container">
                   <Aniadir />
                 </div>
               </div>
@@ -113,7 +113,7 @@ const MiPlaylist = () => {
           <br></br>
         </>
       )}
-    </>
+    </div>
   );
 };
 
