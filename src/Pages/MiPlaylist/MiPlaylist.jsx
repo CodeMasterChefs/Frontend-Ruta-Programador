@@ -77,7 +77,7 @@ const MiPlaylist = () => {
                 <p className="titulo-link">Añadido el:</p>
               </div>
               <div className="col-1">
-                <ClockIcon className="icon"></ClockIcon>
+                <ClockIcon className="icon" />
               </div>
               <div className="col">
                 <p className="titulo-link"></p>
@@ -101,7 +101,7 @@ const MiPlaylist = () => {
                     Duracion={elemento.duracionElemento}
                     UrlImg={elemento.urlImg}
                     Id={index + 1}
-                    className="fileplaylist-item"
+                    className="fileplaylist-item" 
                   />
                 ))}
                 <div className="d-flex justify-content-end text-center">

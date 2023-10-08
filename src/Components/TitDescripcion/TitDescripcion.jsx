@@ -165,7 +165,7 @@ export const TitDescripcion = ({ Titulo = "Titulo", Descripcion = "Descripcion",
       </div>
 
 
-      <div className="title-desc-container">
+      <div className="title-desc-container border p-2">
         <p>{Descripcion}</p>
       </div>
     </div>

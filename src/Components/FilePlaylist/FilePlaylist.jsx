@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { dateFormater } from "../../utils/date-format";
 
 import "./FilePlaylist.css";
 const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
@@ -14,7 +15,7 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
           />
         </div>
         <div className="col text-center">{Titulo}</div>
-        <div className="col text-center">{Fecha}</div>
+        <div className="col text-center">{dateFormater(Fecha)}</div>
         <div className="col text-center">{Duracion}</div>
         <div className="dropdown">
           <button
