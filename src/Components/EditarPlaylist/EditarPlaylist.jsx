@@ -216,7 +216,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                         });
                       }}
                     >
-                      <option value="1"><img src="../../public/iconoMundos/moon.svg" />The moon</option>
+                      <option value="1">The moon</option>
                       <option value="2">The earth</option>
                       <option value="3">Uranus</option>
                       <option value="4">Neptune</option>

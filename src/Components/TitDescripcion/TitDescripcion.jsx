@@ -154,7 +154,7 @@ export const TitDescripcion = ({ Titulo, Descripcion, UrlIcon }) => {
                         fill="#F2F2F2"
                       />
                     </svg>
-                    &nbsp;Editar playlist
+                    &nbsp;Editar Playlist
                   </button>
                 </li>
                 <li>

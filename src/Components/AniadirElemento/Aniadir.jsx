@@ -1,5 +1,5 @@
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
-import "./Aniadir.css"
+import "./Aniadir.css";
 const Aniadir = () => {
   return (
     <div>
@@ -14,14 +14,15 @@ const Aniadir = () => {
         data-bs-target="#AniadirModal"
         data-bs-whatever="@fat"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" 
-             width="20" 
-             height="20" 
-             viewBox="0 0 14 20" 
-             fill="none">
-          <path d="M14 6H8V0H6V6H0V8H6V14H8V8H14V6Z" fill="black"/>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 14 20"
+          fill="none"
+        >
+          <path d="M14 6H8V0H6V6H0V8H6V14H8V8H14V6Z" fill="black" />
         </svg>
-       
       </button>
 
       <div
@@ -39,6 +40,7 @@ const Aniadir = () => {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                data-bs-theme="dark"
               ></button>
             </div>
             <div className="modal-body">

@@ -27,7 +27,7 @@ const SideBar = () => {
         <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark vh-100">
           <div className="text-center">
             <Usericon></Usericon>
-            <p className="text-center">Username</p>
+            <p className="text-center">User Name</p>
           </div>
           <ul className="nav nav-pills flex-column mb-auto">{elements}</ul>
         </div>
