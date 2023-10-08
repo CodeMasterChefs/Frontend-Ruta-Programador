@@ -1,3 +1,6 @@
 .new-plus-button {
     border-radius: 50% !important;
 }
+.btn-confirm-modal{
+    display: none;
+}
