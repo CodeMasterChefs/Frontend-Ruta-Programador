@@ -7,7 +7,11 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
       <div className="d-flex inline d-flex align-items-center video-elente-file">
         <div scope="row">{Id}</div>
         <div>
-          <img src={UrlImg} className="img-fluid" alt={UrlImg} />
+          <img
+            src={UrlImg}
+            className="img-fluid imagen-personalizada"
+            alt={UrlImg}
+          />
         </div>
         <div className="col text-center">{Titulo}</div>
         <div className="col text-center">{Fecha}</div>
@@ -35,17 +39,75 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
           </button>
           <ul className="dropdown-menu">
             <li>
-              <button className="dropdown-item">Reproducir video</button>
+              <button className="dropdown-item color-boton">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                >
+                  <path
+                    d="M7.5 1.25C4.05375 1.25 1.25 4.05375 1.25 7.5C1.25 10.9462 4.05375 13.75 7.5 13.75C10.9462 13.75 13.75 10.9462 13.75 7.5C13.75 4.05375 10.9462 1.25 7.5 1.25ZM7.5 12.5C4.74313 12.5 2.5 10.2569 2.5 7.5C2.5 4.74313 4.74313 2.5 7.5 2.5C10.2569 2.5 12.5 4.74313 12.5 7.5C12.5 10.2569 10.2569 12.5 7.5 12.5Z"
+                    fill="#F2F2F2"
+                  />
+                  <path
+                    d="M5.625 10.625L10.625 7.5L5.625 4.375V10.625Z"
+                    fill="#F2F2F2"
+                  />
+                </svg>
+                &nbsp;Reproducir video
+              </button>
             </li>
             <li>
-              <button className="dropdown-item">Mover</button>
+              <button className="dropdown-item color-boton">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                >
+                  <path
+                    d="M4.375 10.625L7.5 13.75L10.625 10.625H8.125V4.375H10.625L7.5 1.25L4.375 4.375H6.875V10.625H4.375Z"
+                    fill="#F2F2F2"
+                  />
+                </svg>
+                &nbsp;Mover
+              </button>
             </li>
             <li>
-              <button className="dropdown-item">Compartir</button>
+              <button className="dropdown-item color-boton">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                >
+                  <path
+                    d="M6.87484 4.32121V1.61621L3.93297 4.55809L1.57422 6.91684L3.97484 8.91746L6.87484 11.3343V8.68746C11.9661 8.30371 13.7498 11.25 13.7498 11.25C13.7498 9.41433 13.5986 7.50934 12.1555 6.06684C10.478 4.38871 8.04859 4.26996 6.87484 4.32121Z"
+                    fill="#F2F2F2"
+                  />
+                </svg>
+                &nbsp;Compartir
+              </button>
             </li>
             <li>
-              <button className="dropdown-item">
-                Eliminar de esta Playlist
+              <button className="dropdown-item color-boton">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                >
+                  <path
+                    d="M10 1.25745L11.875 3.13245L10.4456 4.56245L8.57063 2.68745L10 1.25745ZM2.5 8.74995V10.6249H4.375L9.56187 5.44557L7.68687 3.57057L2.5 8.74995ZM2.5 12.4999H12.5V13.7499H2.5V12.4999Z"
+                    fill="#F2F2F2"
+                  />
+                </svg>
+                &nbsp;Editar playlist
               </button>
             </li>
           </ul>

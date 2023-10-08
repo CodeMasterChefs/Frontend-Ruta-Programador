@@ -37,7 +37,7 @@ export const Aniadir = () => {
         setError({
           urlError: error.response.data.errors?.urlElemento?.[0] || "",
         });
-        throw new Error(error.response.data)
+        throw new Error(error.response.data);
       }
     }
   };
@@ -49,7 +49,7 @@ export const Aniadir = () => {
       document.getElementById("closeModal").click();
       document.getElementById("btnModalConfirm").click();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
     //const modalConfirm = new bootstrap.Modal("#ModalConfirmacionAniadir")
     console.log(modalVisible);
@@ -58,17 +58,16 @@ export const Aniadir = () => {
   return (
     <div>
       <ModalConf
-        Texto= "Tu video fue agregado correctamente, revisa hasta el final de tu Playlist para encontrarlo"
+        Texto="Tu video fue agregado correctamente, revisa hasta el final de tu Playlist para encontrarlo"
         ide="ModalConfirmacionAniadir"
         TxtButton="Aceptar"
       />
       <button
-        
         type="button"
         className="btn btn-primary btn-confirm-modal"
         data-bs-toggle="modal"
         data-bs-target="#ModalConfirmacionAniadir"
-        id = "btnModalConfirm"
+        id="btnModalConfirm"
       >
         Launch demo modal
       </button>
@@ -99,7 +98,10 @@ export const Aniadir = () => {
       >
         <div className="modal-dialog">
           <div className="modal-content">
-            <div className="modal-header">
+            <div
+              className="modal-header border-bottom border-secondary mx-2"
+              data-bs-theme="dark"
+            >
               <button
                 type="button"
                 className="btn-close"

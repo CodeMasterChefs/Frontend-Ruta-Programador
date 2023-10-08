@@ -1,5 +1,5 @@
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
-import "./Eliminar.css"
+import "./Eliminar.css";
 export const Eliminar = () => {
   return (
     <>
@@ -27,7 +27,10 @@ export const Eliminar = () => {
         >
           <div className="modal-dialog">
             <div className="modal-content">
-              <div className="modal-header">
+              <div
+                className="modal-header p-2 mx-2  border-bottom border-secondary"
+                data-bs-theme="dark"
+              >
                 <button
                   type="button"
                   className="btn-close"
