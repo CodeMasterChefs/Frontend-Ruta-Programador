@@ -1,11 +1,16 @@
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
 import "./Card.css";
 import { Link } from "react-router-dom";
 import { Eliminar } from "../EliminarElemento/Eliminar";
 // import EditarPlaylist from "../EditarPlaylist/EditarPlaylist";
+import EliminarPlaylist from "../EliminarPlaylist/EliminarPlaylist";
 
-export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
+export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick}) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <>
       <div className="col">
@@ -121,8 +126,9 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
                     type="button"
                     className="dropdown-item color-boton"
                     data-bs-toggle="modal"
-                    data-bs-target="#EliminarModal"
+                    data-bs-target="#modalEliminarPlaylist"
                     data-bs-whatever="@fat"
+                    onClick={() => handleShow(id)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -151,6 +157,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
           </div>
         </div>
       </div>
+      <EliminarPlaylist IdPlaylist={id} show={show} handleClose={handleClose}/>
     </>
   );
 };
