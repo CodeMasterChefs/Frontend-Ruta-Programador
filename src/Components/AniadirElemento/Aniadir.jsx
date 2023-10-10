@@ -15,41 +15,37 @@ export const Aniadir = () => {
 
   const fetchData = async () => {
     try {
-      const response = await api.post("elemento_playlists", {
+      await api.post("elemento_playlists", {
         urlElemento: url,
         idPlaylist: params.idPlaylist,
       });
 
-      console.log("Entro correctamente");
-      console.log(response);
-
       setUrl(url);
-      setError({ urlError: ""});
+      setError({ urlError: "" });
 
       // Actualiza el estado modalVisible después de que la solicitud tenga éxito.
       setModalVisible(true);
 
-      console.log(modalVisible); // Aquí modalVisible debería reflejar true
+      // console.log(modalVisible); // Aquí modalVisible debería reflejar true
     } catch (error) {
-      console.log("Fallo");
-      console.log(error);
+
       if (error.response && error.response.data) {
         setError({
-          urlError: error.response.data.errors?.urlElemento?.[0] || "",
+          urlError: error.response.data.errors?.urlElemento?.[0] || error.response.data.errors?.[0] || "",
         });
         throw new Error(error.response.data);
       }
     }
   };
 
-  const handleAniadir = async (event) => {
+  const handleAgregar = async (event) => {
     event.preventDefault();
     try {
       await fetchData();
       document.getElementById("closeModal").click();
       document.getElementById("btnModalConfirm").click();
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
     //const modalConfirm = new bootstrap.Modal("#ModalConfirmacionAniadir")
     console.log(modalVisible);
@@ -156,9 +152,9 @@ export const Aniadir = () => {
                   <button
                     className="btn btn-primary"
                     type="submit"
-                    onClick={handleAniadir}
+                    onClick={handleAgregar}
                   >
-                    Aceptar
+                    Añadir
                   </button>
                 </div>
               </div>
