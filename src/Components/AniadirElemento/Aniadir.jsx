@@ -13,6 +13,12 @@ export const Aniadir = () => {
     urlError: "",
   });
 
+  const onInputChange = () => {
+    setError({
+      urlError: "",
+    });
+  };
+
   const fetchData = async () => {
     try {
       await api.post("elemento_playlists", {
@@ -35,6 +41,12 @@ export const Aniadir = () => {
         });
         throw new Error(error.response.data);
       }
+    }
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
     }
   };
 
@@ -92,7 +104,7 @@ export const Aniadir = () => {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
+        <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
             <div
               className="modal-header border-bottom border-secondary mx-2"
@@ -134,6 +146,8 @@ export const Aniadir = () => {
                             aria-label="URL"
                             aria-describedby="basic-addon1"
                             value={url}
+                            onInput={onInputChange}
+                            onKeyDown={handleKeyPress}
                             onChange={(e) => {
                               setUrl(e.target.value);
                             }}
