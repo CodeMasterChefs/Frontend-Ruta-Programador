@@ -46,6 +46,7 @@
 
 
 .title-container{
+    
     display: grid;
     gap: 12px;
     max-width: 100%;
@@ -60,3 +61,20 @@
     width: 100%;
     max-width: 100%;
 }
+.descripcion-md{
+    display: none;
+  }
+  @media only screen and (max-width: 900px) {
+    .descripcion-md  {
+      display: block;
+    }
+  }
+
+.descripcion-lg {
+    display: block;
+  }
+  @media only screen and (max-width: 900px) {
+    .descripcion-lg  {
+      display: none;
+    }
+  }
