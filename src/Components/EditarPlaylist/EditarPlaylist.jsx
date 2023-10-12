@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "../NewPlaylist/Playlist.css";
 import { useState, useEffect } from "react";
 import api from "../../config/site.config";
+
 //import { Navigate } from "react-router-dom";
 
 const iconMap = {
@@ -23,6 +24,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     idMundo: planetSelected,
   });
   const { title, description, idMundo } = formState;
+  const [originalFormState, setOriginalFormState] = useState({});
   const [error, setError] = useState({
     titleError: "",
     descriptionError: "",
@@ -32,16 +34,28 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   useEffect(() => {
     const fetchDataPlaylist = async () => {
       const response = await api.get(`/playlist/valores/${IdPlaylist}`);
-      // Actualiza el estado utilizando setFormState
-      setFormState({
-        title: response.data.tituloPlaylist,
-        description: response.data.descripcionPlaylist,
-        idMundo: response.data.idMundo,
-      });
+      const { tituloPlaylist, descripcionPlaylist, idMundo } = response.data;
+      const originalValues = {
+        title: tituloPlaylist,
+        description: descripcionPlaylist,
+        idMundo: idMundo,
+      };
+      setFormState(originalValues); // Restaurar los valores originales
+      setOriginalFormState(originalValues); // Almacena los valores originales
+      setSelectedIcon(iconMap[idMundo]);
+
     };
 
     fetchDataPlaylist();
   }, [IdPlaylist]);
+
+  const handleReset = () => {
+    setFormState(originalFormState); // Restablecer a los valores originales
+  };
+
+  const handleDismiss = () => {
+    handleReset(); // Restablece los valores al cerrar el modal
+  };
 
   useEffect(() => {
     setSelectedIcon(iconMap[formState.idMundo]); // Se ejecutará una vez al montar el componente
@@ -116,9 +130,9 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     }
   };
 
-  const handleEditar = (event) => {
+  const handleEditar = async (event) => {
     event.preventDefault();
-    fetchData();
+    await fetchData();
   };
 
   const handleKeyPress = (event) => {
@@ -153,6 +167,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
+                onClick={handleDismiss}
                 aria-label="Close"
               ></button>
             </div>
