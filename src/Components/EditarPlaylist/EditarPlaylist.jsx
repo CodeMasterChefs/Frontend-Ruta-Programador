@@ -4,8 +4,6 @@ import "../NewPlaylist/Playlist.css";
 import { useState, useEffect } from "react";
 import api from "../../config/site.config";
 
-//import { Navigate } from "react-router-dom";
-
 const iconMap = {
   1: "moon.svg",
   2: "earth.svg",
@@ -24,7 +22,6 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     idMundo: planetSelected,
   });
   const { title, description, idMundo } = formState;
-  const [originalFormState, setOriginalFormState] = useState({});
   const [error, setError] = useState({
     titleError: "",
     descriptionError: "",
@@ -40,22 +37,17 @@ const EditarPlaylist = ({ IdPlaylist }) => {
         description: descripcionPlaylist,
         idMundo: idMundo,
       };
-      setFormState(originalValues); // Restaurar los valores originales
-      setOriginalFormState(originalValues); // Almacena los valores originales
+      setFormState(originalValues);
       setSelectedIcon(iconMap[idMundo]);
 
+      const modalElement = document.getElementById("modalEditarPlaylist");
+      modalElement.addEventListener("show.bs.modal", () => {
+        setFormState(originalValues);
+      });
     };
 
     fetchDataPlaylist();
   }, [IdPlaylist]);
-
-  const handleReset = () => {
-    setFormState(originalFormState); // Restablecer a los valores originales
-  };
-
-  const handleDismiss = () => {
-    handleReset(); // Restablece los valores al cerrar el modal
-  };
 
   useEffect(() => {
     setSelectedIcon(iconMap[formState.idMundo]); // Se ejecutará una vez al montar el componente
@@ -167,7 +159,6 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                 type="button"
                 className="btn-close"
                 data-bs-dismiss="modal"
-                onClick={handleDismiss}
                 aria-label="Close"
               ></button>
             </div>
@@ -243,7 +234,6 @@ const EditarPlaylist = ({ IdPlaylist }) => {
               </form>
             </div>
             <div className="modal-footer">
-              {/* <button className="btn btn-primary" onClick={handleEditar}> */}
               <button className="btn btn-primary" onClick={handleEditar}>
                 Guardar
               </button>
