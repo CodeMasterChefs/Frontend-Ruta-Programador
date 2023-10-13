@@ -67,13 +67,13 @@ const MiPlaylist = () => {
           <br></br>
           <div className=" text-center color-fl ">
             <div className="row align-items-start align-items-center">
-              <div className="col-2">
+              <div className="col-1">
                 <p className="titulo-link">#</p>
               </div>
-              <div className="col-5">
+              <div className="col-7">
                 <p className="titulo-link">Videos</p>
               </div>
-              <div className="col-3">
+              <div className="col-2">
                 <p className="titulo-link">Añadido el:</p>
               </div>
               <div className="col-1">

@@ -64,7 +64,7 @@
 .descripcion-md{
     display: none;
   }
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 1200px) {
     .descripcion-md  {
       display: block;
     }
@@ -73,7 +73,7 @@
 .descripcion-lg {
     display: block;
   }
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 1200px) {
     .descripcion-lg  {
       display: none;
     }

@@ -19,7 +19,7 @@ export const TitDescripcion = ({
     <>
     <div className="descripcion-lg">
 
-    <div className="title-container">
+    <div className="title-container align-items-center">
       <img
         className="img-thumbnail p-2"
         src={
