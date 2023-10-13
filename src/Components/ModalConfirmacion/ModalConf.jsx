@@ -14,7 +14,7 @@ export const ModalConf = ({ Texto = "Texto", TxtButton = "Button", ide = "ide"})
             <div className="modal-body">{Texto}</div>
             <div className="d-flex flex-row-reverse">
               <div className="p-2">
-                <button onClick = {() => window.location.reload()} data-bs-dismiss="modal">
+                <button className="btn btn-primary" onClick = {() => window.location.reload()} data-bs-dismiss="modal">
                   {TxtButton}
                 </button>
               </div>
