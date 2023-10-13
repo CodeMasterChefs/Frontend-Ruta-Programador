@@ -1,7 +1,7 @@
+import { useState, useEffect } from "react";
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
 import "./Aniadir.css";
 import api from "../../config/site.config";
-import { useState } from "react";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 
@@ -62,6 +62,14 @@ export const Aniadir = () => {
     //const modalConfirm = new bootstrap.Modal("#ModalConfirmacionAniadir")
     console.log(modalVisible);
   };
+
+  useEffect(() => {
+    // Reinicia el campo de URL cuando el modal se muestra
+    const modalElement = document.getElementById("AniadirModal");
+    modalElement.addEventListener("show.bs.modal", () => {
+      setUrl("");
+    });
+  }, []);
 
   return (
     <div>
@@ -137,7 +145,7 @@ export const Aniadir = () => {
                       <div className="input-group mb-3">
                         <div className="input-group mb-3">
                           <span className="input-group-text" id="basic-addon1">
-                            Enlace
+                            Enlace:
                           </span>
                           <input
                             type="text"

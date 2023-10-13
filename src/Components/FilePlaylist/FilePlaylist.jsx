@@ -7,18 +7,18 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
   return (
     <>
       <div className="row video-elente-file">
-        <div  className="col-2 d-flex align-items-center justify-content-center">
+        <div  className="col-1 d-flex align-items-center justify-content-center">
           <p className="text-center filePlayListId">{Id}</p>
         </div>
-        <div className="col-5 d-flex align-items-center">
+        <div className="col-7 d-flex align-items-center">
           <img
             src={UrlImg}
             className="img-fluid imagen-personalizada"
             alt={UrlImg}
           />
-          <div className="col mx-4">{Titulo}</div>
+          <div className="col mx-5">{Titulo}</div>
         </div>
-        <div className="col-3 d-flex align-items-center justify-content-center">
+        <div className="col-2 d-flex align-items-center justify-content-center">
           <p className="text-center">{dateFormater(Fecha)}</p>
         </div>
         <div className="col-1 d-flex align-items-center justify-content-center">
