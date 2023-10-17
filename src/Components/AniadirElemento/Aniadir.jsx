@@ -74,7 +74,7 @@ export const Aniadir = () => {
   return (
     <div>
       <ModalConf
-        Texto="Tu video fue agregado correctamente, revisa hasta el final de tu Playlist para encontrarlo"
+        Texto="Tu video fue agregado correctamente."
         ide="ModalConfirmacionAniadir"
         TxtButton="Aceptar"
       />

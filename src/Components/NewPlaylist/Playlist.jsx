@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import "./Playlist.css";
 import { useState, useEffect } from "react";
 import api from "../../config/site.config";
+import { ModalConf } from "../ModalConfirmacion/ModalConf";
 // import { Navigate } from "react-router-dom";
 
 const iconMap = {
@@ -16,6 +17,7 @@ const iconMap = {
 const Playlist = ({ CantPlaylists }) => {
   const [planetSelected, setPlanetSelected] = useState(1);
   const [selectedIcon, setSelectedIcon] = useState(iconMap[1]);
+  const [modalVisible, setModalVisible] = useState(false);
   const [formState, setFormState] = useState({
     title: "",
     description: "",
@@ -62,7 +64,8 @@ const Playlist = ({ CantPlaylists }) => {
           titleError: "",
           descriptionError: "",
         });
-        window.location.reload();
+        setModalVisible(true);
+        document.getElementById("btnModalConfirm").click();
       })
       .catch((error) => {
         if (error.response && error.response.data) {
@@ -74,9 +77,14 @@ const Playlist = ({ CantPlaylists }) => {
         }
       });
   };
-  const handleCrear = (event) => {
+  const handleCrear = async (event) => {
     event.preventDefault();
-    fetchData();
+    try {
+      await fetchData();
+      document.getElementById("closeModal").click();
+      
+    } catch (error) {}
+    console.log(modalVisible);
   };
 
   const handleKeyPress = (event) => {
@@ -104,6 +112,7 @@ const Playlist = ({ CantPlaylists }) => {
 
   return (
     <>
+      
       <button
         type="button"
         className="btn btn-primary"
@@ -127,6 +136,11 @@ const Playlist = ({ CantPlaylists }) => {
                 className="btn-small btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                onClick={() => {setFormState({
+                  title: "",
+                  description: "",
+                  idMundo: 1,
+                });}}
               ></button>
             </div>
             <div className="modal-body py-2">
@@ -209,6 +223,21 @@ const Playlist = ({ CantPlaylists }) => {
           </div>
         </div>
       </div>
+      <ModalConf
+        Texto="Tu playlist ha sido creada con éxito."
+        ide="ModalConfirmacionPlaylist"
+        TxtButton="Aceptar"
+      />
+
+      <button
+        type="button"
+        className="btn btn-primary btn-confirm-modal"
+        data-bs-toggle="modal"
+        data-bs-target="#ModalConfirmacionPlaylist"
+        id="btnModalConfirm"
+      >
+        Launch demo modal
+      </button>
     </>
   );
 };
