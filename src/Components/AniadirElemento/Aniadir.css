@@ -4,3 +4,23 @@
 .btn-confirm-modal{
     display: none;
 }
+
+.modal-content {
+    background: #1C6580 !important;
+    --bs-modal-footer-border-width: #1C6580;
+}
+
+.form-select {
+    background-color: #1C6580;
+}
+
+.border-secondary {
+    --bs-border-opacity: 1;
+    border-color: rgba(242, 242, 242, 0.3)!important;
+}
+
+.input-group-text{
+    background: #1C6580 !important;
+    border-color: #1C6580 !important;
+    color: #f2f2f2;
+}
