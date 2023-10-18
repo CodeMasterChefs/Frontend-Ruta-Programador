@@ -1,5 +1,13 @@
+import { Eliminar } from "../../Components/EliminarElemento/Eliminar";
 const ComunidadPage = () => {
-  return <div>Comunidad</div>;
+  return (
+    <div>
+      Comunidad
+      
+    <Eliminar/>
+
+    </div>
+  );
 };
 
 export default ComunidadPage;
