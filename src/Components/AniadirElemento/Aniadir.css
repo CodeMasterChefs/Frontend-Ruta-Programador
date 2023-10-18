@@ -6,12 +6,12 @@
 }
 
 .modal-content {
-    background: #1C6580 !important;
-    --bs-modal-footer-border-width: #1C6580;
+    background: #483173 !important;
+    --bs-modal-footer-border-width: #483173;
 }
 
 .form-select {
-    background-color: #1C6580;
+    background-color: #483173;
 }
 
 .border-secondary {
@@ -20,7 +20,7 @@
 }
 
 .input-group-text{
-    background: #1C6580 !important;
-    border-color: #1C6580 !important;
+    background: #483173 !important;
+    border-color: #483173 !important;
     color: #f2f2f2;
 }
