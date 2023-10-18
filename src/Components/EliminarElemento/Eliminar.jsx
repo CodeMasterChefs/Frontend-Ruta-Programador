@@ -1,6 +1,9 @@
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
 import "./Eliminar.css";
+
+
 export const Eliminar = () => {
+
   return (
     <>
       <div>
@@ -9,15 +12,6 @@ export const Eliminar = () => {
           TxtButton="Aceptar"
           ide="ModalConfirmacionEliminar"
         />
-        <button
-          type="button"
-          className="btn btn-primary"
-          data-bs-toggle="modal"
-          data-bs-target="#EliminarModal"
-          data-bs-whatever="@fat"
-        >
-          Eliminar Playlist
-        </button>
 
         <div
           className="modal fade"
