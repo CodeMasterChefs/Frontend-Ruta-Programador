@@ -1,10 +1,10 @@
-import { Eliminar } from "../../Components/EliminarElemento/Eliminar";
+import { EliminarElemento } from "../../Components/EliminarElemento/EliminarElemento";
 const ComunidadPage = () => {
   return (
     <div>
       Comunidad
       
-    <Eliminar/>
+    <EliminarElemento/>
 
     </div>
   );

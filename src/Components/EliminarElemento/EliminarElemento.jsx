@@ -1,14 +1,14 @@
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
 import "./Eliminar.css";
+import PropTypes from "prop-types";
 
-
-export const Eliminar = () => {
+export const EliminarElemento = ({Imagen = "", Titulo = "Titulo"}) => {
 
   return (
     <>
       <div>
         <ModalConf
-          Texto="El video “Título de video” se eliminó correctamente de tu Playlist"
+          Texto= {"El video " + Titulo + " se eliminó correctamente de tu Playlist"}
           TxtButton="Aceptar"
           ide="ModalConfirmacionEliminar"
         />
@@ -52,8 +52,7 @@ export const Eliminar = () => {
                     </div>
                     <div className="p-2 flex-fill">
                       <label htmlFor="basic-url" className="form-label">
-                        Ingresa la URL del video que quieras añadir a tu
-                        playlist
+                        ¿Estás seguro de eliminar este elemento de tu Playlist?
                       </label>
                       <label
                         htmlFor="message-text"
@@ -72,15 +71,16 @@ export const Eliminar = () => {
                                   className="input-group-text"
                                   id="inputGroup-sizing-lg"
                                 >
-                                  <img src="..." className="img-fluid" alt="..."/>
+                                  <img src= {Imagen} className="img-fluid" alt="..."/>
                                 </span>
-                                <input
-                                  type="text"
-                                  className="form-control"
-                                  aria-label="Sizing example input"
-                                  aria-describedby="inputGroup-sizing-lg"
-                                  readOnly
-                                />
+
+                                <div>
+                                <p className="d-flex align-items-center text-Titulo">
+                                  {Titulo}
+                                </p>
+                                </div>
+                                
+                                
                               </div>
                             </div>
                           </div>
@@ -108,3 +108,8 @@ export const Eliminar = () => {
     </>
   );
 };
+EliminarElemento.propTypes = {
+  Imagen: PropTypes.string.isRequired,
+  Titulo: PropTypes.string.isRequired,
+};
+export default EliminarElemento;

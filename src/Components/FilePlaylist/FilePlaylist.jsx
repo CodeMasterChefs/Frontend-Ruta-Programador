@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 import { dateFormater } from "../../utils/date-format";
 
 import "./FilePlaylist.css";
-import { Eliminar } from "../EliminarElemento/Eliminar";
+import { EliminarElemento } from "../EliminarElemento/EliminarElemento";
 
 const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
   return (
     <>
-    <Eliminar />
+    <EliminarElemento Imagen= {UrlImg} Titulo= {Titulo}/>
       <div className="row video-elente-file">
         <div className="col-1 d-flex align-items-center justify-content-center">
           <p className="text-center filePlayListId">{Id}</p>

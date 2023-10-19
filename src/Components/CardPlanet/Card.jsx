@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 import "./Card.css";
 import { Link } from "react-router-dom";
-import { Eliminar } from "../EliminarElemento/Eliminar";
+//import { Eliminar } from "../EliminarElemento/Eliminar";
 // import EditarPlaylist from "../EditarPlaylist/EditarPlaylist";
 
 export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {

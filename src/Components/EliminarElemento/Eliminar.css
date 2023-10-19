@@ -1,7 +1,13 @@
-
-.color-boton{
-    color: white;
+.color-boton {
+  color: white;
 }
 .last-row {
-    min-width: 40px; /* Puedes ajustar el valor según tus necesidades */
-  }
+  min-width: 40px; /* Puedes ajustar el valor según tus necesidades */
+}
+
+.text-Titulo {
+  width: 500px;
+  height: 100px;
+  background-color: transparent; /* Puedes cambiar el color de fondo a tu gusto */
+  border: 1px solid red !important;
+}
