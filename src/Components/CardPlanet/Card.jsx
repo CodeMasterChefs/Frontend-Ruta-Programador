@@ -155,7 +155,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick}) => {
           </div>
         </div>
       </div>
-      <EliminarPlaylist IdPlaylist={id} show={show} handleClose={handleClose}/>
+      <EliminarPlaylist IdPlaylist={id} show={show} handleClose={handleClose} refrescar={1}/>
     </>
   );
 };

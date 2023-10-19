@@ -3,14 +3,14 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import api from "../../config/site.config";
 
-function EliminarPlaylist({ IdPlaylist, show, handleClose }) {
+function EliminarPlaylist({ IdPlaylist, show, handleClose, refrescar}) {
 
     const handleDelete = async () => {
         try {
             const response = await api.remove("playlist?idPlaylist=" + IdPlaylist)
             // await axios.delete(`URL_DE_TU_API/${itemId}`);
             console.log(response)
-            window.location.reload();
+            refrescar ==1 ? window.location.reload() : window.history.back();
             //onDelete(itemId);
         } catch (error) {
             console.error('Error al eliminar el elemento:', error);
@@ -40,7 +40,8 @@ function EliminarPlaylist({ IdPlaylist, show, handleClose }) {
 EliminarPlaylist.propTypes = {
     IdPlaylist: PropTypes.number.isRequired,
     show: PropTypes.any.isRequired,
-    handleClose: PropTypes.func.isRequired
+    handleClose: PropTypes.func.isRequired,
+    refrescar: PropTypes.number.isRequired
 };
 
 export default EliminarPlaylist;

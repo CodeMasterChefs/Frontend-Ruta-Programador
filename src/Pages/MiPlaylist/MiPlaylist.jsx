@@ -74,8 +74,8 @@ const MiPlaylist = () => {
           <EliminarPlaylist
             IdPlaylist={params.idPlaylist}
             show={show}
-            
             handleClose={handleClose}
+            refrescar={2}
           />
           <br></br>
           <div className=" text-center color-fl ">
