@@ -2,6 +2,7 @@ import React from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import api from "../../config/site.config";
+import "./EliminarPlaylist.css"
 
 function EliminarPlaylist({IdPlaylist, show, handleClose}) {
     
@@ -21,14 +22,11 @@ function EliminarPlaylist({IdPlaylist, show, handleClose}) {
         <>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header closeButton className="border-secondary mx-2" data-bs-theme="dark" >
                 </Modal.Header>
-                <Modal.Body>¿Estás seguro de eliminar esta playlist de tu colección?</Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Cancelar
-                    </Button>
-                    <Button variant="danger" onClick={handleDelete}>
+                <Modal.Body className="d-flex justify-content-center body-text">¿Estás seguro de eliminar esta playlist de tu colección?</Modal.Body>
+                <Modal.Footer className="modal-footer">
+                    <Button className="btn btn-prymary btn-delete" onClick={handleDelete}>
                         Eliminar
                     </Button>
                 </Modal.Footer>

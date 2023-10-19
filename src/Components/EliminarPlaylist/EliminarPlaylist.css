@@ -1,0 +1,26 @@
+.btn-delete{
+    background: rgb(255, 40, 40) !important;
+    color: #f2f2f2 !important;
+    border-color: rgb(255, 40, 40) !important;
+}
+
+.btn-delete:hover{
+    background: #d72727 !important;
+    color: #f2f2f2 !important;
+    border-color: #d72727 !important;
+}
+
+.border-secondary{
+    padding: 0.4rem;
+}
+
+.body-text{
+    padding-top: 1rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    padding-bottom: 0.2rem;
+}
+
+.modal-footer{
+    padding: 0.4rem;
+}
