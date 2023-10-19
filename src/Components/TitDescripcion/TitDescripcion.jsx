@@ -307,8 +307,9 @@ export const TitDescripcion = ({
                   type="button"
                   className="dropdown-item color-boton"
                   data-bs-toggle="modal"
-                  data-bs-target="#EliminarModal"
+                  data-bs-target="#modalEliminarPlaylist"
                   data-bs-whatever="@fat"
+                  onClick={() => handleShow(IdPlaylist)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
