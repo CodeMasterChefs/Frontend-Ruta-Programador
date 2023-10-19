@@ -27,3 +27,7 @@
     border: 1px solid #4DDAC5;
     color: #F2F2F2;
 }
+
+.btn-confirm-modal{
+    display: none;
+}

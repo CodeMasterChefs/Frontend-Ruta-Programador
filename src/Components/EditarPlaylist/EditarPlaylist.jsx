@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "../NewPlaylist/Playlist.css";
 import { useState, useEffect } from "react";
 import api from "../../config/site.config";
+import { ModalConf } from "../ModalConfirmacion/ModalConf";
 
 const iconMap = {
   1: "moon.svg",
@@ -118,7 +119,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     // Solo recargamos la página si no hay errores
     if (!errors.titleError && !errors.descriptionError) {
       resetFormAndError();
-      window.location.reload();
+      document.getElementById("btnModalConfirm").click();
     }
   };
 
@@ -148,6 +149,21 @@ const EditarPlaylist = ({ IdPlaylist }) => {
 
   return (
     <>
+      <ModalConf
+        Texto="Tu playlist ha sido modificada con éxito."
+        ide="ModalConfirmacionEdicion"
+        TxtButton="Aceptar"
+      />
+      <button
+        type="button"
+        className="btn btn-primary btn-confirm-modal"
+        data-bs-toggle="modal"
+        data-bs-target="#ModalConfirmacionEdicion"
+        id="btnModalConfirm"
+        style={{display: "none"}}
+      >
+        Launch demo modal
+      </button>
       <div className="modal fade" id="modalEditarPlaylist" tabIndex="-1">
         <div className="modal-dialog">
           <div className="modal-content">
