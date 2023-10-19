@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Fileplaylist from "../../Components/FilePlaylist/FilePlaylist";
 import { TitDescripcion } from "../../Components/TitDescripcion/TitDescripcion";
 import { useEffect, useState } from "react";
+import EliminarPlaylist from "../../Components/EliminarPlaylist/EliminarPlaylist";
 import api from "../../config/site.config";
 import Aniadir from "../../Components/AniadirElemento/Aniadir";
 import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
@@ -10,6 +11,9 @@ import { ClockIcon } from "../../Components/icons";
 import "./MiPlaylist.css";
 const MiPlaylist = () => {
   let params = useParams();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const [elementos, setElementos] = useState([]);
   const [playlist, setPlaylist] = useState({});
@@ -59,11 +63,20 @@ const MiPlaylist = () => {
         <>
           <br></br>
           <TitDescripcion
+            IdPlaylist={playlist.idPlaylist}
             Titulo={playlist.tituloPlaylist}
             Descripcion={playlist.descripcionPlaylist}
             UrlIcon={playlist.idMundo}
+            handleShow={handleShow}
           />
+
           <EditarPlaylist IdPlaylist={params.idPlaylist} />
+          <EliminarPlaylist
+            IdPlaylist={params.idPlaylist}
+            show={show}
+            handleClose={handleClose}
+            refrescar={2}
+          />
           <br></br>
           <div className=" text-center color-fl ">
             <div className="row align-items-start align-items-center">
@@ -101,7 +114,7 @@ const MiPlaylist = () => {
                     Duracion={elemento.duracionElemento}
                     UrlImg={elemento.urlImg}
                     Id={index + 1}
-                    className="fileplaylist-item" 
+                    className="fileplaylist-item"
                   />
                 ))}
                 <div className="add-playlist-container">

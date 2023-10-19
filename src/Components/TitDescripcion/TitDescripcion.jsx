@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
 
 import "./TitDescripcion.css";
+
 export const TitDescripcion = ({
+  IdPlaylist,
   Titulo = "Titulo",
   Descripcion = "Descripcion",
   UrlIcon = "UrlIcon",
+  handleShow
 }) => {
   const iconMap = {
     1: "moon.svg",
@@ -146,8 +149,9 @@ export const TitDescripcion = ({
                   type="button"
                   className="dropdown-item color-boton"
                   data-bs-toggle="modal"
-                  data-bs-target="#EliminarModal"
+                  data-bs-target="#modalEliminarPlaylist"
                   data-bs-whatever="@fat"
+                  onClick={() => handleShow(IdPlaylist)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -338,7 +342,9 @@ export const TitDescripcion = ({
 };
 
 TitDescripcion.propTypes = {
+  IdPlaylist: PropTypes.string.isRequired,
   Titulo: PropTypes.string.isRequired,
   Descripcion: PropTypes.string.isRequired,
   UrlIcon: PropTypes.string.isRequired,
+  handleShow: PropTypes.func.isRequired
 };
