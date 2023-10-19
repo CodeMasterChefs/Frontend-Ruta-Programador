@@ -1,15 +1,14 @@
-import React, {useState} from "react";
 import PropTypes from "prop-types";
 
 import "./TitDescripcion.css";
 
 export const TitDescripcion = ({
+  IdPlaylist,
   Titulo = "Titulo",
   Descripcion = "Descripcion",
   UrlIcon = "UrlIcon",
+  handleShow
 }) => {
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
   const iconMap = {
     1: "moon.svg",
     2: "earth.svg",
@@ -149,7 +148,7 @@ export const TitDescripcion = ({
                   data-bs-toggle="modal"
                   data-bs-target="#modalEliminarPlaylist"
                   data-bs-whatever="@fat"
-                  onClick={() => handleShow(40)}
+                  onClick={() => handleShow(IdPlaylist)}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -179,7 +178,9 @@ export const TitDescripcion = ({
 };
 
 TitDescripcion.propTypes = {
+  IdPlaylist: PropTypes.string.isRequired,
   Titulo: PropTypes.string.isRequired,
   Descripcion: PropTypes.string.isRequired,
   UrlIcon: PropTypes.string.isRequired,
+  handleShow: PropTypes.func.isRequired
 };

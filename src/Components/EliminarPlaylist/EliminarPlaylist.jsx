@@ -1,21 +1,21 @@
-import React from "react";
+import PropTypes from "prop-types";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import api from "../../config/site.config";
 
-function EliminarPlaylist({IdPlaylist, show, handleClose}) {
-    
+function EliminarPlaylist({ IdPlaylist, show, handleClose }) {
+
     const handleDelete = async () => {
         try {
             const response = await api.remove("playlist?idPlaylist=" + IdPlaylist)
-          // await axios.delete(`URL_DE_TU_API/${itemId}`);
-          console.log(response)
-          window.location.reload();
-          //onDelete(itemId);
+            // await axios.delete(`URL_DE_TU_API/${itemId}`);
+            console.log(response)
+            window.location.reload();
+            //onDelete(itemId);
         } catch (error) {
-          console.error('Error al eliminar el elemento:', error);
+            console.error('Error al eliminar el elemento:', error);
         }
-      };
+    };
 
     return (
         <>
@@ -36,5 +36,11 @@ function EliminarPlaylist({IdPlaylist, show, handleClose}) {
         </>
     );
 }
+
+EliminarPlaylist.propTypes = {
+    IdPlaylist: PropTypes.number.isRequired,
+    show: PropTypes.any.isRequired,
+    handleClose: PropTypes.func.isRequired
+};
 
 export default EliminarPlaylist;

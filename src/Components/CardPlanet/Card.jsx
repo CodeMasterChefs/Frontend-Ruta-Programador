@@ -1,10 +1,8 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import PropTypes from "prop-types";
 
 import "./Card.css";
 import { Link } from "react-router-dom";
-import { Eliminar } from "../EliminarElemento/Eliminar";
-// import EditarPlaylist from "../EditarPlaylist/EditarPlaylist";
 import EliminarPlaylist from "../EliminarPlaylist/EliminarPlaylist";
 
 export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick}) => {

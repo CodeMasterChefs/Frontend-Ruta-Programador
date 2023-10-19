@@ -63,15 +63,18 @@ const MiPlaylist = () => {
         <>
           <br></br>
           <TitDescripcion
+            IdPlaylist={playlist.idPlaylist}
             Titulo={playlist.tituloPlaylist}
             Descripcion={playlist.descripcionPlaylist}
             UrlIcon={playlist.idMundo}
+            handleShow={handleShow}
           />
 
           <EditarPlaylist IdPlaylist={params.idPlaylist} />
           <EliminarPlaylist
             IdPlaylist={params.idPlaylist}
             show={show}
+            
             handleClose={handleClose}
           />
           <br></br>
