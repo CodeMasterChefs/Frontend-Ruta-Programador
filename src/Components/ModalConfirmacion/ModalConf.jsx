@@ -1,5 +1,9 @@
-import PropTypes from "prop-types"
-export const ModalConf = ({ Texto = "Texto", TxtButton = "Button", ide = "ide"}) => {
+import PropTypes from "prop-types";
+export const ModalConf = ({
+  Texto = "Texto",
+  TxtButton = "Button",
+  ide = "ide",
+}) => {
   return (
     <>
       <div
@@ -12,10 +16,15 @@ export const ModalConf = ({ Texto = "Texto", TxtButton = "Button", ide = "ide"})
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-body d-flex justify-content-center">
-              <p className="mt-3 pt-3">{Texto}</p></div>
+              <p className="mt-3 pt-3">{Texto}</p>
+            </div>
             <div className="d-flex flex-row-reverse">
               <div className="p-2">
-                <button className="btn btn-primary" onClick = {() => window.location.reload()} data-bs-dismiss="modal">
+                <button
+                  className="btn btn-primary"
+                  onClick={() => window.location.reload()}
+                  data-bs-dismiss="modal"
+                >
                   {TxtButton}
                 </button>
               </div>
@@ -31,4 +40,4 @@ ModalConf.propTypes = {
   Texto: PropTypes.string.isRequired,
   TxtButton: PropTypes.string.isRequired,
   ide: PropTypes.string.isRequired,
-}
+};

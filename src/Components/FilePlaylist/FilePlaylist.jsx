@@ -2,12 +2,14 @@ import PropTypes from "prop-types";
 import { dateFormater } from "../../utils/date-format";
 
 import "./FilePlaylist.css";
+import { EliminarElemento } from "../EliminarElemento/EliminarElemento";
 
 const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
   return (
     <>
+    <EliminarElemento Imagen= {UrlImg} Titulo= {Titulo}/>
       <div className="row video-elente-file">
-        <div  className="col-1 d-flex align-items-center justify-content-center">
+        <div className="col-1 d-flex align-items-center justify-content-center">
           <p className="text-center filePlayListId">{Id}</p>
         </div>
         <div className="col-7 d-flex align-items-center">
@@ -24,8 +26,8 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
         <div className="col-1 d-flex align-items-center justify-content-center">
           <p className="text-center">{Duracion}</p>
         </div>
-        <div  className="col-1 d-flex align-items-center justify-content-center">
-           <button
+        <div className="col-1 d-flex align-items-center justify-content-center">
+          <button
             data-bs-toggle="dropdown"
             className="dropdown-vertical-button"
           >
@@ -118,6 +120,30 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, Id, UrlImg }) => {
                 &nbsp;Editar playlist
               </button>
             </li>
+            <li>
+                <button
+                  type="button"
+                  className="dropdown-item color-boton"
+                  data-bs-toggle="modal"
+                  data-bs-target="#EliminarModal"
+                  data-bs-whatever="@fat"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                  >
+                    <path
+                      d="M9.375 1.25H5.625C4.93563 1.25 4.375 1.81062 4.375 2.5V3.75H1.875V5H3.125V12.5C3.125 13.1894 3.68562 13.75 4.375 13.75H10.625C11.3144 13.75 11.875 13.1894 11.875 12.5V5H13.125V3.75H10.625V2.5C10.625 1.81062 10.0644 1.25 9.375 1.25ZM5.625 2.5H9.375V3.75H5.625V2.5ZM10.625 12.5H4.375V5H10.625V12.5Z"
+                      fill="#F2F2F2"
+                    />
+                  </svg>
+                  &nbsp;Eliminar Playlist
+                </button>
+              </li>
+            
           </ul>
         </div>
       </div>
