@@ -96,9 +96,9 @@ export const Aniadir = () => {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 14 20"
+          width="30"
+          height="30"
+          viewBox="0 0 14 15"
           fill="none"
         >
           <path d="M14 6H8V0H6V6H0V8H6V14H8V8H14V6Z" fill="black" />
