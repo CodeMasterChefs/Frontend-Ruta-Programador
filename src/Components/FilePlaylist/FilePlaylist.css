@@ -14,7 +14,7 @@
 
 .video-elente-file{
     border-top: 8   px solid #100626; 
-    border-bottom: 4px solid #100626;
+    border-bottom: 15px solid #100626;
     background: var(--Degrd-4, linear-gradient(90deg, rgba(72,245,243,0.5) 13.02%, rgba(34,117,147,0.5) 66.67%,  rgba(16,6,38,0.5) 100%));
 }
 
