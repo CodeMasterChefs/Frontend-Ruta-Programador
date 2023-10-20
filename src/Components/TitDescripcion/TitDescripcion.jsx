@@ -34,9 +34,9 @@ export const TitDescripcion = ({
         <div className="d-flex justify-content-start">
           <button className="btn btn-primary play-button">
             <svg
-              width="30"
-              height="30"
-              viewBox="0 0 30 30"
+              width="28"
+              height="28"
+              viewBox="2 2 25 25"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
