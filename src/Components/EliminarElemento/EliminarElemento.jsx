@@ -1,21 +1,31 @@
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
 import "./Eliminar.css";
+import api from "../../config/site.config";
 import PropTypes from "prop-types";
 
-export const EliminarElemento = ({Imagen = "", Titulo = "Titulo"}) => {
+export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => {
+
+  const handleDelete = async () => {
+    try {
+      const response = await api.remove(`elemento_playlists?idElemento=${IdElemento}&idPlaylist=${IdPlaylist}`)
+      console.log(response);
+    } catch (error) {
+      console.error('Error al eliminar el elemento:', error);
+    }
+  };
 
   return (
     <>
       <div>
         <ModalConf
-          Texto= {"El video " + Titulo + " se eliminó correctamente de tu Playlist"}
+          Texto={"El video se eliminó correctamente de tu Playlist"}
           TxtButton="Aceptar"
           ide="ModalConfirmacionEliminar"
         />
 
         <div
           className="modal fade"
-          id="EliminarModal"
+          id={"eliminarElementoModal" + IdElemento}
           tabIndex="-1"
           aria-labelledby="exampleModalLabel"
           aria-hidden="true"
@@ -71,16 +81,16 @@ export const EliminarElemento = ({Imagen = "", Titulo = "Titulo"}) => {
                                   className="input-group-text"
                                   id="inputGroup-sizing-lg"
                                 >
-                                  <img src= {Imagen} className="img-fluid" alt="..."/>
+                                  <img src={Imagen} className="img-fluid" alt="..." />
                                 </span>
 
                                 <div>
-                                <p className="d-flex align-items-center text-Titulo">
-                                  {Titulo}
-                                </p>
+                                  <p className="d-flex align-items-center text-Titulo">
+                                    {Titulo}
+                                  </p>
                                 </div>
-                                
-                                
+
+
                               </div>
                             </div>
                           </div>
@@ -96,6 +106,7 @@ export const EliminarElemento = ({Imagen = "", Titulo = "Titulo"}) => {
                     data-bs-target="#ModalConfirmacionEliminar"
                     data-bs-toggle="modal"
                     type="submit"
+                    onClick={handleDelete}
                   >
                     Eliminar
                   </button>
@@ -111,5 +122,7 @@ export const EliminarElemento = ({Imagen = "", Titulo = "Titulo"}) => {
 EliminarElemento.propTypes = {
   Imagen: PropTypes.string.isRequired,
   Titulo: PropTypes.string.isRequired,
+  IdPlaylist: PropTypes.number.isRequired,
+  IdElemento: PropTypes.number.isRequired,
 };
 export default EliminarElemento;

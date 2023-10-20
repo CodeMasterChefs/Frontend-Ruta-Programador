@@ -113,8 +113,10 @@ const MiPlaylist = () => {
                     Fecha={elemento.fechaAgregado}
                     Duracion={elemento.duracionElemento}
                     UrlImg={elemento.urlImg}
-                    Id={index + 1}
+                    KeyOrderValue={index + 1}
                     className="fileplaylist-item"
+                    IdPlaylist={params.idPlaylist}
+                    IdElemento={elemento.idElemento}
                   />
                 ))}
                 <div className="add-playlist-container">
