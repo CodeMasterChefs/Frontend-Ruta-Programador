@@ -1,18 +1,30 @@
-//import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
 import SideBar from "./Components/SideBar/SideBar";
 import MisPlaylistsPage from "./Pages/MisPlaylistsPage/MisPlaylistsPage";
 import NavBar from "./Components/NavBar/NavBar";
-//import ComunidadPage from "./Pages/ComunidadPage/ComunidadPage";
+import ComunidadPage from "./Pages/ComunidadPage/ComunidadPage";
 import TuCuentaPage from "./Pages/TuCuentaPage/TuCuentaPage";
 import MiPlaylist from "./Pages/MiPlaylist/MiPlaylist";
 import RegistroUsuarioPage from "./Pages/RegistroUsuarioPage/RegistroUsuarioPage";
-//import CrearPlaylist from "./Components/CrearPlaylist/CrearPlaylist";
+import ProtectedRoute from "./ProtectedRoute";
+import LoginPage from "./Pages/LoginPage/LoginPage";
+
 function App() {
   return (
     <>
-      <div className="container-fluid">
+      <Routes>
+        <Route path="/" element={<HomePage></HomePage>}></Route>
+        <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
+        <Route path="/iniciar_sesion" element={<LoginPage />}></Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/mis_playlists" element={<HomePage><MisPlaylistsPage /></HomePage>} />
+          <Route path="/mis_playlists/:idPlaylist" element={<HomePage><MiPlaylist /></HomePage>} />
+          <Route path="/comunidad" element={<HomePage><ComunidadPage/></HomePage>} />
+          <Route path="/mi_cuenta" element={<HomePage><TuCuentaPage /></HomePage>} />
+        </Route>
+      </Routes>
+      {/* <div className="container-fluid">
         <NavBar />
         <div className="row">
           <div className="col-sm-3 px-0">
@@ -20,21 +32,19 @@ function App() {
           </div>
           <div className="col-sm-9">
             <Routes>
-              <Route path="/" element={<HomePage></HomePage>}></Route>
-              <Route
-                path="/mis_playlists"
-                element={<MisPlaylistsPage />}
-              ></Route>
-              <Route
-                path="/mis_playlists/:idPlaylist"
-                element={<MiPlaylist />}
-              />
-              <Route path="/comunidad" element={<RegistroUsuarioPage />}></Route>
-              <Route path="/mi_cuenta" element={<TuCuentaPage />}></Route>
+              <Route element={<ProtectedRoute/>}>
+                <Route path="/mis_playlists" element={<MisPlaylistsPage />} />
+                <Route
+                  path="/mis_playlists/:idPlaylist"
+                  element={<MiPlaylist />}/>
+                <Route path="/comunidad" element={<RegistroUsuarioPage />} />
+                <Route path="/mi_cuenta" element={<TuCuentaPage />} />
+              </Route>
+              
             </Routes>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

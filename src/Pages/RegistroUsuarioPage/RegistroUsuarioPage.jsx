@@ -1,5 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import "./RegistroUsuarioPage.css";
 const RegistroUsuarioPage = () => {
+  const navigate = useNavigate();
+  const onRegister = () => {
+    
+    navigate('/mis_playlists/81', {
+      replace : true,
+      state: {
+        logged: true
+      }
+    })
+  }
   return (
     <div className="container">
       <div className="row">
@@ -45,9 +56,10 @@ const RegistroUsuarioPage = () => {
             <button
               type="button"
               className="btn btn-primary"
-              data-bs-toggle="modal"
+              /* data-bs-toggle="modal"
               data-bs-target="#modalCrearPlaylist"
-              data-bs-whatever="@mdo"
+              data-bs-whatever="@mdo" */
+              onClick={() => onRegister()}
             >
               Registrarse
             </button>
