@@ -13,14 +13,14 @@
  }
 
 .video-elente-file{
-    border-top: 8   px solid #100626; 
-    border-bottom: 4px solid #100626;
+    border-top: 5px solid #100626; 
+    border-bottom: 12px solid #100626;
     background: var(--Degrd-4, linear-gradient(90deg, rgba(72,245,243,0.5) 13.02%, rgba(34,117,147,0.5) 66.67%,  rgba(16,6,38,0.5) 100%));
 }
 
  .imagen-personalizada {
-    width: 200px;
-    height: 100px; 
+    width: 144px;
+    height: 108px; 
     margin-top: 0px;
     margin-left: 0px;
     margin-right: 0px;
