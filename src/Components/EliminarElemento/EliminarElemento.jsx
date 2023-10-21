@@ -74,7 +74,7 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
                           className="col-form-label"
                         ></label>
                         <div className="row mb-3">
-                          <div className="p-2">
+                          <div className="p-2 d-flex align-items-center body-content-modal">
                             <div className="form-floating">
                               <div className="input-group input-group-lg">
                                 <span
@@ -102,7 +102,7 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
                 </form>
                 <div className="d-flex justify-content-end">
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-primary btn-delete"
                     data-bs-target="#ModalConfirmacionEliminar"
                     data-bs-toggle="modal"
                     type="submit"
