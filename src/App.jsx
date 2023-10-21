@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
 import SideBar from "./Components/SideBar/SideBar";
 import MisPlaylistsPage from "./Pages/MisPlaylistsPage/MisPlaylistsPage";
@@ -9,22 +9,52 @@ import MiPlaylist from "./Pages/MiPlaylist/MiPlaylist";
 import RegistroUsuarioPage from "./Pages/RegistroUsuarioPage/RegistroUsuarioPage";
 import ProtectedRoute from "./ProtectedRoute";
 import LoginPage from "./Pages/LoginPage/LoginPage";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<HomePage></HomePage>}></Route>
-        <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
-        <Route path="/iniciar_sesion" element={<LoginPage />}></Route>
-        <Route element={<ProtectedRoute />}>
-          <Route path="/mis_playlists" element={<HomePage><MisPlaylistsPage /></HomePage>} />
-          <Route path="/mis_playlists/:idPlaylist" element={<HomePage><MiPlaylist /></HomePage>} />
-          <Route path="/comunidad" element={<HomePage><ComunidadPage/></HomePage>} />
-          <Route path="/mi_cuenta" element={<HomePage><TuCuentaPage /></HomePage>} />
-        </Route>
-      </Routes>
-      {/* <div className="container-fluid">
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage></HomePage>}></Route>
+          <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
+          <Route path="/iniciar_sesion" element={<LoginPage />}></Route>
+          <Route element={<ProtectedRoute />}>
+            <Route
+              path="/mis_playlists"
+              element={
+                <HomePage>
+                  <MisPlaylistsPage />
+                </HomePage>
+              }
+            />
+            <Route
+              path="/mis_playlists/:idPlaylist"
+              element={
+                <HomePage>
+                  <MiPlaylist />
+                </HomePage>
+              }
+            />
+            <Route
+              path="/comunidad"
+              element={
+                <HomePage>
+                  <ComunidadPage />
+                </HomePage>
+              }
+            />
+            <Route
+              path="/mi_cuenta"
+              element={
+                <HomePage>
+                  <TuCuentaPage />
+                </HomePage>
+              }
+            />
+          </Route>
+        </Routes>
+        {/* <div className="container-fluid">
         <NavBar />
         <div className="row">
           <div className="col-sm-3 px-0">
@@ -45,7 +75,8 @@ function App() {
           </div>
         </div>
       </div> */}
-    </>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

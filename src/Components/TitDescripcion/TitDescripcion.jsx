@@ -343,9 +343,9 @@ export const TitDescripcion = ({
 };
 
 TitDescripcion.propTypes = {
-  IdPlaylist: PropTypes.string.isRequired,
+  IdPlaylist: PropTypes.number.isRequired,
   Titulo: PropTypes.string.isRequired,
   Descripcion: PropTypes.string.isRequired,
-  UrlIcon: PropTypes.string.isRequired,
+  UrlIcon: PropTypes.number.isRequired,
   handleShow: PropTypes.func.isRequired
 };
