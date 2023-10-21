@@ -1,16 +1,17 @@
 .color-boton {
   color: white;
 }
-.last-row {
-  min-width: 40px; /* Puedes ajustar el valor según tus necesidades */
+
+.form-label{
+  margin: 0%;
 }
 
 .text-Titulo {
-  width: 500px;
-  height: 100px;
+  width: 400px;
+  height: 80px;
   background-color: transparent; /* Puedes cambiar el color de fondo a tu gusto */
   margin-bottom: 0%;
-  padding-left: 8rem;
+  padding-left: 4rem;
 }
 
 .input-group-text{
@@ -22,9 +23,9 @@
 
 .body-content-modal{
   background: var(--Degrd-4, linear-gradient(90deg, rgba(72,245,243,0.5) 13.02%, rgba(34,117,147,0.5) 66.67%,  rgba(16,6,38,0.5) 100%)) !important;
+  padding: 0.3rem !important;
 }
 
 .img-fluid{
-  max-width: 30%;
-  height: auto;
+  height: 80px;
 }

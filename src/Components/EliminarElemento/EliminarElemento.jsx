@@ -44,9 +44,7 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
                 ></button>
               </div>
               <div className="modal-body">
-                <form>
-                  <div className="d-flex mb-2">
-                    <div className="p-2">
+                <div className="p-2">
                       <svg
                         width="24"
                         height="24"
@@ -59,31 +57,26 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
                           fill="#FFFF00"
                         />
                       </svg>
-                    </div>
-                    <div className="p-2 flex-colum">
                       <label htmlFor="basic-url" className="form-label">
                         ¿Estás seguro de eliminar este elemento de tu Playlist?
-                      </label>
-                      <label
-                        htmlFor="message-text"
-                        className="col-form-label"
-                      ></label>
-                      <div className="form-floating">
-                        <div className="row mb-3">
+                     </label>
+                    </div>
+                  <div className="d-flex d-flex justify-content-center">
+                    <div className="p-2 d-flex justify-content-center">
+                    <div className="row mx-1">
                           <div className="p-2 d-flex align-items-center body-content-modal">
-                            <div>
+                            <div className="col-3 d-flex justify-content-center">
                               <img src={Imagen} className="img-fluid" alt="..." />
+                            </div>
+                            <div className="col-9 d-flex justify-content-center">
                               <p className="d-flex align-items-center text-Titulo">
                                     {Titulo}
                               </p>
                             </div>
                           </div>
                         </div>
-                      </div>
                     </div>
-                    <div className="p-2 last-row"></div>
                   </div>
-                </form>
                 <div className="d-flex justify-content-end">
                   <button
                     className="btn btn-primary btn-delete"
