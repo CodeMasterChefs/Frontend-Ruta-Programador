@@ -15,13 +15,13 @@ export const ModalConf = ({
       >
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
-            <div className="modal-body d-flex justify-content-center">
-              <p className="mt-3 pt-3">{Texto}</p>
+            <div className="p-0 modal-body d-flex justify-content-center">
+              <p className="mt-3 pt-3 mb-0">{Texto}</p>
             </div>
             <div className="d-flex flex-row-reverse">
               <div className="p-2">
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-primary btn-small"
                   onClick={() => window.location.reload()}
                   data-bs-dismiss="modal"
                 >
