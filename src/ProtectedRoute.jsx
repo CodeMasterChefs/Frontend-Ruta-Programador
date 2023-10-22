@@ -1,8 +1,9 @@
-import { Navigate, Outlet, useLocation } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 
 const ProtectedRoute = () => {
-    const {state} = useLocation();
-  return state?.logged ? <Outlet/> : <Navigate to='/registro' />
-}
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <Outlet /> : <Navigate to="/registro" />;
+};
 
-export default ProtectedRoute
+export default ProtectedRoute;

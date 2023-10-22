@@ -1,14 +1,12 @@
-//import SideBar from "../../Components/SideBar/SideBar.jsx";
-
-import { useLocation } from "react-router-dom";
 import SideBar from "../../Components/SideBar/SideBar";
 import NavBar from "../../Components/NavBar/NavBar";
+import { useAuth } from "../../context/AuthContext";
 
 const HomePage = ({children}) => {
-  const { state } = useLocation();
+  const {isAuthenticated} = useAuth();
   return (
     <>
-      {state?.logged ? (
+      {isAuthenticated ? (
         <div className="container-fluid">
           <NavBar />
           <div className="row">

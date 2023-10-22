@@ -3,40 +3,25 @@ import "./RegistroUsuarioPage.css";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
+import CancelarRegistro from "../../Components/ModalRegister/CancelarRegistro";
 const RegistroUsuarioPage = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
-  const {signup, isAuthenticated} = useAuth();
+  const { register, handleSubmit, formState: {
+    errors
+  } } = useForm();
+  const {signup, isAuthenticated, errors: registerErrors} = useAuth();
 
   useEffect(() => {
     if(isAuthenticated){
-      navigate("/mis_playlists", {
-        replace: true,
-        state: {
-          logged: true,
-        },
-      });
+      navigate("/mis_playlists");
     }
   }, [isAuthenticated])
 
   const onSubmit = handleSubmit((values) => {
     signup(values);
     console.log(values)
-    navigate("/mis_playlists", {
-      replace: true,
-      state: {
-        logged: true,
-      },
-    });
   });
-  const onRegister = () => {
-    navigate("/mis_playlists", {
-      replace: true,
-      state: {
-        logged: true,
-      },
-    });
-  };
+
   return (
     <div className="container">
       <div className="row">
@@ -60,6 +45,7 @@ const RegistroUsuarioPage = () => {
                 className="form-control"
                 placeholder="Ingresar nombre"
               />
+              {errors.username?.message && (<p>{errors.username?.message}</p>)}
               <div data-lastpass-icon-root="true"></div>
             </div>
 
@@ -72,6 +58,7 @@ const RegistroUsuarioPage = () => {
                 type="email"
                 placeholder="Ingresar correo"
               />
+              {errors.email?.message && (<p>{errors.email?.message}</p>)}
               <div data-lastpass-icon-root="true"></div>
             </div>
 
@@ -84,6 +71,7 @@ const RegistroUsuarioPage = () => {
                 type="password"
                 placeholder="Ingresar contraseña"
               />
+              {errors.password?.message && (<p>{errors.password?.message}</p>)}
               <div data-lastpass-icon-root="true"></div>
             </div>
 
@@ -96,19 +84,25 @@ const RegistroUsuarioPage = () => {
                 {...register("password2", { required: true })}
                 placeholder="Ingresar contraseña"
               />
+              {errors.password2?.message && (<p>{errors.password2?.message}</p>)}
               <div data-lastpass-icon-root="true"></div>
             </div>
             <br></br>
+            {registerErrors.map((error, i) => (<p className="" key={i}>{error}</p>))}
+          </form>
+            <div className="d-flex justify-content-end">
+              <CancelarRegistro/>
             <button
               type="submit"
               className="btn btn-primary"
               /* data-bs-toggle="modal"
               data-bs-target="#modalCrearPlaylist"
               data-bs-whatever="@mdo" */
+              onClick={onSubmit}
             >
               Registrarse
             </button>
-          </form>
+            </div>
         </div>
       </div>
     </div>
