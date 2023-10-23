@@ -225,7 +225,7 @@ const Playlist = ({ CantPlaylists }) => {
       </div>
       <ModalConf
         Texto="Tu playlist ha sido creada con éxito."
-        ide="ModalConfirmacion"
+        ide="ModalConfirmacionPlaylist"
         TxtButton="Aceptar"
       />
 

@@ -87,6 +87,7 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlayli
                 &nbsp;Mover
               </button>
             </li>
+            {/* Íconos comentados */}
             {/* <li>
               <button className="dropdown-item color-boton">
                 <svg
