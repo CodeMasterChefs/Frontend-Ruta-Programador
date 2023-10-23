@@ -1,0 +1,14 @@
+.input-box{
+    width: 530px;
+    height: 35px;
+    border-radius: 0.3rem;
+    background: rgba(242, 242, 242, 0.15);
+}
+
+.required.field{
+    padding-bottom: 1rem;
+}
+
+.form-title{
+    padding-bottom: 0.3rem;
+}
