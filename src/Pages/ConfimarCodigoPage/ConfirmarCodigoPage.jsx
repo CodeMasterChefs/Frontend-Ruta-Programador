@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import ArrowIconButton from '../../Components/IconButtons/ArrowIconButton';
-
+import "./ConfirmarCodigoPage.css"
 const ConfirmarCodigoPage = () => {
     const [verificationCode, setVerificationCode] = useState(['', '', '', '', '']);
     const [isRegistrationSuccessful, setIsRegistrationSuccessful] = useState(false);
@@ -59,9 +59,9 @@ const ConfirmarCodigoPage = () => {
                     <p><b>Ingresa el código de verificación:</b></p>
                     </div>
                     
-                    <div className="verification-code-inputs">
+                    <div className="verification-code-inputs text-center">
                         {verificationCode.map((code, index) => (
-                            <input
+                            <input className='code-inp'
                                 key={index}
                                 type="text"
                                 value={code}
