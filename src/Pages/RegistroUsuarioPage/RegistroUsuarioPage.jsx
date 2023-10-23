@@ -3,13 +3,15 @@ import "./RegistroUsuarioPage.css"
 const RegistroUsuarioPage = () => {
   return (
     <div className="container">
+      {/* Mejorar el estilo de undraw image sin usar absolute y que no afecte el responsive */}
+      <div className="undraw-image">
+        <img src="src/assets/Image.svg" alt="Ilustración" />
+      </div>
       <div className="row">
-        <div className="col-md-7">
-          <img src="src/assets/undraw_to_the_moon_re_q21i 1.svg" alt="Ilustración" />
-        </div>
+        <div className="col-md-7"></div>
         <div className="col-md-5">
-          <h1>Registrate</h1>
-          <hr></hr>
+          <h3>Registrate</h3>
+          <hr className="line-header"></hr>
           <br></br>
           <div>
             <div className="required field">

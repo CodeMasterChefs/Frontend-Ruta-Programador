@@ -12,3 +12,13 @@
 .form-title{
     padding-bottom: 0.3rem;
 }
+
+.line-header {
+    opacity: .80 !important;
+}
+
+.undraw-image{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
