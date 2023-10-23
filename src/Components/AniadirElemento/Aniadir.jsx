@@ -55,7 +55,7 @@ export const Aniadir = () => {
     try {
       await fetchData();
       document.getElementById("closeModal").click();
-      document.getElementById("btnModalConfirm").click();
+      document.getElementById("btnConfirmAgregar").click();
     } catch (error) {
       // console.log(error);
     }
@@ -83,7 +83,7 @@ export const Aniadir = () => {
         className="btn btn-primary btn-confirm-modal"
         data-bs-toggle="modal"
         data-bs-target="#ModalConfirmacionAniadir"
-        id="btnModalConfirm"
+        id="btnConfirmAgregar"
       >
         Launch demo modal
       </button>
@@ -137,13 +137,9 @@ export const Aniadir = () => {
                     className="col-form-label"
                   ></label>
                   <div className="form-floating">
-                    <label
-                      htmlFor="message-text"
-                      className="col-form-label"
-                    ></label>
                     <div className="form-floating">
                       <div className="input-group mb-3">
-                        <div className="input-group mb-3">
+                        <div className="input-group mb-0">
                           <span className="input-group-text" id="basic-addon1">
                             Enlace:
                           </span>

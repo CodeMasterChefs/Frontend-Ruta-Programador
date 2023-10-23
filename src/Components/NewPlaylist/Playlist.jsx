@@ -65,7 +65,7 @@ const Playlist = ({ CantPlaylists }) => {
           descriptionError: "",
         });
         setModalVisible(true);
-        document.getElementById("btnModalConfirm").click();
+        document.getElementById("btnModalConfirmPlaylist").click();
       })
       .catch((error) => {
         if (error.response && error.response.data) {
@@ -234,7 +234,7 @@ const Playlist = ({ CantPlaylists }) => {
         className="btn btn-primary btn-confirm-modal"
         data-bs-toggle="modal"
         data-bs-target="#ModalConfirmacionPlaylist"
-        id="btnModalConfirm"
+        id="btnModalConfirmPlaylist"
       >
         Launch demo modal
       </button>
