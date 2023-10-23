@@ -43,7 +43,7 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
                   aria-label="Close"
                 ></button>
               </div>
-              <div className="modal-body">
+              <div className="modal-body iconPadding ">
                 <div className="p-2">
                       <svg
                         width="24"
@@ -57,7 +57,7 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
                           fill="#FFFF00"
                         />
                       </svg>
-                      <label htmlFor="basic-url" className="form-label">
+                      <label htmlFor="basic-url" className="form-label ms-3">
                         ¿Estás seguro de eliminar este elemento de tu Playlist?
                      </label>
                     </div>
