@@ -234,7 +234,7 @@ const Playlist = ({ CantPlaylists }) => {
         className="btn btn-primary btn-confirm-modal"
         data-bs-toggle="modal"
         data-bs-target="#ModalConfirmacionPlaylist"
-        id="btnModalConfirmPlaylisy"
+        id="btnModalConfirmPlaylist"
       >
         Launch demo modal
       </button>
