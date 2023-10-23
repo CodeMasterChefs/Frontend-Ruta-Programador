@@ -5,7 +5,8 @@ import SideBar from "./Components/SideBar/SideBar";
 import MisPlaylistsPage from "./Pages/MisPlaylistsPage/MisPlaylistsPage";
 import NavBar from "./Components/NavBar/NavBar";
 //import ComunidadPage from "./Pages/ComunidadPage/ComunidadPage";
-import TuCuentaPage from "./Pages/TuCuentaPage/TuCuentaPage";
+//import TuCuentaPage from "./Pages/TuCuentaPage/TuCuentaPage";
+import ConfirmarCodigoPage from "./Pages/ConfimarCodigoPage/ConfirmarCodigoPage"
 import MiPlaylist from "./Pages/MiPlaylist/MiPlaylist";
 import RegistroUsuarioPage from "./Pages/RegistroUsuarioPage/RegistroUsuarioPage";
 //import CrearPlaylist from "./Components/CrearPlaylist/CrearPlaylist";
@@ -30,7 +31,7 @@ function App() {
                 element={<MiPlaylist />}
               />
               <Route path="/comunidad" element={<RegistroUsuarioPage />}></Route>
-              <Route path="/mi_cuenta" element={<TuCuentaPage />}></Route>
+              <Route path="/mi_cuenta" element={<ConfirmarCodigoPage />}></Route>
             </Routes>
           </div>
         </div>

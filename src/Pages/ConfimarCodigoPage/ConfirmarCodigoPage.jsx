@@ -50,12 +50,15 @@ const ConfirmarCodigoPage = () => {
                 </div>
             ) : (
                 <div>
-                    <h1><b>Verifica tu correo electrónico</b></h1>
+                    <div className="text-center">
+                    <h1><b>Verifica tu correo electrónico </b></h1>
                     <p>
                         Te enviamos un código de verificación al correo con el que te
                         registraste, revisa tu bandeja
                     </p>
                     <p><b>Ingresa el código de verificación:</b></p>
+                    </div>
+                    
                     <div className="verification-code-inputs">
                         {verificationCode.map((code, index) => (
                             <input
