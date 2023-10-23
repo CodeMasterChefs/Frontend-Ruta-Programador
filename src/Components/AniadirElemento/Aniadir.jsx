@@ -137,13 +137,9 @@ export const Aniadir = () => {
                     className="col-form-label"
                   ></label>
                   <div className="form-floating">
-                    <label
-                      htmlFor="message-text"
-                      className="col-form-label"
-                    ></label>
                     <div className="form-floating">
                       <div className="input-group mb-3">
-                        <div className="input-group mb-3">
+                        <div className="input-group mb-0">
                           <span className="input-group-text" id="basic-addon1">
                             Enlace:
                           </span>
