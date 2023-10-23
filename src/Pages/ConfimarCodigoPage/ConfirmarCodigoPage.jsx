@@ -72,7 +72,9 @@ const ConfirmarCodigoPage = () => {
                         ))}
                     </div>
                     {error && <p>{error}</p>}
-                    <button onClick={handleEnviarClick}>Enviar</button>
+                    <div className="container">
+                      <button onClick={handleEnviarClick}>Enviar</button>
+                    </div>
                 </div>
             )}
         </div>
