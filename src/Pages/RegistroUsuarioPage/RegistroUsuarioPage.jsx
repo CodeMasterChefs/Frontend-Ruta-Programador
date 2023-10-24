@@ -6,20 +6,22 @@ import { useEffect } from "react";
 import CancelarRegistro from "../../Components/ModalRegister/CancelarRegistro";
 const RegistroUsuarioPage = () => {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: {
-    errors
-  } } = useForm();
-  const {signup, isAuthenticated, errors: registerErrors} = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const { signup, isAuthenticated, errors: registerErrors } = useAuth();
 
   useEffect(() => {
-    if(isAuthenticated){
+    if (isAuthenticated) {
       navigate("/mis_playlists");
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated]);
 
   const onSubmit = handleSubmit((values) => {
     signup(values);
-    console.log(values)
+    console.log(values);
   });
 
   return (
@@ -45,10 +47,13 @@ const RegistroUsuarioPage = () => {
                 className="form-control"
                 placeholder="Ingresar nombre"
               />
-              {errors.username?.message && (<p>{errors.username?.message}</p>)}
-              <div data-lastpass-icon-root="true"></div>
+              {registerErrors.username && (
+                <small>
+                  <p className="text-white">{registerErrors.username[0]}</p>
+                </small>
+              )}
+              {errors.username && <p>La contraseña es obligatoria</p>}
             </div>
-
             <div className="required field ">
               <label>Correo electronico</label>
               <br></br>
@@ -58,10 +63,13 @@ const RegistroUsuarioPage = () => {
                 type="email"
                 placeholder="Ingresar correo"
               />
-              {errors.email?.message && (<p>{errors.email?.message}</p>)}
-              <div data-lastpass-icon-root="true"></div>
+              {registerErrors.email && (
+                <small>
+                  <p className="text-white">{registerErrors.email[0]}</p>
+                </small>
+              )}
+              {errors.email && <p>La contraseña es obligatoria</p>}
             </div>
-
             <div className="required field ">
               <label>Contraseña</label>
               <br></br>
@@ -71,27 +79,43 @@ const RegistroUsuarioPage = () => {
                 type="password"
                 placeholder="Ingresar contraseña"
               />
-              {errors.password?.message && (<p>{errors.password?.message}</p>)}
+              {registerErrors.password && (
+                <small>
+                  <p className="text-white">{registerErrors.password[0]}</p>
+                </small>
+              )}
+              {errors.password && <p>La contraseña es obligatoria</p>}
               <div data-lastpass-icon-root="true"></div>
             </div>
-
             <div className="required field ">
               <label>Confirmar contraseña</label>
               <br></br>
               <input
                 className="form-control"
                 type="password"
-                {...register("password2", { required: true })}
+                {...register("password_confirmation", { required: true })}
                 placeholder="Ingresar contraseña"
               />
-              {errors.password2?.message && (<p>{errors.password2?.message}</p>)}
+              {registerErrors.password_confirmation && (
+                <small>
+                  <p className="text-white">
+                    {registerErrors.password_confirmation[0]}
+                  </p>
+                </small>
+              )}
+              {errors.password_confirmation && (
+                <small>
+                  <p>Confirmar contraseña es obligatorio.</p>
+                </small>
+              )}
               <div data-lastpass-icon-root="true"></div>
             </div>
             <br></br>
-            {registerErrors.map((error, i) => (<p className="" key={i}>{error}</p>))}
+            {/*             {registerErrors.map((error, i) => (<p className="" key={i}>{error}</p>))}
+             */}{" "}
           </form>
-            <div className="d-flex justify-content-end">
-              <CancelarRegistro/>
+          <div className="d-flex justify-content-end">
+            <CancelarRegistro />
             <button
               type="submit"
               className="btn btn-primary"
@@ -102,7 +126,7 @@ const RegistroUsuarioPage = () => {
             >
               Registrarse
             </button>
-            </div>
+          </div>
         </div>
       </div>
     </div>

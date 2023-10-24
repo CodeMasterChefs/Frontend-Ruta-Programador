@@ -10,6 +10,7 @@ import RegistroUsuarioPage from "./Pages/RegistroUsuarioPage/RegistroUsuarioPage
 import ProtectedRoute from "./ProtectedRoute";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
+import ConfirmarCodigoPage from "./Pages/ConfimarCodigoPage/ConfirmarCodigoPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<HomePage></HomePage>}></Route>
           <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
           <Route path="/iniciar_sesion" element={<LoginPage />}></Route>
+          <Route path="/verificar-correo" element={<ConfirmarCodigoPage/>}></Route>
           <Route element={<ProtectedRoute />}>
             <Route
               path="/mis_playlists"
