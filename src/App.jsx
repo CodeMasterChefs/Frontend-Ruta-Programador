@@ -15,9 +15,8 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<HomePage></HomePage>}></Route> */}
-          {/* <Route path="/registro" element={<RegistroUsuarioPage />}></Route> */}
-          <Route path="/" element={<RegistroUsuarioPage />}></Route>
+          <Route path="/" element={<HomePage></HomePage>}></Route>
+          <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
           <Route path="/iniciar_sesion" element={<LoginPage />}></Route>
           <Route path="/verificar-correo" element={<ConfirmarCodigoPage/>}></Route>
           <Route element={<ProtectedRoute />}>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 //import ArrowIconButton from '../../Components/IconButtons/ArrowIconButton';
 import { useAuth } from "../../context/AuthContext";
@@ -7,12 +7,6 @@ const ConfirmarCodigoPage = () => {
 
     const { verificarCodigo, isAuthenticated, verificationError } = useAuth();
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if (isAuthenticated) {
-            navigate("/mis_playlists");
-        }
-    }, [isAuthenticated, navigate]);
 
     const [verificationCode, setVerificationCode] = useState(['', '', '', '', '']);
 
@@ -44,32 +38,36 @@ const ConfirmarCodigoPage = () => {
 
     return (
         <div>
-          {/* <ArrowIconButton /> */}
+            {/* <ArrowIconButton /> */}
             {isAuthenticated ? (
                 <div>
                     <div className="text-center">
-                    <h1><b>¡Registro exitoso!</b></h1>
-                    <p>
-                        Bienvenido a la Ruta del Programador, empieza creando tus playlists
-                        y continúa aprendiendo
-                    </p>
+                        <h1><b>¡Registro exitoso!</b></h1>
+                        <p>
+                            Bienvenido a la Ruta del Programador, empieza creando tus playlists
+                            y continúa aprendiendo
+                        </p>
                     </div>
                     <div className="container1">
-                    <button  type="button" className="btn btn-primary">Continuar</button>
+                        <button type="button" className="btn btn-primary" onClick={() => {
+                            if (isAuthenticated) {
+                                navigate("/mis_playlists");
+                            }
+                        }}>Continuar</button>
                     </div>
-                  
+
                 </div>
             ) : (
                 <div>
                     <div className="text-center">
-                    <h1><b>Verifica tu correo electrónico </b></h1>
-                    <p>
-                        Te enviamos un código de verificación al correo con el que te
-                        registraste, revisa tu bandeja
-                    </p>
-                    <p><b>Ingresa el código de verificación:</b></p>
+                        <h1><b>Verifica tu correo electrónico </b></h1>
+                        <p>
+                            Te enviamos un código de verificación al correo con el que te
+                            registraste, revisa tu bandeja
+                        </p>
+                        <p><b>Ingresa el código de verificación:</b></p>
                     </div>
-                    
+
                     <div className="verification-code-inputs text-center">
                         {verificationCode.map((code, index) => (
                             <input className='code-inp text-center'
@@ -85,7 +83,7 @@ const ConfirmarCodigoPage = () => {
                     {error && <p>{error}</p>}
                     {verificationError && <p>{verificationError}</p>}
                     <div className="container1">
-                      <button type="button" className="btn btn-primary" onClick={handleEnviarClick}>Enviar</button>
+                        <button type="button" className="btn btn-primary" onClick={handleEnviarClick}>Enviar</button>
                     </div>
                 </div>
             )}

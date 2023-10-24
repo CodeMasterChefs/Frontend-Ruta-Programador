@@ -36,7 +36,7 @@ const RegistroUsuarioPage = () => {
       <div className="row">
         <div className="col-md-7"></div>
         <div className="col-md-5">
-          <h2>Registrate</h2>
+          <h3>Regístrate</h3>
           <hr className="line-header"></hr>
           <br></br>
           <form onSubmit={onSubmit}>
