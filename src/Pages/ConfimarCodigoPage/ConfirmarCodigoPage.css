@@ -1,0 +1,12 @@
+.code-inp {
+    height: 45px;
+    width: 45px;
+    margin: 3px;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh; 
+}

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import ArrowIconButton from '../../Components/IconButtons/ArrowIconButton';
+//import ArrowIconButton from '../../Components/IconButtons/ArrowIconButton';
 import { useAuth } from "../../context/AuthContext";
-
+import "./ConfirmarCodigoPage.css"
 const ConfirmarCodigoPage = () => {
 
     const { verificarCodigo, isAuthenticated, verificationError } = useAuth();
@@ -44,27 +44,35 @@ const ConfirmarCodigoPage = () => {
 
     return (
         <div>
-            <ArrowIconButton />
+          {/* <ArrowIconButton /> */}
             {isAuthenticated ? (
                 <div>
+                    <div className="text-center">
                     <h1><b>¡Registro exitoso!</b></h1>
                     <p>
                         Bienvenido a la Ruta del Programador, empieza creando tus playlists
                         y continúa aprendiendo
                     </p>
-                    <button>Continuar</button>
+                    </div>
+                    <div className="container1">
+                    <button  type="button" className="btn btn-primary">Continuar</button>
+                    </div>
+                  
                 </div>
             ) : (
                 <div>
-                    <h1><b>Verifica tu correo electrónico</b></h1>
+                    <div className="text-center">
+                    <h1><b>Verifica tu correo electrónico </b></h1>
                     <p>
                         Te enviamos un código de verificación al correo con el que te
                         registraste, revisa tu bandeja
                     </p>
                     <p><b>Ingresa el código de verificación:</b></p>
-                    <div className="verification-code-inputs">
+                    </div>
+                    
+                    <div className="verification-code-inputs text-center">
                         {verificationCode.map((code, index) => (
-                            <input
+                            <input className='code-inp text-center'
                                 key={index}
                                 type="text"
                                 value={code}
@@ -76,7 +84,9 @@ const ConfirmarCodigoPage = () => {
                     </div>
                     {error && <p>{error}</p>}
                     {verificationError && <p>{verificationError}</p>}
-                    <button onClick={handleEnviarClick}>Enviar</button>
+                    <div className="container1">
+                      <button type="button" className="btn btn-primary" onClick={handleEnviarClick}>Enviar</button>
+                    </div>
                 </div>
             )}
         </div>
