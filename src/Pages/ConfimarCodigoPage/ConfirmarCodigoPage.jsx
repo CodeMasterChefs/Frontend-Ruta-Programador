@@ -41,12 +41,17 @@ const ConfirmarCodigoPage = () => {
             <ArrowIconButton />
             {isRegistrationSuccessful ? (
                 <div>
+                    <div className="text-center">
                     <h1><b>¡Registro exitoso!</b></h1>
                     <p>
                         Bienvenido a la Ruta del Programador, empieza creando tus playlists
                         y continúa aprendiendo
                     </p>
-                    <button onClick={() => { console.log(verificationCode) }}>Continuar</button>
+                    </div>
+                    <div className="container1">
+                    <button  type="button" className="btn btn-primary" onClick={() => { console.log(verificationCode) }}>Continuar</button>
+                    </div>
+                  
                 </div>
             ) : (
                 <div>
@@ -73,7 +78,7 @@ const ConfirmarCodigoPage = () => {
                     </div>
                     {error && <p>{error}</p>}
                     <div className="container1">
-                      <button onClick={handleEnviarClick}>Enviar</button>
+                      <button type="button" className="btn btn-primary" onClick={handleEnviarClick}>Enviar</button>
                     </div>
                 </div>
             )}
