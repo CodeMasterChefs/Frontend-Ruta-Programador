@@ -17,7 +17,7 @@ const RegistroUsuarioPage = () => {
     if (isAuthenticated) {
       navigate("/mis_playlists");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, navigate]);
 
   const onSubmit = handleSubmit((values) => {
     signup(values);

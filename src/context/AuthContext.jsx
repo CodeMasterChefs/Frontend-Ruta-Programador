@@ -27,6 +27,14 @@ export const AuthProvider = ({ children }) => {
   }, [errors]);
 
   useEffect(() => {
+    const checkLogin = async () => {
+      const userData = JSON.parse(localStorage.getItem('userData'));
+      !userData.access_token ? setIsAuthenticated(false) : setIsAuthenticated(true);
+    };
+    checkLogin();
+  }, []);
+
+  useEffect(() => {
     if (verificationError) {
       const timer = setTimeout(() => {
         setVerificationError('');
