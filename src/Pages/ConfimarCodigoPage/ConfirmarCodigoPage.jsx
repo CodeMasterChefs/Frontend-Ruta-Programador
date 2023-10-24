@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ArrowIconButton from '../../Components/IconButtons/ArrowIconButton';
+//import ArrowIconButton from '../../Components/IconButtons/ArrowIconButton';
 import "./ConfirmarCodigoPage.css"
 const ConfirmarCodigoPage = () => {
     const [verificationCode, setVerificationCode] = useState(['', '', '', '', '']);
@@ -38,7 +38,7 @@ const ConfirmarCodigoPage = () => {
 
     return (
         <div>
-            <ArrowIconButton />
+          {/* <ArrowIconButton /> */}
             {isRegistrationSuccessful ? (
                 <div>
                     <div className="text-center">
