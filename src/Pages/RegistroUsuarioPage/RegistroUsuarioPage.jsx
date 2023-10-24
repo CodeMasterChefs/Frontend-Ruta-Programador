@@ -54,10 +54,10 @@ const RegistroUsuarioPage = () => {
                   <p className="text-white">{registerErrors.username[0]}</p>
                 </small>
               )}
-              {errors.username && <p>La contraseña es obligatoria</p>}
+              {errors.username && <p>El nombre de usuario es obligatorio.</p>}
             </div>
             <div className="required field ">
-              <label className="form-title">Correo electronico</label>
+              <label className="form-title">Correo electrónico</label>
               <br></br>
               <input
                 className="input-box"
@@ -70,7 +70,7 @@ const RegistroUsuarioPage = () => {
                   <p className="text-white">{registerErrors.email[0]}</p>
                 </small>
               )}
-              {errors.email && <p>La contraseña es obligatoria</p>}
+              {errors.email && <p>El correo electrónico es obligatorio.</p>}
             </div>
             <div className="required field ">
               <label className="form-title">Contraseña</label>
@@ -86,7 +86,7 @@ const RegistroUsuarioPage = () => {
                   <p className="text-white">{registerErrors.password[0]}</p>
                 </small>
               )}
-              {errors.password && <p>La contraseña es obligatoria</p>}
+              {errors.password && <p>La contraseña es obligatoria.</p>}
               <div data-lastpass-icon-root="true"></div>
             </div>
             <div className="required field ">

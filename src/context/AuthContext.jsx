@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [verificationError, setVerificationError] = useState(null);
-  const [errors, setErrors] = useState({ username: [], email: [], password: [], password_confirmation: [] });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     if (errors) {
@@ -64,8 +64,8 @@ export const AuthProvider = ({ children }) => {
         //setIsAuthenticated(true)
       }
     } catch (error) {
-      console.log(error.response)
-      setErrors(error.response.data.errors)
+      console.error(error.response);
+      setErrors(error.response.data.errors);
     }
   }
 
