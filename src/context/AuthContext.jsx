@@ -68,8 +68,15 @@ export const AuthProvider = ({ children }) => {
       setErrors(error.response.data.errors)
     }
   }
+
+  const logout = () => {
+    localStorage.removeItem('userData');
+    setUser(null);
+    setIsAuthenticated(false);
+  }
+
   return (
-    <AuthContext.Provider value={{ signup, user, isAuthenticated, errors, verificarCodigo, verificationError }}>
+    <AuthContext.Provider value={{ signup, user, isAuthenticated, errors, verificarCodigo, verificationError, logout }}>
       {children}
     </AuthContext.Provider>
   )
