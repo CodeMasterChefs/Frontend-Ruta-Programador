@@ -1,10 +1,21 @@
-import { useState } from 'react';
-import api from "../../config/site.config";
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import ArrowIconButton from '../../Components/IconButtons/ArrowIconButton';
+import { useAuth } from "../../context/AuthContext";
 
 const ConfirmarCodigoPage = () => {
+
+    const { verificarCodigo, isAuthenticated, verificationError } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/mis_playlists");
+        }
+    }, [isAuthenticated, navigate]);
+
     const [verificationCode, setVerificationCode] = useState(['', '', '', '', '']);
-    const [isRegistrationSuccessful, setIsRegistrationSuccessful] = useState(false);
+
     const [error, setError] = useState('');
 
     const handleCodeChange = (index, value) => {
@@ -28,28 +39,20 @@ const ConfirmarCodigoPage = () => {
     };
 
     const handleEnviarClick = async () => {
-        try {
-            const response = await api.post("registro/verificar?codigo=" + verificationCode.join(''));
-            delete response.data.message;
-            localStorage.setItem('userData', JSON.stringify(response.data));
-            setIsRegistrationSuccessful(true);
-        } catch (error) {
-            console.error(error);
-            setError('El código de verificación ingresado es incorrecto.');
-        }
+        verificarCodigo(verificationCode);
     };
 
     return (
         <div>
             <ArrowIconButton />
-            {isRegistrationSuccessful ? (
+            {isAuthenticated ? (
                 <div>
                     <h1><b>¡Registro exitoso!</b></h1>
                     <p>
                         Bienvenido a la Ruta del Programador, empieza creando tus playlists
                         y continúa aprendiendo
                     </p>
-                    <button onClick={() => { console.log(verificationCode) }}>Continuar</button>
+                    <button>Continuar</button>
                 </div>
             ) : (
                 <div>
@@ -72,6 +75,7 @@ const ConfirmarCodigoPage = () => {
                         ))}
                     </div>
                     {error && <p>{error}</p>}
+                    {verificationError && <p>{verificationError}</p>}
                     <button onClick={handleEnviarClick}>Enviar</button>
                 </div>
             )}
