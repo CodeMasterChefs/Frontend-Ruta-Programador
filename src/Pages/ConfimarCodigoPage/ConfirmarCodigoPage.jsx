@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import api from "../../config/site.config";
 import ArrowIconButton from '../../Components/IconButtons/ArrowIconButton';
 
 const ConfirmarCodigoPage = () => {
@@ -26,12 +27,14 @@ const ConfirmarCodigoPage = () => {
         }
     };
 
-    const handleEnviarClick = () => {
-        const expectedCode = '12345'; // Cambia esto por tu código esperado
-        const enteredCode = verificationCode.join('');
-        if (enteredCode === expectedCode) {
+    const handleEnviarClick = async () => {
+        try {
+            const response = await api.post("registro/verificar?codigo=" + verificationCode.join(''));
+            delete response.data.message;
+            localStorage.setItem('userData', JSON.stringify(response.data));
             setIsRegistrationSuccessful(true);
-        } else {
+        } catch (error) {
+            console.error(error);
             setError('El código de verificación ingresado es incorrecto.');
         }
     };
