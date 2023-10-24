@@ -44,7 +44,7 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
                 ></button>
               </div>
               <div className="modal-body iconPadding ">
-                <div className="p-2 ms-5">
+                <div className="p-2  iconPeligro">
                       <svg
                         width="24"
                         height="24"
@@ -57,7 +57,7 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
                           fill="#FFFF00"
                         />
                       </svg>
-                      <label htmlFor="basic-url" className="form-label ms-5">
+                      <label htmlFor="basic-url" className="form-label ms-3">
                         ¿Estás seguro de eliminar este elemento de tu Playlist?
                      </label>
                     </div>
