@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
 import CancelarRegistro from "../../Components/ModalRegister/CancelarRegistro";
+import svgAstronautra from "../../assets/Image.svg";
+
 const RegistroUsuarioPage = () => {
   const navigate = useNavigate();
   const {
@@ -26,25 +28,25 @@ const RegistroUsuarioPage = () => {
 
   return (
     <div className="container">
+      <img
+        className="undraw-image"
+        src={svgAstronautra}
+        alt="Ilustración"
+      />
       <div className="row">
-        <div className="col-md-6">
-          <img
-            src="src/assets/undraw_to_the_moon_re_q21i 1.svg"
-            alt="Ilustración"
-          />
-        </div>
-        <div className="col-md-6">
+        <div className="col-md-7"></div>
+        <div className="col-md-5">
           <h2>Registrate</h2>
-          <hr></hr>
+          <hr className="line-header"></hr>
           <br></br>
           <form onSubmit={onSubmit}>
             <div className="required field ">
-              <label>Nombre de Usuario</label>
+              <label className="form-title">Nombre de Usuario</label>
               <br></br>
               <input
                 type="text"
                 {...register("username", { required: true })}
-                className="form-control"
+                className="input-box"
                 placeholder="Ingresar nombre"
               />
               {registerErrors.username && (
@@ -55,10 +57,10 @@ const RegistroUsuarioPage = () => {
               {errors.username && <p>La contraseña es obligatoria</p>}
             </div>
             <div className="required field ">
-              <label>Correo electronico</label>
+              <label className="form-title">Correo electronico</label>
               <br></br>
               <input
-                className="form-control"
+                className="input-box"
                 {...register("email", { required: true })}
                 type="email"
                 placeholder="Ingresar correo"
@@ -71,10 +73,10 @@ const RegistroUsuarioPage = () => {
               {errors.email && <p>La contraseña es obligatoria</p>}
             </div>
             <div className="required field ">
-              <label>Contraseña</label>
+              <label className="form-title">Contraseña</label>
               <br></br>
               <input
-                className="form-control"
+                className="input-box"
                 {...register("password", { required: true })}
                 type="password"
                 placeholder="Ingresar contraseña"
@@ -88,10 +90,10 @@ const RegistroUsuarioPage = () => {
               <div data-lastpass-icon-root="true"></div>
             </div>
             <div className="required field ">
-              <label>Confirmar contraseña</label>
+              <label className="form-title">Confirmar contraseña</label>
               <br></br>
               <input
-                className="form-control"
+                className="input-box"
                 type="password"
                 {...register("password_confirmation", { required: true })}
                 placeholder="Ingresar contraseña"

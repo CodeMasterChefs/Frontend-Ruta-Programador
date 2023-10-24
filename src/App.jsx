@@ -1,8 +1,6 @@
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage";
-import SideBar from "./Components/SideBar/SideBar";
 import MisPlaylistsPage from "./Pages/MisPlaylistsPage/MisPlaylistsPage";
-import NavBar from "./Components/NavBar/NavBar";
 import ComunidadPage from "./Pages/ComunidadPage/ComunidadPage";
 import TuCuentaPage from "./Pages/TuCuentaPage/TuCuentaPage";
 import MiPlaylist from "./Pages/MiPlaylist/MiPlaylist";
@@ -17,8 +15,9 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage></HomePage>}></Route>
-          <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
+          {/* <Route path="/" element={<HomePage></HomePage>}></Route> */}
+          {/* <Route path="/registro" element={<RegistroUsuarioPage />}></Route> */}
+          <Route path="/" element={<RegistroUsuarioPage />}></Route>
           <Route path="/iniciar_sesion" element={<LoginPage />}></Route>
           <Route path="/verificar-correo" element={<ConfirmarCodigoPage/>}></Route>
           <Route element={<ProtectedRoute />}>

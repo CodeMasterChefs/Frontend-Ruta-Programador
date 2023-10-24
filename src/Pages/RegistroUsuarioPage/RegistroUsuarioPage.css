@@ -1,15 +1,15 @@
-.input-box{
+.input-box {
     width: 530px;
     height: 35px;
     border-radius: 0.3rem;
     background: rgba(242, 242, 242, 0.15);
 }
 
-.required.field{
+.required .field {
     padding-bottom: 1rem;
 }
 
-.form-title{
+.form-title {
     padding-bottom: 0.3rem;
 }
 
@@ -17,7 +17,7 @@
     opacity: .80 !important;
 }
 
-.undraw-image{
+.undraw-image {
     position: absolute;
     bottom: 0;
     left: 0;
