@@ -66,7 +66,7 @@ const ConfirmarCodigoPage = () => {
                     
                     <div className="verification-code-inputs text-center">
                         {verificationCode.map((code, index) => (
-                            <input className='code-inp'
+                            <input className='code-inp text-center'
                                 key={index}
                                 type="text"
                                 value={code}
