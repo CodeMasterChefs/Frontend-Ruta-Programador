@@ -9,9 +9,11 @@ import ProtectedRoute from "./ProtectedRoute";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
 import ConfirmarCodigoPage from "./Pages/ConfimarCodigoPage/ConfirmarCodigoPage";
+//import InicioSesionPage from "./Pages/InicioSesionPage/InicioSesionPage";
 
 function App() {
   return (
+
     <AuthProvider>
       <BrowserRouter>
         <Routes>
