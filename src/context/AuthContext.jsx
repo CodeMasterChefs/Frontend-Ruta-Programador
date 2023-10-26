@@ -50,6 +50,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('userData', JSON.stringify(response.data));
       setUser(response.data);
       setIsAuthenticated(true);
+      api.setAuthorizationToken(response.data.access_token);
     } catch (error) {
       setVerificationError('El código de verificación ingresado es incorrecto.');
     }
@@ -73,6 +74,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('userData');
     setUser(null);
     setIsAuthenticated(false);
+    api.clearAuthorizationToken();
   }
 
   return (

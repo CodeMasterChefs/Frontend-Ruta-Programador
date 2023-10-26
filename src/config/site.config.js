@@ -4,7 +4,21 @@ class Api {
   constructor() {
     this.instance = axios.create({
       baseURL: 'https://backend-rutadelprogramador-production.up.railway.app/api/',
+      headers: {
+        common: {
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${JSON.parse(localStorage.getItem('userData')).access_token}`
+        }
+      }
     });
+  }
+
+  setAuthorizationToken(token) {
+    this.instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  }
+
+  clearAuthorizationToken() {
+    delete this.instance.defaults.headers.common['Authorization'];
   }
 
   get(url, config = {}) {
