@@ -7,8 +7,8 @@ class Api {
       headers: {
         common: {
           'Accept': 'application/json',
-          'Authorization': `Bearer ${JSON.parse(localStorage.getItem('userData')).access_token}`
-        }
+/*           'Authorization': `Bearer ${JSON.parse(localStorage.getItem('userData')).access_token}`
+ */        }
       }
     });
   }
