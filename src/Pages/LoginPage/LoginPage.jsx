@@ -1,14 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./LoginPage.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [formState, setFormState] = useState({
     email: '',
     password: ''
   });
   const { email, password } = formState;
-  const { signin, signinErrors } = useAuth();
+  const { signin, signinErrors, isAuthenticated } = useAuth();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate("/mis_playlists");
+    }
+  }, [isAuthenticated, navigate]);
 
   const onInputChange = ({ target }) => {
     const { name, value } = target;
@@ -25,7 +32,6 @@ const LoginPage = () => {
   const handleEnviar = async () => {
     //event.preventDefault();
     try {
-      console.log(formState);
       signin(formState)
     } catch (error) {}
   };
