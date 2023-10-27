@@ -46,7 +46,13 @@ export const AuthProvider = ({ children }) => {
       }, 5500);
       return () => clearTimeout(timer);
     }
-  }, [verificationError]);
+    if(signinErrors){
+      const timer = setTimeout(() => {
+        setSigninErros("");
+      }, 5500);
+      return () => clearTimeout(timer);
+    }
+  }, [verificationError, signinErrors]);
 
   const verificarCodigo = async (verificationCode) => {
     try {
@@ -92,6 +98,7 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.error(error.response);
+      setSigninErros(error.response.data.errors)
     }
   };
 

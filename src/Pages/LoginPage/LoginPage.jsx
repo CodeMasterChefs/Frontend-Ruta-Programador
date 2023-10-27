@@ -5,8 +5,8 @@ import { useAuth } from "../../context/AuthContext";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [formState, setFormState] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
   const { email, password } = formState;
   const { signin, signinErrors, isAuthenticated } = useAuth();
@@ -32,7 +32,7 @@ const LoginPage = () => {
   const handleEnviar = async () => {
     //event.preventDefault();
     try {
-      signin(formState)
+      signin(formState);
     } catch (error) {}
   };
 
@@ -55,11 +55,11 @@ const LoginPage = () => {
                 value={email}
                 onInput={onInputChange}
               />
-              {signinErrors && (
+              {/* {signinErrors && (
                 <em>
                   <small>{signinErrors}</small>
                 </em>
-              )}
+              )} */}
             </div>
             <div className="required field pt-2">
               <label className="form-title">Contraseña:</label>
@@ -71,18 +71,27 @@ const LoginPage = () => {
                 value={password}
                 onInput={onInputChange}
               />
-              {signinErrors && (
+              {/* {signinErrors && (
                 <em>
                   <small>{signinErrors}</small>
                 </em>
-              )}
+              )} */}
             </div>
             <Link to={"/recuperar_contraseña"} href="">
               ¿Olvidaste tu contraseña?
             </Link>
           </form>
+          {signinErrors && (
+            <div className="alert alert-danger" role="alert">
+              {signinErrors}
+            </div>
+          )}
           <div className="d-flex justify-content-end">
-            <button type="submit" className="btn btn-primary" onClick={handleEnviar}>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={handleEnviar}
+            >
               Ingresar
             </button>
           </div>
