@@ -17,6 +17,7 @@ const LoginPage = () => {
             <input
               type="text"
               className="input-box"
+              placeholder="Ingresar correo"
             />
           </div>
           <div className="required field ">
@@ -25,12 +26,15 @@ const LoginPage = () => {
             <input
               type="text"
               className="input-box"
+              placeholder="Ingresar contraseña"
             />
           </div>
-          <a href="">¿Olvidaste tu contraseña?</a>
+          <div className="d-flex justify-content-end">
+            <a href="">¿Olvidaste tu contraseña?</a>
+          </div>
 
         </form>
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-center">
           <button
             type="submit"
             className="btn btn-primary"
@@ -38,8 +42,10 @@ const LoginPage = () => {
             Ingresar
           </button>    
         </div>
-        <p>¿No tienes una cuenta?</p>
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-center">
+          <p>¿No tienes una cuenta?</p>
+        </div>
+        <div className="d-flex justify-content-center">
           <button
             type="submit"
             className="btn btn-primary"
