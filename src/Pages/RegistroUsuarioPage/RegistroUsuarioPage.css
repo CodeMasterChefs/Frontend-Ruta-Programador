@@ -1,5 +1,6 @@
 .input-box {
-    width: 530px;
+    width: 100%; 
+    max-width: 530px; 
     height: 35px;
     border-radius: 0.3rem;
     background: rgba(242, 242, 242, 0.15);
@@ -22,4 +23,6 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    max-width: 100%; 
+    height: auto; 
 }
