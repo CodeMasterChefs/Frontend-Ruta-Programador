@@ -82,8 +82,10 @@ const ConfirmarCodigoPage = () => {
                             />
                         ))}
                     </div>
+                    <div className="text-center code-Error">
                     {error && <p>{error}</p>}
                     {verificationError && <p>{verificationError}</p>}
+                    </div>
                     <div className="container1">
                         <button type="button" className="btn btn-primary" onClick={handleEnviarClick}>Enviar</button>
                     </div>
