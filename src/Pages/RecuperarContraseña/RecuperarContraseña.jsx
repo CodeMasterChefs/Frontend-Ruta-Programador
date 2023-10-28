@@ -153,9 +153,9 @@ const RecuperarContraseña = () => {
               </b>
             </p>
             <p>
-              Pon la dirección de email que usaste para registrarte. Te
-              enviaremos <br></br>un mensaje con tu nombre de usuario y
-              contraseña.
+              Ingrese la dirección e-mail con la que estas registrado y te
+              enviaremos<br></br>un mensaje de verificación para que puedas
+              cambiar tu contraseña
             </p>
           </div>
           <p>
