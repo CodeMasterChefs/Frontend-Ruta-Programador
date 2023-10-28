@@ -9,6 +9,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import LoginPage from "./Pages/LoginPage/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
 import ConfirmarCodigoPage from "./Pages/ConfimarCodigoPage/ConfirmarCodigoPage";
+import RecuperarContraseña from "./Pages/RecuperarContraseña/RecuperarContraseña";
 //import InicioSesionPage from "./Pages/InicioSesionPage/InicioSesionPage";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
           <Route path="/iniciar_sesion" element={<LoginPage />}></Route>
           <Route path="/verificar-correo" element={<ConfirmarCodigoPage/>}></Route>
+          <Route path="/recuperar_contraseña" element={<RecuperarContraseña/>}></Route>
           <Route element={<ProtectedRoute />}>
             <Route
               path="/mis_playlists"
