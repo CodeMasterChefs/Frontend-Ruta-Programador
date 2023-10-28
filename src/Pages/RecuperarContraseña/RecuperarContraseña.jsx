@@ -49,29 +49,6 @@ const RecuperarContraseña = () => {
 
   return (
     <div>
-      <div className="d-flex inline arrow-button-navbar">
-        <button
-          className="btn btn-primary"
-          onClick={() => window.history.back()}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="15"
-            height="15"
-            viewBox="4 7 18 18"
-            fill="none"
-          >
-            <path
-              d="M26.2499 13.75H8.01742L14.6337 7.13377L12.8662 5.36627L3.23242 15L12.8662 24.6338L14.6337 22.8663L8.01742 16.25H26.2499V13.75Z"
-              fill="black"
-            />
-          </svg>
-        </button>
-        <Link className="navbar-brand navbar-text-title" to="/">
-          La Ruta del Programador
-        </Link>
-      </div>
-
       {mostrarMensaje === "confirmarCodigo" && (
         // Seccion de confirmar con codigo de verificacion
         <div>
@@ -83,8 +60,8 @@ const RecuperarContraseña = () => {
                 </b>
               </p>
               <p>
-                Te enviamos un código de verificación al correo con el que
-                podrás cambiar tu contraseña
+                Te enviamos un código de verificación a tu correo, para que{" "}
+                <br></br>puedas cambiar tu contraseña
               </p>
               <p>
                 <b>Ingresa el código de verificación:</b>
@@ -115,6 +92,11 @@ const RecuperarContraseña = () => {
                 Enviar
               </button>
             </div>
+
+            <div className="text-center">
+              <p>¿Aún no recibiste tu código?</p>
+              <Link>Volver a enviar código</Link>
+            </div>
           </div>
         </div>
       )}
@@ -127,12 +109,8 @@ const RecuperarContraseña = () => {
               Recuperación de <br></br> Contraseña
             </b>
           </p>
-          <p>
-            Introduzca su nueva contraseña y vuelva a escribirla para
-            corroborarla
-          </p>
           <div>
-            <p>Nueva contraseña</p>
+            <p>Ingresa una nueva contraseña:</p>
             <input
               type="password"
               value={newPassword}
@@ -140,7 +118,7 @@ const RecuperarContraseña = () => {
             />
           </div>
           <div>
-            <p>Confirmar contraseña</p>
+            <p>Confirma tu contraseña:</p>
             <input
               type="password"
               value={confirmPassword}
@@ -148,7 +126,7 @@ const RecuperarContraseña = () => {
             />
           </div>
           <div className="text-center">
-            <button onClick={handleEnviarClick}>Guardar</button>
+            <button onClick={handleEnviarClick}>Confirmar</button>
           </div>
         </div>
       )}
@@ -161,7 +139,7 @@ const RecuperarContraseña = () => {
               Recuperación de <br></br> Contraseña
             </b>
           </p>
-          <p>Se ha modificado y guardado tu contraseña con éxito</p>
+          <p>Tu contraseña ha sido modificada y guardada con éxito</p>
         </div>
       )}
 
