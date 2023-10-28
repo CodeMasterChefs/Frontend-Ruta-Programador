@@ -66,7 +66,7 @@ const ConfirmarCodigoPage = () => {
                             registraste, revisa tu bandeja
                         </p>
                     </div>
-                    <div className="d-flex">
+                    <div className="d-flex code-ver">
                         <p><b>Ingresa el código de verificación:</b></p>
                     </div>
 
