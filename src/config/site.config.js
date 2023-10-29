@@ -2,13 +2,16 @@ import axios from 'axios';
 
 class Api {
   constructor() {
+    const userDataString = localStorage.getItem('userData');
+    const userData = userDataString ? JSON.parse(userDataString) : null;
+
     this.instance = axios.create({
       baseURL: 'https://backend-rutadelprogramador-production.up.railway.app/api/',
       headers: {
         common: {
           'Accept': 'application/json',
-/*           'Authorization': `Bearer ${JSON.parse(localStorage.getItem('userData')).access_token}`
- */        }
+          'Authorization': userData && userData.access_token ? `Bearer ${userData.access_token}` : null,
+        }
       }
     });
   }
