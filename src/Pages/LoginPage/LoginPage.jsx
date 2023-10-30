@@ -74,7 +74,7 @@ const LoginPage = () => {
                 </em>
               )}
             </div>
-            <Link to={"/recuperar_contraseña"} href="">
+            <Link to={"/recuperar_contraseña"}>
               ¿Olvidaste tu contraseña?
             </Link>
           </form>
