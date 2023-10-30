@@ -27,14 +27,14 @@
 @media screen and (max-width: 912px) {
     .login-bg {
        display: none;
-    }
+    }  
     .login-content{
         display: flex;
-        flex-direction: column; /* Coloca el fondo y el contenido en dos filas */
-        align-items: center;
+        flex-direction: column; 
     }
     .login-title{
         opacity: 100%;
         margin-bottom: 1.5rem;
     }
-  }
+}
+

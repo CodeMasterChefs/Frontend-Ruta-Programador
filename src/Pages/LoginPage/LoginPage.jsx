@@ -36,9 +36,14 @@ const LoginPage = () => {
 
   return (
     <div className="container">
+      <div className="login-bg"></div>
       <div className="row">
-        <div className="col-md-7"></div>
-        <div className="col-md-5">
+        <div className="col-md-7 d-flex align-items-center d-flex justify-content-center">
+          <div className="login-title d-flex justify-content-center">
+            <h1>La Ruta del<br></br>Programador</h1>
+          </div>
+        </div> 
+        <div className="col-md-5 login-content">
           <h3>Iniciar Sesión:</h3>
           <hr className="line-header"></hr>
           <br></br>
@@ -95,7 +100,9 @@ const LoginPage = () => {
               Ingresar
             </button>
           </div>
-          <p>¿No tienes una cuenta?</p>
+          <div className="question-text d-flex justify-content-center">
+            <p>¿No tienes una cuenta?</p>
+          </div>
           <div className="d-flex justify-content-center">
             <Link to={"/registro"} className="btn btn-primary">
               Registrate
