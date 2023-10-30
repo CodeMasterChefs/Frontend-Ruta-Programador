@@ -4,13 +4,15 @@ import svgAstronautra from "../../assets/Image.svg";
 const LoginPage = () => {
   return (
     <div className="container">
-      <img
-        className="undraw-image"
-        src={svgAstronautra}
-        alt="Ilustración"
-      />
-      <div className="row">
-        <div className="col-md-7"></div>
+      <div className="login-bg"></div>
+      <div className="row login-content">
+      <div className="col-md-7">
+          {/* <img
+          className="undraw-image"
+          src={svgAstronautra}
+          alt="Ilustración"
+          /> */}
+        </div>
         <div className="col-md-5">
           <h3>Iniciar Sesión:</h3>
           <hr className="line-header"></hr>
@@ -60,7 +62,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-  </div>
+    </div>
   )
 }
 
