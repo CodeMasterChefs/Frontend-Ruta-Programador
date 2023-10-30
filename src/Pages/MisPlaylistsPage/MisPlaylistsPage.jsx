@@ -13,7 +13,7 @@ const MisPlaylistsPage = () => {
   // Función para cargar los datos desde la API
   const fetchDataCargarPlaylists = async () => {
     try {
-      const response = await api.get("/playlist/2");
+      const response = await api.get("/playlist/1");
       setPlaylists(response.data);
       setLoading(false);
     } catch (error) {
@@ -31,7 +31,6 @@ const MisPlaylistsPage = () => {
   const handleEditarClick = (id) => {
     setSelectedPlaylistId(id);
   };
-  
 
   return (
     <main className="col-sm-11">
@@ -47,7 +46,7 @@ const MisPlaylistsPage = () => {
           <p>Cargando...</p>
         ) : errorCargarPlaylists ? (
           <p>{errorCargarPlaylists}</p>
-        ) : (
+        ) : playlists.length > 0 ? (
           <div className="row row-cols-1 row-cols-md-5 g-4">
             {playlists.map((playlist) => (
               <Card
@@ -64,8 +63,9 @@ const MisPlaylistsPage = () => {
             ))}
 
             <EditarPlaylist IdPlaylist={selectedPlaylistId} />
-
           </div>
+        ) : (
+          <p className="text-center py-4">Empieza creando tus propias playlists.</p>
         )}
       </div>
     </main>
