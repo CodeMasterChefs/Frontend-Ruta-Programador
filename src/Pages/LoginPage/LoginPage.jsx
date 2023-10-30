@@ -9,7 +9,7 @@ const LoginPage = () => {
     password: "",
   });
   const { email, password } = formState;
-  const { signin, signinErrors, isAuthenticated } = useAuth();
+  const { signin, signinErrors, isAuthenticated, emptyErrors, setEmptyErrors } = useAuth();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -23,10 +23,7 @@ const LoginPage = () => {
       ...formState,
       [name]: value,
     });
-    /* setError({
-      titleError: "",
-      descriptionError: "",
-    });  */
+    setEmptyErrors({})
   };
 
   const handleEnviar = async () => {
@@ -55,11 +52,11 @@ const LoginPage = () => {
                 value={email}
                 onInput={onInputChange}
               />
-              {/* {signinErrors && (
+              {emptyErrors && (
                 <em>
-                  <small>{signinErrors}</small>
+                  <small>{emptyErrors.email}</small>
                 </em>
-              )} */}
+              )}
             </div>
             <div className="required field pt-2">
               <label className="form-title">Contraseña:</label>
@@ -71,11 +68,11 @@ const LoginPage = () => {
                 value={password}
                 onInput={onInputChange}
               />
-              {/* {signinErrors && (
+              {emptyErrors && (
                 <em>
-                  <small>{signinErrors}</small>
+                  <small>{emptyErrors.password}</small>
                 </em>
-              )} */}
+              )}
             </div>
             <Link to={"/recuperar_contraseña"} href="">
               ¿Olvidaste tu contraseña?

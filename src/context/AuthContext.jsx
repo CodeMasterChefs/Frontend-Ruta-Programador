@@ -16,7 +16,8 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [verificationError, setVerificationError] = useState(null);
   const [errors, setErrors] = useState({});
-  const [signinErrors, setSigninErros] = useState(null);
+  const [signinErrors, setSigninErrors] = useState(null);
+  const [emptyErrors, setEmptyErrors] = useState({});
 
   useEffect(() => {
     if (errors) {
@@ -29,10 +30,10 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const checkLogin = async () => {
-        const userData = JSON.parse(localStorage.getItem("userData"));
-        !userData.access_token
-          ? setIsAuthenticated(false)
-          : setIsAuthenticated(true);
+      const userData = JSON.parse(localStorage.getItem("userData"));
+      !userData.access_token
+        ? setIsAuthenticated(false)
+        : setIsAuthenticated(true);
     };
     checkLogin();
   }, [isAuthenticated]);
@@ -44,9 +45,9 @@ export const AuthProvider = ({ children }) => {
       }, 5500);
       return () => clearTimeout(timer);
     }
-    if(signinErrors){
+    if (signinErrors) {
       const timer = setTimeout(() => {
-        setSigninErros("");
+        setSigninErrors("");
       }, 5500);
       return () => clearTimeout(timer);
     }
@@ -92,11 +93,21 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(true);
         api.setAuthorizationToken(res.data.access_token);
         //setUser(user)
-        window.location.replace('/mis_playlists')
+        window.location.replace("/mis_playlists");
       }
     } catch (error) {
       console.error(error.response);
-      setSigninErros(error.response.data.errors)
+      if (
+        typeof error.response.data.errors === "object" &&
+        !Array.isArray(error.response.data.errors)
+      ) {
+        setEmptyErrors(error.response.data.errors);
+      } else if (
+        typeof error.response.data.errors === "string" ||
+        Array.isArray(error.response.data.errors)
+      ) {
+        setSigninErrors(error.response.data.errors);
+      }
     }
   };
 
@@ -119,6 +130,8 @@ export const AuthProvider = ({ children }) => {
         logout,
         signin,
         signinErrors,
+        emptyErrors,
+        setEmptyErrors
       }}
     >
       {children}
