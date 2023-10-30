@@ -28,14 +28,14 @@ const RegistroUsuarioPage = () => {
 
   return (
     <div className="container">
-      <img
-        className="undraw-image"
-        src={svgAstronautra}
-        alt="Ilustración"
-      />
+      <div className="registro-bg"></div>
       <div className="row">
-        <div className="col-md-7"></div>
-        <div className="col-md-5">
+        <div className="col-md-7 registro-title d-flex align-items-center d-flex justify-content-center">
+          <div className="login-title d-flex justify-content-center">
+            <h1>La Ruta del<br></br>Programador</h1>
+          </div>
+        </div>
+        <div className="col-md-5 registro-content">
           <h3>Regístrate</h3>
           <hr className="line-header"></hr>
           <br></br>
