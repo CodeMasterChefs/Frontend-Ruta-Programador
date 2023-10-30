@@ -41,7 +41,7 @@ const RegistroUsuarioPage = () => {
           <br></br>
           <form onSubmit={onSubmit}>
             <div className="required field ">
-              <label className="form-title">Nombre de Usuario</label>
+              <label className="form-title">Nombre de Usuario *</label>
               <br></br>
               <input
                 type="text"
@@ -57,7 +57,7 @@ const RegistroUsuarioPage = () => {
               {errors.username && <p>El nombre de usuario es obligatorio.</p>}
             </div>
             <div className="required field ">
-              <label className="form-title">Correo electrónico</label>
+              <label className="form-title">Correo electrónico *</label>
               <br></br>
               <input
                 className="input-box"
@@ -73,7 +73,7 @@ const RegistroUsuarioPage = () => {
               {errors.email && <p>El correo electrónico es obligatorio.</p>}
             </div>
             <div className="required field ">
-              <label className="form-title">Contraseña</label>
+              <label className="form-title">Contraseña *</label>
               <br></br>
               <input
                 className="input-box"
@@ -90,7 +90,7 @@ const RegistroUsuarioPage = () => {
               <div data-lastpass-icon-root="true"></div>
             </div>
             <div className="required field ">
-              <label className="form-title">Confirmar contraseña</label>
+              <label className="form-title">Confirmar contraseña *</label>
               <br></br>
               <input
                 className="input-box"
