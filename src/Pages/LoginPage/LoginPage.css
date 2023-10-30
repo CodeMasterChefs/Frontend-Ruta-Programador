@@ -20,8 +20,21 @@
     background-position: left;
 }
 
-@media screen and (max-width: 768px) {
+.login-title{
+    opacity: 0%;
+}
+
+@media screen and (max-width: 912px) {
     .login-bg {
        display: none;
+    }
+    .login-content{
+        display: flex;
+        flex-direction: column; /* Coloca el fondo y el contenido en dos filas */
+        align-items: center;
+    }
+    .login-title{
+        opacity: 100%;
+        margin-bottom: 1.5rem;
     }
   }

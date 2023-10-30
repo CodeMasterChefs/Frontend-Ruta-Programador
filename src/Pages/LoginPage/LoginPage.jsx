@@ -7,11 +7,7 @@ const LoginPage = () => {
       <div className="login-bg"></div>
       <div className="row login-content">
       <div className="col-md-7">
-          {/* <img
-          className="undraw-image"
-          src={svgAstronautra}
-          alt="Ilustración"
-          /> */}
+        <div className="login-title d-flex justify-content-center"><h1>La Ruta del <br></br>Programador</h1></div>
         </div>
         <div className="col-md-5">
           <h3>Iniciar Sesión:</h3>
