@@ -1,9 +1,10 @@
 .input-box {
-    width: 100%;
+    width: 100%; 
+    max-width: 100%; 
     height: 35px;
     border-radius: 0.3rem;
     background: rgba(242, 242, 242, 0.15);
-    color: aquamarine;
+    color: #f2f2f2;
 }
 
 .required .field {
@@ -22,4 +23,6 @@
     position: absolute;
     bottom: 0;
     left: 0;
+    max-width: 100%; 
+    height: auto; 
 }
