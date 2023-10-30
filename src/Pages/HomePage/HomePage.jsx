@@ -2,6 +2,7 @@ import SideBar from "../../Components/SideBar/SideBar";
 import NavBar from "../../Components/NavBar/NavBar";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const HomePage = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -48,5 +49,10 @@ const HomePage = ({ children }) => {
     </>
   );
 };
+
+HomePage.propTypes = {
+  children: PropTypes.node,
+};
+
 
 export default HomePage;
