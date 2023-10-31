@@ -90,7 +90,8 @@ const ConfirmarCodigoPage = () => {
                     </div>
                     <div className="text-center">
                         <h7><b>¿Aun no recibiste tu código?</b></h7>
-                        
+                        <br></br>
+                        <a href="">Volver a enviar código</a>
                    </div>
                 </div>
             )}
