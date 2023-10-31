@@ -1,16 +1,17 @@
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 export const ModalConf = ({
   Texto = "Texto",
   TxtButton = "Button",
   ide = "ide",
 }) => {
+  //navigate = useNavigate();
   return (
     <>
       <div
         className="modal fade"
         id={ide}
-        aria-hidden="true"
-        aria-labelledby="exampleModalToggleLabel2"
+        data-bs-backdrop="static" data-bs-keyboard="false"
         tabIndex="-1"
       >
         <div className="modal-dialog modal-dialog-centered">
@@ -22,7 +23,7 @@ export const ModalConf = ({
               <div className="p-2">
                 <button
                   className="btn btn-primary btn-small"
-                  onClick={() => window.location.reload()}
+                  onClick={() => window.location.reload(false)}
                   data-bs-dismiss="modal"
                 >
                   {TxtButton}
