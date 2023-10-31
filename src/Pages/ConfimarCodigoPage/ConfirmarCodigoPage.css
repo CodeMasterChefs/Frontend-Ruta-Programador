@@ -11,11 +11,12 @@
     height: 10vh; 
 }
 
-.code-ver{
-   justify-content:center;
-   margin-right: 350px;
-}
+.custom-margin {
+    margin-right: 5rem; 
+  }
+  
 
 .code-Error{
     color:red;
+    
 }

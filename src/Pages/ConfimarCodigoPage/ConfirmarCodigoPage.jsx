@@ -65,10 +65,9 @@ const ConfirmarCodigoPage = () => {
                             Te enviamos un código de verificación al correo con el que te
                             registraste, revisa tu bandeja
                         </p>
-                    </div>
-                    <div className="d-flex code-ver">
-                        <p><b>Ingresa el código de verificación:</b></p>
-                    </div>
+                            <p className="custom-margin "><b>Ingresa el código de verificación:</b></p>
+                 </div>
+                    
 
                     <div className="verification-code-inputs text-center">
                         {verificationCode.map((code, index) => (
@@ -89,6 +88,10 @@ const ConfirmarCodigoPage = () => {
                     <div className="container1">
                         <button type="button" className="btn btn-primary" onClick={handleEnviarClick}>Enviar</button>
                     </div>
+                    <div className="text-center">
+                        <h7><b>¿Aun no recibiste tu código?</b></h7>
+                        
+                   </div>
                 </div>
             )}
         </div>
