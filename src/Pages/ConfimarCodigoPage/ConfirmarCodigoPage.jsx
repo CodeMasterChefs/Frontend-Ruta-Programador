@@ -81,7 +81,7 @@ const ConfirmarCodigoPage = () => {
                         ))}
                     </div>
                     {error && <p>{error}</p>}
-                    {verificationError && <p>{verificationError}</p>}
+                    {verificationError && <p className='d-flex justify-content-center'>{verificationError}</p>}
                     <div className="container1">
                         <button type="button" className="btn btn-primary" onClick={handleEnviarClick}>Enviar</button>
                     </div>
