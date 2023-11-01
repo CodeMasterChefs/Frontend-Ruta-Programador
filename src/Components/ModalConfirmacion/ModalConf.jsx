@@ -18,7 +18,7 @@ export const ModalConf = ({
             <div className="p-0 modal-body d-flex justify-content-center">
               <p className="mt-3 pt-3 mb-2">{Texto}</p>
             </div>
-            <div className="d-flex flex-row-reverse">
+            <div className="d-flex justify-content-center">
               <div className="p-2">
                 <button
                   className="btn btn-primary btn-small"
