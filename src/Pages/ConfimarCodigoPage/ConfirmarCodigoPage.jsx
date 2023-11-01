@@ -44,12 +44,12 @@ const ConfirmarCodigoPage = () => {
                     <div className="text-center">
                         <h1><b>¡Registro exitoso!</b></h1>
                         <p>
-                            Bienvenido a la Ruta del Programador, empieza creando tus playlists
+                            Bienvenido a la Ruta del Programador, empieza creando tus <br></br> playlists
                             y continúa aprendiendo
                         </p>
                     </div>
                     <div className="container1">
-                        <button type="button" className="btn btn-primary" onClick={() => {
+                        <button type="button" className="btn btn-primary my-2" onClick={() => {
                             if (isAuthenticated) {
                                 navigate("/mis_playlists");
                             }
@@ -61,8 +61,8 @@ const ConfirmarCodigoPage = () => {
                 <div>
                     <div className="text-center">
                         <h1><b>Verifica tu correo electrónico </b></h1>
-                        <p>
-                            Te enviamos un código de verificación al correo con el que te
+                        <p className='my-3'>
+                            Te enviamos un código de verificación al correo con el que te <br></br>
                             registraste, revisa tu bandeja
                         </p>
                             <p className="text-center custom-margin"><b>Ingresa el código de verificación:</b></p>
