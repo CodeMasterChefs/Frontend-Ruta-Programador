@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../../config/site.config";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const RecuperarContraseña = () => {
   const [mostrarMensaje, setMostrarMensaje] = useState("formulario");
@@ -17,40 +17,53 @@ const RecuperarContraseña = () => {
   const [emailValue, setEmailValue] = useState(""); // Agregar estado para el valor del email
   const [verificationError, setVerificationError] = useState(null);
   const [verificarPassword, setVerificarPassword] = useState(null);
+  const navigate = useNavigate();
 
-  const cambioContraseña = async () =>{
+  const cambioContraseña = async () => {
     try {
-      await api.post("password/cambiar",{
+      await api.post("password/cambiar", {
         password: confirmPassword,
         email: emailValue,
-      })
+      });
       setMostrarMensaje("confirmarGuardado");
+      const timer = setTimeout(() => {
+        navigate('/iniciar_sesion');
+      }, 6000);
+      return () => clearTimeout(timer);
     } catch (error) {
       console.log(error);
       const errorText = error.response.data.errors.password[0];
-      setVerificarPassword(errorText)
-      console.log(errorText)
+      setVerificarPassword(errorText);
     }
-  }
-
+  };
 
   const verificarCodigo = async () => {
-    const CodeString = verificationCode.join('');
+    const CodeString = verificationCode.join("");
     try {
-       await api.post("password/verificar", {
-         reset_code: CodeString,
-         email: emailValue,
-       });
-       setMostrarMensaje("confirmarContraseña");
-       //setIsAuthenticated(true)
-
-       console.log("Exito")
-     } catch (error) {
-       console.log(error);
-       setVerificationError('El código de verificación ingresado es incorrecto.');
-     }
+      await api.post("password/verificar", {
+        reset_code: CodeString,
+        email: emailValue,
+      });
+      setMostrarMensaje("confirmarContraseña");
+      //setIsAuthenticated(true)
+    } catch (error) {
+      console.log(error);
+      setVerificationError(
+        "El código de verificación ingresado es incorrecto."
+      );
+    }
   };
-  
+
+  const volverEnviar = async () => {
+    try {
+      await api.post("password/solicitar", {
+        email: emailValue,
+      });
+      //console.log("Hola");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchData = async () => {
     let response;
@@ -66,8 +79,7 @@ const RecuperarContraseña = () => {
       //console.log("Hola");
     } catch (error) {
       const errorText = error.response.data.errors[0];
-      console.log("Texto del error:", errorText);
-      setError({ emailPassword: errorText });
+      setError({ emailError: errorText });
     }
   };
 
@@ -107,7 +119,9 @@ const RecuperarContraseña = () => {
         cambioContraseña();
       } else {
         // Si no coinciden, mostrar un mensaje de error
-        setVerificationError("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
+        setVerificationError(
+          "Las contraseñas no coinciden. Por favor, inténtalo de nuevo."
+        );
       }
     }
 
@@ -162,7 +176,7 @@ const RecuperarContraseña = () => {
 
             <div className="text-center">
               <p>¿Aún no recibiste tu código?</p>
-              <Link>Volver a enviar código</Link>
+              <button onClick={volverEnviar}>Volver a enviar código</button>
             </div>
           </div>
         </div>
