@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../../config/site.config";
 import { useNavigate } from "react-router-dom";
+import "./RecuperarContraseña.css";
 
 const RecuperarContraseña = () => {
   const [mostrarMensaje, setMostrarMensaje] = useState("formulario");
@@ -135,11 +136,7 @@ const RecuperarContraseña = () => {
         <div>
           <div>
             <div className="text-center">
-              <p>
-                <b>
-                  Recuperación de <br></br> Contraseña
-                </b>
-              </p>
+              <h1><b>Recuperación de <br></br> Contraseña</b></h1>
               <p>
                 Te enviamos un código de verificación a tu correo, para que{" "}
                 <br></br>puedas cambiar tu contraseña
@@ -162,9 +159,9 @@ const RecuperarContraseña = () => {
                 />
               ))}
             </div>
-            {verificationError && <p>{verificationError}</p>}
+            {verificationError && <p className="code-Error d-flex justify-content-center my-1">{verificationError}</p>}
 
-            <div className="container1">
+            <div className="container1 d-flex justify-content-center">
               <button
                 type="button"
                 className="btn btn-primary"
@@ -175,8 +172,8 @@ const RecuperarContraseña = () => {
             </div>
 
             <div className="text-center">
-              <p>¿Aún no recibiste tu código?</p>
-              <a href={volverEnviar}>Volver a enviar código</a>
+              <p className="my-0"><b>¿Aún no recibiste tu código?</b></p>
+              <a href={volverEnviar}><u>Volver a enviar código</u></a>
             </div>
           </div>
         </div>
@@ -185,22 +182,20 @@ const RecuperarContraseña = () => {
       {mostrarMensaje === "confirmarContraseña" && (
         // Seccion de nueva contraseña y confirmar contraseña
         <div className="text-center">
-          <p>
-            <b>
-              Recuperación de <br></br> Contraseña
-            </b>
-          </p>
+          <h1><b>Recuperación de <br></br> Contraseña</b></h1>
           <div>
-            <p>Ingresa una nueva contraseña:</p>
-            <input
+            <p className="input-box-newP">Ingresa una nueva contraseña:</p>
+            <input 
+              className="input-box-password"
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
           </div>
           <div>
-            <p>Confirma tu contraseña:</p>
+            <p className="input-box-newPs">Confirma tu contraseña:</p>
             <input
+              className="input-box-password"
               type="password"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
@@ -209,7 +204,7 @@ const RecuperarContraseña = () => {
           {verificationError && <p>{verificationError}</p>}
           {verificarPassword && <p>{verificarPassword}</p>}
           <div className="text-center">
-            <button onClick={handleEnviarClick}>Confirmar</button>
+            <button className="btn-primary my-3" onClick={handleEnviarClick}>Confirmar</button>
           </div>
         </div>
       )}
@@ -217,11 +212,7 @@ const RecuperarContraseña = () => {
       {mostrarMensaje === "confirmarGuardado" && (
         // Seccion de confirmación de guardado
         <div className="text-center">
-          <p>
-            <b>
-              Recuperación de <br></br> Contraseña
-            </b>
-          </p>
+          <h1><b>Recuperación de <br></br> Contraseña</b></h1>
           <p>Tu contraseña ha sido modificada y guardada con éxito</p>
         </div>
       )}
@@ -230,22 +221,18 @@ const RecuperarContraseña = () => {
         // Si mostrarMensaje es "formulario", muestra el formulario.
         <div>
           <div className="text-center">
-            <p>
-              <b>
-                Recuperación de <br></br> Contraseña
-              </b>
-            </p>
+            <h1><b>Recuperación de <br></br> Contraseña</b></h1>
             <p>
               Ingrese la dirección e-mail con la que estas registrado y te
               enviaremos<br></br>un mensaje de verificación para que puedas
               cambiar tu contraseña
             </p>
           </div>
-          <p>
+          <p className="d-flex justify-content-center">
             <b>Dirección email o nombre de usuario</b>
           </p>
-          <div className="container">
-            <input
+          <div className="container d-flex justify-content-center">
+            <input className="input-box-password"
               type="text"
               value={emailValue}
               onChange={(e) => setEmailValue(e.target.value)} // Manejar cambios en el input
@@ -253,10 +240,10 @@ const RecuperarContraseña = () => {
           </div>
           {/* Muestra el mensaje de error debajo del input si existe */}
           {error.emailError && (
-            <p className="error-message">{error.emailError}</p>
+            <p className="code-Error d-flex justify-content-center my-1">{error.emailError}</p>
           )}
-          <div className="containerButton">
-            <button onClick={handleEnviarClick}>Enviar</button>
+          <div className="containerButton d-flex justify-content-center">
+            <button className="btn-primary my-3" onClick={handleEnviarClick}>Enviar</button>
           </div>
         </div>
       )}
