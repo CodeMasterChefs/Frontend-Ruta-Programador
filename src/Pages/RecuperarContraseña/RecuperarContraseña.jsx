@@ -176,7 +176,7 @@ const RecuperarContraseña = () => {
 
             <div className="text-center">
               <p>¿Aún no recibiste tu código?</p>
-              <button onClick={volverEnviar}>Volver a enviar código</button>
+              <a href={volverEnviar}>Volver a enviar código</a>
             </div>
           </div>
         </div>
