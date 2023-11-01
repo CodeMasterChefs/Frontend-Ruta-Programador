@@ -65,7 +65,7 @@ const ConfirmarCodigoPage = () => {
                             Te enviamos un código de verificación al correo con el que te
                             registraste, revisa tu bandeja
                         </p>
-                            <p className="custom-margin "><b>Ingresa el código de verificación:</b></p>
+                            <p className="text-center custom-margin"><b>Ingresa el código de verificación:</b></p>
                  </div>
                     
 
