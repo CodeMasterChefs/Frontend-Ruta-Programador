@@ -11,6 +11,22 @@ line-height: normal;
 padding-top: 10px;
 }
 
+
+@media (max-width: 800px) {
+    .titulo-Añadido {
+      display: none!important;
+    }
+  }
+
+  .iconResponsive{
+    display: block;
+  }
+  @media (max-width: 800px) {
+    .iconResponsive {
+      display: none!important;
+    }
+  }
+
 .text-center {
     font-size: 14px;
 }

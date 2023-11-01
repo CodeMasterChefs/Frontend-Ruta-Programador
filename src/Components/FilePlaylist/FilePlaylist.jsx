@@ -22,10 +22,10 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlayli
           <div className="col mx-5">{Titulo}</div>
         </div>
         <div className="col-2 d-flex align-items-center justify-content-center">
-          <p className="text-center">{dateFormater(Fecha)}</p>
+          <p className="text-center dateResponsive">{dateFormater(Fecha)}</p>
         </div>
         <div className="col-1 d-flex align-items-center justify-content-center">
-          <p className="text-center">{Duracion}</p>
+          <p className="text-center dateResponsive">{Duracion}</p>
         </div>
         <div className="col-1 d-flex align-items-center justify-content-center">
           <button

@@ -86,11 +86,11 @@ const MiPlaylist = () => {
               <div className="col-7">
                 <p className="titulo-link">Videos</p>
               </div>
-              <div className="col-2">
-                <p className="titulo-link">Añadido el:</p>
+              <div className="col-2 ">
+                <p className="titulo-link titulo-Añadido">Añadido el:</p>
               </div>
               <div className="col-1">
-                <ClockIcon className="icon" />
+                <ClockIcon className="icon iconResponsive" />
               </div>
               <div className="col-1">
                 <p className="titulo-link"></p>

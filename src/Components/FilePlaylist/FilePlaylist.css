@@ -31,3 +31,13 @@
 .filePlayListId{
     font-size: 24px !important;
 }
+.dateResponsive {
+    display: block; /* o el valor que desees */
+  }
+  
+  /* Consulta de medios para ocultar .dateResponsive en pantallas mayores o iguales a 900px */
+  @media (max-width: 800px) {
+    .dateResponsive {
+      display: none;
+    }
+  }
