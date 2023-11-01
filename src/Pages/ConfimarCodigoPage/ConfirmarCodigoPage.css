@@ -1,7 +1,7 @@
 .code-inp {
     height: 45px;
     width: 45px;
-    margin: 3px;
+    margin: 8px;
 }
 
 .container1 {
@@ -9,4 +9,14 @@
     justify-content: center;
     align-items: center;
     height: 10vh; 
+}
+
+.custom-margin {
+    margin-right: 5rem; 
+  }
+  
+
+.code-Error{
+    color:red;
+    
 }

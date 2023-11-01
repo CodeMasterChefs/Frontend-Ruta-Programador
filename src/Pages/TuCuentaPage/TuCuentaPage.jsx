@@ -1,11 +1,11 @@
-import { useAuth } from "../../context/AuthContext";
 
 const TuCuentaPage = () => {
-  const { logout } = useAuth();
-
+ 
   return <div>
-    <p>Tu cuenta</p>
-    <button className="btn btn-primary" onClick={logout}>Cerrar sesión</button>
+    <h3><p>Nombre de usuario:</p></h3>
+    <h3><p>Correo electrónico:</p></h3>
+    <h3><p>Cantidad de playlist creadas:</p></h3>
+    
   </div>;
 };
 
