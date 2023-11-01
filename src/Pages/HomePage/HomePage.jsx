@@ -3,6 +3,7 @@ import NavBar from "../../Components/NavBar/NavBar";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import "./HomePage.css";
 
 const HomePage = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -19,20 +20,16 @@ const HomePage = ({ children }) => {
           </div>
         </div>
       ) : (
-        <div>
-          <div className="d-flex justify-content-end">
-            <Link to="/iniciar_sesion">
-              <button>Iniciar sesión</button>
-            </Link>
-            <Link to="/registro">
-              <button>Registrarse</button>
-            </Link>
-          </div>
-          <p>
-            <b>La ruta del programador</b>
-          </p>
-          <div className="container">
-            <div className="content">
+        <div className="home-bg">
+            <div className="d-flex justify-content-end home-navbar">
+              <Link to="/iniciar_sesion">
+                <button className="btn-primary mx-1 my-5">Iniciar sesión</button>
+              </Link>
+              <Link to="/registro">
+                <button className="btn-primary mx-5 my-5">Registrarse</button>
+              </Link>
+            </div>     
+            <div className="home-text">
               <p>
                 En el vasto universo digital, el camino para aquellos que desean
                 adentrarse en el fascinante mundo de la programación, cada clic
@@ -43,7 +40,6 @@ const HomePage = ({ children }) => {
                 enriquecedor.
               </p>
             </div>
-          </div>
         </div>
       )}
     </>
