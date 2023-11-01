@@ -72,7 +72,7 @@ const LoginPage = () => {
                 type="password"
                 className="input-box"
                 name="password"
-                placeholder="Ingresar contraceña"
+                placeholder="Ingresar contraseña"
                 value={password}
                 onInput={onInputChange}
               />
