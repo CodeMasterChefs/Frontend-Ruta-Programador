@@ -1,4 +1,5 @@
 import { useState } from "react";
+import api from "../../config/site.config";
 import { Link } from "react-router-dom";
 
 const RecuperarContraseña = () => {
@@ -10,9 +11,65 @@ const RecuperarContraseña = () => {
     "",
     "",
   ]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState({});
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [emailValue, setEmailValue] = useState(""); // Agregar estado para el valor del email
+  const [verificationError, setVerificationError] = useState(null);
+  const [verificarPassword, setVerificarPassword] = useState(null);
+
+  const cambioContraseña = async () =>{
+    try {
+      await api.post("password/cambiar",{
+        password: confirmPassword,
+        email: emailValue,
+      })
+      setMostrarMensaje("confirmarGuardado");
+    } catch (error) {
+      console.log(error);
+      const errorText = error.response.data.errors.password[0];
+      setVerificarPassword(errorText)
+      console.log(errorText)
+    }
+  }
+
+
+  const verificarCodigo = async () => {
+    const CodeString = verificationCode.join('');
+    try {
+       await api.post("password/verificar", {
+         reset_code: CodeString,
+         email: emailValue,
+       });
+       setMostrarMensaje("confirmarContraseña");
+       //setIsAuthenticated(true)
+
+       console.log("Exito")
+     } catch (error) {
+       console.log(error);
+       setVerificationError('El código de verificación ingresado es incorrecto.');
+     }
+  };
+  
+
+  const fetchData = async () => {
+    let response;
+    try {
+      response = await api.post("password/solicitar", {
+        email: emailValue,
+      });
+
+      if (response.status === 200) {
+        console.log(response);
+        setMostrarMensaje("confirmarCodigo");
+      }
+      //console.log("Hola");
+    } catch (error) {
+      const errorText = error.response.data.errors[0];
+      console.log("Texto del error:", errorText);
+      setError({ emailPassword: errorText });
+    }
+  };
 
   const handleCodeChange = (index, value) => {
     setError("");
@@ -35,16 +92,26 @@ const RecuperarContraseña = () => {
   };
 
   const handleEnviarClick = () => {
+    setVerificationError(null);
     if (mostrarMensaje === "formulario") {
       // Si estamos en la sección de formulario, pasar a la sección de confirmar código.
-      setMostrarMensaje("confirmarCodigo");
+      fetchData();
     } else if (mostrarMensaje === "confirmarCodigo") {
       // Si estamos en la sección de confirmar código, pasar a la sección de confirmar contraseña.
-      setMostrarMensaje("confirmarContraseña");
+      verificarCodigo();
     } else if (mostrarMensaje === "confirmarContraseña") {
       // Si estamos en la sección de confirmar contraseña, pasar a la sección de confirmación de guardado.
-      setMostrarMensaje("confirmarGuardado");
+
+      if (newPassword === confirmPassword) {
+        // Si coinciden, permitir avanzar a la sección de confirmación de guardado
+        cambioContraseña();
+      } else {
+        // Si no coinciden, mostrar un mensaje de error
+        setVerificationError("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
+      }
     }
+
+    // Realizar la solicitud POST con el valor del email
   };
 
   return (
@@ -81,7 +148,7 @@ const RecuperarContraseña = () => {
                 />
               ))}
             </div>
-            {error && <p>{error}</p>}
+            {verificationError && <p>{verificationError}</p>}
 
             <div className="container1">
               <button
@@ -125,6 +192,8 @@ const RecuperarContraseña = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
+          {verificationError && <p>{verificationError}</p>}
+          {verificarPassword && <p>{verificarPassword}</p>}
           <div className="text-center">
             <button onClick={handleEnviarClick}>Confirmar</button>
           </div>
@@ -162,8 +231,16 @@ const RecuperarContraseña = () => {
             <b>Dirección email o nombre de usuario</b>
           </p>
           <div className="container">
-            <input type="text" />
+            <input
+              type="text"
+              value={emailValue}
+              onChange={(e) => setEmailValue(e.target.value)} // Manejar cambios en el input
+            />
           </div>
+          {/* Muestra el mensaje de error debajo del input si existe */}
+          {error.emailError && (
+            <p className="error-message">{error.emailError}</p>
+          )}
           <div className="containerButton">
             <button onClick={handleEnviarClick}>Enviar</button>
           </div>
