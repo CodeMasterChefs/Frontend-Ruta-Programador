@@ -1,5 +1,6 @@
 .dropdown-menu {
     background: #483173 !important;
+    --bs-dropdown-link-hover-bg: none;
 }
 
 .dropdown-button {
@@ -43,7 +44,6 @@
 .color-boton{
     color: white;
 }
-
 
 .title-container{
     
