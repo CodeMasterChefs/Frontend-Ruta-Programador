@@ -13,13 +13,8 @@
     align-items: center;
     height: 10vh; 
 }
-
-/* .custom-margin {
-    margin-right: 5rem; 
-  } */
   
 
 .code-Error{
-    color:red;
-    
+    color:red;  
 }
