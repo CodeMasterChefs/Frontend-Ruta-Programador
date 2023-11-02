@@ -31,7 +31,7 @@ const RegistroUsuarioPage = () => {
       <div className="container">
         <div className="row">
           <div className="col-md-7 registro-title d-flex align-items-center justify-content-center">
-            <div className="login-title d-flex justify-content-center">
+            <div className="d-flex justify-content-center">
               <h1>
                 La Ruta del<br></br>Programador
               </h1>
