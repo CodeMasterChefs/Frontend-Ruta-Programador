@@ -20,22 +20,26 @@
 }
 
 .registro-bg{
-    position: fixed;
-    top: 0;
+/*     position: fixed;
+ */    top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: url("../../assets/rocket.svg");
-    background-size: contain; 
+    background-size: auto; 
     background-repeat: no-repeat;
     background-position: left;
     z-index: 0;
 }
 
 .registro-content{
-    z-index: 1;
+/*     z-index: 1;
+ */
+    height: 100vh;
 }
-
+.registro-content_container{
+    width: 100%;
+}
 .registro-title{
     opacity: 0%;
 }
