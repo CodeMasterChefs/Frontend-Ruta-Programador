@@ -50,7 +50,7 @@ const RecuperarContraseña = () => {
     } catch (error) {
       console.log(error);
       setVerificationError(
-        "El código de verificación ingresado es incorrecto."
+        error.response.data.errors
       );
     }
   };
@@ -62,7 +62,7 @@ const RecuperarContraseña = () => {
       });
       //console.log("Hola");
     } catch (error) {
-      console.log(error);
+      console.log('error');
     }
   };
 
@@ -77,7 +77,7 @@ const RecuperarContraseña = () => {
         console.log(response);
         setMostrarMensaje("confirmarCodigo");
       }
-      //console.log("Hola");
+
     } catch (error) {
       const errorText = error.response.data.errors[0];
       setError({ emailError: errorText });
@@ -185,7 +185,7 @@ const RecuperarContraseña = () => {
           <h1><b>Recuperación de <br></br> Contraseña</b></h1>
           <div>
             <p className="input-box-newP">Ingresa una nueva contraseña:</p>
-            <input 
+            <input
               className="input-box-password"
               type="password"
               value={newPassword}
