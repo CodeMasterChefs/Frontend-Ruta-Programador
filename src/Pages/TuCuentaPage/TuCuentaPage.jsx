@@ -21,9 +21,9 @@ const TuCuentaPage = () => {
   return <div className="py-3">
     <h5><p>Nombre de usuario: {user.nombre_usuario}</p></h5>
     <h5><p>Correo electrónico: {user.correo_electronico}</p></h5>
-    <h5><p>Cantidad de playlist creadas: {user.cantidad_playlists}</p></h5>
+    <h5><p>Cantidad de playlists creadas: {user.cantidad_playlists}</p></h5>
     <div className="d-flex justify-content-end">
-    <button className="btn btn-primary" onClick={logout}>Cerrar sesion</button>
+    <button className="btn btn-primary" onClick={logout}>Cerrar sesión</button>
 
     </div>
   </div>;
