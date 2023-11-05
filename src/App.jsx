@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage></HomePage>}></Route>
           <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
-          <Route path="/iniciar_sesion" element={<LoginPage />}></Route>
+          <Route path="/iniciar-sesion" element={<LoginPage />}></Route>
           <Route path="/verificar-correo" element={<ConfirmarCodigoPage/>}></Route>
           <Route path="/recuperar_contraseña" element={<RecuperarContraseña/>}></Route>
           <Route element={<ProtectedRoute />}>
