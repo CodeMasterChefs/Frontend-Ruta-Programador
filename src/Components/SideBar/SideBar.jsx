@@ -52,6 +52,7 @@ const SideBar = () => {
               data-bs-target="#offcanvasNavbarLight"
               aria-controls="offcanvasNavbarLight"
               aria-label="Toggle navigation"
+              data-bs-theme="dark"
             >
               <span className="navbar-toggler-icon"></span>
             </button>
@@ -60,7 +61,7 @@ const SideBar = () => {
               tabIndex="-1"
               id="offcanvasNavbarLight"
             >
-              <div className="offcanvas-header">
+              <div className="offcanvas-header d-flex justify-content-end">
                 <button
                   type="button"
                   className="btn-close btn-close-white"
