@@ -1,0 +1,30 @@
+.col-search {
+    position: fixed;
+    right: 2%;
+  }
+  .playlist-responsive{
+    display: block;
+  }
+  
+  @media (max-width: 764px) {
+    .col-search {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  
+    .searchResponsive {
+      order: 1; /* Cambia el orden del botón "Holi" para que esté primero en dispositivos móviles */
+      margin-top: 10px;
+    }
+    .playlist-responsive{
+        margin-bottom: 30%;
+    }
+  }
+
+  
+  
+  
+  
+  
+  
+  

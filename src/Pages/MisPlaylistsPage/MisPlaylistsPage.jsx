@@ -3,6 +3,7 @@ import { Card } from "../../Components/CardPlanet/Card";
 import api from "../../config/site.config"; // Importa la instancia 'api' en lugar de axios
 import { useEffect, useState } from "react";
 import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
+import "./MisPlaylistsPage.css";
 
 const MisPlaylistsPage = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -34,9 +35,12 @@ const MisPlaylistsPage = () => {
 
   return (
     <main className="col-sm-11">
-      <div className="row">
-        <div className="d-flex justify-content-between align-items-center">
+      <div className="row playlist-responsive">
+        <div className="col-sm-5 align-items-center">
           <h3>Mis Playlists</h3>
+        </div>
+        <div className="col-sm-5 d-flex justify-content-end col-search">
+        <button className="searchResponsive">Holi</button>
           <Playlist CantPlaylists={playlists.length} />
         </div>
       </div>
@@ -65,7 +69,9 @@ const MisPlaylistsPage = () => {
             <EditarPlaylist IdPlaylist={selectedPlaylistId} />
           </div>
         ) : (
-          <p className="text-center py-4">Empieza creando tus propias playlists.</p>
+          <p className="text-center py-4">
+            Empieza creando tus propias playlists.
+          </p>
         )}
       </div>
     </main>
