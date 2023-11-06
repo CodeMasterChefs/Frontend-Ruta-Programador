@@ -1,13 +1,20 @@
 // import PropTypes from 'prop-types';
 import ElementoPlaylist from '../../Components/ElementoPlaylist/ElementoPlaylist';
+// import NavBar from '../../Components/NavBar/NavBar'
 
 const ReproductorPage = () => {
+    const numPlaylists = 100;
+
+    const playlists = [];
+    for (let i = 0; i < numPlaylists; i++) {
+        playlists.push(<ElementoPlaylist key={i} />);
+    }
+
     return (
-
         <div className="container-fluid">
-            {/* <NavBar /> */}
+            {/* <NavBar/> */}
 
-            <div className="row m-2">
+            <div className="row m-2 align-items-start">
                 <div className="col-lg-8 custom-border-lg p-3">
                     <div className="ratio ratio-16x9 mx-auto">
                         <iframe
@@ -23,10 +30,9 @@ const ReproductorPage = () => {
                         <h3>Lista de reproducción</h3>
                         <h6>4/10</h6>
                     </div>
-                    <ElementoPlaylist />
-                    <ElementoPlaylist />
-                    <ElementoPlaylist />
-                    <ElementoPlaylist />
+                    <div className="custom-overflow custom-scrollbar" >
+                        {playlists}
+                    </div>
                 </div>
             </div>
         </div>

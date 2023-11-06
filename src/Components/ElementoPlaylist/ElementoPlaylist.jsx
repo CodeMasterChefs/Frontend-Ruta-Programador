@@ -12,7 +12,6 @@ const ElementoPlaylist = () => {
                             <img
                                 src="https://img.youtube.com/vi/mP2qWBj3SQ8/hqdefault.jpg"
                                 className="ratio ratio-16x9"
-                                alt="Imagen del elemento"
                             />
                         </div>
                     </div>
