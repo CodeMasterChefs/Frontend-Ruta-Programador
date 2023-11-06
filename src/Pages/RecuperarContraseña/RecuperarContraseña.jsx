@@ -28,7 +28,7 @@ const RecuperarContraseña = () => {
       });
       setMostrarMensaje("confirmarGuardado");
       const timer = setTimeout(() => {
-        navigate('/iniciar-sesion');
+        navigate("/iniciar-sesion");
       }, 6000);
       return () => clearTimeout(timer);
     } catch (error) {
@@ -49,9 +49,7 @@ const RecuperarContraseña = () => {
       //setIsAuthenticated(true)
     } catch (error) {
       console.log(error);
-      setVerificationError(
-        error.response.data.errors
-      );
+      setVerificationError(error.response.data.errors);
     }
   };
 
@@ -62,7 +60,7 @@ const RecuperarContraseña = () => {
       });
       //console.log("Hola");
     } catch (error) {
-      console.log('error');
+      console.log("error");
     }
   };
 
@@ -77,7 +75,6 @@ const RecuperarContraseña = () => {
         console.log(response);
         setMostrarMensaje("confirmarCodigo");
       }
-
     } catch (error) {
       const errorText = error.response.data.errors[0];
       setError({ emailError: errorText });
@@ -136,7 +133,11 @@ const RecuperarContraseña = () => {
         <div>
           <div>
             <div className="text-center">
-              <h1><b>Recuperación de <br></br> Contraseña</b></h1>
+              <h1>
+                <b>
+                  Recuperación de <br></br> Contraseña
+                </b>
+              </h1>
               <p>
                 Te enviamos un código de verificación a tu correo, para que{" "}
                 <br></br>puedas cambiar tu contraseña
@@ -159,7 +160,11 @@ const RecuperarContraseña = () => {
                 />
               ))}
             </div>
-            {verificationError && <p className="code-Error d-flex justify-content-center my-1">{verificationError}</p>}
+            {verificationError && (
+              <p className="code-Error d-flex justify-content-center my-1">
+                {verificationError}
+              </p>
+            )}
 
             <div className="container1 d-flex justify-content-center">
               <button
@@ -172,8 +177,16 @@ const RecuperarContraseña = () => {
             </div>
 
             <div className="text-center">
-              <p className="my-0"><b>¿Aún no recibiste tu código?</b></p>
-              <a href={volverEnviar}><u>Volver a enviar código</u></a>
+              <p className="my-0">
+                <b>¿Aún no recibiste tu código?</b>
+              </p>
+              <button
+                type="button"
+                className="btn btn-link"
+                onClick={volverEnviar}
+              >
+                Volver a enviar código
+              </button>
             </div>
           </div>
         </div>
@@ -182,7 +195,11 @@ const RecuperarContraseña = () => {
       {mostrarMensaje === "confirmarContraseña" && (
         // Seccion de nueva contraseña y confirmar contraseña
         <div className="text-center">
-          <h1><b>Recuperación de <br></br> Contraseña</b></h1>
+          <h1>
+            <b>
+              Recuperación de <br></br> Contraseña
+            </b>
+          </h1>
           <div>
             <p className="input-box-newP">Ingresa una nueva contraseña:</p>
             <input
@@ -204,7 +221,9 @@ const RecuperarContraseña = () => {
           {verificationError && <p>{verificationError}</p>}
           {verificarPassword && <p>{verificarPassword}</p>}
           <div className="text-center">
-            <button className="btn-primary my-3" onClick={handleEnviarClick}>Confirmar</button>
+            <button className="btn-primary my-3" onClick={handleEnviarClick}>
+              Confirmar
+            </button>
           </div>
         </div>
       )}
@@ -212,7 +231,11 @@ const RecuperarContraseña = () => {
       {mostrarMensaje === "confirmarGuardado" && (
         // Seccion de confirmación de guardado
         <div className="text-center">
-          <h1><b>Recuperación de <br></br> Contraseña</b></h1>
+          <h1>
+            <b>
+              Recuperación de <br></br> Contraseña
+            </b>
+          </h1>
           <p>Tu contraseña ha sido modificada y guardada con éxito</p>
         </div>
       )}
@@ -221,7 +244,11 @@ const RecuperarContraseña = () => {
         // Si mostrarMensaje es "formulario", muestra el formulario.
         <div>
           <div className="text-center">
-            <h1><b>Recuperación de <br></br> Contraseña</b></h1>
+            <h1>
+              <b>
+                Recuperación de <br></br> Contraseña
+              </b>
+            </h1>
             <p>
               Ingrese la dirección e-mail con la que estas registrado y te
               enviaremos<br></br>un mensaje de verificación para que puedas
@@ -232,7 +259,8 @@ const RecuperarContraseña = () => {
             <b>Dirección e-mail</b>
           </p>
           <div className="container d-flex justify-content-center">
-            <input className="input-box-password"
+            <input
+              className="input-box-password"
               type="text"
               value={emailValue}
               onChange={(e) => setEmailValue(e.target.value)} // Manejar cambios en el input
@@ -240,10 +268,14 @@ const RecuperarContraseña = () => {
           </div>
           {/* Muestra el mensaje de error debajo del input si existe */}
           {error.emailError && (
-            <p className="code-Error d-flex justify-content-center my-1">{error.emailError}</p>
+            <p className="code-Error d-flex justify-content-center my-1">
+              {error.emailError}
+            </p>
           )}
           <div className="containerButton d-flex justify-content-center">
-            <button className="btn-primary my-3" onClick={handleEnviarClick}>Enviar</button>
+            <button className="btn-primary my-3" onClick={handleEnviarClick}>
+              Enviar
+            </button>
           </div>
         </div>
       )}
