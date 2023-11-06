@@ -194,7 +194,7 @@ const RecuperarContraseña = () => {
               </button>
               <div className="text-center">
                 {envioEmail && <p>{envioEmail}</p>}
-            </div>
+              </div>
             </div>
           </div>
         </div>
@@ -229,7 +229,14 @@ const RecuperarContraseña = () => {
           {verificationError && <p>{verificationError}</p>}
           {verificarPassword && <p>{verificarPassword}</p>}
           <div className="text-center">
-            <button className="btn-primary my-3" onClick={handleEnviarClick}>
+            <button
+              className="btn-primary my-3"
+              onClick={() => {
+                setVerificarPassword(null);
+                setConfirmPassword(null);
+                handleEnviarClick();
+              }}
+            >
               Confirmar
             </button>
           </div>
