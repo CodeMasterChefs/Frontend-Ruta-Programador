@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../config/site.config";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -18,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   const [errors, setErrors] = useState({});
   const [signinErrors, setSigninErrors] = useState(null);
   const [emptyErrors, setEmptyErrors] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (errors) {
@@ -75,8 +77,9 @@ export const AuthProvider = ({ children }) => {
       const res = await api.post("registro", user);
       if (res.status === 200) {
         // setUser(user)
-        window.location.replace("/verificar-correo");
+        navigate("/verificar-correo", { state: { emailValue: user.email } });
         //setIsAuthenticated(true)
+        console.log(user.email)
       }
     } catch (error) {
       console.error(error.response);

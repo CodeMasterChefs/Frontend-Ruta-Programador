@@ -14,15 +14,20 @@ import RecuperarContraseña from "./Pages/RecuperarContraseña/RecuperarContrase
 
 function App() {
   return (
-
-    <AuthProvider>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
         <Routes>
           <Route path="/" element={<HomePage></HomePage>}></Route>
           <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
           <Route path="/iniciar-sesion" element={<LoginPage />}></Route>
-          <Route path="/verificar-correo" element={<ConfirmarCodigoPage/>}></Route>
-          <Route path="/recuperar_contraseña" element={<RecuperarContraseña/>}></Route>
+          <Route
+            path="/verificar-correo"
+            element={<ConfirmarCodigoPage />}
+          ></Route>
+          <Route
+            path="/recuperar_contraseña"
+            element={<RecuperarContraseña />}
+          ></Route>
           <Route element={<ProtectedRoute />}>
             <Route
               path="/mis_playlists"
@@ -79,8 +84,8 @@ function App() {
           </div>
         </div>
       </div> */}
-      </BrowserRouter>
-    </AuthProvider>
+      </AuthProvider>
+    </BrowserRouter>
   );
 }
 
