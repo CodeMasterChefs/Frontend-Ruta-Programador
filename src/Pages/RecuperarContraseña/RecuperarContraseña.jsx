@@ -229,7 +229,7 @@ const RecuperarContraseña = () => {
             </p>
           </div>
           <p className="d-flex justify-content-center">
-            <b>Dirección email o nombre de usuario</b>
+            <b>Dirección e-mail</b>
           </p>
           <div className="container d-flex justify-content-center">
             <input className="input-box-password"

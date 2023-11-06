@@ -43,8 +43,7 @@ const SideBar = () => {
         </div>
       </div>
       <div className="sm-sidebar">
-        <div className="">
-          <nav className="navbar navbar-toggle-menu-bg">
+      <nav className="navbar navbar-toggle-menu-bg">
             <button
               className="navbar-toggler"
               type="button"
@@ -80,7 +79,6 @@ const SideBar = () => {
               </div>
             </div>
           </nav>
-        </div>
       </div>
     </>
   );
