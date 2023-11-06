@@ -4,8 +4,11 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect } from "react";
 import CancelarRegistro from "../../Components/ModalRegister/CancelarRegistro";
+import { useState } from "react";
+//import svgAstronautra from "../../assets/Image.svg";
 
 const RegistroUsuarioPage = () => {
+  const [emailValue, setEmailValue] = useState("");
   const navigate = useNavigate();
   const {
     register,
@@ -21,6 +24,7 @@ const RegistroUsuarioPage = () => {
   }, [isAuthenticated, navigate]);
 
   const onSubmit = handleSubmit((values) => {
+    navigate("/verificar-correo", { state: { emailValue: values.email } });
     signup(values);
     console.log(values);
   });
@@ -68,6 +72,8 @@ const RegistroUsuarioPage = () => {
                     {...register("email", { required: true })}
                     type="email"
                     placeholder="Ingresar correo"
+                    value={emailValue} // Enlazar el valor del input al estado
+                    onChange={(e) => setEmailValue(e.target.value)} // Actualizar el estado
                   />
                   {registerErrors.email && (
                     <small>
