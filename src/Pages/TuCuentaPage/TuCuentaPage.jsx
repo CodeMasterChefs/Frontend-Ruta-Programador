@@ -22,6 +22,7 @@ const TuCuentaPage = () => {
     <h5><p>Nombre de usuario: {user.nombre_usuario}</p></h5>
     <h5><p>Correo electrónico: {user.correo_electronico}</p></h5>
     <h5><p>Cantidad de playlists creadas: {user.cantidad_playlists}</p></h5>
+    &lt;p&gt;Si puedes imaginarlo, puedes programarlo&lt;/p&gt;
     <div className="d-flex justify-content-end">
     <button className="btn btn-primary" onClick={logout}>Cerrar sesión</button>
 
