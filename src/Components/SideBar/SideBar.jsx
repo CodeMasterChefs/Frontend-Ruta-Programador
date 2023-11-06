@@ -72,7 +72,7 @@ const SideBar = () => {
                 <div className="d-flex justify-content-center">
                   <Usericon></Usericon>
                 </div>
-                  <p className="text-center">{userData.username}</p>
+                {userData && <p className="text-center">{userData.username}</p>}
                 <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                   {elements}
                 </ul>
