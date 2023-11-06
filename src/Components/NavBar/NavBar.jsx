@@ -59,7 +59,7 @@ const NavBar = () => {
             <HomeIcon />
           </Link>
           <button
-            className="Icons"
+            className="Icons-menu"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"

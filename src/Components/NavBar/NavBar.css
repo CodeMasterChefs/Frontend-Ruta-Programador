@@ -21,6 +21,9 @@
         top: 10px;
         left: 0;
         }
+    .Icons-menu{
+        display: none;
+    }
     }
 
     @media screen and (max-width: 500px) {
