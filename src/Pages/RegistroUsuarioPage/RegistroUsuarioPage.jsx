@@ -24,7 +24,6 @@ const RegistroUsuarioPage = () => {
   }, [isAuthenticated, navigate]);
 
   const onSubmit = handleSubmit((values) => {
-    navigate("/verificar-correo", { state: { emailValue: values.email } });
     signup(values);
     console.log(values);
   });

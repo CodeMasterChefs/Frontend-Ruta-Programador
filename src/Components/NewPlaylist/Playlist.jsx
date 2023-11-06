@@ -83,7 +83,9 @@ const Playlist = ({ CantPlaylists }) => {
       await fetchData();
       document.getElementById("closeModal").click();
       
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
     console.log(modalVisible);
   };
 

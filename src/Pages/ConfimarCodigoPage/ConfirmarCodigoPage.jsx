@@ -45,7 +45,6 @@ const ConfirmarCodigoPage = () => {
   };
 
   const volverEnviar = async () => {
-    console.log(emailValue)
     try {
       await api.post("solicitar/codigo", {
         email: emailValue,
@@ -132,10 +131,9 @@ const ConfirmarCodigoPage = () => {
             </button>
           </div>
           <div className="text-center">
-            <h7>
+            <h6>
               <b>¿Aun no recibiste tu código?</b>
-            </h7>
-            <br></br>
+            </h6>
             <button
               type="button"
               className="btn btn-link"
