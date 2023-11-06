@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }) => {
       api.setAuthorizationToken(response.data.access_token);
     } catch (error) {
       setVerificationError(
-        "El código de verificación ingresado es incorrecto."
+        error.response.data.errors
       );
     }
   };

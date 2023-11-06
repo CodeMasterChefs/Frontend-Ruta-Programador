@@ -45,10 +45,23 @@
 }
 
 .navbar-toggle-menu-bg{
-  background-color: #1f0b4a;
+  /*background-color: #1f0b4a;*/
 }
 .navbar-toggler-icon{
   color: #f2f2f2;
+}
+
+.navbar-toggle-menu-bg{
+  background: transparent;
+}
+
+.navbar-toggler{
+  border: none;
+  background-color: #170838;
+  color: #f2f2f2;
+  position: absolute;
+  top: 1000%;
+  z-index: 1;
 }
 
 

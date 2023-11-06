@@ -44,7 +44,7 @@ const LoginPage = () => {
           </div>
         </div> 
         <div className="col-md-5 login-content">
-          <h3>Iniciar Sesión:</h3>
+          <h3>Iniciar sesión:</h3>
           <hr className="line-header"></hr>
           <br></br>
           <form>
@@ -105,7 +105,7 @@ const LoginPage = () => {
           </div>
           <div className="d-flex justify-content-center">
             <Link to={"/registro"} className="btn btn-primary">
-              Registrate
+              Regístrate
             </Link>
           </div>
         </div>

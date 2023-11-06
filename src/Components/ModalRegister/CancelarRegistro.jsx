@@ -34,7 +34,7 @@ const CancelarRegistro = () => {
                 className="btn btn-primary"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.location.replace("/iniciar_sesion");
+                  window.location.replace("/iniciar-sesion");
                 }}
               >
                 Aceptar
