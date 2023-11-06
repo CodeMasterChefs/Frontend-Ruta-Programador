@@ -56,7 +56,7 @@ const RecuperarContraseña = () => {
 
   const volverEnviar = async () => {
     try {
-      await api.post("password/solicitar", {
+      await api.post("solicitar/codigo", {
         email: emailValue,
       });
       //console.log("Hola");
