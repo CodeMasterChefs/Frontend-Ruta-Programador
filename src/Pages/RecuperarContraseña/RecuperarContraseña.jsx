@@ -17,6 +17,7 @@ const RecuperarContraseña = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [emailValue, setEmailValue] = useState(""); // Agregar estado para el valor del email
   const [verificationError, setVerificationError] = useState(null);
+  const [envioEmail, setEnvioEmail] = useState(null);
   const [verificarPassword, setVerificarPassword] = useState(null);
   const navigate = useNavigate();
 
@@ -60,7 +61,8 @@ const RecuperarContraseña = () => {
       });
       //console.log("Hola");
     } catch (error) {
-      console.log("error");
+      const errorText = error.response.data.message;
+      setEnvioEmail(errorText);
     }
   };
 
@@ -183,10 +185,16 @@ const RecuperarContraseña = () => {
               <button
                 type="button"
                 className="btn btn-link"
-                onClick={volverEnviar}
+                onClick={() => {
+                  volverEnviar();
+                  setEnvioEmail(null);
+                }}
               >
                 Volver a enviar código
               </button>
+              <div className="text-center">
+                {envioEmail && <p>{envioEmail}</p>}
+              </div>
             </div>
           </div>
         </div>
