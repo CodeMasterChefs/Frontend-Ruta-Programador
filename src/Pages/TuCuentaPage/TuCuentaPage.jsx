@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../../config/site.config";
 import { useAuth } from "../../context/AuthContext";
-
+import "./TuCuentaPage.css"
 const TuCuentaPage = () => {
   const [user, setUser] = useState({nombre_usuario: '', correo_electronico: '', cantidad_playlists: ''})
   const {logout} = useAuth()
@@ -25,9 +25,10 @@ const TuCuentaPage = () => {
     <div className="d-flex justify-content-end">
     <button className="btn btn-primary" onClick={logout}>Cerrar sesión</button>
     </div>
-    <div className= "d-flex justify-content-center">
-    <h5>&lt;p&gt;Si puedes imaginarlo, puedes programarlo&lt;/p&gt;</h5>
-    </div>
+    <div className="d-flex justify-content-center">
+    <h1 className="custom-margin">&lt;p&gt;Si puedes imaginarlo, puedes programarlo&lt;/p&gt;</h1>
+</div>
+
   </div>;
 };
 
