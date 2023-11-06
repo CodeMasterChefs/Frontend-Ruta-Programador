@@ -194,7 +194,7 @@ const RecuperarContraseña = () => {
               </button>
               <div className="text-center">
                 {envioEmail && <p>{envioEmail}</p>}
-              </div>
+            </div>
             </div>
           </div>
         </div>
