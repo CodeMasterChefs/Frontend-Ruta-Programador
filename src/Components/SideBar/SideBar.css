@@ -52,7 +52,15 @@
 }
 
 .navbar-toggle-menu-bg{
-  background: #100626;
+  background: transparent;
+}
+
+.navbar-toggler{
+  border: none;
+  background-color: #100626;
+  color: #f2f2f2;
+  position: absolute;
+  top: 0;
 }
 
 
