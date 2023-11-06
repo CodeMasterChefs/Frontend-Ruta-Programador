@@ -61,19 +61,17 @@ const SideBar = () => {
               id="offcanvasNavbarLight"
             >
               <div className="offcanvas-header">
-                <h5 className="offcanvas-title" id="offcanvasNavbarLightLabel">
-                  Offcanvas
-                </h5>
                 <button
                   type="button"
-                  className="btn-close"
+                  className="btn-close btn-close-white"
                   data-bs-dismiss="offcanvas"
                 ></button>
               </div>
               <div className="offcanvas-body">
-                <div className="">
-                  <p className="text-center">Username</p>
+                <div className="d-flex justify-content-center">
+                  <Usericon></Usericon>
                 </div>
+                  <p className="text-center">{userData.username}</p>
                 <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                   {elements}
                 </ul>
