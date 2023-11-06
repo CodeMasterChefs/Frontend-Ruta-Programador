@@ -27,7 +27,7 @@ const TuCuentaPage = () => {
     </div>
     <div className="d-flex justify-content-center">
     <h1 className="custom-margin">&lt;p&gt;Si puedes imaginarlo, puedes programarlo&lt;/p&gt;</h1>
-</div>
+    </div>
 
   </div>;
 };
