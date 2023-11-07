@@ -15,7 +15,79 @@ import ReproductorPage from "./Pages/ReproductorPage/ReproductorPage";
 
 function App() {
   return (
-    <ReproductorPage />
+
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage></HomePage>}></Route>
+          <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
+          <Route path="/iniciar_sesion" element={<LoginPage />}></Route>
+          <Route path="/verificar-correo" element={<ConfirmarCodigoPage />}></Route>
+          <Route path="/recuperar_contraseña" element={<RecuperarContraseña />}></Route>
+          <Route element={<ProtectedRoute />}>
+            <Route
+              path="/mis_playlists"
+              element={
+                <HomePage>
+                  <MisPlaylistsPage />
+                </HomePage>
+              }
+            />
+            <Route
+              path="/mis_playlists/:idPlaylist"
+              element={
+                <HomePage>
+                  <MiPlaylist />
+                </HomePage>
+              }
+            />
+            <Route
+              path="/comunidad"
+              element={
+                <HomePage>
+                  <ComunidadPage />
+                </HomePage>
+              }
+            />
+            <Route
+              path="/mi_cuenta"
+              element={
+                <HomePage>
+                  <TuCuentaPage />
+                </HomePage>
+              }
+            />
+            <Route
+              path="/mis_playlists/:idPlaylist/reproducir"
+              element={
+                <ReproductorPage />
+              }
+            />
+          </Route>
+        </Routes>
+        {/* <div className="container-fluid">
+        <NavBar />
+        <div className="row">
+          <div className="col-sm-3 px-0">
+            <SideBar />
+          </div>
+          <div className="col-sm-9">
+            <Routes>
+              <Route element={<ProtectedRoute/>}>
+                <Route path="/mis_playlists" element={<MisPlaylistsPage />} />
+                <Route
+                  path="/mis_playlists/:idPlaylist"
+                  element={<MiPlaylist />}/>
+                <Route path="/comunidad" element={<RegistroUsuarioPage />} />
+                <Route path="/mi_cuenta" element={<TuCuentaPage />} />
+              </Route>
+              
+            </Routes>
+          </div>
+        </div>
+      </div> */}
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

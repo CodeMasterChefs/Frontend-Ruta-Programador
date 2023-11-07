@@ -1,8 +1,15 @@
 // import PropTypes from 'prop-types';
 import ElementoPlaylist from '../../Components/ElementoPlaylist/ElementoPlaylist';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 // import NavBar from '../../Components/NavBar/NavBar'
 
 const ReproductorPage = () => {
+    const { idPlaylist } = useParams(); // Para obtener el valor de :idPlaylist
+    const navigate = useNavigate();
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const idVideo = queryParams.get('v');
+
     const numPlaylists = 100;
 
     const playlists = [];
@@ -12,8 +19,6 @@ const ReproductorPage = () => {
 
     return (
         <div className="container-fluid">
-            {/* <NavBar/> */}
-
             <div className="row m-2 align-items-start">
                 <div className="col-lg-8 custom-border-lg p-3">
                     <div className="ratio ratio-16x9 mx-auto">
@@ -28,7 +33,7 @@ const ReproductorPage = () => {
                 <div className="col-lg-4 p-3">
                     <div className='d-flex justify-content-between align-items-center'>
                         <h3>Lista de reproducción</h3>
-                        <h6>4/10</h6>
+                        <h6>4/{numPlaylists}</h6>
                     </div>
                     <div className="custom-overflow custom-scrollbar" >
                         {playlists}
