@@ -1,21 +1,46 @@
 // import PropTypes from 'prop-types';
 import ElementoPlaylist from '../../Components/ElementoPlaylist/ElementoPlaylist';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import api from '../../config/site.config';
 // import NavBar from '../../Components/NavBar/NavBar'
 
 const ReproductorPage = () => {
-    const { idPlaylist } = useParams(); // Para obtener el valor de :idPlaylist
+    const { idPlaylist } = useParams();
     const navigate = useNavigate();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const idVideo = queryParams.get('v');
+    const keyElemento = queryParams.get('key');
 
-    const numPlaylists = 100;
+    const [elementos, setElementos] = useState([]);
 
-    const playlists = [];
-    for (let i = 0; i < numPlaylists; i++) {
-        playlists.push(<ElementoPlaylist key={i} />);
-    }
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const elementosResponse = await api.get(
+                    "/elemento_playlists/" + idPlaylist
+                );
+                console.log(elementosResponse.data.elementos);
+                setElementos(elementosResponse.data.elementos);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, [idPlaylist]);
+
+    const playlists = elementos.map((elemento, index) => (
+        <ElementoPlaylist
+            key={index}
+            KeyElemento={index + 1}
+            IdPlaylist={idPlaylist}
+            TituloElemento={elemento.tituloElemento}
+            IdVideo={elemento.idVideoYoutube}
+            DuracionVideo={elemento.duracionElemento}
+        />
+    ));
 
     return (
         <div className="container-fluid">
@@ -23,7 +48,7 @@ const ReproductorPage = () => {
                 <div className="col-lg-8 custom-border-lg p-3">
                     <div className="ratio ratio-16x9 mx-auto">
                         <iframe
-                            src="https://www.youtube.com/embed/mP2qWBj3SQ8"
+                            src={`https://www.youtube.com/embed/${idVideo}`}
                             title="YouTube video player"
                             allowFullScreen
                         ></iframe>
@@ -33,7 +58,7 @@ const ReproductorPage = () => {
                 <div className="col-lg-4 p-3">
                     <div className='d-flex justify-content-between align-items-center'>
                         <h3>Lista de reproducción</h3>
-                        <h6>4/{numPlaylists}</h6>
+                        <h6>{keyElemento}/{elementos.length}</h6>
                     </div>
                     <div className="custom-overflow custom-scrollbar" >
                         {playlists}

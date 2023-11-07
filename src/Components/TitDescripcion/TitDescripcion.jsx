@@ -36,7 +36,7 @@ export const TitDescripcion = ({
           <div className="p-2 d-flex align-items-start flex-column">
             <h3>{Titulo}</h3>
             <div className="d-flex justify-content-start">
-              <Link to={`/mis_playlists/${IdPlaylist}/reproducir`}>
+              <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=00000&key=1`}>
                 <button className="btn btn-primary play-button">
                   <svg
                     width="18"
@@ -69,7 +69,7 @@ export const TitDescripcion = ({
                 </button>
                 <ul className="dropdown-menu ">
                   <li>
-                    <Link to={`/mis_playlists/${IdPlaylist}/reproducir`}>
+                    <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=00000&key=1`}>
                       <button className="dropdown-item color-boton">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"

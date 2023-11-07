@@ -16,7 +16,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
           <img src={UrlImagen} className="card-img-top" alt="..." />
           <div
             className="position-absolute top-0 end-0 dropdown"
-            // data-bs-toggle="dropdown"
+          // data-bs-toggle="dropdown"
           >
 
             {/* Verificar el error del modal en el dropdown-menu */}
@@ -40,7 +40,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
               </button>
               <ul className="dropdown-menu ">
                 <li>
-                  <Link to={`/mis_playlists/${id}/reproducir`}>
+                  <Link to={`/mis_playlists/${id}/reproducir?v=00000&key=1`}>
                     <button className="dropdown-item color-boton">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

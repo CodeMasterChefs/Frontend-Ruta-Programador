@@ -109,6 +109,7 @@ const MiPlaylist = () => {
                 {elementos.map((elemento, index) => (
                   <Fileplaylist
                     key={index}
+                    KeyElemento={index+1}
                     Titulo={elemento.tituloElemento}
                     Fecha={elemento.fechaAgregado}
                     Duracion={elemento.duracionElemento}
