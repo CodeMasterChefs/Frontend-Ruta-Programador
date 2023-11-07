@@ -66,7 +66,7 @@ const MiPlaylist = () => {
             IdPlaylist={playlist.idPlaylist}
             Titulo={playlist.tituloPlaylist}
             Descripcion={playlist.descripcionPlaylist}
-            IdPrimerVideo={elementos[0].idVideoYoutube}
+            IdPrimerVideo={elementos[0]?.idVideoYoutube}
             UrlIcon={playlist.idMundo}
             handleShow={handleShow}
           />
