@@ -19,9 +19,7 @@ const ReproductorPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const elementosResponse = await api.get(
-                    "/elemento_playlists/" + idPlaylist
-                );
+                const elementosResponse = await api.get("/elemento_playlists/" + idPlaylist);
                 setElementos(elementosResponse.data.elementos);
                 setTituloElemento(elementosResponse.data.elementos[keyElemento - 1]?.tituloElemento);
             } catch (error) {

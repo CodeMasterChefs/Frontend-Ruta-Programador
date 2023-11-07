@@ -13,10 +13,17 @@ const formatDuration = (duracion) => {
     }
 };
 
+const getQueryValue = (name) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+};
+
+
 const ElementoPlaylist = ({ IdPlaylist, TituloElemento, IdVideo, DuracionVideo, KeyElemento }) => {
     const formattedDuration = formatDuration(DuracionVideo);
 
-    const isSelected = window.location.search.includes(`key=${KeyElemento}`);
+    const keyQueryParam = getQueryValue("key");
+    const isSelected = keyQueryParam === String(KeyElemento);
 
     const element_playlist_style = isSelected ? "body-content-element-playlist_isSelected" : "body-content-element-playlist";
 
