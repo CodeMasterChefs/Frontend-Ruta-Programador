@@ -16,9 +16,13 @@ const formatDuration = (duracion) => {
 const ElementoPlaylist = ({ IdPlaylist, TituloElemento, IdVideo, DuracionVideo, KeyElemento }) => {
     const formattedDuration = formatDuration(DuracionVideo);
 
+    const isSelected = window.location.search.includes(`key=${KeyElemento}`);
+
+    const element_playlist_style = isSelected ? "body-content-element-playlist_isSelected" : "body-content-element-playlist";
+
     return (
         <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdVideo}&key=${KeyElemento}`} className="custom-link">
-            <div className="body-content-element-playlist mb-2">
+            <div className={element_playlist_style + " mb-2"}>
                 <div className="row gx-2">
                     <div className="col-4 col-sm-2 col-lg-3 d-flex flex-grow-1 align-items-center">
                         <div className="d-flex justify-content-start">
