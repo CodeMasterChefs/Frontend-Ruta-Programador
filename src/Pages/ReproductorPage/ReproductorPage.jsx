@@ -1,9 +1,7 @@
-// import PropTypes from 'prop-types';
 import ElementoPlaylist from '../../Components/ElementoPlaylist/ElementoPlaylist';
 import { useParams, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from '../../config/site.config';
-// import NavBar from '../../Components/NavBar/NavBar'
 
 const ReproductorPage = () => {
     const { idPlaylist } = useParams();
@@ -16,19 +14,31 @@ const ReproductorPage = () => {
     const [elementos, setElementos] = useState([]);
     const [tituloElemento, setTituloElemento] = useState('');
 
+
+
     useEffect(() => {
+        const scrollToElemento = () => {
+            document.getElementById(idVideo)?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "start"
+            });
+        }
+
         const fetchData = async () => {
             try {
                 const elementosResponse = await api.get("/elemento_playlists/" + idPlaylist);
                 setElementos(elementosResponse.data.elementos);
                 setTituloElemento(elementosResponse.data.elementos[keyElemento - 1]?.tituloElemento);
+                scrollToElemento();
             } catch (error) {
                 console.log(error);
             }
         };
 
         fetchData();
-    }, [idPlaylist, keyElemento]);
+        scrollToElemento();
+    }, [idPlaylist, keyElemento, idVideo]);
 
     const playlists = elementos.map((elemento, index) => (
         <ElementoPlaylist
@@ -67,11 +77,5 @@ const ReproductorPage = () => {
         </div>
     );
 };
-
-
-ReproductorPage.propTypes = {
-
-};
-
 
 export default ReproductorPage;
