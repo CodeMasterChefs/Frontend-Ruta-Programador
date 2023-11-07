@@ -77,8 +77,7 @@ const Playlist = ({ CantPlaylists }) => {
         }
       });
   };
-  const handleCrear = async (event) => {
-    event.preventDefault();
+  const handleCrear = async () => {
     try {
       await fetchData();
       document.getElementById("closeModal").click();

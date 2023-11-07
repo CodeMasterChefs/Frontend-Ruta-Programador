@@ -27,6 +27,10 @@ const MisPlaylistsPage = () => {
     fetchDataCargarPlaylists();
   }, []);
 
+  useEffect(() => {
+    fetchDataCargarPlaylists();
+  }, [playlists]);
+  
   // Función para manejar el clic en el botón "Editar playlist"
   const handleEditarClick = (id) => {
     setSelectedPlaylistId(id);
