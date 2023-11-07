@@ -14,6 +14,7 @@ const ReproductorPage = () => {
     const keyElemento = queryParams.get('key');
 
     const [elementos, setElementos] = useState([]);
+    const [tituloElemento, setTituloElemento] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,15 +22,15 @@ const ReproductorPage = () => {
                 const elementosResponse = await api.get(
                     "/elemento_playlists/" + idPlaylist
                 );
-                console.log(elementosResponse.data.elementos);
                 setElementos(elementosResponse.data.elementos);
+                setTituloElemento(elementosResponse.data.elementos[keyElemento - 1]?.tituloElemento);
             } catch (error) {
                 console.log(error);
             }
         };
 
         fetchData();
-    }, [idPlaylist]);
+    }, [idPlaylist, keyElemento]);
 
     const playlists = elementos.map((elemento, index) => (
         <ElementoPlaylist
@@ -53,7 +54,7 @@ const ReproductorPage = () => {
                             allowFullScreen
                         ></iframe>
                     </div>
-                    <h3 className="mt-3">Jhay Cortez - Como Se Siente (Official Video)</h3>
+                    <h3 className="mt-3">{tituloElemento}</h3>
                 </div>
                 <div className="col-lg-4 p-3">
                     <div className='d-flex justify-content-between align-items-center'>
