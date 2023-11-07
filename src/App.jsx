@@ -10,6 +10,7 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import { AuthProvider } from "./context/AuthContext";
 import ConfirmarCodigoPage from "./Pages/ConfimarCodigoPage/ConfirmarCodigoPage";
 import RecuperarContraseña from "./Pages/RecuperarContraseña/RecuperarContraseña";
+import ReproductorPage from "./Pages/ReproductorPage/ReproductorPage";
 //import InicioSesionPage from "./Pages/InicioSesionPage/InicioSesionPage";
 
 function App() {
@@ -21,8 +22,8 @@ function App() {
           <Route path="/" element={<HomePage></HomePage>}></Route>
           <Route path="/registro" element={<RegistroUsuarioPage />}></Route>
           <Route path="/iniciar_sesion" element={<LoginPage />}></Route>
-          <Route path="/verificar-correo" element={<ConfirmarCodigoPage/>}></Route>
-          <Route path="/recuperar_contraseña" element={<RecuperarContraseña/>}></Route>
+          <Route path="/verificar-correo" element={<ConfirmarCodigoPage />}></Route>
+          <Route path="/recuperar_contraseña" element={<RecuperarContraseña />}></Route>
           <Route element={<ProtectedRoute />}>
             <Route
               path="/mis_playlists"
@@ -54,6 +55,12 @@ function App() {
                 <HomePage>
                   <TuCuentaPage />
                 </HomePage>
+              }
+            />
+            <Route
+              path="/mis_playlists/:idPlaylist/reproducir"
+              element={
+                <ReproductorPage />
               }
             />
           </Route>

@@ -3,12 +3,13 @@ import { dateFormater } from "../../utils/date-format";
 
 import "./FilePlaylist.css";
 import { EliminarElemento } from "../EliminarElemento/EliminarElemento";
+import { Link } from "react-router-dom";
 
-const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlaylist, IdElemento}) => {
+const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlaylist, IdElemento }) => {
 
   return (
     <>
-      <EliminarElemento Imagen={UrlImg} Titulo={Titulo} IdPlaylist={IdPlaylist} IdElemento={IdElemento}/>
+      <EliminarElemento Imagen={UrlImg} Titulo={Titulo} IdPlaylist={IdPlaylist} IdElemento={IdElemento} />
       <div className="row video-elente-file">
         <div className="col-1 d-flex align-items-center justify-content-center">
           <p className="text-center filePlayListId">{KeyOrderValue}</p>
@@ -50,25 +51,27 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlayli
           </button>
           <ul className="dropdown-menu">
             <li>
-              <button className="dropdown-item color-boton">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="15"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                >
-                  <path
-                    d="M7.5 1.25C4.05375 1.25 1.25 4.05375 1.25 7.5C1.25 10.9462 4.05375 13.75 7.5 13.75C10.9462 13.75 13.75 10.9462 13.75 7.5C13.75 4.05375 10.9462 1.25 7.5 1.25ZM7.5 12.5C4.74313 12.5 2.5 10.2569 2.5 7.5C2.5 4.74313 4.74313 2.5 7.5 2.5C10.2569 2.5 12.5 4.74313 12.5 7.5C12.5 10.2569 10.2569 12.5 7.5 12.5Z"
-                    fill="#F2F2F2"
-                  />
-                  <path
-                    d="M5.625 10.625L10.625 7.5L5.625 4.375V10.625Z"
-                    fill="#F2F2F2"
-                  />
-                </svg>
-                &nbsp;Reproducir video
-              </button>
+              <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdElemento}`}>
+                <button className="dropdown-item color-boton">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                  >
+                    <path
+                      d="M7.5 1.25C4.05375 1.25 1.25 4.05375 1.25 7.5C1.25 10.9462 4.05375 13.75 7.5 13.75C10.9462 13.75 13.75 10.9462 13.75 7.5C13.75 4.05375 10.9462 1.25 7.5 1.25ZM7.5 12.5C4.74313 12.5 2.5 10.2569 2.5 7.5C2.5 4.74313 4.74313 2.5 7.5 2.5C10.2569 2.5 12.5 4.74313 12.5 7.5C12.5 10.2569 10.2569 12.5 7.5 12.5Z"
+                      fill="#F2F2F2"
+                    />
+                    <path
+                      d="M5.625 10.625L10.625 7.5L5.625 4.375V10.625Z"
+                      fill="#F2F2F2"
+                    />
+                  </svg>
+                  &nbsp;Reproducir video
+                </button>
+              </Link>
             </li>
             <li>
               <button className="dropdown-item color-boton">

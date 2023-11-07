@@ -1,11 +1,11 @@
-import {useState} from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 import "./Card.css";
 import { Link } from "react-router-dom";
 import EliminarPlaylist from "../EliminarPlaylist/EliminarPlaylist";
 
-export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick}) => {
+export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,7 +16,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick}) => {
           <img src={UrlImagen} className="card-img-top" alt="..." />
           <div
             className="position-absolute top-0 end-0 dropdown"
-            data-bs-toggle="dropdown"
+            // data-bs-toggle="dropdown"
           >
 
             {/* Verificar el error del modal en el dropdown-menu */}
@@ -27,7 +27,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick}) => {
                   height="24"
                   viewBox="0 0 10 20"
                   fill="none"
-                // xmlns="http://www.w3.org/2000/svg"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
                   <g id="bx-dots-vertical-rounded">
                     <path
@@ -40,25 +40,27 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick}) => {
               </button>
               <ul className="dropdown-menu ">
                 <li>
-                  <button className="dropdown-item color-boton">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="15"
-                      height="15"
-                      viewBox="0 0 15 15"
-                      fill="none"
-                    >
-                      <path
-                        d="M7.5 1.25C4.05375 1.25 1.25 4.05375 1.25 7.5C1.25 10.9462 4.05375 13.75 7.5 13.75C10.9462 13.75 13.75 10.9462 13.75 7.5C13.75 4.05375 10.9462 1.25 7.5 1.25ZM7.5 12.5C4.74313 12.5 2.5 10.2569 2.5 7.5C2.5 4.74313 4.74313 2.5 7.5 2.5C10.2569 2.5 12.5 4.74313 12.5 7.5C12.5 10.2569 10.2569 12.5 7.5 12.5Z"
-                        fill="#F2F2F2"
-                      />
-                      <path
-                        d="M5.625 10.625L10.625 7.5L5.625 4.375V10.625Z"
-                        fill="#F2F2F2"
-                      />
-                    </svg>
-                    &nbsp;Reproducir Playlist
-                  </button>
+                  <Link to={`/mis_playlists/${id}/reproducir`}>
+                    <button className="dropdown-item color-boton">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 15 15"
+                        fill="none"
+                      >
+                        <path
+                          d="M7.5 1.25C4.05375 1.25 1.25 4.05375 1.25 7.5C1.25 10.9462 4.05375 13.75 7.5 13.75C10.9462 13.75 13.75 10.9462 13.75 7.5C13.75 4.05375 10.9462 1.25 7.5 1.25ZM7.5 12.5C4.74313 12.5 2.5 10.2569 2.5 7.5C2.5 4.74313 4.74313 2.5 7.5 2.5C10.2569 2.5 12.5 4.74313 12.5 7.5C12.5 10.2569 10.2569 12.5 7.5 12.5Z"
+                          fill="#F2F2F2"
+                        />
+                        <path
+                          d="M5.625 10.625L10.625 7.5L5.625 4.375V10.625Z"
+                          fill="#F2F2F2"
+                        />
+                      </svg>
+                      &nbsp;Reproducir Playlist
+                    </button>
+                  </Link>
                 </li>
                 <li>
                   <button className="dropdown-item color-boton">
@@ -154,8 +156,8 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick}) => {
             <p className="card-text">{Descripcion}</p>
           </div>
         </div>
-      </div>
-      <EliminarPlaylist IdPlaylist={id} show={show} handleClose={handleClose} refrescar={1}/>
+      </div >
+      <EliminarPlaylist IdPlaylist={id} show={show} handleClose={handleClose} refrescar={1} />
     </>
   );
 };
