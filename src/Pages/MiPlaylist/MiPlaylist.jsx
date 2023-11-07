@@ -66,6 +66,7 @@ const MiPlaylist = () => {
             IdPlaylist={playlist.idPlaylist}
             Titulo={playlist.tituloPlaylist}
             Descripcion={playlist.descripcionPlaylist}
+            IdPrimerVideo={elementos[0].idVideoYoutube}
             UrlIcon={playlist.idMundo}
             handleShow={handleShow}
           />
@@ -109,7 +110,7 @@ const MiPlaylist = () => {
                 {elementos.map((elemento, index) => (
                   <Fileplaylist
                     key={index}
-                    KeyElemento={index+1}
+                    KeyElemento={index + 1}
                     Titulo={elemento.tituloElemento}
                     Fecha={elemento.fechaAgregado}
                     Duracion={elemento.duracionElemento}
@@ -118,6 +119,7 @@ const MiPlaylist = () => {
                     className="fileplaylist-item"
                     IdPlaylist={params.idPlaylist}
                     IdElemento={elemento.idElemento}
+                    IdVideo={elemento.idVideoYoutube}
                   />
                 ))}
                 <div className="add-playlist-container">

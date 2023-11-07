@@ -1,13 +1,13 @@
 // import PropTypes from 'prop-types';
 import ElementoPlaylist from '../../Components/ElementoPlaylist/ElementoPlaylist';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import api from '../../config/site.config';
 // import NavBar from '../../Components/NavBar/NavBar'
 
 const ReproductorPage = () => {
     const { idPlaylist } = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const idVideo = queryParams.get('v');
