@@ -3,6 +3,7 @@ import "./LoginPage.css";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import svgAstronautra from "../../assets/Image.svg";
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const [formState, setFormState] = useState({
@@ -11,6 +12,8 @@ const LoginPage = () => {
   });
   const { email, password } = formState;
   const { signin, signinErrors, isAuthenticated, emptyErrors, setEmptyErrors } = useAuth();
+
+  const [showPassword, setShowPassword] = useState(false); // INICIAR ESTADO DE MOSTRAR CONTRASEÑA
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -68,14 +71,22 @@ const LoginPage = () => {
             <div className="required field my-3">
               <label className="form-title">Contraseña:</label>
               <br></br>
-              <input
-                type="password"
-                className="input-box"
-                name="password"
-                placeholder="Ingresar contraseña"
-                value={password}
-                onInput={onInputChange}
-              />
+              <div style={{ position: "relative" }}>
+                <input
+                  type={showPassword ? "text" : "password"} // CAMBIAR TIPO DE INPUT
+                  className="form-control"
+                  name="password"
+                  placeholder="Ingresar contraseña"
+                  value={password}
+                  onInput={onInputChange}
+                />
+                <span
+                  onClick={() => setShowPassword(!showPassword)} // MOSTRAR U OCULTAR CONTRASEÑA
+                  style={{ cursor: "pointer", position: "absolute", top: "50%", right: "10px", transform: "translateY(-50%)", color: "black" }} //CAMBIAR COLOR
+                >
+                  {showPassword ? "ocultar" : "mostrar"}
+                </span>
+              </div>
               {emptyErrors && (
                 <em>
                   <small>{emptyErrors.password}</small>
@@ -113,6 +124,5 @@ const LoginPage = () => {
     </div>
   );
 };
-
 
 export default LoginPage;

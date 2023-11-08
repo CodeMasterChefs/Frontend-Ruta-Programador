@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./RegistroUsuarioPage.css";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../context/AuthContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react"; // import useState
 import CancelarRegistro from "../../Components/ModalRegister/CancelarRegistro";
 import svgAstronautra from "../../assets/Image.svg";
 
@@ -14,6 +14,9 @@ const RegistroUsuarioPage = () => {
     formState: { errors },
   } = useForm();
   const { signup, isAuthenticated, errors: registerErrors } = useAuth();
+
+  const [showPassword, setShowPassword] = useState(false); // INICIAR ESTADO DE MOSTRAR CONTRASEÑA
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // INICIAR ESTADO DE MOSTRAR CONTRASEÑA
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -75,12 +78,26 @@ const RegistroUsuarioPage = () => {
             <div className="required field ">
               <label className="form-title">Contraseña *</label>
               <br></br>
-              <input
-                className="input-box"
-                {...register("password", { required: true })}
-                type="password"
-                placeholder="Ingresar contraseña"
-              />
+              <div style={{ position: "relative" }}>
+                <input
+                  className="input-box"
+                  {...register("password", { required: true })}
+                  type={showPassword ? "text" : "password"} // CAMBIAR TIPO DE INPUT
+                  placeholder="Ingresar contraseña"
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    right: "10px",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setShowPassword(!showPassword)} // MOSTRAR U OCULTAR CONTRASEÑA
+                >
+                  {showPassword ? "ocultar" : "mostrar"}
+                </div>
+              </div>
               {registerErrors.password && (
                 <small>
                   <p className="text-white">{registerErrors.password[0]}</p>
@@ -92,12 +109,26 @@ const RegistroUsuarioPage = () => {
             <div className="required field ">
               <label className="form-title">Confirmar contraseña *</label>
               <br></br>
-              <input
-                className="input-box"
-                type="password"
-                {...register("password_confirmation", { required: true })}
-                placeholder="Ingresar contraseña"
-              />
+              <div style={{ position: "relative" }}>
+                <input
+                  className="input-box"
+                  type={showConfirmPassword ? "text" : "password"} // CAMBIAR TIPO DE INPUT
+                  {...register("password_confirmation", { required: true })}
+                  placeholder="Ingresar contraseña"
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    right: "10px",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)} // MOSTRAR U OCULTAR CONTRASEÑA
+                >
+                  {showConfirmPassword ? "ocultar" : "mostrar"}
+                </div>
+              </div>
               {registerErrors.password_confirmation && (
                 <small>
                   <p className="text-white">
