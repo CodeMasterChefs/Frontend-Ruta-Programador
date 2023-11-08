@@ -40,10 +40,15 @@ const MisPlaylistsPage = () => {
           <h3>Mis Playlists</h3>
         </div>
         <div className="col-sm-6 d-flex justify-content-end col-search">
-          <div className="search-container">
-            <input className="search-txt" type="text" name="" placeholder="" />
-            <a className="search-btn" href="#"></a>
-          </div>
+          <link rel="stylesheet" href="./style.css" />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          />
+          <form className="form-search" action="">
+            <input className="input-search" type="search" placeholder="Busca tu playlist" />
+            <i className="fa fa-search"></i>
+          </form>
           <Playlist CantPlaylists={playlists.length} />
         </div>
       </div>

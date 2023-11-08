@@ -15,20 +15,99 @@
       align-items: flex-end;
     }
   
-    .search-container {
-      order: 2; /* Cambia el orden del contenedor de búsqueda para que esté primero en dispositivos móviles */
+    .form-search {
+      order: 1; /* Cambia el orden del formulario para que esté después de "Nueva Playlist" en dispositivos móviles */
       margin-top: 10px;
-      align-items: center;
     }
-    .playlist-responsive{
-        margin-bottom: 20%;
+  
+    .playlist-responsive {
+      margin-bottom: 20%;
+    }
+
+    .form-search:hover{
+      width: 300px;
+      cursor: pointer;
+  }
+  .form-search{
+    position: static;
+    top: 50%;
+    left: 60%;
+    margin-right: 0px;
+    transform: translate(0%,0%);
+    transition: all 1s;
+    width: 45px;
+    height: 45px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 3px solid #227593;
+    padding: 5px;
+    color: black; /* Cambia el color del texto a negro */
+}
+  }
+  @media (min-width: 764px) {
+    .form-search{
+      position: static;
+      top: 50%;
+      left: 60%;
+      margin-right: 10px;
+      transform: translate(0%,0%);
+      transition: all 1s;
+      width: 45px;
+      height: 45px;
+      background: white;
+      box-sizing: border-box;
+      border-radius: 25px;
+      border: 3px solid #227593;
+      padding: 5px;
+      color: black; /* Cambia el color del texto a negro */
+  }
+    .form-search:hover{
+      width: 400px;
+      cursor: pointer;
     }
   }
 
   
-  
-  
-  
-  
-  
-  
+  /* Seccion para estilizacion del search de playlist */
+
+.input-search{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    width: 100%;;
+    height: 40px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+    color: black; /* Cambia el color del texto a negro */
+}
+
+.fa{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background: #4DDAC5;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: black; 
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+.form-search:hover input{
+    display: block;
+}
+
+.form-search:hover .fa{
+    background: #4DDAC5;
+    color: #227593;
+}
