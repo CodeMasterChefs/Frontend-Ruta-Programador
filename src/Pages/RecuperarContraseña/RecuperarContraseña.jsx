@@ -212,7 +212,6 @@ const RecuperarContraseña = () => {
               <div className="input-box-newP">
                 <input
                   className="input-box-password"
-                  style={{ width: "100%" }}
                   type={showPassword ? "text" : "password"} //CAMBIAR TIPO DE INPUT
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
@@ -255,7 +254,6 @@ const RecuperarContraseña = () => {
               <div className="input-box-newP">
                 <input
                   className="input-box-password"
-                  style={{ width: "100%" }}
                   type={showConfirmPassword ? "text" : "password"} //CAMBIAR TIPO DE INPUT
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
