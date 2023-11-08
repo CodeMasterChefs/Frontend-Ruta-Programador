@@ -3,6 +3,7 @@ import "./LoginPage.css";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import svgAstronautra from "../../assets/Image.svg";
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -84,7 +85,7 @@ const LoginPage = () => {
                   onClick={() => setShowPassword(!showPassword)} // MOSTRAR U OCULTAR CONTRASEÑA
                   style={{ cursor: "pointer", position: "absolute", top: "50%", right: "10px", transform: "translateY(-50%)", color: "black" }} //CAMBIAR COLOR
                 >
-                  {showPassword ? "ocultar" : "mostrar"}
+                  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                 </span>
               </div>
               {emptyErrors && (

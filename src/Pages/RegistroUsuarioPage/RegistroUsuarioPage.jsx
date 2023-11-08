@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react"; // import useState
 import CancelarRegistro from "../../Components/ModalRegister/CancelarRegistro";
 import svgAstronautra from "../../assets/Image.svg";
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const RegistroUsuarioPage = () => {
   const navigate = useNavigate();
@@ -95,7 +96,7 @@ const RegistroUsuarioPage = () => {
                   }}
                   onClick={() => setShowPassword(!showPassword)} // MOSTRAR U OCULTAR CONTRASEÑA
                 >
-                  {showPassword ? "ocultar" : "mostrar"}
+                  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                 </div>
               </div>
               {registerErrors.password && (
@@ -126,7 +127,7 @@ const RegistroUsuarioPage = () => {
                   }}
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)} // MOSTRAR U OCULTAR CONTRASEÑA
                 >
-                  {showConfirmPassword ? "ocultar" : "mostrar"}
+                  {showConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                 </div>
               </div>
               {registerErrors.password_confirmation && (

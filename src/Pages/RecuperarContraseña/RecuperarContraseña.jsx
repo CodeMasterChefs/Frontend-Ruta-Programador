@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../../config/site.config";
 import { useNavigate } from "react-router-dom";
 import "./RecuperarContraseña.css";
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const RecuperarContraseña = () => {
   const [mostrarMensaje, setMostrarMensaje] = useState("formulario");
@@ -228,7 +229,7 @@ const RecuperarContraseña = () => {
                   }}
                   onClick={() => setShowPassword(!showPassword)} //MOSTRAR U OCULTAR CONTRASEÑA
                 >
-                  {showPassword ? "ocultar" : "mostrar"}
+                  {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                 </div>
           </div>
           <div>
@@ -249,7 +250,7 @@ const RecuperarContraseña = () => {
                   }}
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)} // MOSTRAR U OCULTAR CONTRASEÑA
                 >
-                  {showConfirmPassword ? "ocultar" : "mostrar"}
+                  {showConfirmPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}
                 </div>
           </div>
           {verificationError && <p>{verificationError}</p>}
