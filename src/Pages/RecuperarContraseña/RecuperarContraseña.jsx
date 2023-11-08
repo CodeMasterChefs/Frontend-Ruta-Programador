@@ -350,7 +350,7 @@ const RecuperarContraseña = () => {
           </p>
           <div className="container d-flex justify-content-center">
             <input
-              className="input-box-password"
+              className="input-box-email"
               type="text"
               value={emailValue}
               onChange={(e) => setEmailValue(e.target.value)} // Manejar cambios en el input
