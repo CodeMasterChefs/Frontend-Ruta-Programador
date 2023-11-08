@@ -33,9 +33,11 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkLogin = async () => {
       const userData = JSON.parse(localStorage.getItem("userData"));
-      !userData.access_token
+      if(userData){
+        !userData.access_token
         ? setIsAuthenticated(false)
         : setIsAuthenticated(true);
+      }
     };
     checkLogin();
   }, [isAuthenticated]);
