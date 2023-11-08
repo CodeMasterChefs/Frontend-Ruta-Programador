@@ -3,7 +3,7 @@ import { useAuth } from "./context/AuthContext";
 
 const ProtectedRoute = () => {
   const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <Outlet /> : <Navigate to="/iniciar_sesion" />;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/iniciar-sesion" />;
 };
 
 export default ProtectedRoute;

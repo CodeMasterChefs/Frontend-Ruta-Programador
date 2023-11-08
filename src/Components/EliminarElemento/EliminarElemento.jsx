@@ -18,7 +18,7 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
     <>
       <div>
         <ModalConf
-          Texto={"El video se eliminó correctamente de tu Playlist"}
+          Texto={"El video se eliminó correctamente de tu playlist"}
           TxtButton="Aceptar"
           ide="ModalConfirmacionEliminar"
         />

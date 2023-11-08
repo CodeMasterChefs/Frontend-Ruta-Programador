@@ -20,8 +20,7 @@
 }
 
 .registro-bg {
-  /*     position: fixed;
- */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -30,13 +29,11 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left;
-  z-index: 0;
 }
 
 .registro-content {
-  /*     z-index: 1;
- */
-  height: 100vh;
+  z-index: 1;
+  height: 70vh;
 }
 .registro-content_container {
   width: 100%;
@@ -46,15 +43,20 @@
 }
 
 @media screen and (max-width: 912px) {
-  /* .registro-bg {
+  .registro-bg {
     display: none;
+
   }
   .registro-content {
     display: flex;
     flex-direction: column;
-  } */
-  /* .registro-title {
+  } 
+  .registro-title {
     opacity: 100%;
     margin-bottom: 1.5rem;
-  } */
+  } 
+}
+
+.modal-backdrop {
+  z-index: auto;
 }

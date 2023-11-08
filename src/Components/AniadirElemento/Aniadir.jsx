@@ -34,10 +34,12 @@ export const Aniadir = () => {
 
       // console.log(modalVisible); // Aquí modalVisible debería reflejar true
     } catch (error) {
-
       if (error.response && error.response.data) {
         setError({
-          urlError: error.response.data.errors?.urlElemento?.[0] || error.response.data.errors?.[0] || "",
+          urlError:
+            error.response.data.errors?.urlElemento?.[0] ||
+            error.response.data.errors?.[0] ||
+            "",
         });
         throw new Error(error.response.data);
       }
@@ -93,6 +95,9 @@ export const Aniadir = () => {
         data-bs-toggle="modal"
         data-bs-target="#AniadirModal"
         data-bs-whatever="@fat"
+        onClick={() => {
+          setError({ urlError: "" });
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -124,6 +129,9 @@ export const Aniadir = () => {
                 data-bs-dismiss="modal"
                 aria-label="Close"
                 id="closeModal"
+                onClick={() => {
+                  setError({ urlError: "" });
+                }}
               ></button>
             </div>
             <div className="modal-body">

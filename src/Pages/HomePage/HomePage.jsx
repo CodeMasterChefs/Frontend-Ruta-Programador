@@ -22,7 +22,7 @@ const HomePage = ({ children }) => {
       ) : (
         <div className="home-bg">
             <div className="d-flex justify-content-end home-navbar">
-              <Link to="/iniciar_sesion">
+              <Link to="/iniciar-sesion">
                 <button className="btn-primary mx-1 my-5">Iniciar sesión</button>
               </Link>
               <Link to="/registro">

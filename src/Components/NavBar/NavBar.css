@@ -6,7 +6,40 @@
 .navbar>.container-xl,
 .navbar>.container-xxl {
     background-color: #100626;
+    flex-wrap: nowrap;
 }
+
+@media screen and (max-width: 576px) {
+    .navbar>.container,
+    .navbar>.container-fluid,
+    .navbar>.container-lg,
+    .navbar>.container-md,
+    .navbar>.container-sm,
+    .navbar>.container-xl,
+    .navbar>.container-xxl {
+        position: fixed;
+        top: 10px;
+        left: 0;
+        }
+    .Icons-menu{
+        display: none;
+    }
+    }
+
+    @media screen and (max-width: 500px) {
+        .navbar>.container,
+        .navbar>.container-fluid,
+        .navbar>.container-lg,
+        .navbar>.container-md,
+        .navbar>.container-sm,
+        .navbar>.container-xl,
+        .navbar>.container-xxl {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            flex-wrap: inherit;
+            }
+        }
 
 .me-2 {
     border-radius: 3rem;
@@ -52,8 +85,12 @@
 
 }
 
+.Icons-menu{
+    background: transparent !important;
+}
+
 .Icons {
-    background-color: transparent;
+    background: transparent !important;
     border-width: 1;
     border-color: transparent;
 }
@@ -61,5 +98,6 @@
 .Icons:hover {
     background-color: transparent;
     border-width: 1;
-    border-color: #4DDAC5;
+    border-color: #4DDAC5 !important;
 }
+
