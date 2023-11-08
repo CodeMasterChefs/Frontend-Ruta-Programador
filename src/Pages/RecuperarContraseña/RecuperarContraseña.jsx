@@ -20,6 +20,8 @@ const RecuperarContraseña = () => {
   const [envioEmail, setEnvioEmail] = useState(null);
   const [verificarPassword, setVerificarPassword] = useState(null);
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false); // ICIAR ESTADO DE MOSTRAR CONTRASEÑA
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // INICIAR ESTADO DE MOSTRAR CONTRASEÑA
 
   const cambioContraseña = async () => {
     try {
@@ -212,19 +214,43 @@ const RecuperarContraseña = () => {
             <p className="input-box-newP">Ingresa una nueva contraseña:</p>
             <input
               className="input-box-password"
-              type="password"
+              type={showPassword ? "text" : "password"} //CAMBIAR TIPO DE INPUT
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
+            <div
+                  style={{
+                    position: "absolute",
+                    top: "49%",
+                    right: "550px",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setShowPassword(!showPassword)} //MOSTRAR U OCULTAR CONTRASEÑA
+                >
+                  {showPassword ? "ocultar" : "mostrar"}
+                </div>
           </div>
           <div>
             <p className="input-box-newPs">Confirma tu contraseña:</p>
             <input
               className="input-box-password"
-              type="password"
+              type={showConfirmPassword ? "text" : "password"}  //CAMBIAR TIPO DE INPUT
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
+            <div
+                  style={{
+                    position: "absolute",
+                    top: "59%",
+                    right: "550px",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                  }}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)} // MOSTRAR U OCULTAR CONTRASEÑA
+                >
+                  {showConfirmPassword ? "ocultar" : "mostrar"}
+                </div>
           </div>
           {verificationError && <p>{verificationError}</p>}
           {verificarPassword && <p>{verificarPassword}</p>}
