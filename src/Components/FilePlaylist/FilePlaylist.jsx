@@ -5,7 +5,7 @@ import "./FilePlaylist.css";
 import { EliminarElemento } from "../EliminarElemento/EliminarElemento";
 import { Link } from "react-router-dom";
 
-const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlaylist, IdElemento }) => {
+const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlaylist, IdElemento, KeyElemento, IdVideo }) => {
 
   return (
     <>
@@ -51,7 +51,7 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlayli
           </button>
           <ul className="dropdown-menu">
             <li>
-              <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdElemento}`}>
+              <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdVideo}&key=${KeyElemento}`}>
                 <button className="dropdown-item color-boton">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -163,6 +163,8 @@ Fileplaylist.propTypes = {
   KeyOrderValue: PropTypes.number.isRequired,
   IdPlaylist: PropTypes.number.isRequired,
   IdElemento: PropTypes.number.isRequired,
+  KeyElemento: PropTypes.number.isRequired,
+  IdVideo: PropTypes.string.isRequired
 };
 
 export default Fileplaylist;

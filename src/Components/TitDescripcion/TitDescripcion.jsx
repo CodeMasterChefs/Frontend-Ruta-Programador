@@ -8,6 +8,7 @@ export const TitDescripcion = ({
   Titulo = "Titulo",
   Descripcion = "Descripcion",
   UrlIcon = "UrlIcon",
+  IdPrimerVideo,
   handleShow
 }) => {
   const iconMap = {
@@ -36,7 +37,7 @@ export const TitDescripcion = ({
           <div className="p-2 d-flex align-items-start flex-column">
             <h3>{Titulo}</h3>
             <div className="d-flex justify-content-start">
-              <Link to={`/mis_playlists/${IdPlaylist}/reproducir`}>
+              <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
                 <button className="btn btn-primary play-button">
                   <svg
                     width="18"
@@ -69,7 +70,7 @@ export const TitDescripcion = ({
                 </button>
                 <ul className="dropdown-menu ">
                   <li>
-                    <Link to={`/mis_playlists/${IdPlaylist}/reproducir`}>
+                    <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
                       <button className="dropdown-item color-boton">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -354,5 +355,6 @@ TitDescripcion.propTypes = {
   Titulo: PropTypes.string.isRequired,
   Descripcion: PropTypes.string.isRequired,
   UrlIcon: PropTypes.number.isRequired,
-  handleShow: PropTypes.func.isRequired
+  handleShow: PropTypes.func.isRequired,
+  IdPrimerVideo: PropTypes.number.isRequired
 };

@@ -5,7 +5,7 @@ import "./Card.css";
 import { Link } from "react-router-dom";
 import EliminarPlaylist from "../EliminarPlaylist/EliminarPlaylist";
 
-export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
+export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick, IdPrimerVideo }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,7 +16,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
           <img src={UrlImagen} className="card-img-top" alt="..." />
           <div
             className="position-absolute top-0 end-0 dropdown"
-            // data-bs-toggle="dropdown"
+          // data-bs-toggle="dropdown"
           >
 
             {/* Verificar el error del modal en el dropdown-menu */}
@@ -40,7 +40,7 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick }) => {
               </button>
               <ul className="dropdown-menu ">
                 <li>
-                  <Link to={`/mis_playlists/${id}/reproducir`}>
+                  <Link to={`/mis_playlists/${id}/reproducir?v=${IdPrimerVideo}&key=1`}>
                     <button className="dropdown-item color-boton">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -168,4 +168,5 @@ Card.propTypes = {
   UrlImagen: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   onEditarClick: PropTypes.func.isRequired,
+  IdPrimerVideo: PropTypes.number.isRequired
 };
