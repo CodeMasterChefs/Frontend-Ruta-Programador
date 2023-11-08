@@ -222,6 +222,11 @@ const Playlist = ({ CantPlaylists }) => {
                 Crear
               </button>
             </div>
+            <div className="modal-footer">
+              <button className="btn btn-primary" onClick={handleCrear}>
+                Subir Icono
+              </button>
+            </div>
           </div>
         </div>
       </div>
