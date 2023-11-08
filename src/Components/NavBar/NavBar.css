@@ -85,8 +85,12 @@
 
 }
 
+.Icons-menu{
+    background: transparent !important;
+}
+
 .Icons {
-    background-color: transparent;
+    background: transparent !important;
     border-width: 1;
     border-color: transparent;
 }
@@ -94,6 +98,6 @@
 .Icons:hover {
     background-color: transparent;
     border-width: 1;
-    border-color: #4DDAC5;
+    border-color: #4DDAC5 !important;
 }
 
