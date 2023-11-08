@@ -224,10 +224,11 @@ const Playlist = ({ CantPlaylists }) => {
               </button>
             </div>
             <div className="modal-footer">
-              <SubirIconoNuevo></SubirIconoNuevo>
-              <button className="btn btn-primary" onClick={handleCrear}>
-                Subir Icono
-              </button>
+              <SubirIconoNuevo></SubirIconoNuevo> 
+              <button type="button" className="btn btn-secondary mx-2" 
+              data-bs-toggle="modal" 
+              data-bs-target="#modalCancelarRegistro" 
+              data-bs-whatever="@mdo">Subir Icono</button>
             </div>
           </div>
         </div>
