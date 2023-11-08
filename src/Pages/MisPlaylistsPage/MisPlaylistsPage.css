@@ -1,0 +1,34 @@
+.col-search {
+  position: absolute;
+  right: 1%;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  }
+  .playlist-responsive{
+    display: flex;
+  }
+  
+  @media (max-width: 764px) {
+    .col-search {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  
+    .search-container {
+      order: 2; /* Cambia el orden del contenedor de búsqueda para que esté primero en dispositivos móviles */
+      margin-top: 10px;
+      align-items: center;
+    }
+    .playlist-responsive{
+        margin-bottom: 20%;
+    }
+  }
+
+  
+  
+  
+  
+  
+  
+  
