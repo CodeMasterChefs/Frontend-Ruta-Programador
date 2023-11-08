@@ -3,6 +3,7 @@ import "./Playlist.css";
 import { useState, useEffect } from "react";
 import api from "../../config/site.config";
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
+import ModalConfPlaylist from "../ModalConfirmacion/ModalConfPlaylist";
 // import { Navigate } from "react-router-dom";
 
 const iconMap = {
@@ -224,12 +225,7 @@ const Playlist = ({ CantPlaylists }) => {
           </div>
         </div>
       </div>
-      <ModalConf
-        Texto="Tu playlist ha sido creada con éxito."
-        ide="ModalConfirmacionPlaylist"
-        TxtButton="Aceptar"
-      />
-
+      <ModalConfPlaylist/>
       <button
         type="button"
         className="btn btn-primary btn-confirm-modal"
