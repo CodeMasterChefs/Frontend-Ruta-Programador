@@ -36,11 +36,14 @@ const MisPlaylistsPage = () => {
   return (
     <main className="col-sm-11">
       <div className="row playlist-responsive">
-        <div className="col-sm-5 align-items-center">
+        <div className="col-sm-4 align-items-center">
           <h3>Mis Playlists</h3>
         </div>
-        <div className="col-sm-5 d-flex justify-content-end col-search">
-        <button className="searchResponsive">Holi</button>
+        <div className="col-sm-6 d-flex justify-content-end col-search">
+          <div className="search-container">
+            <input className="search-txt" type="text" name="" placeholder="" />
+            <a className="search-btn" href="#"></a>
+          </div>
           <Playlist CantPlaylists={playlists.length} />
         </div>
       </div>

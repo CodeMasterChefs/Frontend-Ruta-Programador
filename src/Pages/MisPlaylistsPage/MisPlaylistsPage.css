@@ -1,9 +1,12 @@
 .col-search {
-    position: fixed;
-    right: 2%;
+  position: absolute;
+  right: 1%;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
   }
   .playlist-responsive{
-    display: block;
+    display: flex;
   }
   
   @media (max-width: 764px) {
@@ -12,12 +15,13 @@
       align-items: flex-end;
     }
   
-    .searchResponsive {
-      order: 1; /* Cambia el orden del botón "Holi" para que esté primero en dispositivos móviles */
+    .search-container {
+      order: 2; /* Cambia el orden del contenedor de búsqueda para que esté primero en dispositivos móviles */
       margin-top: 10px;
+      align-items: center;
     }
     .playlist-responsive{
-        margin-bottom: 30%;
+        margin-bottom: 20%;
     }
   }
 
