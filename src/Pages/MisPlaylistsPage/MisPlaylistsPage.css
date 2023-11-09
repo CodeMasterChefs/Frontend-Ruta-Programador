@@ -24,3 +24,9 @@
       margin-bottom: 20%;
     }
   }
+
+  @media (max-width: 1122px) {
+    .playlist-responsive {
+      margin-bottom: 10%;
+    }
+  }
