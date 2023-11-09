@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import api from "../../config/site.config";
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
 // import { Navigate } from "react-router-dom";
+import { SubirIconoNuevo } from "../icons";
 
 const iconMap = {
   1: "moon.svg",
@@ -221,6 +222,13 @@ const Playlist = ({ CantPlaylists }) => {
               <button className="btn btn-primary" onClick={handleCrear}>
                 Crear
               </button>
+            </div>
+            <div className="modal-footer">
+              <SubirIconoNuevo></SubirIconoNuevo> 
+              <button type="button" className="btn btn-secondary mx-2" 
+              data-bs-toggle="modal" 
+              data-bs-target="#modalCancelarRegistro" 
+              data-bs-whatever="@mdo">Subir Icono</button>
             </div>
           </div>
         </div>

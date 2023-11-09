@@ -3,6 +3,8 @@ import "./LoginPage.css";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import svgAstronautra from "../../assets/Image.svg";
+import PasswordInput from "../../Components/PassworInput/PasswordInput";
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const [formState, setFormState] = useState({
@@ -11,6 +13,8 @@ const LoginPage = () => {
   });
   const { email, password } = formState;
   const { signin, signinErrors, isAuthenticated, emptyErrors, setEmptyErrors } = useAuth();
+
+  const [showPassword, setShowPassword] = useState(false); // INICIAR ESTADO DE MOSTRAR CONTRASEÑA
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -31,7 +35,7 @@ const LoginPage = () => {
     //event.preventDefault();
     try {
       signin(formState);
-    } catch (error) {}
+    } catch (error) { }
   };
 
   return (
@@ -42,7 +46,7 @@ const LoginPage = () => {
           <div className="login-title d-flex justify-content-center">
             <h1>La Ruta del<br></br>Programador</h1>
           </div>
-        </div> 
+        </div>
         <div className="col-md-5 login-content">
           <h3>Iniciar sesión:</h3>
           <hr className="line-header"></hr>
@@ -68,13 +72,11 @@ const LoginPage = () => {
             <div className="required field my-3">
               <label className="form-title">Contraseña:</label>
               <br></br>
-              <input
-                type="password"
-                className="input-box"
-                name="password"
-                placeholder="Ingresar contraseña"
-                value={password}
-                onInput={onInputChange}
+              <PasswordInput
+                showPassword={showPassword}
+                password={password}
+                onInputChange={onInputChange}
+                setShowPassword={setShowPassword}
               />
               {emptyErrors && (
                 <em>
@@ -113,6 +115,5 @@ const LoginPage = () => {
     </div>
   );
 };
-
 
 export default LoginPage;

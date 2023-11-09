@@ -1,22 +1,43 @@
 .input-box-password{
     width: 100%; 
-    max-width: 450px; 
     height: 35px;
     border-radius: 0.3rem;
     background: rgba(242, 242, 242, 0.15);
     color: #f2f2f2;
 }
 
-.input-box-newP{
-    position: relative;
-    right: 130px;
-    margin-top: 1rem;
-    margin-bottom: 0.2rem;
+.recover-conteiner{
+    display: grid;
+    place-items: center;
+    max-width: 1200;
+    width: 100%;
 }
 
-.input-box-newPs{
-    position: relative;
-    right: 150px;
+.title-recover{
+    text-align: center;
+    max-width: 450px;   
+}
+
+.password-container{
+    width: 450px;
+}
+
+.title-input-box{
     margin-top: 1rem;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.3rem;
+
+}
+
+.input-box-newP{
+    position: relative;
+    width: 100%;
+}
+
+.input-box-email{
+    width: 100%;
+    max-width: 450px;
+    height: 35px;
+    border-radius: 0.3rem;
+    background: rgba(242, 242, 242, 0.15);
+    color: #f2f2f2;
 }

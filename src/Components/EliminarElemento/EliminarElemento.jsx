@@ -2,6 +2,7 @@ import { ModalConf } from "../ModalConfirmacion/ModalConf";
 import "./Eliminar.css";
 import api from "../../config/site.config";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => {
 
@@ -9,10 +10,12 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
     try {
       const response = await api.remove(`elemento_playlists?idElemento=${IdElemento}&idPlaylist=${IdPlaylist}`)
       console.log(response);
+      //navigate("/mis_playlists/${IdPlaylist}");
     } catch (error) {
       console.error('Error al eliminar el elemento:', error);
     }
   };
+
 
   return (
     <>
