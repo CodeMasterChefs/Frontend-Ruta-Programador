@@ -33,3 +33,11 @@
 .iconPeligro{
   padding-left: 5rem !important ;
 }
+
+.btn-custom-color {
+  background-color: #BF3030 ;
+  border-color: #BF3030  ;
+  color:#f2f2f2;
+  padding: 12px 14px;
+  margin: 0px;
+}
