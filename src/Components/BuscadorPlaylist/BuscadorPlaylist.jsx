@@ -1,6 +1,6 @@
 import "./BuscadorPlaylist.css";
 import "./BDtest.js";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef} from "react";
 import { sortedNames } from "./BDtest";
 
 const BuscadorPlaylist = () => {
@@ -9,16 +9,6 @@ const BuscadorPlaylist = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const maxSuggestions = 5;
   const inputRef = useRef(null);
-
-  useEffect(() => {
-    // Agregar un evento para cerrar el input cuando se hace clic fuera
-    document.addEventListener("click", handleDocumentClick);
-
-    return () => {
-      // Eliminar el evento cuando se desmonta el componente
-      document.removeEventListener("click", handleDocumentClick);
-    };
-  }, []);
 
   const handleInputChange = (event) => {
     const inputText = event.target.value;
@@ -40,11 +30,15 @@ const BuscadorPlaylist = () => {
     setShowSuggestions(false);
   };
 
-  const handleDocumentClick = (event) => {
-    if (inputRef.current && !inputRef.current.contains(event.target)) {
-      // Si se hace clic fuera del input, oculta las sugerencias
+  const handleInputFocus = () => {
+    setShowSuggestions(true);
+  };
+
+  const handleInputBlur = () => {
+    // Espera un momento antes de ocultar las sugerencias para que el clic en la sugerencia se maneje primero
+    setTimeout(() => {
       setShowSuggestions(false);
-    }
+    }, 100);
   };
 
   return (
@@ -55,13 +49,15 @@ const BuscadorPlaylist = () => {
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       />
       <form className="form-search" autoComplete="off" action="">
-        <input
+      <input
           className="input-search"
           type="text"
           placeholder="Busca tu playlist"
           id="input"
           value={searchText}
           onChange={handleInputChange}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
           ref={inputRef}
         />
         <i className="fa fa-search"></i>

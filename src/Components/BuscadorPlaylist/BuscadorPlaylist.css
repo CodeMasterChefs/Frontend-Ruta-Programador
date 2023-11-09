@@ -97,9 +97,8 @@
   width: 100%;
   z-index: 2; /* Asegura que las sugerencias estén sobre otros elementos */
   list-style: none;
-  padding: 0;
-  margin: 0;
-  z-index: 10;
+  padding: 8px;
+  margin-bottom: 8px;
 }
 
 .suggestion {
