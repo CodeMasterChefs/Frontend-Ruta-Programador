@@ -24,10 +24,16 @@ const BuscadorPlaylist = () => {
       (name) => name.toLowerCase() !== inputText.toLowerCase()
     );
   
-    const limitedSuggestions = filteredSuggestions.slice(0, maxSuggestions);
-  
-    setSuggestions(limitedSuggestions);
-    setShowSuggestions(inputText.length > 0 && limitedSuggestions.length > 0);
+    if (inputText.length === 0) {
+      // Si no se ha escrito ninguna letra, no se muestran sugerencias
+      setSuggestions([]);
+      setShowSuggestions(false);
+    } else {
+      // Si se ha escrito al menos una letra, muestra las sugerencias
+      const limitedSuggestions = filteredSuggestions.slice(0, maxSuggestions);
+      setSuggestions(limitedSuggestions);
+      setShowSuggestions(limitedSuggestions.length > 0);
+    }
   };
 
   const handleSuggestionClick = (name) => {
