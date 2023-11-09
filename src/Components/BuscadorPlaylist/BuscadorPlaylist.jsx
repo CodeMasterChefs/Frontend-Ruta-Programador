@@ -13,13 +13,19 @@ const BuscadorPlaylist = () => {
   const handleInputChange = (event) => {
     const inputText = event.target.value;
     setSearchText(inputText);
-
+  
+    // Filtra los nombres que coinciden con el texto de búsqueda
     const matchingNames = sortedNames.filter((name) =>
       name.toLowerCase().includes(inputText.toLowerCase())
     );
-
-    const limitedSuggestions = matchingNames.slice(0, maxSuggestions);
-
+  
+    // Excluye el valor exacto del input de las sugerencias
+    const filteredSuggestions = matchingNames.filter(
+      (name) => name.toLowerCase() !== inputText.toLowerCase()
+    );
+  
+    const limitedSuggestions = filteredSuggestions.slice(0, maxSuggestions);
+  
     setSuggestions(limitedSuggestions);
     setShowSuggestions(inputText.length > 0 && limitedSuggestions.length > 0);
   };
