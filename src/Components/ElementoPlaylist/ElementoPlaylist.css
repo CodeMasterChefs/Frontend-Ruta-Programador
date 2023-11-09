@@ -12,7 +12,7 @@
 }
 
 .body-content-element-playlist:hover {
-    background: var(--Degrd-4, linear-gradient(90deg, rgba(251, 205, 153, 0.5) 13.02%, rgba(146, 58, 158, 0.5) 66.67%, rgba(16, 6, 38, 0.5) 100%));
+    background: var(--Degrd-4, linear-gradient(90deg, rgba(200, 200, 200, 0.5) 13.02%, rgba(120, 120, 120, 0.5) 66.67%, rgba(16, 6, 38, 0.5) 100%));
 }
 
 .custom-border-lg {
@@ -42,14 +42,14 @@
 }
 
 .custom-overflow {
-    max-height: 400px;
+    /* max-height: 400px; */
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 @media (min-width: 992px) {
     .custom-overflow {
-        max-height: 600px;
+        /* max-height: 600px; */
         overflow-x: hidden;
         overflow-y: auto;
     }
@@ -77,4 +77,11 @@
 .custom-link {
     text-decoration: none;
     color: white;
+}
+
+.custom-link:hover svg,
+.custom-link:hover {
+    text-decoration: none;
+    color: #747bff;
+    stroke: #747bff;
 }
