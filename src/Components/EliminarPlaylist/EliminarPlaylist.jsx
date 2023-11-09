@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import api from "../../config/site.config";
 import "./EliminarPlaylist.css"
@@ -42,9 +42,10 @@ function EliminarPlaylist({ IdPlaylist, show, handleClose, refrescar }) {
                     </div>
                 </Modal.Body>
                 <Modal.Footer className="modal-footer">
-                    <Button className="btn btn-prymary btn-delete" onClick={handleDelete}>
+                     {/* <Button className="btn btn-prymary btn-delete" onClick={handleDelete}>
                         Eliminar
-                    </Button>
+                    </Button>  */}
+                    <button className = "btn-custom-color"  onClick={handleDelete}>Eliminar</button>
                 </Modal.Footer>
             </Modal>
         </>
