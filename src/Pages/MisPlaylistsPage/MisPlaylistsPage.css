@@ -24,9 +24,14 @@
       margin-bottom: 20%;
     }
   }
-
-  @media (max-width: 1122px) {
+ 
+  @media (min-width: 765px) and (max-width: 1122px) {
+    .playlist-responsive {
+      margin-bottom: 5%;
+    }
+  }
+  /* @media (max-width: 1122px) {
     .playlist-responsive {
       margin-bottom: 10%;
     }
-  }
+  } */
