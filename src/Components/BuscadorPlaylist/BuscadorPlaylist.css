@@ -1,0 +1,116 @@
+@media (max-width: 764px) {
+
+    .form-search:hover{
+      width: 300px;
+      cursor: pointer;
+  }
+  .form-search{
+    position: static;
+    top: 50%;
+    left: 60%;
+    margin-right: 0px;
+    transform: translate(0%,0%);
+    transition: all 1s;
+    width: 45px;
+    height: 45px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 3px solid #227593;
+    padding: 5px;
+    color: black; /* Cambia el color del texto a negro */
+}
+  }
+
+  @media (min-width: 764px) {
+    .form-search{
+      position: static;
+      top: 50%;
+      left: 60%;
+      margin-right: 10px;
+      transform: translate(0%,0%);
+      transition: all 1s;
+      width: 45px;
+      height: 45px;
+      background: white;
+      box-sizing: border-box;
+      border-radius: 25px;
+      border: 3px solid #227593;
+      padding: 5px;
+      color: black; /* Cambia el color del texto a negro */
+  }
+    .form-search:hover{
+      width: 400px;
+      cursor: pointer;
+    }
+  }
+
+  .input-search{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+    width: 100%;;
+    height: 40px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    display: none;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+    color: black; /* Cambia el color del texto a negro */
+    z-index: 2;
+}
+
+.fa{
+    box-sizing: border-box;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background: #4DDAC5;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: black; 
+    font-size: 1.2em;
+    transition: all 1s;
+}
+
+.form-search:hover input{
+    display: block;
+}
+
+.form-search:hover .fa{
+    background: #4DDAC5;
+    color: #227593;
+}
+
+/*Estilizacion del data list*/
+
+
+.suggestions {
+  position: absolute;
+  top: 100%; /* Coloca las sugerencias debajo del input */
+  left: 0;
+  width: 100%;
+  z-index: 2; /* Asegura que las sugerencias estén sobre otros elementos */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+
+.suggestion {
+  cursor: pointer;
+  padding: 8px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin: 2px;
+}
+
+.suggestion:hover {
+  background-color: #f0f0f0;
+}
