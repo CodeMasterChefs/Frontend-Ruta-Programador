@@ -32,7 +32,7 @@ const RecuperarContraseña = () => {
       setMostrarMensaje("confirmarGuardado");
       const timer = setTimeout(() => {
         navigate("/iniciar-sesion");
-      }, 6000);
+      }, 3000);
       return () => clearTimeout(timer);
     } catch (error) {
       console.log(error);

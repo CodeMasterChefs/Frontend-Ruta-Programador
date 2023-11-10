@@ -26,7 +26,7 @@ const TuCuentaPage = () => {
     <button className="btn btn-primary" onClick={logout}>Cerrar sesión</button>
     </div>
     <div className="d-flex justify-content-center">
-    <h1 className="custom-margin">&lt;p&gt;Si puedes imaginarlo, puedes programarlo&lt;/p&gt;</h1>
+    <p className="custom-margin">&lt;p&gt;Si puedes imaginarlo, puedes programarlo&lt;/p&gt;</p>
     </div>
 
   </div>;
