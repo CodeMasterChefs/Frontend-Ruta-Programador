@@ -16,30 +16,28 @@ const ReproductorPage = () => {
     const [tituloElemento, setTituloElemento] = useState('');
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const elementosResponse = await api.get("/elemento_playlists/" + idPlaylist);
-                setElementos(elementosResponse.data.elementos);
-                setTituloElemento(elementosResponse.data.elementos[keyElemento - 1]?.tituloElemento);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        fetchData();
-    }, [idPlaylist, keyElemento]);
-
-    useEffect(() => {
         const scrollToElemento = () => {
             document.getElementById(idVideo)?.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
                 inline: "start"
             });
+        }
+
+        const fetchData = async () => {
+            try {
+                const elementosResponse = await api.get("/elemento_playlists/" + idPlaylist);
+                setElementos(elementosResponse.data.elementos);
+                setTituloElemento(elementosResponse.data.elementos[keyElemento - 1]?.tituloElemento);
+                scrollToElemento();
+            } catch (error) {
+                console.log(error);
+            }
         };
 
+        fetchData();
         scrollToElemento();
-    }, [idVideo])
+    }, [idPlaylist, keyElemento, idVideo]);
 
     const elementosPlaylist = elementos.map((elemento, index) => (
         <ElementoPlaylist
