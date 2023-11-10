@@ -53,7 +53,7 @@ const ReproductorPage = () => {
     ));
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid min-vh-100">
             <NavBar />
             {idVideo !== 'undefined' ?
                 <div className="row m-2 align-items-start">
@@ -69,7 +69,7 @@ const ReproductorPage = () => {
                     </div>
                     <div className="col-lg-4 p-3 custom-border-lista_reproduccion-lg">
                         <div className='d-flex justify-content-between align-items-center'>
-                            <h3>Lista de reproducción</h3>
+                            <h4>Lista de reproducción</h4>
                             <h6>{keyElemento}/{elementos.length}</h6>
                         </div>
                         <div className="custom-overflow custom-scrollbar" >
