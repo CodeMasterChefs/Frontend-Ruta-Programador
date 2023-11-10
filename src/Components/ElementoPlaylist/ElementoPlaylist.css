@@ -8,11 +8,17 @@
 }
 
 .body-content-element-playlist_isSelected {
+    color: #747bff;
     background: var(--Degrd-4, linear-gradient(90deg, rgba(251, 205, 153, 0.5) 13.02%, rgba(146, 58, 158, 0.5) 66.67%, rgba(16, 6, 38, 0.5) 100%));
 }
 
+.body-content-element-playlist_isSelected svg{
+    text-decoration: none;
+    stroke: #747bff;
+}
+
 .body-content-element-playlist:hover {
-    background: var(--Degrd-4, linear-gradient(90deg, rgba(251, 205, 153, 0.5) 13.02%, rgba(146, 58, 158, 0.5) 66.67%, rgba(16, 6, 38, 0.5) 100%));
+    background: var(--Degrd-4, linear-gradient(90deg, rgba(200, 200, 200, 0.5) 13.02%, rgba(120, 120, 120, 0.5) 66.67%, rgba(16, 6, 38, 0.5) 100%));
 }
 
 .custom-border-lg {
@@ -22,16 +28,16 @@
 
 .custom-border-lista_reproduccion-lg {
     border-top: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
 }
 
 .custom-border-reproductor-lg {
-    border-right: 1px solid var(--border-color);
     border-top: 1px solid var(--border-color);
 }
 
 @media (max-width: 992px) {
-    .custom-border-reproductor-lg {
-        border-right: none;
+    .custom-border-lista_reproduccion-lg {
+        border-left: none;
     }
 }
 
@@ -42,14 +48,14 @@
 }
 
 .custom-overflow {
-    max-height: 400px;
+    max-height: 50vh;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 @media (min-width: 992px) {
     .custom-overflow {
-        max-height: 600px;
+        max-height: 75vh;
         overflow-x: hidden;
         overflow-y: auto;
     }
@@ -77,4 +83,11 @@
 .custom-link {
     text-decoration: none;
     color: white;
+}
+
+.custom-link:hover svg,
+.custom-link:hover {
+    text-decoration: none;
+    color: #747bff;
+    stroke: #747bff;
 }

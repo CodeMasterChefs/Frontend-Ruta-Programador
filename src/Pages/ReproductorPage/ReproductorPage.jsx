@@ -16,30 +16,28 @@ const ReproductorPage = () => {
     const [tituloElemento, setTituloElemento] = useState('');
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const elementosResponse = await api.get("/elemento_playlists/" + idPlaylist);
-                setElementos(elementosResponse.data.elementos);
-                setTituloElemento(elementosResponse.data.elementos[keyElemento - 1]?.tituloElemento);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        fetchData();
-    }, [idPlaylist, keyElemento]);
-
-    useEffect(() => {
         const scrollToElemento = () => {
             document.getElementById(idVideo)?.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
                 inline: "start"
             });
+        }
+
+        const fetchData = async () => {
+            try {
+                const elementosResponse = await api.get("/elemento_playlists/" + idPlaylist);
+                setElementos(elementosResponse.data.elementos);
+                setTituloElemento(elementosResponse.data.elementos[keyElemento - 1]?.tituloElemento);
+                scrollToElemento();
+            } catch (error) {
+                console.log(error);
+            }
         };
 
+        fetchData();
         scrollToElemento();
-    }, [idVideo])
+    }, [idPlaylist, keyElemento, idVideo]);
 
     const elementosPlaylist = elementos.map((elemento, index) => (
         <ElementoPlaylist
@@ -53,7 +51,7 @@ const ReproductorPage = () => {
     ));
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid min-vh-100">
             <NavBar />
             {idVideo !== 'undefined' ?
                 <div className="row m-2 align-items-start">
@@ -69,7 +67,7 @@ const ReproductorPage = () => {
                     </div>
                     <div className="col-lg-4 p-3 custom-border-lista_reproduccion-lg">
                         <div className='d-flex justify-content-between align-items-center'>
-                            <h3>Lista de reproducción</h3>
+                            <h4>Lista de reproducción</h4>
                             <h6>{keyElemento}/{elementos.length}</h6>
                         </div>
                         <div className="custom-overflow custom-scrollbar" >
