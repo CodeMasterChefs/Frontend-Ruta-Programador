@@ -1,0 +1,32 @@
+.col-search {
+  position: absolute;
+  right: 1%;
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  }
+  .playlist-responsive{
+    display: flex;
+  }
+  
+  @media (max-width: 764px) {
+    .col-search {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  
+    .form-search {
+      order: 1; /* Cambia el orden del formulario para que esté después de "Nueva Playlist" en dispositivos móviles */
+      margin-top: 10px;
+    }
+  
+    .playlist-responsive {
+      margin-bottom: 20%;
+    }
+  }
+ 
+  @media (min-width: 765px) and (max-width: 1122px) {
+    .playlist-responsive {
+      margin-bottom: 5%;
+    }
+  }

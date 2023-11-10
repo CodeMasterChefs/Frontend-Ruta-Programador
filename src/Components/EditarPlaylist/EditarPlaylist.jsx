@@ -4,6 +4,9 @@ import "../NewPlaylist/Playlist.css";
 import { useState, useEffect } from "react";
 import api from "../../config/site.config";
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
+import { useLocation } from "react-router-dom";
+import ModalConfPlaylist from "../ModalConfirmacion/ModalConfPlaylist";
+import ModalConfEdit from "../ModalConfirmacion/ModalConfEdit";
 
 const iconMap = {
   1: "moon.svg",
@@ -28,6 +31,8 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     descriptionError: "",
   });
 
+  const location = useLocation();
+  const [buttonConf, setButtonConf] = useState('');
   // Llamar a fetchData cuando se monta el componente
   useEffect(() => {
     const fetchDataPlaylist = async () => {
@@ -54,6 +59,13 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     setSelectedIcon(iconMap[formState.idMundo]); // Se ejecutará una vez al montar el componente
   }, [formState.idMundo]);
 
+  useEffect(() => {
+    if(location.pathname === '/mis_playlists'){
+      setButtonConf('#ModalConfirmacionEdicionP')
+    }else{
+      setButtonConf('#ModalConfirmacionEdicion')
+    }
+  }, [location])
   const onInputChange = ({ target }) => {
     const { name, value } = target;
     setFormState({
@@ -149,18 +161,22 @@ const EditarPlaylist = ({ IdPlaylist }) => {
 
   return (
     <>
-      <ModalConf
-        Texto="Tu playlist ha sido modificada con éxito."
-        ide="ModalConfirmacionEdicion"
-        TxtButton="Aceptar"
-      />
+      {location.pathname === "/mis_playlists" ? (
+        <ModalConfEdit/>
+      ) : (
+        <ModalConf
+          Texto="Tu playlist ha sido modificada con éxito."
+          ide="ModalConfirmacionEdicion"
+          TxtButton="Aceptar"
+        />
+      )}
       <button
         type="button"
         className="btn btn-primary btn-confirm-modal"
         data-bs-toggle="modal"
-        data-bs-target="#ModalConfirmacionEdicion"
+        data-bs-target={buttonConf}
         id="btnModalConfirm"
-        style={{display: "none"}}
+        style={{ display: "none" }}
       >
         Launch demo modal
       </button>

@@ -12,7 +12,7 @@ const LoginPage = () => {
     password: "",
   });
   const { email, password } = formState;
-  const { signin, signinErrors, isAuthenticated, emptyErrors, setEmptyErrors } = useAuth();
+  const { signin, signinErrors, setSigninErrors, isAuthenticated, emptyErrors, setEmptyErrors } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false); // INICIAR ESTADO DE MOSTRAR CONTRASEÑA
 
@@ -29,6 +29,7 @@ const LoginPage = () => {
       [name]: value,
     });
     setEmptyErrors({})
+    setSigninErrors('')
   };
 
   const handleEnviar = async () => {
