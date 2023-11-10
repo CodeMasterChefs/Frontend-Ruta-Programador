@@ -33,10 +33,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkLogin = async () => {
       const userData = JSON.parse(localStorage.getItem("userData"));
-      if(userData){
+      if (userData) {
         !userData.access_token
-        ? setIsAuthenticated(false)
-        : setIsAuthenticated(true);
+          ? setIsAuthenticated(false)
+          : setIsAuthenticated(true);
       }
     };
     checkLogin();
@@ -110,10 +110,11 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
     localStorage.removeItem("userData");
     setUser(null);
     setIsAuthenticated(false);
+    await api.post("autenticacion/cerrarSesion", user);
     api.clearAuthorizationToken();
   };
 

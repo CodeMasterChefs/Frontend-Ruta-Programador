@@ -21,7 +21,7 @@ class Api {
   }
 
   clearAuthorizationToken() {
-    delete this.instance.defaults.headers.common['Authorization'];
+    this.instance.defaults.headers.common['Authorization'] = null;
   }
 
   get(url, config = {}) {
