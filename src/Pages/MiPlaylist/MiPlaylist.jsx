@@ -45,7 +45,7 @@ const MiPlaylist = () => {
     };
 
     fetchData();
-  }, [params.idPlaylist]);
+  }, [params.idPlaylist, elementos]);
   return (
     <div className="container">
       {loading ? (
