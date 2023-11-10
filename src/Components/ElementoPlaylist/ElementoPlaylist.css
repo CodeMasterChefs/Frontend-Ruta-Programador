@@ -8,7 +8,13 @@
 }
 
 .body-content-element-playlist_isSelected {
+    color: #747bff;
     background: var(--Degrd-4, linear-gradient(90deg, rgba(251, 205, 153, 0.5) 13.02%, rgba(146, 58, 158, 0.5) 66.67%, rgba(16, 6, 38, 0.5) 100%));
+}
+
+.body-content-element-playlist_isSelected svg{
+    text-decoration: none;
+    stroke: #747bff;
 }
 
 .body-content-element-playlist:hover {

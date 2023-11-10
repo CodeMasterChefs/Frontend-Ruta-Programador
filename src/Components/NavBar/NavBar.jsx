@@ -1,8 +1,38 @@
-import { Link } from "react-router-dom";
-import { HamburguerMenuIcon, HomeIcon } from "../icons";
+import { Link, NavLink } from "react-router-dom";
+import { ArrowBackIcon, HamburguerMenuIcon, HomeIcon, Usericon } from "../icons";
 import "./NavBar.css";
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
+  const [userData, setUserData] = useState(null);
+
+  const elements = (
+    <>
+      <li className="nav-item">
+        <NavLink to={"/mi_cuenta"} className="nav-link">
+          Tu cuenta
+        </NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink to="/mis_playlists" className="nav-link">
+          Mis Playlists
+        </NavLink>
+      </li>
+      <li className="nav-item">
+        <NavLink to={"/comunidad"} className="nav-link">
+          Comunidad
+        </NavLink>
+      </li>
+    </>
+  );
+
+  useEffect(() => {
+    const userDataFromLocalStorage = localStorage.getItem('userData');
+    if (userDataFromLocalStorage) {
+      setUserData(JSON.parse(userDataFromLocalStorage));
+    }
+  }, []);
+
   return (
     <nav
       className="navbar navbar-expand-lg custom-navbar-bg"
@@ -14,18 +44,7 @@ const NavBar = () => {
             className="btn btn-primary"
             onClick={() => window.history.back()}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="15"
-              height="15"
-              viewBox="4 7 18 18"
-              fill="none"
-            >
-              <path
-                d="M26.2499 13.75H8.01742L14.6337 7.13377L12.8662 5.36627L3.23242 15L12.8662 24.6338L14.6337 22.8663L8.01742 16.25H26.2499V13.75Z"
-                fill="black"
-              />
-            </svg>
+            <ArrowBackIcon />
           </button>
           <Link className="navbar-brand navbar-text-title" to="/">
             La Ruta del Programador
@@ -33,39 +52,40 @@ const NavBar = () => {
         </div>
 
         <div className="d-flex">
-          <form className="d-flex formulario-buscador" role="search">
-            <input
-              className="form-control me-2 input-container ps-4 "
-              type="search"
-              placeholder="Search"
-            />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="position-absolute top-50  translate-middle-y search-icon"
-              width="20"
-              height="20"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </form>
-
           <Link className="Icons py-2" type="button" to="/">
             <HomeIcon />
           </Link>
-          <button
-            className="Icons-menu"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-          >
-            <HamburguerMenuIcon />
-          </button>
+
+          <div className="sm-sidebar">
+            <button
+              className="navbar-toggler"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#sm-sidebar"
+            >
+              <HamburguerMenuIcon />
+            </button>
+
+            {/* De aquí para abajo es el panel que se abre por la derecha */}
+            <div className="offcanvas offcanvas-end" tabIndex="-1" id="sm-sidebar">
+              <div className="offcanvas-header d-flex justify-content-end">
+                <button
+                  type="button"
+                  className="btn-close btn-close-white"
+                  data-bs-dismiss="offcanvas"
+                ></button>
+              </div>
+              <div className="offcanvas-body">
+                <div className="d-flex justify-content-center">
+                  <Usericon></Usericon>
+                </div>
+                {userData && <p className="text-center">{userData.username}</p>}
+                <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
+                  {elements}
+                </ul>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </nav>

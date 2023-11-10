@@ -1,67 +1,53 @@
+/* Usados por lg-sidebar */
 .lg-sidebar {
-    display: block;
-  }
-  @media only screen and (max-width: 576px) {
-    .lg-sidebar  {
-      display: none;
-    }
-  }
-.sm-sidebar {
+  display: block;
+  background-color: var(--Color-1, #100626);
+  --bs-dark-rgb: no var(--bs-dark-rgb);
+  --bs-border-radius: no var(--bs-border-radius);
+  --bs-link-color: #F2F2F2;
+}
+
+@media only screen and (max-width: 576px) {
+
+  .lg-sidebar,
+  .navbar-text-title {
     display: none;
   }
-  @media only screen and (max-width: 576px) {
-    .sm-sidebar  {
-      display: block;
-    }
-  }
-
-  .offcanvas {
-    background-color: #100626;
-    color:#F2F2F2
-  }
-
-  .nav-link {
-    color: #f2f2f2;
-    background: transparent;
 }
 
-
-  .lg-sidebar {
-    background-color: var(--Color-1, #100626);
-    --bs-dark-rgb: no var(--bs-dark-rgb);
-    --bs-border-radius: no var(--bs-border-radius);
-    --bs-link-color:#F2F2F2;
-  }
- 
-  .nav {
-    --bs-nav-link-color: #f2f2f2;
-    --bs-nav-link-hover-color: #bcbcbc;
-    --bs-nav-item-focus-color: linear-gradient(90deg, #100626 0%, #923A9E 49.02%, #FBCD99 100%);
+.nav {
+  --bs-nav-link-color: #f2f2f2;
+  --bs-nav-link-hover-color: #bcbcbc;
+  --bs-nav-item-focus-color: linear-gradient(90deg, #100626 0%, #923A9E 49.02%, #FBCD99 100%);
 }
 
-.nav-link.active{
-  background: var(--Degrd-3, linear-gradient(90deg,  rgba(251, 205, 153, 0.5) 0%,  rgba(146, 58, 158, 0.5) 50%, rgba(16, 6, 38, 0.5) 100%)) !important;
-  color: #f2f2f2 !important;
-}
-
-.navbar-toggle-menu-bg{
-  /*background-color: #1f0b4a;*/
-}
-.navbar-toggler-icon{
+.nav-link {
   color: #f2f2f2;
-}
-
-.navbar-toggle-menu-bg{
   background: transparent;
 }
 
-.navbar-toggler{
-  border: none;
-  background-color: #170838;
-  color: #f2f2f2;
-  position: absolute;
-  top: 1000%;
-  z-index: 1;
+.nav-link.active {
+  background: var(--Degrd-3, linear-gradient(90deg, rgba(251, 205, 153, 0.5) 0%, rgba(146, 58, 158, 0.5) 50%, rgba(16, 6, 38, 0.5) 100%)) !important;
+  color: #f2f2f2 !important;
 }
 
+/* Usados por sm-sidebar */
+.sm-sidebar {
+  display: none;
+}
 
+@media only screen and (max-width: 576px) {
+  .sm-sidebar {
+    display: block;
+  }
+}
+
+.offcanvas {
+  background-color: #100626;
+  color: #F2F2F2
+}
+
+.navbar-toggler {
+  --bs-navbar-toggler-focus-width: 0;
+  --bs-navbar-toggler-transition: none;
+}

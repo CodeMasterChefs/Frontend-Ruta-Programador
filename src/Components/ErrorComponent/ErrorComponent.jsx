@@ -16,7 +16,6 @@ const ErrorComponent = ({ ErrorCode, children }) => {
                 <div className="col-md-6 text-center">
                     <h2 className="mt-3 ">Error: {ErrorCode}</h2>
                     <p className="mt-3">{children}</p>
-                    <button className='btn btn-primary mt-3'>Hola mundo</button>
                 </div>
             </div>
         </div>
