@@ -15,20 +15,18 @@
       align-items: flex-end;
     }
   
-    .search-container {
-      order: 2; /* Cambia el orden del contenedor de búsqueda para que esté primero en dispositivos móviles */
+    .form-search {
+      order: 1; /* Cambia el orden del formulario para que esté después de "Nueva Playlist" en dispositivos móviles */
       margin-top: 10px;
-      align-items: center;
     }
-    .playlist-responsive{
-        margin-bottom: 20%;
+  
+    .playlist-responsive {
+      margin-bottom: 20%;
     }
   }
-
-  
-  
-  
-  
-  
-  
-  
+ 
+  @media (min-width: 765px) and (max-width: 1122px) {
+    .playlist-responsive {
+      margin-bottom: 5%;
+    }
+  }

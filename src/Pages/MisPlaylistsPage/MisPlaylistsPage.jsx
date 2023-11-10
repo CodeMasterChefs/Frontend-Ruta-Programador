@@ -4,6 +4,7 @@ import api from "../../config/site.config"; // Importa la instancia 'api' en lug
 import { useEffect, useState } from "react";
 import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 import "./MisPlaylistsPage.css";
+import BuscadorPlaylist from "../../Components/BuscadorPlaylist/BuscadorPlaylist";
 
 const MisPlaylistsPage = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -40,10 +41,7 @@ const MisPlaylistsPage = () => {
           <h3>Mis Playlists</h3>
         </div>
         <div className="col-sm-6 d-flex justify-content-end col-search">
-          <div className="search-container">
-            <input className="search-txt" type="text" name="" placeholder="" />
-            <a className="search-btn" href="#"></a>
-          </div>
+          <BuscadorPlaylist />
           <Playlist CantPlaylists={playlists.length} />
         </div>
       </div>
