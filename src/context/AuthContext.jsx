@@ -33,9 +33,11 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkLogin = async () => {
       const userData = JSON.parse(localStorage.getItem("userData"));
-      !userData.access_token
+      if(userData){
+        !userData.access_token
         ? setIsAuthenticated(false)
         : setIsAuthenticated(true);
+      }
     };
     checkLogin();
   }, [isAuthenticated]);
@@ -47,13 +49,7 @@ export const AuthProvider = ({ children }) => {
       }, 5500);
       return () => clearTimeout(timer);
     }
-    if (signinErrors) {
-      const timer = setTimeout(() => {
-        setSigninErrors("");
-      }, 5500);
-      return () => clearTimeout(timer);
-    }
-  }, [verificationError, signinErrors]);
+  }, [verificationError]);
 
   const verificarCodigo = async (verificationCode) => {
     try {
@@ -134,7 +130,8 @@ export const AuthProvider = ({ children }) => {
         signin,
         signinErrors,
         emptyErrors,
-        setEmptyErrors
+        setEmptyErrors,
+        setSigninErrors
       }}
     >
       {children}

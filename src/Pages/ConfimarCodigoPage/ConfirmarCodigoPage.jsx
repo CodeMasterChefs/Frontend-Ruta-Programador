@@ -46,7 +46,7 @@ const ConfirmarCodigoPage = () => {
 
   const volverEnviar = async () => {
     try {
-      await api.post("solicitar/codigo", {
+      await api.post("solicitar/codigoEmail", {
         email: emailValue,
       });
       //console.log("Hola");
