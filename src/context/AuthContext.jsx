@@ -124,6 +124,7 @@ export const AuthProvider = ({ children }) => {
         signup,
         user,
         isAuthenticated,
+        setIsAuthenticated,
         errors,
         verificarCodigo,
         verificationError,
