@@ -3,6 +3,7 @@
     .form-search:hover{
       width: 300px;
       cursor: pointer;
+      z-index: 1;
   }
   .form-search{
     position: static;
@@ -19,7 +20,6 @@
     border: 3px solid #227593;
     padding: 5px;
     color: black; /* Cambia el color del texto a negro */
-    z-index: 1;
 }
   }
 
@@ -39,11 +39,11 @@
       border: 3px solid #227B9B;
       padding: 5px;
       color: black; /* Cambia el color del texto a negro */
-      z-index: 1;
   }
     .form-search:hover{
       width: 400px;
       cursor: pointer;
+      z-index: 1;
     }
   }
 
