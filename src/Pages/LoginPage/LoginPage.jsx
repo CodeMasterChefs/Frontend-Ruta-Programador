@@ -12,7 +12,15 @@ const LoginPage = () => {
     password: "",
   });
   const { email, password } = formState;
-  const { signin, signinErrors, setSigninErrors, isAuthenticated, emptyErrors, setEmptyErrors } = useAuth();
+  const {
+    signin,
+    signinErrors,
+    setSigninErrors,
+    isAuthenticated,
+    setIsAuthenticated,
+    emptyErrors,
+    setEmptyErrors,
+  } = useAuth();
 
   const [showPassword, setShowPassword] = useState(false); // INICIAR ESTADO DE MOSTRAR CONTRASEÑA
 
@@ -22,21 +30,27 @@ const LoginPage = () => {
     }
   }, [isAuthenticated, navigate]);
 
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    if (!userData) {
+      setIsAuthenticated(false);
+    } else setIsAuthenticated(true);
+  });
   const onInputChange = ({ target }) => {
     const { name, value } = target;
     setFormState({
       ...formState,
       [name]: value,
     });
-    setEmptyErrors({})
-    setSigninErrors('')
+    setEmptyErrors({});
+    setSigninErrors("");
   };
 
   const handleEnviar = async () => {
     //event.preventDefault();
     try {
       signin(formState);
-    } catch (error) { }
+    } catch (error) {}
   };
 
   return (
@@ -45,7 +59,9 @@ const LoginPage = () => {
       <div className="row">
         <div className="col-md-7 d-flex align-items-center d-flex justify-content-center">
           <div className="login-title d-flex justify-content-center">
-            <h1>La Ruta del<br></br>Programador</h1>
+            <h1>
+              La Ruta del<br></br>Programador
+            </h1>
           </div>
         </div>
         <div className="col-md-5 login-content">
@@ -86,7 +102,9 @@ const LoginPage = () => {
               )}
             </div>
             <div className="d-flex justify-content-end">
-              <Link to={"/recuperar_contraseña"} className="url-text"><u>¿Olvidaste tu contraseña?</u></Link>
+              <Link to={"/recuperar_contraseña"} className="url-text">
+                <u>¿Olvidaste tu contraseña?</u>
+              </Link>
             </div>
           </form>
           {signinErrors && (
