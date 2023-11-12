@@ -19,7 +19,16 @@
 }
 
 .password-container{
-    width: 450px;
+    width: 480px;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem; 
+}
+
+@media screen and (max-width: 450px) {
+    .password-container {
+        width: 100%;
+    }
+ 
 }
 
 .title-input-box{
