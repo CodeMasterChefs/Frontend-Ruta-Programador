@@ -1,18 +1,36 @@
 import "./BuscadorPlaylist.css";
 import "./BDtest.js";
-import { useState} from "react";
-import { sortedNames } from "./BDtest";
+import { useState, useEffect} from "react";
+//import { sortedNames } from "./BDtest";
+import api from "../../config/site.config";
 
 const BuscadorPlaylist = () => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const isMouseOverInput = (false);
+  const [titulosPlaylits, setTitulosPlaylists] = useState([]);
+
+  const fetchDataCargarTitulosPlaylists = async () => {
+    try {
+      const response = await api.get("/playlist/1");
+      // Obtén títulos después de haber establecido playlists
+      const titulos = response.data.map((playlist) => playlist.tituloPlaylist);
+      setTitulosPlaylists(titulos);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDataCargarTitulosPlaylists();
+  }, []);
 
   const handleInputChange = (event) => {
+    console.log(titulosPlaylits)
     const inputText = event.target.value;
     setSearchText(inputText);
-    const matchingNames = sortedNames.filter((name) =>
+    const matchingNames = titulosPlaylits.filter((name) =>
       name.toLowerCase().includes(inputText.toLowerCase())
     );
 

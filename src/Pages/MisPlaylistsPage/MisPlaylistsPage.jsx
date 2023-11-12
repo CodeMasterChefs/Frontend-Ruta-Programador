@@ -27,6 +27,7 @@ const MisPlaylistsPage = () => {
   // Llamar a fetchData cuando se monta el componente
   useEffect(() => {
     fetchDataCargarPlaylists();
+
   }, []);
   
   // Función para manejar el clic en el botón "Editar playlist"
