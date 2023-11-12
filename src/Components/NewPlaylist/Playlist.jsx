@@ -190,6 +190,18 @@ const Playlist = ({ CantPlaylists }) => {
                 <div className="row">
                   <div className="col-auto">
                     {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
+                    <div className="posiciton">
+                      <SubirIconoNuevo></SubirIconoNuevo>
+                      <button
+                        type="button"
+                        className="btn btn-primary mx-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalCancelarRegistro"
+                        data-bs-whatever="@mdo"
+                      >
+                        Subir Icono
+                      </button>
+                    </div>
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
                     <p className="col-form-label">Selecciona un ícono</p>
@@ -218,19 +230,7 @@ const Playlist = ({ CantPlaylists }) => {
                 </div>
               </form>
             </div>
-            <div className="modal-footer" style={{ display: "flex", justifyContent: "space-between" }}>
-          <div className="posiciton">
-            <SubirIconoNuevo></SubirIconoNuevo>
-            <button
-              type="button"
-              className="btn btn-secondary mx-2"
-              data-bs-toggle="modal"
-              data-bs-target="#modalCancelarRegistro"
-              data-bs-whatever="@mdo"
-            >
-              Subir Icono
-            </button>
-          </div>
+            <div className="modal-footer">
           <button className="btn btn-primary" onClick={handleCrear}>
             Crear
           </button>

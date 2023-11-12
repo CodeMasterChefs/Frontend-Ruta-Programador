@@ -7,6 +7,7 @@ import { ModalConf } from "../ModalConfirmacion/ModalConf";
 import { useLocation } from "react-router-dom";
 import ModalConfPlaylist from "../ModalConfirmacion/ModalConfPlaylist";
 import ModalConfEdit from "../ModalConfirmacion/ModalConfEdit";
+import { SubirIconoNuevo } from "../icons";
 
 const iconMap = {
   1: "moon.svg",
@@ -60,9 +61,9 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   }, [formState.idMundo]);
 
   useEffect(() => {
-    if(location.pathname === '/mis_playlists'){
+    if (location.pathname === '/mis_playlists') {
       setButtonConf('#ModalConfirmacionEdicionP')
-    }else{
+    } else {
       setButtonConf('#ModalConfirmacionEdicion')
     }
   }, [location])
@@ -162,7 +163,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   return (
     <>
       {location.pathname === "/mis_playlists" ? (
-        <ModalConfEdit/>
+        <ModalConfEdit />
       ) : (
         <ModalConf
           Texto="Tu playlist ha sido modificada con éxito."
@@ -238,6 +239,18 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                 <div className="row">
                   <div className="col-auto">
                     {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
+                    <div className="posiciton">
+                      <SubirIconoNuevo></SubirIconoNuevo>
+                      <button
+                        type="button"
+                        className="btn btn-primary mx-2"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalCancelarRegistro"
+                        data-bs-whatever="@mdo"
+                      >
+                        Subir Icono
+                      </button>
+                    </div>
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
                     <p className="col-form-label">Selecciona un ícono</p>
@@ -266,6 +279,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
               </form>
             </div>
             <div className="modal-footer">
+
               <button className="btn btn-primary" onClick={handleEditar}>
                 Guardar
               </button>
