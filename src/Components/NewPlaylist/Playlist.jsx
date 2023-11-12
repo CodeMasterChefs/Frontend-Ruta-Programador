@@ -29,6 +29,7 @@ const Playlist = ({ CantPlaylists }) => {
     descriptionError: "",
   });
   const fileInputRef = useRef(null);
+  const [file, setFile] = useState(null);
 
   const onInputChange = ({ target }) => {
     const { name, value } = target;
@@ -47,12 +48,26 @@ const Playlist = ({ CantPlaylists }) => {
       alert("Alcanzaste tu límite para crear Playlists");
       return;
     }
+    const formData = new FormData();
+    let queryParams = {};
 
-    api
-      .post("playlist", {
+    if (file) {
+      formData.append("iconoPersonalizado", file);
+      queryParams = {
         tituloPlaylist: formState.title,
         descripcionPlaylist: formState.description,
-        idMundo: formState.idMundo,
+      };
+    } else {
+      queryParams = {
+        tituloPlaylist: formState.title,
+        descripcionPlaylist: formState.description,
+        idMundo: formState.idMundo
+      };
+    }
+
+    api
+      .post("playlist", formData, {
+        params: queryParams
       })
       .then((response) => {
         console.log(response);
@@ -69,6 +84,7 @@ const Playlist = ({ CantPlaylists }) => {
         document.getElementById("btnModalConfirmPlaylist").click();
       })
       .catch((error) => {
+        console.error(error);
         if (error.response && error.response.data) {
           setError({
             titleError: error.response.data.errors?.tituloPlaylist?.[0] || "",
@@ -120,6 +136,7 @@ const Playlist = ({ CantPlaylists }) => {
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
+    setFile(file);
     const reader = new FileReader();
 
     reader.onload = () => {
