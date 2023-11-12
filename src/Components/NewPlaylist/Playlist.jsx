@@ -27,6 +27,7 @@ const Playlist = ({ CantPlaylists }) => {
   const [error, setError] = useState({
     titleError: "",
     descriptionError: "",
+    iconError: "",
   });
   const fileInputRef = useRef(null);
   const [file, setFile] = useState(null);
@@ -40,6 +41,7 @@ const Playlist = ({ CantPlaylists }) => {
     setError({
       titleError: "",
       descriptionError: "",
+      iconError: "",
     });
   };
 
@@ -61,13 +63,13 @@ const Playlist = ({ CantPlaylists }) => {
       queryParams = {
         tituloPlaylist: formState.title,
         descripcionPlaylist: formState.description,
-        idMundo: formState.idMundo
+        idMundo: formState.idMundo,
       };
     }
 
     api
       .post("playlist", formData, {
-        params: queryParams
+        params: queryParams,
       })
       .then((response) => {
         console.log(response);
@@ -84,12 +86,13 @@ const Playlist = ({ CantPlaylists }) => {
         document.getElementById("btnModalConfirmPlaylist").click();
       })
       .catch((error) => {
-        console.error(error);
+        console.error(error.response.data);
         if (error.response && error.response.data) {
           setError({
             titleError: error.response.data.errors?.tituloPlaylist?.[0] || "",
             descriptionError:
               error.response.data.errors?.descripcionPlaylist?.[0] || "",
+            iconError: error.response.data.errors?.iconoPersonalizado?.[0] || "",
           });
         }
       });
@@ -137,6 +140,7 @@ const Playlist = ({ CantPlaylists }) => {
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     setFile(file);
+    setError({...error, iconError: ''})
     const reader = new FileReader();
 
     reader.onload = () => {
@@ -182,6 +186,7 @@ const Playlist = ({ CantPlaylists }) => {
                     description: "",
                     idMundo: 1,
                   });
+                  setSelectedIcon(iconMap[1])
                 }}
               ></button>
             </div>
@@ -231,6 +236,11 @@ const Playlist = ({ CantPlaylists }) => {
                     <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                     </div>
+                    <div className="tex-center" style={{width: '12rem'}}>
+                      <em>
+                        <small className="tex-center">{error.iconError}</small>
+                      </em>
+                    </div>
                     <div className="d-flex justify-content-center pt-3">
                       <SubirIconoNuevo />
                       <button
@@ -263,6 +273,8 @@ const Playlist = ({ CantPlaylists }) => {
                           ...formState,
                           idMundo: selected,
                         });
+                        setError({...error, iconError: ''})
+                        setFile(null)
                       }}
                     >
                       <option value="1">The moon</option>
