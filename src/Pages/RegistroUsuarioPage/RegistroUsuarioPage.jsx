@@ -27,7 +27,6 @@ const RegistroUsuarioPage = () => {
 
   const onSubmit = handleSubmit((values) => {
     signup(values);
-    console.log(values);
   });
 
   return (

@@ -100,13 +100,16 @@ const Playlist = ({ CantPlaylists }) => {
 
   const loadSelectedIcon = () => {
     if (selectedIcon) {
-      return (
-        <img
-          src={`/iconoMundos/${selectedIcon}`}
-          alt={planetSelected}
-          className="selected-icon"
-        />
-      );
+      if (typeof selectedIcon === 'string') {
+        return (
+          <img
+            src={selectedIcon}
+            alt={`User uploaded icon`}
+            className="selected-icon"
+          />
+        );
+      }
+      return null;
     }
     return null;
   };
@@ -117,24 +120,20 @@ const Playlist = ({ CantPlaylists }) => {
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
-    // Aquí puedes manejar la lógica para subir el archivo al servidor
-    // Puedes usar FormData para enviar el archivo a tu API
-    const formData = new FormData();
-    formData.append("file", file);
-    // Luego, realiza una petición a tu API para subir el archivo
-    // Ejemplo:
-    /* api.post("upload/icon", formData)
-      .then((response) => {
-        // Maneja la respuesta, por ejemplo, actualiza el estado con el nombre del nuevo ícono subido
-        const uploadedIcon = response.data.iconName;
-        // Actualiza el estado con el ícono subido
-        setSelectedIcon(uploadedIcon);
-      })
-      .catch((error) => {
-        // Maneja errores si la carga del archivo falla
-        console.error("Error uploading file", error);
-      }); */
+    const reader = new FileReader();
+  
+    reader.onload = () => {
+      const uploadedIcon = reader.result; // Contiene la URL del icono subido
+      // Actualiza el estado con el ícono subido o haz lo necesario para mostrar la vista previa
+      setSelectedIcon(uploadedIcon);
+    };
+  
+    if (file) {
+      reader.readAsDataURL(file);
+      // Aquí puedes realizar la lógica para subir el archivo al servidor si es necesario
+    }
   };
+  
 
   return (
     <>
