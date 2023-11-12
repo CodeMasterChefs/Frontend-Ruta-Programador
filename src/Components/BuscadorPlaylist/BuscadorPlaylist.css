@@ -65,20 +65,19 @@
     
 }
 
-.fa{
-    box-sizing: border-box;
-    padding: 10px;
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    background: #4DDAC5;
-    top: 0;
-    right: 0;
-    border-radius: 50%;
-    color: black; 
-    font-size: 1.2em;
-    transition: all 1s;
-    
+.fa {
+  box-sizing: border-box;
+  padding: 10px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background: #4DDAC5;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+  color: black;
+  font-size: 1.2em;
+  transition: all 1s;
 }
 
 .form-search:hover input{
@@ -95,7 +94,7 @@
 
 .suggestions {
   position: absolute;
-  top: 100%; /* Coloca las sugerencias debajo del input */
+  top: 100%;
   left: 0;
   width: 100%;
   list-style: none;
@@ -111,8 +110,30 @@
   border: 2px solid #227B9B;
   border-radius: 20px;
   margin: 2px;
+  transition: background-color 0.3s; /* Agregar transición para suavizar el cambio de color */
 }
 
 .suggestion:hover {
-  background-color: #270f41;
+  background-color: #4DDAC5; /* Cambiar el color al pasar el ratón */
+}
+
+
+/* CSS del boton */
+.button-search-playlist {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Estilo para el ícono dentro del botón */
+.button-search-playlist i {
+  box-sizing: border-box;
+  padding: 10px;
+  background: #4DDAC5;
+  border-radius: 50%;
+  color: black;
+  font-size: 1.2em;
+  transition: all 1s;
+  outline: none; /* Agregado para ocultar la barra negra alrededor del botón */
 }
