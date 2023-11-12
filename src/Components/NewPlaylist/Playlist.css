@@ -35,3 +35,8 @@
 .posiciton{
     margin-left: 30px;
 }
+
+.selected-icon{
+    max-width: 100%;
+    max-height: 150px;
+}

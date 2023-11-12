@@ -100,7 +100,7 @@ const Playlist = ({ CantPlaylists }) => {
 
   const loadSelectedIcon = () => {
     if (selectedIcon) {
-      if (typeof selectedIcon === 'string') {
+      if (typeof selectedIcon === "string") {
         return (
           <img
             src={selectedIcon}
@@ -121,19 +121,18 @@ const Playlist = ({ CantPlaylists }) => {
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     const reader = new FileReader();
-  
+
     reader.onload = () => {
       const uploadedIcon = reader.result; // Contiene la URL del icono subido
       // Actualiza el estado con el ícono subido o haz lo necesario para mostrar la vista previa
       setSelectedIcon(uploadedIcon);
     };
-  
+
     if (file) {
       reader.readAsDataURL(file);
       // Aquí puedes realizar la lógica para subir el archivo al servidor si es necesario
     }
   };
-  
 
   return (
     <>
@@ -212,23 +211,25 @@ const Playlist = ({ CantPlaylists }) => {
                 </div>
                 <div className="row">
                   <div className="col-auto">
-                    {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
-                    <div className="posiciton">
-                      <SubirIconoNuevo/>
-                    <button
-                      type="button"
-                      className="btn btn-secondary mx-2"
-                      onClick={handleFileButtonClick}
-                    >
-                      Subir Icono
-                    </button>
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      style={{ display: "none" }}
-                      accept=".svg, .png, .jpg, .jpeg"
-                      onChange={handleFileUpload}
-                    />
+                    <div className="d-flex justify-content-center">
+                      {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
+                    </div>
+                    <div className="posiciton pt-3">
+                      <SubirIconoNuevo />
+                      <button
+                        type="button"
+                        className="btn btn-secondary mx-2"
+                        onClick={handleFileButtonClick}
+                      >
+                        Subir Icono
+                      </button>
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        style={{ display: "none" }}
+                        accept=".svg, .png, .jpg, .jpeg"
+                        onChange={handleFileUpload}
+                      />
                     </div>
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
