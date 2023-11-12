@@ -32,6 +32,7 @@
     display: none;
 }
 
-.posiciton{
-    margin-left: 15px;
+.selected-icon{
+    max-width: 80%;
+    max-height: 150px;
 }

@@ -1,19 +1,17 @@
 import PropTypes from "prop-types";
 import "./Playlist.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import api from "../../config/site.config";
-import { ModalConf } from "../ModalConfirmacion/ModalConf";
 import ModalConfPlaylist from "../ModalConfirmacion/ModalConfPlaylist";
-// import { Navigate } from "react-router-dom";
 import { SubirIconoNuevo } from "../icons";
 
 const iconMap = {
-  1: "moon.svg",
-  2: "earth.svg",
-  3: "uranus.svg",
-  4: "neptune.svg",
-  5: "mars.svg",
-  6: "haumea.svg",
+  1: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/moon.svg",
+  2: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/earth.svg",
+  3: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/uranus.svg",
+  4: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/neptune.svg",
+  5: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/mars.svg",
+  6: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/haumea.svg",
 };
 
 const Playlist = ({ CantPlaylists }) => {
@@ -30,6 +28,7 @@ const Playlist = ({ CantPlaylists }) => {
     titleError: "",
     descriptionError: "",
   });
+  const fileInputRef = useRef(null);
 
   const onInputChange = ({ target }) => {
     const { name, value } = target;
@@ -83,9 +82,8 @@ const Playlist = ({ CantPlaylists }) => {
     try {
       await fetchData();
       document.getElementById("closeModal").click();
-      
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
     console.log(modalVisible);
   };
@@ -102,20 +100,42 @@ const Playlist = ({ CantPlaylists }) => {
 
   const loadSelectedIcon = () => {
     if (selectedIcon) {
-      return (
-        <img
-          src={`/iconoMundos/${selectedIcon}`}
-          alt={planetSelected}
-          className="selected-icon"
-        />
-      );
+      if (typeof selectedIcon === "string") {
+        return (
+          <img
+            src={selectedIcon}
+            alt={`User uploaded icon`}
+            className="selected-icon"
+          />
+        );
+      }
+      return null;
     }
     return null;
   };
 
+  const handleFileButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const uploadedIcon = reader.result; // Contiene la URL del icono subido
+      // Actualiza el estado con el ícono subido o haz lo necesario para mostrar la vista previa
+      setSelectedIcon(uploadedIcon);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+      // Aquí puedes realizar la lógica para subir el archivo al servidor si es necesario
+    }
+  };
+
   return (
     <>
-      
       <button
         type="button"
         className="btn btn-primary"
@@ -139,11 +159,13 @@ const Playlist = ({ CantPlaylists }) => {
                 className="btn-small btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                onClick={() => {setFormState({
-                  title: "",
-                  description: "",
-                  idMundo: 1,
-                });}}
+                onClick={() => {
+                  setFormState({
+                    title: "",
+                    description: "",
+                    idMundo: 1,
+                  });
+                }}
               ></button>
             </div>
             <div className="modal-body py-2">
@@ -189,18 +211,25 @@ const Playlist = ({ CantPlaylists }) => {
                 </div>
                 <div className="row">
                   <div className="col-auto">
-                    {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
-                    <div className="posiciton">
-                      <SubirIconoNuevo></SubirIconoNuevo>
+                    <div className="d-flex justify-content-center">
+                      {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
+                    </div>
+                    <div className="d-flex justify-content-center pt-3">
+                      <SubirIconoNuevo />
                       <button
                         type="button"
-                        className="btn btn-primary mx-2"
-                        data-bs-toggle="modal"
-                        data-bs-target="#modalCancelarRegistro"
-                        data-bs-whatever="@mdo"
+                        className="btn btn-secondary mx-2"
+                        onClick={handleFileButtonClick}
                       >
                         Subir Icono
                       </button>
+                      <input
+                        type="file"
+                        ref={fileInputRef}
+                        style={{ display: "none" }}
+                        accept=".svg, .png, .jpg, .jpeg"
+                        onChange={handleFileUpload}
+                      />
                     </div>
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
@@ -231,15 +260,14 @@ const Playlist = ({ CantPlaylists }) => {
               </form>
             </div>
             <div className="modal-footer">
-          <button className="btn btn-primary" onClick={handleCrear}>
-            Crear
-          </button>
-        </div>
-
+              <button className="btn btn-primary" onClick={handleCrear}>
+                Crear
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <ModalConfPlaylist/>
+      <ModalConfPlaylist />
       <button
         type="button"
         className="btn btn-primary btn-confirm-modal"

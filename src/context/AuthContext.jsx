@@ -74,8 +74,6 @@ export const AuthProvider = ({ children }) => {
       if (res.status === 200) {
         // setUser(user)
         navigate("/verificar-correo", { state: { emailValue: user.email } });
-        //setIsAuthenticated(true)
-        console.log(user.email)
       }
     } catch (error) {
       console.error(error.response);
