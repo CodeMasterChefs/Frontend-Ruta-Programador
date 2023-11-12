@@ -29,13 +29,14 @@ const ReproductorPage = () => {
                 const elementosResponse = await api.get("/elemento_playlists/" + idPlaylist);
                 setElementos(elementosResponse.data.elementos);
                 setTituloElemento(elementosResponse.data.elementos[keyElemento - 1]?.tituloElemento);
-                scrollToElemento();
+                setTimeout(()=>{scrollToElemento()}, 1000)
             } catch (error) {
                 console.log(error);
             }
         };
 
         fetchData();
+        scrollToElemento();
     }, [idPlaylist, keyElemento, idVideo]);
 
     const elementosPlaylist = elementos.map((elemento, index) => (
