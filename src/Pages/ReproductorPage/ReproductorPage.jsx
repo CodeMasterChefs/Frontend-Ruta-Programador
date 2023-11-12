@@ -36,7 +36,6 @@ const ReproductorPage = () => {
         };
 
         fetchData();
-        scrollToElemento();
     }, [idPlaylist, keyElemento, idVideo]);
 
     const elementosPlaylist = elementos.map((elemento, index) => (
