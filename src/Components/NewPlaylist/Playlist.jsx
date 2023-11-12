@@ -1,10 +1,8 @@
 import PropTypes from "prop-types";
 import "./Playlist.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import api from "../../config/site.config";
-import { ModalConf } from "../ModalConfirmacion/ModalConf";
 import ModalConfPlaylist from "../ModalConfirmacion/ModalConfPlaylist";
-// import { Navigate } from "react-router-dom";
 import { SubirIconoNuevo } from "../icons";
 
 const iconMap = {
@@ -30,6 +28,7 @@ const Playlist = ({ CantPlaylists }) => {
     titleError: "",
     descriptionError: "",
   });
+  const fileInputRef = useRef(null);
 
   const onInputChange = ({ target }) => {
     const { name, value } = target;
@@ -83,9 +82,8 @@ const Playlist = ({ CantPlaylists }) => {
     try {
       await fetchData();
       document.getElementById("closeModal").click();
-      
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
     console.log(modalVisible);
   };
@@ -113,9 +111,33 @@ const Playlist = ({ CantPlaylists }) => {
     return null;
   };
 
+  const handleFileButtonClick = () => {
+    fileInputRef.current.click();
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    // Aquí puedes manejar la lógica para subir el archivo al servidor
+    // Puedes usar FormData para enviar el archivo a tu API
+    const formData = new FormData();
+    formData.append("file", file);
+    // Luego, realiza una petición a tu API para subir el archivo
+    // Ejemplo:
+    /* api.post("upload/icon", formData)
+      .then((response) => {
+        // Maneja la respuesta, por ejemplo, actualiza el estado con el nombre del nuevo ícono subido
+        const uploadedIcon = response.data.iconName;
+        // Actualiza el estado con el ícono subido
+        setSelectedIcon(uploadedIcon);
+      })
+      .catch((error) => {
+        // Maneja errores si la carga del archivo falla
+        console.error("Error uploading file", error);
+      }); */
+  };
+
   return (
     <>
-      
       <button
         type="button"
         className="btn btn-primary"
@@ -139,11 +161,13 @@ const Playlist = ({ CantPlaylists }) => {
                 className="btn-small btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-                onClick={() => {setFormState({
-                  title: "",
-                  description: "",
-                  idMundo: 1,
-                });}}
+                onClick={() => {
+                  setFormState({
+                    title: "",
+                    description: "",
+                    idMundo: 1,
+                  });
+                }}
               ></button>
             </div>
             <div className="modal-body py-2">
@@ -190,6 +214,23 @@ const Playlist = ({ CantPlaylists }) => {
                 <div className="row">
                   <div className="col-auto">
                     {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
+                    <div className="posiciton">
+                      <SubirIconoNuevo/>
+                    <button
+                      type="button"
+                      className="btn btn-secondary mx-2"
+                      onClick={handleFileButtonClick}
+                    >
+                      Subir Icono
+                    </button>
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      style={{ display: "none" }}
+                      accept=".svg, .png, .jpg, .jpeg"
+                      onChange={handleFileUpload}
+                    />
+                    </div>
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
                     <p className="col-form-label">Selecciona un ícono</p>
@@ -218,28 +259,15 @@ const Playlist = ({ CantPlaylists }) => {
                 </div>
               </form>
             </div>
-            <div className="modal-footer" style={{ display: "flex", justifyContent: "space-between" }}>
-          <div className="posiciton">
-            <SubirIconoNuevo></SubirIconoNuevo>
-            <button
-              type="button"
-              className="btn btn-secondary mx-2"
-              data-bs-toggle="modal"
-              data-bs-target="#modalCancelarRegistro"
-              data-bs-whatever="@mdo"
-            >
-              Subir Icono
-            </button>
-          </div>
-          <button className="btn btn-primary" onClick={handleCrear}>
-            Crear
-          </button>
-        </div>
-
+            <div className="modal-footer">
+              <button className="btn btn-primary" onClick={handleCrear}>
+                Crear
+              </button>
+            </div>
           </div>
         </div>
       </div>
-      <ModalConfPlaylist/>
+      <ModalConfPlaylist />
       <button
         type="button"
         className="btn btn-primary btn-confirm-modal"
