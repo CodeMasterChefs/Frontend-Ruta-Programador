@@ -10,12 +10,12 @@ import ModalConfEdit from "../ModalConfirmacion/ModalConfEdit";
 import { SubirIconoNuevo } from "../icons";
 
 const iconMap = {
-  1: "moon.svg",
-  2: "earth.svg",
-  3: "uranus.svg",
-  4: "neptune.svg",
-  5: "mars.svg",
-  6: "haumea.svg",
+  1: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/moon.svg",
+  2: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/earth.svg",
+  3: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/uranus.svg",
+  4: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/neptune.svg",
+  5: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/mars.svg",
+  6: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/haumea.svg",
 };
 
 const EditarPlaylist = ({ IdPlaylist }) => {
