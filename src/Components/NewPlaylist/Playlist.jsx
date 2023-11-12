@@ -214,7 +214,7 @@ const Playlist = ({ CantPlaylists }) => {
                     <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                     </div>
-                    <div className="posiciton pt-3">
+                    <div className="d-flex justify-content-center pt-3">
                       <SubirIconoNuevo />
                       <button
                         type="button"
