@@ -26,7 +26,7 @@ const MisPlaylistsPage = () => {
 
   //Funcion para obtener las cards de buscadorPlaylist
   const OnBuscardorPlaylist = (playlistBuscador) =>{
-    console.log(playlistBuscador)
+    setPlaylists(playlistBuscador)
   }
 
   // Llamar a fetchData cuando se monta el componente
