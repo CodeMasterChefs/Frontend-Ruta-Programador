@@ -29,7 +29,7 @@ export const TitDescripcion = ({
             className="img-thumbnail p-2"
             src={
               "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
-              iconMap[UrlIcon]
+              UrlIcon
             }
             alt="..."
           />
