@@ -1,7 +1,7 @@
 import "./BuscadorPlaylist.css";
 import "./BDtest.js";
 import PropTypes from "prop-types";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 //import { sortedNames } from "./BDtest";
 import api from "../../config/site.config";
 
@@ -9,8 +9,9 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const isMouseOverInput = (false);
+  const isMouseOverInput = false;
   const [titulosPlaylits, setTitulosPlaylists] = useState([]);
+  const [showClearIcon, setShowClearIcon] = useState(false);
 
   const fetchDataCargarTitulosPlaylists = async () => {
     try {
@@ -30,6 +31,8 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   const handleInputChange = (event) => {
     const inputText = event.target.value;
     setSearchText(inputText);
+    setShowClearIcon(inputText.length > 0);
+
     const matchingNames = titulosPlaylits.filter((name) =>
       name.toLowerCase().includes(inputText.toLowerCase())
     );
@@ -49,6 +52,7 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   };
 
   const handleSuggestionClick = (name) => {
+    setShowClearIcon(false);
     setSearchText(name);
     cargarPlaylistBuscadas(name);
     console.log("Valor del input:", name);
@@ -63,6 +67,7 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   const handleInputBlur = () => {
     setTimeout(() => {
       setSuggestions([]);
+      setShowClearIcon(false);
     }, 100);
     setTimeout(() => {
       if (!isMouseOverInput) {
@@ -79,16 +84,22 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
     }
   };
 
-  const cargarPlaylistBuscadas = async(tituloPlay) =>{
+  const cargarPlaylistBuscadas = async (tituloPlay) => {
     try {
-      const response = await api.get("playlist/buscar/?tituloPlaylist="+tituloPlay)
+      const response = await api.get(
+        "playlist/buscar/?tituloPlaylist=" + tituloPlay
+      );
       playlistsBuscadas(response.data);
       //Aqui se enviara las playlist a MisPlaylists
-      
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
+
+  const handleClearClick = () => {
+    setSearchText("");
+    setShowClearIcon(false);
+  };
 
   return (
     <>
@@ -113,6 +124,25 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
           onFocus={handleInputFocus}
           onBlur={handleInputBlur}
         />
+        {showClearIcon && (
+          <span className="clear-icon" onClick={handleClearClick}>
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="bx-x">
+                <path
+                  id="Vector"
+                  d="M20.24 7.93018L14.9362 13.2327L9.63371 7.93018L7.86621 9.69768L13.1687 15.0002L7.86621 20.3027L9.63371 22.0702L14.9362 16.7677L20.24 22.0702L22.0075 20.3027L16.705 15.0002L22.0075 9.69768L20.24 7.93018Z"
+                  fill="#F2F2F2"
+                />
+              </g>
+            </svg>
+          </span>
+        )}
         <button
           type="button"
           onClick={() => {
@@ -140,10 +170,8 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   );
 };
 
- BuscadorPlaylist.propTypes = {
-   playlistsBuscadas: PropTypes.array.isRequired,
- };
-
+BuscadorPlaylist.propTypes = {
+  playlistsBuscadas: PropTypes.array.isRequired,
+};
 
 export default BuscadorPlaylist;
-

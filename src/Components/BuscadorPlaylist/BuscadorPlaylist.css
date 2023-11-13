@@ -137,3 +137,14 @@
   transition: all 1s;
   outline: none; /* Agregado para ocultar la barra negra alrededor del botón */
 }
+
+.clear-icon {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: white;
+  z-index: 2;
+  font-size: 1em;
+}
