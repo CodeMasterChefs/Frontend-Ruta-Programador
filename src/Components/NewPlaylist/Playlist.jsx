@@ -135,6 +135,7 @@ const Playlist = ({ CantPlaylists }) => {
 
   const handleFileButtonClick = () => {
     fileInputRef.current.click();
+    fileInputRef.current.value = null;
   };
 
   const handleFileUpload = (event) => {
@@ -236,9 +237,9 @@ const Playlist = ({ CantPlaylists }) => {
                     <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                     </div>
-                    <div className="tex-center" style={{width: '12rem'}}>
+                    <div className="text-center" style={{width: '100%'}}>
                       <em>
-                        <small className="tex-center">{error.iconError}</small>
+                        <small className="">{error.iconError}</small>
                       </em>
                     </div>
                     <div className="d-flex justify-content-center pt-3">

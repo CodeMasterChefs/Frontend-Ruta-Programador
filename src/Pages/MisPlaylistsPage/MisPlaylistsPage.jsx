@@ -41,7 +41,7 @@ const MisPlaylistsPage = () => {
           <h3>Mis Playlists</h3>
         </div>
         <div className="col-sm-6 d-flex justify-content-end col-search">
-          {/* <BuscadorPlaylist /> */}
+          <BuscadorPlaylist />
           <Playlist CantPlaylists={playlists.length} />
         </div>
       </div>
