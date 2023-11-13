@@ -4,8 +4,8 @@ import './ErrorComponent.css';
 
 const ErrorComponent = ({ ErrorCode, children }) => {
     return (
-        <div className="container-fluid vh-100 d-flex justify-content-center align-items-center">
-            <div className="row">
+        <div className="container-fluid d-flex justify-content-center align-items-center height-error_component">
+            <div className="row text-center">
                 <div className="col-md-6 d-flex align-items-center justify-content-center animate-fadeIn">
                     <img
                         src={AstronautaPerdido}
