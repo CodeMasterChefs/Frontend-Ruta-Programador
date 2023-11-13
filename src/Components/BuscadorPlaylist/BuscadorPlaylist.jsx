@@ -5,6 +5,7 @@ import { useState, useEffect} from "react";
 import api from "../../config/site.config";
 
 const BuscadorPlaylist = () => {
+  const [playlists, setPlaylists] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -27,7 +28,6 @@ const BuscadorPlaylist = () => {
   }, []);
 
   const handleInputChange = (event) => {
-    console.log(titulosPlaylits)
     const inputText = event.target.value;
     setSearchText(inputText);
     const matchingNames = titulosPlaylits.filter((name) =>
@@ -50,6 +50,7 @@ const BuscadorPlaylist = () => {
 
   const handleSuggestionClick = (name) => {
     setSearchText(name);
+    cargarPlaylistBuscadas(name);
     console.log("Valor del input:", name);
     setSuggestions([]);
     setShowSuggestions(false);
@@ -72,8 +73,20 @@ const BuscadorPlaylist = () => {
   const handleSearchButtonClick = () => {
     if (searchText.length > 0) {
       console.log("Valor del input:", searchText);
+      cargarPlaylistBuscadas(searchText);
     }
   };
+
+  const cargarPlaylistBuscadas = async(tituloPlay) =>{
+    try {
+      const response = await api.get("playlist/buscar/?tituloPlaylist="+tituloPlay)
+      console.log(response)
+      setPlaylists(response.data);
+    } catch (error) {
+      console.log(error)
+    }
+    console.log(playlists)
+  }
 
   return (
     <>
