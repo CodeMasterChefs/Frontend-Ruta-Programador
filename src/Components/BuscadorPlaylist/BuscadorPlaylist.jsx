@@ -30,17 +30,18 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   const handleInputChange = (event) => {
     const inputText = event.target.value;
     setSearchText(inputText);
-    setShowClearIcon(inputText.length > 0);
+    const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
+    setShowClearIcon(cleanedText.length > 0);
 
     const matchingNames = titulosPlaylits.filter((name) =>
-      name.toLowerCase().includes(inputText.toLowerCase())
+      name.toLowerCase().includes(cleanedText.toLowerCase())
     );
 
     const filteredSuggestions = matchingNames.filter(
-      (name) => name.toLowerCase() !== inputText.toLowerCase()
+      (name) => name.toLowerCase() !== cleanedText.toLowerCase()
     );
 
-    if (inputText.length === 0) {
+    if (cleanedText.length === 0) {
       setSuggestions([]);
       setShowSuggestions(false);
     } else {
@@ -61,11 +62,12 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   };
 
   const handleSearchButtonClick = () => {
-    console.log("searchText:",searchText)
-      if (searchText.length > 0) {
-        console.log("Valor del input:", searchText);
-        cargarPlaylistBuscadas(searchText);
-      }
+    const cleanedText = searchText.trim(); // Limpiar espacios antes de buscar
+    console.log("searchText:", cleanedText);
+    if (cleanedText.length > 0) {
+      console.log("Valor del input:", cleanedText);
+      cargarPlaylistBuscadas(cleanedText);
+    }
   };
 
   const cargarPlaylistBuscadas = async (tituloPlay) => {
