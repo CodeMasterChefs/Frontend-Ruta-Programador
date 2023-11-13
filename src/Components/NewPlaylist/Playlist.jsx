@@ -216,9 +216,9 @@ const Playlist = ({ CantPlaylists }) => {
                     </div>
                     <div className="d-flex justify-content-center pt-3">
                       <SubirIconoNuevo />
-                      <button
+                      <button 
                         type="button"
-                        className="btn btn-secondary mx-2"
+                        className="btn btn-primary mx-2"
                         onClick={handleFileButtonClick}
                       >
                         Subir Icono
