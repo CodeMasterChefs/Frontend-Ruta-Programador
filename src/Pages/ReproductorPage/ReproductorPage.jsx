@@ -42,7 +42,9 @@ const ReproductorPage = () => {
 
         fetchData();
         scrollToElemento();
-        visualizarIframe();
+
+        if (idVideo !== 'undefined')
+            visualizarIframe();
     }, [idPlaylist, keyElemento, idVideo]);
 
     const elementosPlaylist = elementos.map((elemento, index) => (

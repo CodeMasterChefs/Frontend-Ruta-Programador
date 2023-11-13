@@ -1,3 +1,7 @@
+.height-error_component {
+    height: 90vh;
+}
+
 .animate-fadeIn {
     animation: fadeIn 1s ease-in-out;
 }
