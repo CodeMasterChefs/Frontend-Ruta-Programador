@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 //import { sortedNames } from "./BDtest";
 import api from "../../config/site.config";
 
-const BuscadorPlaylist = ({ playlistsBuscadas }) => {
+const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -55,7 +55,6 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
     setShowClearIcon(false);
     setSearchText(name);
     cargarPlaylistBuscadas(name);
-    console.log("Valor del input:", name);
     setSuggestions([]);
     setSearchText("");
     setShowSuggestions(false);
@@ -63,9 +62,7 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
 
   const handleSearchButtonClick = () => {
     const cleanedText = searchText.trim(); // Limpiar espacios antes de buscar
-    console.log("searchText:", cleanedText);
     if (cleanedText.length > 0) {
-      console.log("Valor del input:", cleanedText);
       cargarPlaylistBuscadas(cleanedText);
     }
   };
@@ -76,9 +73,12 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
         "playlist/buscar/?tituloPlaylist=" + tituloPlay
       );
       playlistsBuscadas(response.data);
+      noHay(false);
       //Aqui se enviara las playlist a MisPlaylists
     } catch (error) {
       console.log(error);
+      noHay(true);
+      
     }
   };
 
@@ -170,6 +170,7 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
 
 BuscadorPlaylist.propTypes = {
   playlistsBuscadas: PropTypes.array.isRequired,
+  noHay: PropTypes.bool.isRequired,
 };
 
 export default BuscadorPlaylist;
