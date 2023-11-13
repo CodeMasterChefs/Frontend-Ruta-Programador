@@ -62,9 +62,11 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
 
   const handleInputBlur = () => {
     setTimeout(() => {
+      setSuggestions([]);
+    }, 100);
+    setTimeout(() => {
       if (!isMouseOverInput) {
         setSearchText("");
-        setSuggestions([]);
         setShowSuggestions(false);
       }
     }, 500);
