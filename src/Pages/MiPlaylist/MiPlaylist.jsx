@@ -34,14 +34,6 @@ const MiPlaylist = () => {
         setLoading(false);
       }
 
-      try {
-        const playlistResponse = await api.get(
-          "/playlist/valores/" + params.idPlaylist
-        );
-        setPlaylist(playlistResponse.data);
-      } catch (error) {
-        console.log(error);
-      }
     };
 
     fetchData();
@@ -64,10 +56,7 @@ const MiPlaylist = () => {
           <br></br>
           <TitDescripcion
             IdPlaylist={playlist.idPlaylist}
-            Titulo={playlist.tituloPlaylist}
-            Descripcion={playlist.descripcionPlaylist}
             IdPrimerVideo={elementos[0]?.idVideoYoutube}
-            UrlIcon={playlist.iconoMundo}
             handleShow={handleShow}
           />
 
