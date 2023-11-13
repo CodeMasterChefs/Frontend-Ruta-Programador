@@ -9,10 +9,9 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const isMouseOverInput = false;
   const [titulosPlaylits, setTitulosPlaylists] = useState([]);
   const [showClearIcon, setShowClearIcon] = useState(false);
-
+  
   const fetchDataCargarTitulosPlaylists = async () => {
     try {
       const response = await api.get("/playlist/1");
@@ -57,31 +56,16 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
     cargarPlaylistBuscadas(name);
     console.log("Valor del input:", name);
     setSuggestions([]);
+    setSearchText("");
     setShowSuggestions(false);
   };
 
-  const handleInputFocus = () => {
-    setShowSuggestions(true);
-  };
-
-  const handleInputBlur = () => {
-    setTimeout(() => {
-      setSuggestions([]);
-      setShowClearIcon(false);
-    }, 100);
-    setTimeout(() => {
-      if (!isMouseOverInput) {
-        setSearchText("");
-        setShowSuggestions(false);
-      }
-    }, 500);
-  };
-
   const handleSearchButtonClick = () => {
-    if (searchText.length > 0) {
-      console.log("Valor del input:", searchText);
-      cargarPlaylistBuscadas(searchText);
-    }
+    console.log("searchText:",searchText)
+      if (searchText.length > 0) {
+        console.log("Valor del input:", searchText);
+        cargarPlaylistBuscadas(searchText);
+      }
   };
 
   const cargarPlaylistBuscadas = async (tituloPlay) => {
@@ -101,6 +85,17 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
     setShowClearIcon(false);
   };
 
+  const handleMouseEnter = () => {
+    setShowSuggestions(true);
+  };
+
+  const handleMouseLeave = () => {
+    setSuggestions([]);
+    setShowClearIcon(false);
+    setSearchText("");
+    setShowSuggestions(false);
+  };
+
   return (
     <>
       <link rel="stylesheet" href="./style.css" />
@@ -113,6 +108,8 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
         autoComplete="off"
         action=""
         onSubmit={(e) => e.preventDefault()}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <input
           className="input-search"
@@ -121,8 +118,7 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
           id="input"
           value={searchText}
           onChange={handleInputChange}
-          onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
+          
         />
         {showClearIcon && (
           <span className="clear-icon" onClick={handleClearClick}>
