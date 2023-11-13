@@ -24,6 +24,11 @@ const MisPlaylistsPage = () => {
     }
   };
 
+  //Funcion para obtener las cards de buscadorPlaylist
+  const OnBuscardorPlaylist = (playlistBuscador) =>{
+    console.log(playlistBuscador)
+  }
+
   // Llamar a fetchData cuando se monta el componente
   useEffect(() => {
     fetchDataCargarPlaylists();
@@ -41,7 +46,7 @@ const MisPlaylistsPage = () => {
           <h3>Mis Playlists</h3>
         </div>
         <div className="col-sm-6 d-flex justify-content-end col-search">
-          <BuscadorPlaylist />
+          <BuscadorPlaylist playlistsBuscadas = {OnBuscardorPlaylist}/>
           <Playlist CantPlaylists={playlists.length} />
         </div>
       </div>

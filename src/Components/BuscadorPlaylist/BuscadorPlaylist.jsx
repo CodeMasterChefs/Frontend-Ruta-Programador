@@ -1,11 +1,11 @@
 import "./BuscadorPlaylist.css";
 import "./BDtest.js";
+import PropTypes from "prop-types";
 import { useState, useEffect} from "react";
 //import { sortedNames } from "./BDtest";
 import api from "../../config/site.config";
 
-const BuscadorPlaylist = () => {
-  const [playlists, setPlaylists] = useState([]);
+const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -80,12 +80,12 @@ const BuscadorPlaylist = () => {
   const cargarPlaylistBuscadas = async(tituloPlay) =>{
     try {
       const response = await api.get("playlist/buscar/?tituloPlaylist="+tituloPlay)
-      console.log(response)
-      setPlaylists(response.data);
+      playlistsBuscadas(response.data);
+      //Aqui se enviara las playlist a MisPlaylists
+      
     } catch (error) {
       console.log(error)
     }
-    console.log(playlists)
   }
 
   return (
@@ -137,4 +137,11 @@ const BuscadorPlaylist = () => {
     </>
   );
 };
+
+ BuscadorPlaylist.propTypes = {
+   playlistsBuscadas: PropTypes.array.isRequired,
+ };
+
+
 export default BuscadorPlaylist;
+
