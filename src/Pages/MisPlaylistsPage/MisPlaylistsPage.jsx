@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 import "./MisPlaylistsPage.css";
 import BuscadorPlaylist from "../../Components/BuscadorPlaylist/BuscadorPlaylist";
+import ErrorComponent from "../../Components/ErrorComponent/ErrorComponent";
 
 const MisPlaylistsPage = () => {
   const [playlists, setPlaylists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [errorCargarPlaylists, setErrorCargarPlaylists] = useState(null);
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(0); // Nuevo estado para el IdPlaylist seleccionado
+  const [encontrado, setEncontrado] = useState(false);
 
   // Función para cargar los datos desde la API
   const fetchDataCargarPlaylists = async () => {
@@ -25,15 +27,19 @@ const MisPlaylistsPage = () => {
   };
 
   //Funcion para obtener las cards de buscadorPlaylist
-  const OnBuscardorPlaylist = (playlistBuscador) =>{
-    setPlaylists(playlistBuscador)
-  }
+  const OnBuscardorPlaylist = (playlistBuscador) => {
+    setPlaylists(playlistBuscador);
+  };
+
+  const OnNoHay = (result) => {
+    setEncontrado(result);
+  };
 
   // Llamar a fetchData cuando se monta el componente
   useEffect(() => {
     fetchDataCargarPlaylists();
   }, []);
-  
+
   // Función para manejar el clic en el botón "Editar playlist"
   const handleEditarClick = (id) => {
     setSelectedPlaylistId(id);
@@ -46,7 +52,10 @@ const MisPlaylistsPage = () => {
           <h3>Mis Playlists</h3>
         </div>
         <div className="col-sm-6 d-flex justify-content-end col-search">
-          <BuscadorPlaylist playlistsBuscadas = {OnBuscardorPlaylist}/>
+          <BuscadorPlaylist
+            playlistsBuscadas={OnBuscardorPlaylist}
+            noHay={OnNoHay}
+          />
           <Playlist CantPlaylists={playlists.length} />
         </div>
       </div>
@@ -56,6 +65,11 @@ const MisPlaylistsPage = () => {
           <p>Cargando...</p>
         ) : errorCargarPlaylists ? (
           <p>{errorCargarPlaylists}</p>
+        ) : encontrado ? (
+          <ErrorComponent ErrorCode={404}>
+            No se encontraron resultados. <br />
+            Asegúrate de que las palabras estén escritas correctamente o prueba con menos palabras clave o con otras distintas.
+          </ErrorComponent>
         ) : playlists.length > 0 ? (
           <div className="row row-cols-1 row-cols-md-5 g-4">
             {playlists.map((playlist) => (

@@ -2,28 +2,26 @@ import PropTypes from 'prop-types';
 import AstronautaPerdido from '../../assets/Astronauta_perdido.png';
 import './ErrorComponent.css';
 
-const ErrorComponent = ({ ErrorCode, children }) => {
+const ErrorComponent = ({ children }) => {
     return (
-        <div className="container-fluid d-flex justify-content-center align-items-center height-error_component">
-            <div className="row text-center">
-                <div className="col-md-6 d-flex align-items-center justify-content-center animate-fadeIn">
-                    <img
-                        src={AstronautaPerdido}
-                        alt="Astronauta perdido"
-                        className="animate-shakeX w-75"
-                    />
-                </div>
-                <div className="col-md-6 text-center">
-                    <h2 className="mt-3 ">Error: {ErrorCode}</h2>
-                    <p className="mt-3">{children}</p>
-                </div>
-            </div>
-        </div>
-    );
+  <div className="container-fluid height-error_component d-flex">
+    <div className="row d-flex align-items-center justify-content-center">
+      <div className="col-md-6 text-center animate-fadeIn">
+        <img
+          src={AstronautaPerdido}
+          alt="Astronauta perdido"
+          className="animate-shakeX w-75 mx-auto" // Agrega la clase mx-auto
+        />
+      </div>
+      <div className="col-md-6 text-center">
+        <h4 className="mt-3">{children}</h4>
+      </div>
+    </div>
+  </div>
+);
 };
 
 ErrorComponent.propTypes = {
-    ErrorCode: PropTypes.number.isRequired,
     children: PropTypes.node
 };
 

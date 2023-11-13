@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 //import { sortedNames } from "./BDtest";
 import api from "../../config/site.config";
 
-const BuscadorPlaylist = ({ playlistsBuscadas }) => {
+const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -30,17 +30,18 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   const handleInputChange = (event) => {
     const inputText = event.target.value;
     setSearchText(inputText);
-    setShowClearIcon(inputText.length > 0);
+    const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
+    setShowClearIcon(cleanedText.length > 0);
 
     const matchingNames = titulosPlaylits.filter((name) =>
-      name.toLowerCase().includes(inputText.toLowerCase())
+      name.toLowerCase().includes(cleanedText.toLowerCase())
     );
 
     const filteredSuggestions = matchingNames.filter(
-      (name) => name.toLowerCase() !== inputText.toLowerCase()
+      (name) => name.toLowerCase() !== cleanedText.toLowerCase()
     );
 
-    if (inputText.length === 0) {
+    if (cleanedText.length === 0) {
       setSuggestions([]);
       setShowSuggestions(false);
     } else {
@@ -54,18 +55,16 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
     setShowClearIcon(false);
     setSearchText(name);
     cargarPlaylistBuscadas(name);
-    console.log("Valor del input:", name);
     setSuggestions([]);
     setSearchText("");
     setShowSuggestions(false);
   };
 
   const handleSearchButtonClick = () => {
-    console.log("searchText:",searchText)
-      if (searchText.length > 0) {
-        console.log("Valor del input:", searchText);
-        cargarPlaylistBuscadas(searchText);
-      }
+    const cleanedText = searchText.trim(); // Limpiar espacios antes de buscar
+    if (cleanedText.length > 0) {
+      cargarPlaylistBuscadas(cleanedText);
+    }
   };
 
   const cargarPlaylistBuscadas = async (tituloPlay) => {
@@ -74,9 +73,12 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
         "playlist/buscar/?tituloPlaylist=" + tituloPlay
       );
       playlistsBuscadas(response.data);
+      noHay(false);
       //Aqui se enviara las playlist a MisPlaylists
     } catch (error) {
       console.log(error);
+      noHay(true);
+      
     }
   };
 
@@ -168,6 +170,7 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
 
 BuscadorPlaylist.propTypes = {
   playlistsBuscadas: PropTypes.array.isRequired,
+  noHay: PropTypes.bool.isRequired,
 };
 
 export default BuscadorPlaylist;
