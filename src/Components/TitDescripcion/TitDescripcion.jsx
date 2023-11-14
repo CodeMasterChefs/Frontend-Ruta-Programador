@@ -6,18 +6,10 @@ import { useEffect, useState } from "react";
 import api from "../../config/site.config";
 
 export const TitDescripcion = ({
-  IdPlaylist,
   IdPrimerVideo,
   handleShow
 }) => {
-  const iconMap = {
-    1: "moon.svg",
-    2: "earth.svg",
-    3: "uranus.svg",
-    4: "neptune.svg",
-    5: "mars.svg",
-    6: "haumea.svg",
-  };
+
   let params = useParams()
   const [playlist, setPlaylist] = useState({})
 
@@ -34,7 +26,7 @@ export const TitDescripcion = ({
       }
     };
     fetchData()
-  }, [params.IdPlaylist])
+  }, [params.idPlaylist])
   return (
     <>
       <div className="descripcion-lg">
@@ -52,7 +44,7 @@ export const TitDescripcion = ({
           <div className="p-2 d-flex align-items-start flex-column">
             <h3>{playlist.tituloPlaylist}</h3>
             <div className="d-flex justify-content-start">
-              <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
+              <Link to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
                 <button className="btn btn-primary play-button">
                   <svg
                     width="18"
@@ -85,7 +77,7 @@ export const TitDescripcion = ({
                 </button>
                 <ul className="dropdown-menu ">
                   <li>
-                    <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
+                    <Link to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
                       <button className="dropdown-item color-boton">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -172,7 +164,7 @@ export const TitDescripcion = ({
                       data-bs-toggle="modal"
                       data-bs-target="#modalEliminarPlaylist"
                       data-bs-whatever="@fat"
-                      onClick={() => handleShow(IdPlaylist)}
+                      onClick={() => handleShow(params.idPlaylist)}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -245,7 +237,7 @@ export const TitDescripcion = ({
                 </button>
                 <ul className="dropdown-menu ">
                   <li>
-                    <Link to={`/mis_playlists/${IdPlaylist}/reproducir`}>
+                    <Link to={`/mis_playlists/${params.idPlaylist}/reproducir`}>
                       <button className="dropdown-item color-boton">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -332,7 +324,7 @@ export const TitDescripcion = ({
                       data-bs-toggle="modal"
                       data-bs-target="#modalEliminarPlaylist"
                       data-bs-whatever="@fat"
-                      onClick={() => handleShow(IdPlaylist)}
+                      onClick={() => handleShow(params.idPlaylist)}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -366,7 +358,6 @@ export const TitDescripcion = ({
 };
 
 TitDescripcion.propTypes = {
-  IdPlaylist: PropTypes.number.isRequired,
   handleShow: PropTypes.func.isRequired,
   IdPrimerVideo: PropTypes.number.isRequired
 };
