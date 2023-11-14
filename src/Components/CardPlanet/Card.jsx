@@ -13,7 +13,9 @@ export const Card = ({ Descripcion, Titulo, UrlImagen, id, onEditarClick, IdPrim
     <>
       <div className="col">
         <div className="card">
-          <img src={UrlImagen} className="card-img-top" alt="..." />
+          <div className="pt-2 d-flex align-items-center justify-content-center card-img-container">
+            <img src={UrlImagen} className="card-img-top" alt="..." />
+          </div>
           <div
             className="position-absolute top-0 end-0 dropdown"
           // data-bs-toggle="dropdown"

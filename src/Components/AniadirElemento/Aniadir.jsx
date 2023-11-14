@@ -194,6 +194,3 @@ export const Aniadir = () => {
 
 export default Aniadir;
 
-Aniadir.propTypes = {
-  idPlaylist: PropTypes.string.isRequired,
-};

@@ -10,13 +10,12 @@ import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 import { ClockIcon } from "../../Components/icons";
 import "./MiPlaylist.css";
 const MiPlaylist = () => {
-  let params = useParams();
+  const params = useParams();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const [elementos, setElementos] = useState([]);
-  const [playlist, setPlaylist] = useState({});
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
 
@@ -34,14 +33,6 @@ const MiPlaylist = () => {
         setLoading(false);
       }
 
-      try {
-        const playlistResponse = await api.get(
-          "/playlist/valores/" + params.idPlaylist
-        );
-        setPlaylist(playlistResponse.data);
-      } catch (error) {
-        console.log(error);
-      }
     };
 
     fetchData();
@@ -63,17 +54,13 @@ const MiPlaylist = () => {
         <>
           <br></br>
           <TitDescripcion
-            IdPlaylist={playlist.idPlaylist}
-            Titulo={playlist.tituloPlaylist}
-            Descripcion={playlist.descripcionPlaylist}
             IdPrimerVideo={elementos[0]?.idVideoYoutube}
-            UrlIcon={playlist.idMundo}
             handleShow={handleShow}
           />
 
-          <EditarPlaylist IdPlaylist={params.idPlaylist} />
+          <EditarPlaylist IdPlaylist={Number(params.idPlaylist)} />
           <EliminarPlaylist
-            IdPlaylist={params.idPlaylist}
+            IdPlaylist={Number(params.idPlaylist)}
             show={show}
             handleClose={handleClose}
             refrescar={2}

@@ -1,43 +1,50 @@
 import PropTypes from "prop-types";
 
 import "./TitDescripcion.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api from "../../config/site.config";
 
 export const TitDescripcion = ({
-  IdPlaylist,
-  Titulo = "Titulo",
-  Descripcion = "Descripcion",
-  UrlIcon = "UrlIcon",
   IdPrimerVideo,
   handleShow
 }) => {
-  const iconMap = {
-    1: "moon.svg",
-    2: "earth.svg",
-    3: "uranus.svg",
-    4: "neptune.svg",
-    5: "mars.svg",
-    6: "haumea.svg",
-  };
 
+  let params = useParams()
+  const [playlist, setPlaylist] = useState({})
+
+  useEffect(()=> {
+    const fetchData = async () => {
+      const id = Number(params.idPlaylist)
+      try {
+        const playlistResponse = await api.get(
+          "/playlist/valores/" + id
+        );
+        setPlaylist(playlistResponse.data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData()
+  }, [params.idPlaylist])
   return (
     <>
       <div className="descripcion-lg">
 
-        <div className="title-container align-items-center">
+        <div className="title-container d-flex justify-content-center align-items-center">
           <img
             className="img-thumbnail p-2"
             src={
               "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
-              iconMap[UrlIcon]
+              playlist.iconoMundo
             }
             alt="..."
           />
 
           <div className="p-2 d-flex align-items-start flex-column">
-            <h3>{Titulo}</h3>
+            <h3>{playlist.tituloPlaylist}</h3>
             <div className="d-flex justify-content-start">
-              <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
+              <Link to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
                 <button className="btn btn-primary play-button">
                   <svg
                     width="18"
@@ -70,7 +77,7 @@ export const TitDescripcion = ({
                 </button>
                 <ul className="dropdown-menu ">
                   <li>
-                    <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
+                    <Link to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
                       <button className="dropdown-item color-boton">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -157,7 +164,7 @@ export const TitDescripcion = ({
                       data-bs-toggle="modal"
                       data-bs-target="#modalEliminarPlaylist"
                       data-bs-whatever="@fat"
-                      onClick={() => handleShow(IdPlaylist)}
+                      onClick={() => handleShow(params.idPlaylist)}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -180,24 +187,24 @@ export const TitDescripcion = ({
           </div>
 
           <div className="title-desc-container border p-2">
-            <p>{Descripcion}</p>
+            <p>{playlist.descripcionPlaylist}</p>
           </div>
         </div>
       </div>
       <div className="descripcion-md">
         <div className="row">
-          <div className="col">
+          <div className="col d-flex justify-content-center pb-2">
             <img
               className="img-thumbnail p-2"
               src={
                 "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
-                iconMap[UrlIcon]
+                playlist.iconoMundo
               }
               alt="..."
             />
           </div>
           <div className="col">
-            <h3>{Titulo}</h3>
+            <h3>{playlist.tituloPlaylist}</h3>
             <div className="d-flex justify-content-start">
               <button className="btn btn-primary play-button">
                 <svg
@@ -230,7 +237,7 @@ export const TitDescripcion = ({
                 </button>
                 <ul className="dropdown-menu ">
                   <li>
-                    <Link to={`/mis_playlists/${IdPlaylist}/reproducir`}>
+                    <Link to={`/mis_playlists/${params.idPlaylist}/reproducir`}>
                       <button className="dropdown-item color-boton">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -317,7 +324,7 @@ export const TitDescripcion = ({
                       data-bs-toggle="modal"
                       data-bs-target="#modalEliminarPlaylist"
                       data-bs-whatever="@fat"
-                      onClick={() => handleShow(IdPlaylist)}
+                      onClick={() => handleShow(params.idPlaylist)}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -341,7 +348,7 @@ export const TitDescripcion = ({
         </div>
         <div className="row">
           <div className="title-desc-container border p-2">
-            <p>{Descripcion}</p>
+            <p>{playlist.descripcionPlaylist}</p>
           </div>
         </div>
       </div>
@@ -351,10 +358,6 @@ export const TitDescripcion = ({
 };
 
 TitDescripcion.propTypes = {
-  IdPlaylist: PropTypes.number.isRequired,
-  Titulo: PropTypes.string.isRequired,
-  Descripcion: PropTypes.string.isRequired,
-  UrlIcon: PropTypes.number.isRequired,
   handleShow: PropTypes.func.isRequired,
   IdPrimerVideo: PropTypes.number.isRequired
 };
