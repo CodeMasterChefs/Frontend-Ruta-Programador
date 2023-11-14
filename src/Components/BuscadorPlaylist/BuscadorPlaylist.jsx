@@ -61,9 +61,10 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
   };
 
   const handleSearchButtonClick = () => {
-    const cleanedText = searchText.trim(); // Limpiar espacios antes de buscar
-    if (cleanedText.length > 0) {
-      cargarPlaylistBuscadas(cleanedText);
+ // Limpiar espacios antes de buscar
+    if (searchText.trim().length > 0) {
+      cargarPlaylistBuscadas(searchText.trim());
+      setShowSuggestions(false);
     }
   };
 
@@ -85,6 +86,8 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
   const handleClearClick = () => {
     setSearchText("");
     setShowClearIcon(false);
+    setShowSuggestions(false);
+    setSuggestions([]);
   };
 
   const handleMouseEnter = () => {
