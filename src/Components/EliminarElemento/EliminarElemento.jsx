@@ -4,12 +4,13 @@ import api from "../../config/site.config";
 import PropTypes from "prop-types";
 //import { useNavigate } from "react-router-dom";
 
-export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => {
+export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento, actualizarElementos }) => {
 
   const handleDelete = async () => {
     try {
       const response = await api.remove(`elemento_playlists?idElemento=${IdElemento}&idPlaylist=${IdPlaylist}`)
       console.log(response);
+      actualizarElementos();
       //navigate("/mis_playlists/${IdPlaylist}");
     } catch (error) {
       console.error('Error al eliminar el elemento:', error);
@@ -109,5 +110,6 @@ EliminarElemento.propTypes = {
   Titulo: PropTypes.string.isRequired,
   IdPlaylist: PropTypes.number.isRequired,
   IdElemento: PropTypes.number.isRequired,
+  actualizarElementos: PropTypes.func
 };
 export default EliminarElemento;

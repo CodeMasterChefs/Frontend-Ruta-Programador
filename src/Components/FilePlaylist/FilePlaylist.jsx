@@ -5,11 +5,11 @@ import "./FilePlaylist.css";
 import { EliminarElemento } from "../EliminarElemento/EliminarElemento";
 import { Link } from "react-router-dom";
 
-const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlaylist, IdElemento, KeyElemento, IdVideo }) => {
+const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlaylist, IdElemento, KeyElemento, IdVideo, actualizarElementos }) => {
 
   return (
     <>
-      <EliminarElemento Imagen={UrlImg} Titulo={Titulo} IdPlaylist={IdPlaylist} IdElemento={IdElemento} />
+      <EliminarElemento Imagen={UrlImg} Titulo={Titulo} IdPlaylist={IdPlaylist} IdElemento={IdElemento} actualizarElementos={actualizarElementos} />
       <div className="row video-elente-file">
         <div className="col-1 d-flex align-items-center justify-content-center">
           <p className="text-center filePlayListId">{KeyOrderValue}</p>
@@ -164,7 +164,8 @@ Fileplaylist.propTypes = {
   IdPlaylist: PropTypes.number.isRequired,
   IdElemento: PropTypes.number.isRequired,
   KeyElemento: PropTypes.number.isRequired,
-  IdVideo: PropTypes.string.isRequired
+  IdVideo: PropTypes.string.isRequired,
+  actualizarElementos: PropTypes.func
 };
 
 export default Fileplaylist;

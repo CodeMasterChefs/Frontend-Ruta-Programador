@@ -5,7 +5,7 @@ import api from "../../config/site.config";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 
-export const Aniadir = () => {
+export const Aniadir = ({actualizarElementos}) => {
   let params = useParams();
   const [modalVisible, setModalVisible] = useState(false);
   const [url, setUrl] = useState("");
@@ -26,6 +26,7 @@ export const Aniadir = () => {
         idPlaylist: params.idPlaylist,
       });
 
+      actualizarElementos();
       setUrl(url);
       setError({ urlError: "" });
 
@@ -192,5 +193,8 @@ export const Aniadir = () => {
   );
 };
 
-export default Aniadir;
+Aniadir.propTypes = {
+  actualizarElementos: PropTypes.func
+}
 
+export default Aniadir;

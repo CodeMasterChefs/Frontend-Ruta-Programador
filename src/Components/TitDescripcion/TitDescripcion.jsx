@@ -5,32 +5,25 @@ import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../config/site.config";
 
-export const TitDescripcion = ({
-  IdPrimerVideo,
-  handleShow
-}) => {
+export const TitDescripcion = ({ IdPrimerVideo, handleShow }) => {
+  let params = useParams();
+  const [playlist, setPlaylist] = useState({});
 
-  let params = useParams()
-  const [playlist, setPlaylist] = useState({})
-
-  useEffect(()=> {
+  useEffect(() => {
     const fetchData = async () => {
-      const id = Number(params.idPlaylist)
+      const id = Number(params.idPlaylist);
       try {
-        const playlistResponse = await api.get(
-          "/playlist/valores/" + id
-        );
+        const playlistResponse = await api.get("/playlist/valores/" + id);
         setPlaylist(playlistResponse.data[0]);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchData()
-  }, [params.idPlaylist])
+    fetchData();
+  }, [params.idPlaylist]);
   return (
     <>
       <div className="descripcion-lg">
-
         <div className="title-container d-flex justify-content-center align-items-center">
           <img
             className="img-thumbnail p-2"
@@ -44,7 +37,9 @@ export const TitDescripcion = ({
           <div className="p-2 d-flex align-items-start flex-column">
             <h3>{playlist.tituloPlaylist}</h3>
             <div className="d-flex justify-content-start">
-              <Link to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
+              <Link
+                to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}
+              >
                 <button className="btn btn-primary play-button">
                   <svg
                     width="18"
@@ -77,7 +72,9 @@ export const TitDescripcion = ({
                 </button>
                 <ul className="dropdown-menu ">
                   <li>
-                    <Link to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
+                    <Link
+                      to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}
+                    >
                       <button className="dropdown-item color-boton">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -208,9 +205,9 @@ export const TitDescripcion = ({
             <div className="d-flex justify-content-start">
               <button className="btn btn-primary play-button">
                 <svg
-                  width="30"
-                  height="30"
-                  viewBox="0 0 30 30"
+                  width="18"
+                  height="20"
+                  viewBox="3 7 20 20"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -352,12 +349,11 @@ export const TitDescripcion = ({
           </div>
         </div>
       </div>
-
     </>
   );
 };
 
 TitDescripcion.propTypes = {
   handleShow: PropTypes.func.isRequired,
-  IdPrimerVideo: PropTypes.number.isRequired
+  IdPrimerVideo: PropTypes.number.isRequired,
 };
