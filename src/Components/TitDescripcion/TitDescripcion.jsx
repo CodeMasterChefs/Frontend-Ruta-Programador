@@ -4,6 +4,8 @@ import "./TitDescripcion.css";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../config/site.config";
+import BuscadorElemento from "../BuscadorElemento/BuscadorElemento";
+
 
 export const TitDescripcion = ({
   IdPrimerVideo,
@@ -30,7 +32,7 @@ export const TitDescripcion = ({
   return (
     <>
       <div className="descripcion-lg">
-
+       
         <div className="title-container d-flex justify-content-center align-items-center">
           <img
             className="img-thumbnail p-2"
@@ -40,9 +42,10 @@ export const TitDescripcion = ({
             }
             alt="..."
           />
-
+  
           <div className="p-2 d-flex align-items-start flex-column">
             <h3>{playlist.tituloPlaylist}</h3>
+           
             <div className="d-flex justify-content-start">
               <Link to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
                 <button className="btn btn-primary play-button">
@@ -181,15 +184,20 @@ export const TitDescripcion = ({
                       &nbsp;Eliminar Playlist
                     </button>
                   </li>
-                </ul>
+                </ul>  
               </div>
+            
             </div>
           </div>
-
+          
           <div className="title-desc-container border p-2">
             <p>{playlist.descripcionPlaylist}</p>
+            
           </div>
+         
         </div>
+        <div className="mt-3 d-flex justify-content-end"><BuscadorElemento></BuscadorElemento></div>
+        
       </div>
       <div className="descripcion-md">
         <div className="row">
