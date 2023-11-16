@@ -119,7 +119,7 @@ const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
         <input
           className="input-search"
           type="text"
-          placeholder="Busca tu playlist"
+          placeholder="Busca tu video favorito"
           id="input"
           value={searchText}
           onChange={handleInputChange}
