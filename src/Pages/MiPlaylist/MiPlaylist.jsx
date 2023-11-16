@@ -9,7 +9,6 @@ import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 
 import { ClockIcon } from "../../Components/icons";
 import "./MiPlaylist.css";
-//import BuscadorElemento from "../../Components/BuscadorElemento/BuscadorElemento";
 const MiPlaylist = () => {
   const params = useParams();
   const [show, setShow] = useState(false);
@@ -59,8 +58,6 @@ const MiPlaylist = () => {
             IdPrimerVideo={elementos[0]?.idVideoYoutube}
             handleShow={handleShow}
           />
-          {/* <di className="d-flex justify-content-end position">
-             <BuscadorElemento/></di>  */}
          
           <EditarPlaylist IdPlaylist={Number(params.idPlaylist)} />
           <EliminarPlaylist
