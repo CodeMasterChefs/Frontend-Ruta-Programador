@@ -138,17 +138,17 @@ const EditarPlaylist = ({ IdPlaylist }) => {
         idPlaylist: IdPlaylist,
       };
     }
-
+    console.log(formData)
     try {
       await api.post("playlist/icono", formData, {
         params: queryParams,
       });
     } catch (error) {
       console.log(error.response)
-      /* if (error.response && error.response.data) {
+      if (error.response && error.response.data) {
         errors.iconoError =
           error.response.data.errors?.iconoPersonalizado?.[0] || "";
-      } */
+      }
     }
     
     // Actualizamos el estado de errores con el objeto de errores
@@ -159,7 +159,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     });
 
     // Solo recargamos la página si no hay errores
-    if (!errors.titleError && !errors.descriptionError) {
+    if (!errors.titleError && !errors.descriptionError && !errors.iconoError) {
       resetFormAndError();
       document.getElementById("btnModalConfirm").click();
     }
