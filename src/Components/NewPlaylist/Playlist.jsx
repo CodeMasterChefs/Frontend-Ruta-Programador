@@ -27,8 +27,10 @@ const Playlist = ({ CantPlaylists }) => {
   const [error, setError] = useState({
     titleError: "",
     descriptionError: "",
+    iconError: "",
   });
   const fileInputRef = useRef(null);
+  const [file, setFile] = useState(null);
 
   const onInputChange = ({ target }) => {
     const { name, value } = target;
@@ -39,6 +41,7 @@ const Playlist = ({ CantPlaylists }) => {
     setError({
       titleError: "",
       descriptionError: "",
+      iconError: "",
     });
   };
 
@@ -47,12 +50,26 @@ const Playlist = ({ CantPlaylists }) => {
       alert("Alcanzaste tu límite para crear Playlists");
       return;
     }
+    const formData = new FormData();
+    let queryParams = {};
 
-    api
-      .post("playlist", {
+    if (file) {
+      formData.append("iconoPersonalizado", file);
+      queryParams = {
+        tituloPlaylist: formState.title,
+        descripcionPlaylist: formState.description,
+      };
+    } else {
+      queryParams = {
         tituloPlaylist: formState.title,
         descripcionPlaylist: formState.description,
         idMundo: formState.idMundo,
+      };
+    }
+
+    api
+      .post("playlist", formData, {
+        params: queryParams,
       })
       .then((response) => {
         console.log(response);
@@ -69,11 +86,13 @@ const Playlist = ({ CantPlaylists }) => {
         document.getElementById("btnModalConfirmPlaylist").click();
       })
       .catch((error) => {
+        console.error(error.response.data);
         if (error.response && error.response.data) {
           setError({
             titleError: error.response.data.errors?.tituloPlaylist?.[0] || "",
             descriptionError:
               error.response.data.errors?.descripcionPlaylist?.[0] || "",
+            iconError: error.response.data.errors?.iconoPersonalizado?.[0] || "",
           });
         }
       });
@@ -116,10 +135,13 @@ const Playlist = ({ CantPlaylists }) => {
 
   const handleFileButtonClick = () => {
     fileInputRef.current.click();
+    fileInputRef.current.value = null;
   };
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
+    setFile(file);
+    setError({...error, iconError: ''})
     const reader = new FileReader();
 
     reader.onload = () => {
@@ -165,6 +187,7 @@ const Playlist = ({ CantPlaylists }) => {
                     description: "",
                     idMundo: 1,
                   });
+                  setSelectedIcon(iconMap[1])
                 }}
               ></button>
             </div>
@@ -214,11 +237,16 @@ const Playlist = ({ CantPlaylists }) => {
                     <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                     </div>
+                    <div className="text-center" style={{width: '100%'}}>
+                      <em>
+                        <small className="">{error.iconError}</small>
+                      </em>
+                    </div>
                     <div className="d-flex justify-content-center pt-3">
                       <SubirIconoNuevo />
-                      <button
+                      <button 
                         type="button"
-                        className="btn btn-secondary mx-2"
+                        className="btn btn-special mx-2"
                         onClick={handleFileButtonClick}
                       >
                         Subir Icono
@@ -246,6 +274,8 @@ const Playlist = ({ CantPlaylists }) => {
                           ...formState,
                           idMundo: selected,
                         });
+                        setError({...error, iconError: ''})
+                        setFile(null)
                       }}
                     >
                       <option value="1">The moon</option>

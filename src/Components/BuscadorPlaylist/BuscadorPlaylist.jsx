@@ -1,17 +1,17 @@
 import "./BuscadorPlaylist.css";
 import "./BDtest.js";
 import PropTypes from "prop-types";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 //import { sortedNames } from "./BDtest";
 import api from "../../config/site.config";
 
-const BuscadorPlaylist = ({ playlistsBuscadas }) => {
+const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const isMouseOverInput = (false);
   const [titulosPlaylits, setTitulosPlaylists] = useState([]);
-
+  const [showClearIcon, setShowClearIcon] = useState(false);
+  
   const fetchDataCargarTitulosPlaylists = async () => {
     try {
       const response = await api.get("/playlist/1");
@@ -30,15 +30,18 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   const handleInputChange = (event) => {
     const inputText = event.target.value;
     setSearchText(inputText);
+    const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
+    setShowClearIcon(cleanedText.length > 0);
+
     const matchingNames = titulosPlaylits.filter((name) =>
-      name.toLowerCase().includes(inputText.toLowerCase())
+      name.toLowerCase().includes(cleanedText.toLowerCase())
     );
 
     const filteredSuggestions = matchingNames.filter(
-      (name) => name.toLowerCase() !== inputText.toLowerCase()
+      (name) => name.toLowerCase() !== cleanedText.toLowerCase()
     );
 
-    if (inputText.length === 0) {
+    if (cleanedText.length === 0) {
       setSuggestions([]);
       setShowSuggestions(false);
     } else {
@@ -49,46 +52,54 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   };
 
   const handleSuggestionClick = (name) => {
+    setShowClearIcon(false);
     setSearchText(name);
     cargarPlaylistBuscadas(name);
-    console.log("Valor del input:", name);
     setSuggestions([]);
+    setSearchText("");
     setShowSuggestions(false);
   };
 
-  const handleInputFocus = () => {
+  const handleSearchButtonClick = () => {
+ // Limpiar espacios antes de buscar
+    if (searchText.trim().length > 0) {
+      cargarPlaylistBuscadas(searchText.trim());
+      setShowSuggestions(false);
+    }
+  };
+
+  const cargarPlaylistBuscadas = async (tituloPlay) => {
+    try {
+      const response = await api.get(
+        "playlist/buscar/?tituloPlaylist=" + tituloPlay
+      );
+      playlistsBuscadas(response.data);
+      noHay(false);
+      //Aqui se enviara las playlist a MisPlaylists
+    } catch (error) {
+      console.log(error);
+      noHay(true);
+      
+    }
+  };
+
+  const handleClearClick = () => {
+    setSearchText("");
+    setShowClearIcon(false);
+    setShowSuggestions(false);
+    setSuggestions([]);
+  };
+
+  const handleMouseEnter = () => {
     setShowSuggestions(true);
   };
 
-  const handleInputBlur = () => {
-    setTimeout(() => {
-      setSuggestions([]);
-    }, 100);
-    setTimeout(() => {
-      if (!isMouseOverInput) {
-        setSearchText("");
-        setShowSuggestions(false);
-      }
-    }, 500);
+  const handleMouseLeave = () => {
+    setSuggestions([]);
+    setShowClearIcon(false);
+    setSearchText("");
+    setShowSuggestions(false);
   };
-
-  const handleSearchButtonClick = () => {
-    if (searchText.length > 0) {
-      console.log("Valor del input:", searchText);
-      cargarPlaylistBuscadas(searchText);
-    }
-  };
-
-  const cargarPlaylistBuscadas = async(tituloPlay) =>{
-    try {
-      const response = await api.get("playlist/buscar/?tituloPlaylist="+tituloPlay)
-      playlistsBuscadas(response.data);
-      //Aqui se enviara las playlist a MisPlaylists
-      
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   return (
     <>
@@ -102,6 +113,8 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
         autoComplete="off"
         action=""
         onSubmit={(e) => e.preventDefault()}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         <input
           className="input-search"
@@ -110,9 +123,27 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
           id="input"
           value={searchText}
           onChange={handleInputChange}
-          onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
+          
         />
+        {showClearIcon && (
+          <span className="clear-icon" onClick={handleClearClick}>
+            <svg
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="bx-x">
+                <path
+                  id="Vector"
+                  d="M20.24 7.93018L14.9362 13.2327L9.63371 7.93018L7.86621 9.69768L13.1687 15.0002L7.86621 20.3027L9.63371 22.0702L14.9362 16.7677L20.24 22.0702L22.0075 20.3027L16.705 15.0002L22.0075 9.69768L20.24 7.93018Z"
+                  fill="#F2F2F2"
+                />
+              </g>
+            </svg>
+          </span>
+        )}
         <button
           type="button"
           onClick={() => {
@@ -140,10 +171,9 @@ const BuscadorPlaylist = ({ playlistsBuscadas }) => {
   );
 };
 
- BuscadorPlaylist.propTypes = {
-   playlistsBuscadas: PropTypes.array.isRequired,
- };
-
+BuscadorPlaylist.propTypes = {
+  playlistsBuscadas: PropTypes.array.isRequired,
+  noHay: PropTypes.bool.isRequired,
+};
 
 export default BuscadorPlaylist;
-

@@ -39,6 +39,7 @@
 .img-thumbnail{
     background: transparent !important;
     border-color: transparent !important;
+    height: 150px;
 }
 
 .color-boton{

@@ -10,42 +10,33 @@ import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 import { ClockIcon } from "../../Components/icons";
 import "./MiPlaylist.css";
 const MiPlaylist = () => {
-  let params = useParams();
+  const params = useParams();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const [elementos, setElementos] = useState([]);
-  const [playlist, setPlaylist] = useState({});
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
 
+  const fetchDataElementos = async () => {
+    try {
+      const elementosResponse = await api.get(
+        "/elemento_playlists/" + params.idPlaylist
+      );
+      setElementos(elementosResponse.data.elementos);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.errors[0]);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const elementosResponse = await api.get(
-          "/elemento_playlists/" + params.idPlaylist
-        );
-        setElementos(elementosResponse.data.elementos);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-        setError(error.response.data.errors[0]);
-        setLoading(false);
-      }
+    fetchDataElementos();
+  }, [params.idPlaylist]);
 
-      try {
-        const playlistResponse = await api.get(
-          "/playlist/valores/" + params.idPlaylist
-        );
-        setPlaylist(playlistResponse.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  }, [params.idPlaylist, elementos]);
   return (
     <div className="container">
       {loading ? (
@@ -63,17 +54,13 @@ const MiPlaylist = () => {
         <>
           <br></br>
           <TitDescripcion
-            IdPlaylist={playlist.idPlaylist}
-            Titulo={playlist.tituloPlaylist}
-            Descripcion={playlist.descripcionPlaylist}
             IdPrimerVideo={elementos[0]?.idVideoYoutube}
-            UrlIcon={playlist.idMundo}
             handleShow={handleShow}
           />
 
-          <EditarPlaylist IdPlaylist={params.idPlaylist} />
+          <EditarPlaylist IdPlaylist={Number(params.idPlaylist)} />
           <EliminarPlaylist
-            IdPlaylist={params.idPlaylist}
+            IdPlaylist={Number(params.idPlaylist)}
             show={show}
             handleClose={handleClose}
             refrescar={2}
@@ -102,7 +89,7 @@ const MiPlaylist = () => {
           <div className="titulo-link">
             {elementos.length == 0 ? (
               <div className="d-flex justify-content-center align-items-center d-inline">
-                <Aniadir />
+                <Aniadir actualizarElementos={fetchDataElementos}/>
                 <p className="m-0 ms-2">Añadir contenido</p>
               </div>
             ) : (
@@ -117,13 +104,14 @@ const MiPlaylist = () => {
                     UrlImg={elemento.urlImg}
                     KeyOrderValue={index + 1}
                     className="fileplaylist-item"
-                    IdPlaylist={params.idPlaylist}
+                    IdPlaylist={Number(params.idPlaylist)}
                     IdElemento={elemento.idElemento}
                     IdVideo={elemento.idVideoYoutube}
+                    actualizarElementos={fetchDataElementos}
                   />
                 ))}
                 <div className="add-playlist-container">
-                  <Aniadir />
+                  <Aniadir actualizarElementos={fetchDataElementos}/>
                 </div>
               </div>
             )}
