@@ -116,7 +116,10 @@ const RecuperarContraseña = () => {
     } else if (mostrarMensaje === "confirmarContraseña") {
       // Si estamos en la sección de confirmar contraseña, pasar a la sección de confirmación de guardado.
 
-      if (newPassword === confirmPassword) {
+      if (newPassword === "" || confirmPassword === "") {
+        // Si newPassword o confirmPassword están vacíos, mostrar un mensaje de error
+        setVerificationError("Por favor, completa todos los campos.");
+      } else if (newPassword === confirmPassword) {
         // Si coinciden, permitir avanzar a la sección de confirmación de guardado
         cambioContraseña();
       } else {
@@ -311,7 +314,7 @@ const RecuperarContraseña = () => {
                 className="btn-primary my-3"
                 onClick={() => {
                   setVerificarPassword(null);
-                  setConfirmPassword(null);
+                  //setConfirmPassword(null);
                   handleEnviarClick();
                 }}
               >
