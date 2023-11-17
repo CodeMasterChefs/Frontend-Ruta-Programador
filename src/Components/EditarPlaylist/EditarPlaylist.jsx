@@ -30,8 +30,10 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   const [error, setError] = useState({
     titleError: "",
     descriptionError: "",
+    iconError: "",
   });
   const fileInputRef = useRef(null);
+  const [file, setFile] = useState(null);
 
   const location = useLocation();
   const [buttonConf, setButtonConf] = useState('');
@@ -39,7 +41,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   useEffect(() => {
     const fetchDataPlaylist = async () => {
       const response = await api.get(`/playlist/valores/${IdPlaylist}`);
-      const { tituloPlaylist, descripcionPlaylist, idMundo } = response.data;
+      const { tituloPlaylist, descripcionPlaylist, idMundo } = response.data[0];
       const originalValues = {
         title: tituloPlaylist,
         description: descripcionPlaylist,
@@ -68,6 +70,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       setButtonConf('#ModalConfirmacionEdicion')
     }
   }, [location])
+
   const onInputChange = ({ target }) => {
     const { name, value } = target;
     setFormState({
@@ -77,6 +80,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     setError({
       titleError: "",
       descriptionError: "",
+      iconError: ''
     });
   };
 
@@ -90,6 +94,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       setError({
         titleError: "",
         descriptionError: "",
+        iconError: ''
       });
     };
 
@@ -119,15 +124,38 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       }
     }
 
-    await api.put("playlist/icono", {
-      idMundo: formState.idMundo,
-      idPlaylist: IdPlaylist,
-    });
+    const formData = new FormData();
+    let queryParams = {};
 
+    if (file) {
+      formData.append("iconoPersonalizado", file);
+      queryParams = {
+        idPlaylist: IdPlaylist,
+      };
+    } else {
+      queryParams = {
+        idMundo: formState.idMundo,
+        idPlaylist: IdPlaylist,
+      };
+    }
+
+    try {
+      await api.post("playlist/icono", formData, {
+        params: queryParams,
+      });
+    } catch (error) {
+      console.log(error.response)
+      /* if (error.response && error.response.data) {
+        errors.iconoError =
+          error.response.data.errors?.iconoPersonalizado?.[0] || "";
+      } */
+    }
+    
     // Actualizamos el estado de errores con el objeto de errores
     setError({
       titleError: errors.titleError,
       descriptionError: errors.descriptionError,
+      iconError: errors.iconoError,
     });
 
     // Solo recargamos la página si no hay errores
@@ -166,11 +194,13 @@ const EditarPlaylist = ({ IdPlaylist }) => {
 
   const handleFileButtonClick = () => {
     fileInputRef.current.click();
+    fileInputRef.current.value = null;
   };
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
-    console.log(file);
+    setFile(file);
+    setError({...error, iconError: ''})
     const reader = new FileReader();
 
     reader.onload = () => {
@@ -265,6 +295,11 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                   <div className="col-auto">
                   <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
+                    </div>
+                    <div className="text-center" style={{width: '100%'}}>
+                      <em>
+                        <small className="">{error.iconError}</small>
+                      </em>
                     </div>
                     <div className="d-flex justify-content-center pt-3">
                       <SubirIconoNuevo />
