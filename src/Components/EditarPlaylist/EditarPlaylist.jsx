@@ -5,7 +5,6 @@ import { useState, useEffect, useRef } from "react";
 import api from "../../config/site.config";
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
 import { useLocation } from "react-router-dom";
-import ModalConfPlaylist from "../ModalConfirmacion/ModalConfPlaylist";
 import ModalConfEdit from "../ModalConfirmacion/ModalConfEdit";
 import { SubirIconoNuevo } from "../icons";
 
@@ -16,6 +15,15 @@ const iconMap = {
   4: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/neptune.svg",
   5: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/mars.svg",
   6: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/haumea.svg",
+  7: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile.svg",
+  8: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/Java.svg",
+  9: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaConsole.svg",
+  10: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaIcon2.svg",
+  11: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile3.svg",
+  12: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile4.svg",
+  13: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFileClass.svg",
+  14: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaConsole2.svg",
+  15: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaProject.svg",
 };
 
 const EditarPlaylist = ({ IdPlaylist }) => {
@@ -263,7 +271,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                 </div>
                 <div className="row">
                   <div className="col-auto">
-                  <div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                     </div>
                     <div className="d-flex justify-content-center pt-3">
@@ -282,13 +290,14 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                         accept=".svg, .png, .jpg, .jpeg"
                         onChange={handleFileUpload}
                       />
-                    </div>                  
+                    </div>
                   </div>
                   <div className="col-auto" data-bs-theme="dark">
                     <p className="col-form-label">Selecciona un ícono</p>
                     <select
-                      className="form-select custom-option"
+                      className="form-select custom-option custom-scrollbar"
                       value={idMundo}
+                      size={6}
                       onChange={(e) => {
                         const selected = e.target.value;
                         setPlanetSelected(selected);
@@ -305,6 +314,15 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                       <option value="4">Neptune</option>
                       <option value="5">Mars</option>
                       <option value="6">Haumea</option>
+                      <option value="7">Java File</option>
+                      <option value="8">Java Coffee</option>
+                      <option value="9">Java Console</option>
+                      <option value="10">Java Logo</option>
+                      <option value="11">Java Code</option>
+                      <option value="12">Java Tea</option>
+                      <option value="13">Java Diagram</option>
+                      <option value="14">Java Web</option>
+                      <option value="15">Java Project</option>
                     </select>
                   </div>
                 </div>

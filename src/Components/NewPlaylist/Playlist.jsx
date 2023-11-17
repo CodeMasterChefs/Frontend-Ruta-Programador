@@ -12,6 +12,15 @@ const iconMap = {
   4: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/neptune.svg",
   5: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/mars.svg",
   6: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/haumea.svg",
+  7: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile.svg",
+  8: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/Java.svg",
+  9: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaConsole.svg",
+  10: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaIcon2.svg",
+  11: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile3.svg",
+  12: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile4.svg",
+  13: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFileClass.svg",
+  14: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaConsole2.svg",
+  15: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaProject.svg",
 };
 
 const Playlist = ({ CantPlaylists }) => {
@@ -141,7 +150,7 @@ const Playlist = ({ CantPlaylists }) => {
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
     setFile(file);
-    setError({...error, iconError: ''})
+    setError({ ...error, iconError: '' })
     const reader = new FileReader();
 
     reader.onload = () => {
@@ -164,7 +173,7 @@ const Playlist = ({ CantPlaylists }) => {
         data-bs-toggle="modal"
         data-bs-target="#modalCrearPlaylist"
         data-bs-whatever="@mdo"
-        // disabled={CantPlaylists >= 100}
+      // disabled={CantPlaylists >= 100}
       >
         Nueva Playlist
       </button>
@@ -237,14 +246,14 @@ const Playlist = ({ CantPlaylists }) => {
                     <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                     </div>
-                    <div className="text-center" style={{width: '100%'}}>
+                    <div className="text-center" style={{ width: '100%' }}>
                       <em>
                         <small className="">{error.iconError}</small>
                       </em>
                     </div>
                     <div className="d-flex justify-content-center pt-3">
                       <SubirIconoNuevo />
-                      <button 
+                      <button
                         type="button"
                         className="btn btn-special mx-2"
                         onClick={handleFileButtonClick}
@@ -263,9 +272,10 @@ const Playlist = ({ CantPlaylists }) => {
                   <div className="col-auto" data-bs-theme="dark">
                     <p className="col-form-label">Selecciona un ícono</p>
                     <select
-                      className="form-select"
+                      className="form-select custom-scrollbar"
                       id="planetIcon"
                       value={idMundo}
+                      size={6}
                       onChange={(e) => {
                         const selected = e.target.value;
                         setPlanetSelected(selected);
@@ -274,7 +284,7 @@ const Playlist = ({ CantPlaylists }) => {
                           ...formState,
                           idMundo: selected,
                         });
-                        setError({...error, iconError: ''})
+                        setError({ ...error, iconError: '' })
                         setFile(null)
                       }}
                     >
@@ -284,6 +294,15 @@ const Playlist = ({ CantPlaylists }) => {
                       <option value="4">Neptune</option>
                       <option value="5">Mars</option>
                       <option value="6">Haumea</option>
+                      <option value="7">Java File</option>
+                      <option value="8">Java Coffee</option>
+                      <option value="9">Java Console</option>
+                      <option value="10">Java Logo</option>
+                      <option value="11">Java Code</option>
+                      <option value="12">Java Tea</option>
+                      <option value="13">Java Diagram</option>
+                      <option value="14">Java Web</option>
+                      <option value="15">Java Project</option>
                     </select>
                   </div>
                 </div>
