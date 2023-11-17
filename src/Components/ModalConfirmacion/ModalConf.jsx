@@ -4,6 +4,7 @@ export const ModalConf = ({
   Texto = "Texto",
   TxtButton = "Button",
   ide = "ide",
+  handleButton
 }) => {
 
   return (
@@ -25,6 +26,7 @@ export const ModalConf = ({
                 <button
                   className="btn btn-primary btn-small"
                   data-bs-dismiss="modal"
+                  onClick={handleButton}
                 >
                   {TxtButton}
                 </button>

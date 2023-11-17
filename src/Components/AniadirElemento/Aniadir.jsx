@@ -26,12 +26,12 @@ export const Aniadir = ({actualizarElementos}) => {
         idPlaylist: params.idPlaylist,
       });
 
-      actualizarElementos();
+
       setUrl(url);
       setError({ urlError: "" });
 
       // Actualiza el estado modalVisible después de que la solicitud tenga éxito.
-      setModalVisible(true);
+      //setModalVisible(true);
 
       // console.log(modalVisible); // Aquí modalVisible debería reflejar true
     } catch (error) {
@@ -80,6 +80,7 @@ export const Aniadir = ({actualizarElementos}) => {
         Texto="Tu video fue agregado correctamente."
         ide="ModalConfirmacionAniadir"
         TxtButton="Aceptar"
+        handleButton={actualizarElementos}
       />
       <button
         type="button"
