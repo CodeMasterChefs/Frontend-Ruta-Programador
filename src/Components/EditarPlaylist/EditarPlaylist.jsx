@@ -25,6 +25,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     title: "",
     description: "",
     idMundo: planetSelected,
+    iconoMundo: '',
   });
   const { title, description, idMundo } = formState;
   const [error, setError] = useState({
@@ -41,14 +42,20 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   useEffect(() => {
     const fetchDataPlaylist = async () => {
       const response = await api.get(`/playlist/valores/${IdPlaylist}`);
-      const { tituloPlaylist, descripcionPlaylist, idMundo } = response.data[0];
+      const { tituloPlaylist, descripcionPlaylist, idMundo, iconoMundo } = response.data[0];
       const originalValues = {
         title: tituloPlaylist,
         description: descripcionPlaylist,
         idMundo: idMundo,
+        iconoMundo: iconoMundo,
       };
       setFormState(originalValues);
-      setSelectedIcon(iconMap[idMundo]);
+      //setSelectedIcon(iconoMundo)
+      if(formState.idMundo > 15){
+        setSelectedIcon(`https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/${formState.iconoMundo}`); // Se ejecutará una vez al montar el componente
+      }else{
+        setSelectedIcon(iconMap[formState.idMundo])
+      }
 
       const modalElement = document.getElementById("modalEditarPlaylist");
       modalElement.addEventListener("show.bs.modal", () => {
@@ -60,7 +67,11 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   }, [IdPlaylist]);
 
   useEffect(() => {
-    setSelectedIcon(iconMap[formState.idMundo]); // Se ejecutará una vez al montar el componente
+    if(formState.idMundo > 15){
+      setSelectedIcon(`https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/${formState.iconoMundo}`); // Se ejecutará una vez al montar el componente
+    }else{
+      setSelectedIcon(iconMap[formState.idMundo])
+    }
   }, [formState.idMundo]);
 
   useEffect(() => {
@@ -248,6 +259,9 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                onClick={() => {
+                  setSelectedIcon(`https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/${formState.iconoMundo}`)
+                }}
               ></button>
             </div>
             <div className="modal-body">
