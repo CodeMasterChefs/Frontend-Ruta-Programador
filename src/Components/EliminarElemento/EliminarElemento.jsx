@@ -10,7 +10,6 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento, actua
     try {
       const response = await api.remove(`elemento_playlists?idElemento=${IdElemento}&idPlaylist=${IdPlaylist}`)
       console.log(response);
-      actualizarElementos();
       //navigate("/mis_playlists/${IdPlaylist}");
     } catch (error) {
       console.error('Error al eliminar el elemento:', error);
@@ -25,6 +24,7 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento, actua
           Texto={"El video se eliminó correctamente de tu playlist"}
           TxtButton="Aceptar"
           ide="ModalConfirmacionEliminar"
+          handleButton={actualizarElementos}
         />
 
         <div
