@@ -15,6 +15,13 @@ const MiPlaylist = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [playlist, setPlaylist] = useState({
+      idPlaylist: null,
+      tituloPlaylist: "",
+      descripcionPlaylist: "",
+      idMundo: null,
+      iconoMundo: ""
+  });
   const [elementos, setElementos] = useState([]);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
@@ -33,8 +40,19 @@ const MiPlaylist = () => {
     }
   };
 
+  const fetchDataPlaylist = async () => {
+    const id = Number(params.idPlaylist);
+    try {
+      const playlistResponse = await api.get("/playlist/valores/" + id);
+      setPlaylist(playlistResponse.data[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetchDataElementos();
+    fetchDataPlaylist();
   }, [params.idPlaylist]);
 
   return (
@@ -54,11 +72,12 @@ const MiPlaylist = () => {
         <>
           <br></br>
           <TitDescripcion
+            Playlist={playlist}
             IdPrimerVideo={elementos[0]?.idVideoYoutube}
             handleShow={handleShow}
           />
 
-          <EditarPlaylist IdPlaylist={Number(params.idPlaylist)} />
+          <EditarPlaylist IdPlaylist={Number(params.idPlaylist)} actualizarPlaylist={fetchDataPlaylist}/>
           <EliminarPlaylist
             IdPlaylist={Number(params.idPlaylist)}
             show={show}

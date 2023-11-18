@@ -26,7 +26,7 @@ const iconMap = {
   15: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaProject.svg",
 };
 
-const EditarPlaylist = ({ IdPlaylist }) => {
+const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist }) => {
   const [planetSelected, setPlanetSelected] = useState();
   const [selectedIcon, setSelectedIcon] = useState();
   const [formState, setFormState] = useState({
@@ -158,7 +158,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       };
     }
 
-    if(!errors){
+    if(!errors.titleError && !errors.descriptionError){
       try {
         await api.post("playlist/icono", formData, {
           params: queryParams,
@@ -245,6 +245,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
           Texto="Tu playlist ha sido modificada con éxito."
           ide="ModalConfirmacionEdicion"
           TxtButton="Aceptar"
+          handleButton={actualizarPlaylist}
         />
       )}
       <button
@@ -360,6 +361,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                           ...formState,
                           idMundo: selected,
                         });
+                        console.log('iconoSelected', formState.idMundo)
                       }}
                     >
                       <option value="1">The moon</option>
