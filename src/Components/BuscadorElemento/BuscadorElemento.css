@@ -1,10 +1,11 @@
 .form-search-element{
- 
-}
-.container-search{
-  position: absolute;
- ;
+  padding: 0.5rem;
 }
 .input-search-element{
-  width:100%!important;
+    width:100%!important;
+    background: #270f41;
+    border: 1px solid #4DDAC5;
+    border-radius: 20px;
+    padding: 0.4rem;
+    margin:0.4rem
 }
