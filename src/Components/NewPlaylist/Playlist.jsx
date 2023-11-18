@@ -178,7 +178,7 @@ const Playlist = ({ CantPlaylists }) => {
         Nueva Playlist
       </button>
 
-      <div className="modal fade" id="modalCrearPlaylist" tabIndex="-1">
+      <div className="modal fade" id="modalCrearPlaylist" tabIndex="-1" data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">
             <div
@@ -197,6 +197,9 @@ const Playlist = ({ CantPlaylists }) => {
                     idMundo: 1,
                   });
                   setSelectedIcon(iconMap[1])
+                  setError({titleError: "",
+                  descriptionError: "",
+                  iconError: "",})
                 }}
               ></button>
             </div>

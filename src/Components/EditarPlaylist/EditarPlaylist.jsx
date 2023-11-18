@@ -157,16 +157,18 @@ const EditarPlaylist = ({ IdPlaylist }) => {
         idPlaylist: IdPlaylist,
       };
     }
-    console.log(formData)
-    try {
-      await api.post("playlist/icono", formData, {
-        params: queryParams,
-      });
-    } catch (error) {
-      console.log(error.response)
-      if (error.response && error.response.data) {
-        errors.iconoError =
-          error.response.data.errors?.iconoPersonalizado?.[0] || "";
+
+    if(!errors){
+      try {
+        await api.post("playlist/icono", formData, {
+          params: queryParams,
+        });
+      } catch (error) {
+        console.log(error.response)
+        if (error.response && error.response.data) {
+          errors.iconoError =
+            error.response.data.errors?.iconoPersonalizado?.[0] || "";
+        }
       }
     }
     
@@ -255,7 +257,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       >
         Launch demo modal
       </button>
-      <div className="modal fade" id="modalEditarPlaylist" tabIndex="-1">
+      <div className="modal fade" id="modalEditarPlaylist" tabIndex="-1" data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">
             <div
@@ -269,6 +271,9 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                 aria-label="Close"
                 onClick={() => {
                   setSelectedIcon(`https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/${formState.iconoMundo}`)
+                  setError({titleError: "",
+                  descriptionError: "",
+                  iconError: ''})
                 }}
               ></button>
             </div>
