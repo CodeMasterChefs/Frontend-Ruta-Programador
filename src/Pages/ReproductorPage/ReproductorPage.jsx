@@ -65,13 +65,13 @@ const ReproductorPage = () => {
             {idVideo !== 'undefined' ? (
                 <>
                     <div className="row mt-2 align-items-start">
-                        <div className="col-lg-8 custom-border-reproductor-lg p-3">
+                        <div className="col-lg-8 custom-border-reproductor-lg pt-3">
                             <div className="ratio ratio-16x9 mx-auto">
                                 <YouTubeEmbebido IdVideo={idVideo} />
                             </div>
                             <h3 className="mt-3">{tituloElemento}</h3>
                         </div>
-                        <div className="col-lg-4 p-3 custom-border-lista_reproduccion-lg">
+                        <div className="col-lg-4 pt-3 custom-border-lista_reproduccion-lg">
                             <div className="d-flex justify-content-between align-items-center">
                                 <h4>Lista de reproducción</h4>
                                 <h6>
@@ -81,7 +81,7 @@ const ReproductorPage = () => {
                             <div className="custom-overflow custom-scrollbar">{elementosPlaylist}</div>
                         </div>
                     </div>
-                    <div className="text-center mb-4">
+                    <div className="text-center mt-2 mb-3">
                         <button onClick={() => { navigate('/mis_playlists') }} className="btn btn-primary d-block mx-auto">
                             Mis Playlists
                         </button>
