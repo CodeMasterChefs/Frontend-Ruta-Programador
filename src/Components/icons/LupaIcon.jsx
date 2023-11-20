@@ -5,7 +5,7 @@ const SvgComponent = (props) => (
     width={23}
     height={30}
     fill="none"
-    stroke="white"
+    stroke="black"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth={2}
