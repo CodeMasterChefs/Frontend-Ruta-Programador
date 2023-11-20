@@ -1,39 +1,75 @@
-.form-search{
-  padding: 0.3rem;
-}
-.container-search{
+
+.container-search {
   position: relative;
 }
-.input-search{
-    width:100%!important;
+
+
+@media (min-width: 764px) {
+  .button-search {
+    background-color: #4ddac5;
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    line-height: 0px;
+    justify-content: center;
+    align-items: center;
+  }
+  .input-search {
+    width: 100% !important;
     height: 47px;
     background: #270f41;
-    border: 3px solid #227B9B;
+    border: 3px solid #227b9b;
     border-radius: 25px;
     padding: 10px;
     margin-right: 5px;
     color: white;
     outline: none;
+  }
+  .form-search {
+    padding: 0.3rem;
+  }
+}
+@media (max-width: 765px) {
+  .button-search {
+    background-color: #4ddac5;
+    border-radius: 25px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 14px;
+    right: 4px;
+    line-height: 0px;
+    justify-content: center;
+    align-items: center;
+  }
+  .col-search {
+    flex-direction: column-reverse; /* Cambia la dirección del flex para poner el form debajo */
+    align-items: flex-end; /* Alinea los elementos al final del contenedor */
+  }
+  .input-search {
+    width: 100% !important;
+    height: 47px;
+    background: #270f41;
+    border: 3px solid #227b9b;
+    border-radius: 25px;
+    padding: 10px;
+    margin-right: 5px;
+    color: white;
+    outline: none;
+  }
+  .form-search {
+    padding: 0rem;
+  }
 }
 
-.button-search{
- background-color: #4DDAC5;
- border-radius: 25px;
- width: 40px;
- height: 40px;
- display: flex;
- justify-content: flex-end;
-position: absolute;
-top: 8px;
-right: 8px;
-line-height: 0px;
-justify-content: center;
-align-items: center;
-
-
-}
 /*Estilizacion del data list*/
-
 
 .suggestions {
   position: absolute;
@@ -50,16 +86,15 @@ align-items: center;
   cursor: pointer;
   padding: 8px;
   background-color: #270f41;
-  border: 2px solid #227B9B;
+  border: 2px solid #227b9b;
   border-radius: 20px;
   margin: 2px;
   transition: background-color 0.3s; /* Agregar transición para suavizar el cambio de color */
 }
 
 .suggestion:hover {
-  background-color: #4DDAC5; /* Cambiar el color al pasar el ratón */
+  background-color: #4ddac5; /* Cambiar el color al pasar el ratón */
 }
-
 
 /* CSS del boton */
 .button-search-playlist {
@@ -73,7 +108,7 @@ align-items: center;
 .button-search-playlist i {
   box-sizing: border-box;
   padding: 10px;
-  background: #4DDAC5;
+  background: #4ddac5;
   border-radius: 50%;
   color: black;
   font-size: 1.2em;
