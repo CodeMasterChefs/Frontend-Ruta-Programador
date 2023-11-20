@@ -1,9 +1,10 @@
-import "./BuscadorElemento.css";
+ import "./BuscadorElemento.css";
 import "./BDtest.js";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 //import { sortedNames } from "./BDtest";
 import api from "../../config/site.config";
+import { LupaIcon } from "../icons/LupaIcon.jsx";
 
 const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
   const [searchText, setSearchText] = useState("");
@@ -103,13 +104,14 @@ const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
 
   return (
     <>
-      <link rel="stylesheet" href="./style.css" />
+    <div className="container-search-element">
+    <link rel="stylesheet" href="./style.css" />
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
       />
       <form
-        className="form-search"
+        className="form-search-element"
         autoComplete="off"
         action=""
         onSubmit={(e) => e.preventDefault()}
@@ -117,7 +119,7 @@ const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
         onMouseLeave={handleMouseLeave}
       >
         <input
-          className="input-search"
+          className="input-search-element"
           type="text"
           placeholder="Busca tu video favorito"
           id="input"
@@ -126,7 +128,7 @@ const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
           
         />
         {showClearIcon && (
-          <span className="clear-icon" onClick={handleClearClick}>
+          <span className="clear-icon-element" onClick={handleClearClick}>
             <svg
               width="30"
               height="30"
@@ -149,16 +151,16 @@ const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
           onClick={() => {
             handleSearchButtonClick();
           }}
-          className="button-search-playlist"
+          className="button-search-element"
         >
-          <i className="fa fa-search"></i>
+          <i ><LupaIcon></LupaIcon></i>
         </button>
         {showSuggestions && (
-          <ul className="suggestions">
+          <ul className="suggestions-element">
             {suggestions.map((name, index) => (
               <li
                 key={index}
-                className="suggestion"
+                className="suggestion-element"
                 onClick={() => handleSuggestionClick(name)}
               >
                 {name}
@@ -167,6 +169,8 @@ const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
           </ul>
         )}
       </form>
+    </div>
+      
     </>
   );
 };

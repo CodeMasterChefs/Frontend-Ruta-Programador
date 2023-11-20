@@ -196,7 +196,7 @@ export const TitDescripcion = ({
           </div>
          
         </div>
-        <div className="mt-3 d-flex justify-content-end"><BuscadorElemento></BuscadorElemento></div>
+        <div className=""><BuscadorElemento></BuscadorElemento></div>
         
       </div>
       <div className="descripcion-md">
@@ -359,6 +359,8 @@ export const TitDescripcion = ({
             <p>{playlist.descripcionPlaylist}</p>
           </div>
         </div>
+        <div className=""><BuscadorElemento></BuscadorElemento></div>
+        
       </div>
 
     </>

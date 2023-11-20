@@ -8,7 +8,7 @@ const SvgComponent = (props) => (
     stroke="black"
     strokeLinecap="round"
     strokeLinejoin="round"
-    strokeWidth={2}
+    strokeWidth={2.5}
     className="icon icon-tabler icon-tabler-search"
     {...props}
   >
