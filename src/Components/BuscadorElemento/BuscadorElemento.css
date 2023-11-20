@@ -3,6 +3,8 @@
 }
 .container-search-element {
   position: relative;
+  left: 0%;
+  width: 500px;
 }
 .input-search-element {
   width: 100% !important;
