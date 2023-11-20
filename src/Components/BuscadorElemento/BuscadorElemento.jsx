@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 //import { sortedNames } from "./BDtest";
 import api from "../../config/site.config";
+import { LupaIcon } from "../icons/LupaIcon.jsx";
 
 const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
   const [searchText, setSearchText] = useState("");
@@ -152,7 +153,7 @@ const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
           }}
           className="button-search-element"
         >
-          <i className="fa-element"></i>
+          <i ><LupaIcon></LupaIcon></i>
         </button>
         {showSuggestions && (
           <ul className="suggestions-element">

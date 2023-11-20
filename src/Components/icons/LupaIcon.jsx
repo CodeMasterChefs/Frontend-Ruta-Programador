@@ -5,10 +5,10 @@ const SvgComponent = (props) => (
     width={24}
     height={24}
     fill="none"
-    stroke="white"
+    stroke="black"
     strokeLinecap="round"
     strokeLinejoin="round"
-    strokeWidth={2}
+    strokeWidth={2.5}
     className="icon icon-tabler icon-tabler-search"
     {...props}
   >
