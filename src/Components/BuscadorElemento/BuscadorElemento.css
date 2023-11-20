@@ -1,0 +1,89 @@
+.form-search-element {
+  padding: 0.3rem;
+}
+.container-search-element {
+  position: relative;
+}
+.input-search-element {
+  width: 100% !important;
+  height: 47px;
+  background: #270f41;
+  border: 3px solid #227b9b;
+  border-radius: 25px;
+  padding: 10px;
+  margin-right: 5px;
+  color: white;
+  outline: none;
+}
+
+.button-search-element {
+  background-color: #4ddac5;
+  border-radius: 25px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  line-height: 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.suggestions-element {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    list-style: none;
+    padding: 8px;
+    margin-bottom: 8px;
+    color: white;
+    
+  }
+  
+  .suggestion-element {
+    cursor: pointer;
+    padding: 8px;
+    background-color: #270f41;
+    border: 2px solid #227b9b;
+    border-radius: 20px;
+    margin: 2px;
+    transition: background-color 0.3s; /* Agregar transición para suavizar el cambio de color */
+  }
+  
+  .suggestion-element:hover {
+    background-color: #4ddac5; /* Cambiar el color al pasar el ratón */
+  }
+  
+  /* CSS del boton */
+  .button-search-playlist-element {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  /* Estilo para el ícono dentro del botón */
+  .button-search-playlist-element i {
+    box-sizing: border-box;
+    padding: 10px;
+    background: #4ddac5;
+    border-radius: 50%;
+    color: black;
+    font-size: 1.2em;
+    transition: all 1s;
+    outline: none; /* Agregado para ocultar la barra negra alrededor del botón */
+  }
+  
+  .clear-icon-element {
+    position: absolute;
+    top: 50%;
+    right: 45px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: white;
+    z-index: 2;
+    font-size: 1em;
+  }
