@@ -273,12 +273,7 @@ const Playlist = ({ CantPlaylists }) => {
                     <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                     </div>
-                    <div className="text-center" style={{ width: "100%" }}>
-                      <em>
-                        <small className="">{error.iconError}</small>
-                      </em>
-                    </div>
-                    <div className="d-flex justify-content-center pt-3">
+                    <div className="d-flex justify-content-center pb-3">
                       <SubirIconoNuevo />
                       <button
                         type="button"
@@ -294,6 +289,11 @@ const Playlist = ({ CantPlaylists }) => {
                         accept=".svg, .png, .jpg, .jpeg"
                         onChange={handleFileUpload}
                       />
+                    </div>
+                    <div className="text-center" style={{ width: "100%" }}>
+                      <em>
+                        <small className="">{error.iconError}</small>
+                      </em>
                     </div>
                   </div>
                   <div className="col-5" data-bs-theme="dark">
