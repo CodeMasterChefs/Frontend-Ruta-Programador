@@ -80,6 +80,7 @@
   padding: 8px;
   margin-bottom: 8px;
   color: white;
+  z-index: 1;
 }
 
 .suggestion {
@@ -119,7 +120,7 @@
 .clear-icon {
   position: absolute;
   top: 50%;
-  right: 40px;
+  right: 45px;
   transform: translateY(-50%);
   cursor: pointer;
   color: white;
