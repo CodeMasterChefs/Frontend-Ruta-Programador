@@ -2,8 +2,8 @@
 const SvgComponent = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={24}
-    height={24}
+    width={23}
+    height={30}
     fill="none"
     stroke="white"
     strokeLinecap="round"

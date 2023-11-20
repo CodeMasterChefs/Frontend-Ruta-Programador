@@ -1,94 +1,37 @@
-@media (max-width: 764px) {
-
-    .form-search:hover{
-      width: 300px;
-      cursor: pointer;
-      z-index: 1;
-  }
-  .form-search{
-    position: static;
-    top: 50%;
-    left: 60%;
-    margin-right: 0px;
-    transform: translate(0%,0%);
-    transition: all 1s;
-    width: 45px;
-    height: 45px;
+.form-search{
+  padding: 0.3rem;
+}
+.container-search{
+  position: relative;
+}
+.input-search{
+    width:100%!important;
+    height: 47px;
     background: #270f41;
-    box-sizing: border-box;
+    border: 3px solid #227B9B;
     border-radius: 25px;
-    border: 3px solid #227593;
-    padding: 5px;
-    color: black; /* Cambia el color del texto a negro */
-}
-  }
-
-  @media (min-width: 764px) {
-    .form-search{
-      position: static;
-      top: 50%;
-      left: 60%;
-      margin-right: 10px;
-      transform: translate(0%,0%);
-      transition: all 1s;
-      width: 45px;
-      height: 45px;
-      background: #270f41;
-      box-sizing: border-box;
-      border-radius: 25px;
-      border: 3px solid #227B9B;
-      padding: 5px;
-      color: black; /* Cambia el color del texto a negro */
-  }
-    .form-search:hover{
-      width: 400px;
-      cursor: pointer;
-      z-index: 1;
-    }
-  }
-
-  .input-search{
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #270f41;
-    width: 100%;;
-    height: 40px;
-    line-height: 30px;
-    outline: 0;
-    border: 0;
-    display: none;
-    font-size: 1em;
-    border-radius: 20px;
-    padding: 0 20px;
-    color: white; /* Cambia el color del texto a negro */
-    
+    padding: 10px;
+    margin-right: 5px;
+    color: white;
+    outline: none;
 }
 
-.fa {
-  box-sizing: border-box;
-  padding: 10px;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  background: #4DDAC5;
-  top: 0;
-  right: 0;
-  border-radius: 50%;
-  color: black;
-  font-size: 1.2em;
-  transition: all 1s;
-}
+.button-search{
+ background-color: #4DDAC5;
+ border-radius: 25px;
+ width: 40px;
+ height: 40px;
+ display: flex;
+ justify-content: flex-end;
+position: absolute;
+top: 8px;
+right: 8px;
+line-height: 0px;
+justify-content: center;
+align-items: center;
 
-.form-search:hover input{
-    display: block;
-}
 
-.form-search:hover .fa{
-    background: #4DDAC5;
-    color: #227593;
 }
-
 /*Estilizacion del data list*/
 
 
