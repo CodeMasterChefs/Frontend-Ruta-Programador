@@ -2,25 +2,10 @@ import PropTypes from "prop-types";
 
 import "./TitDescripcion.css";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import api from "../../config/site.config";
 
-export const TitDescripcion = ({ IdPrimerVideo, handleShow }) => {
+export const TitDescripcion = ({ IdPrimerVideo, handleShow, Playlist }) => {
   let params = useParams();
-  const [playlist, setPlaylist] = useState({});
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const id = Number(params.idPlaylist);
-      try {
-        const playlistResponse = await api.get("/playlist/valores/" + id);
-        setPlaylist(playlistResponse.data[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, [params.idPlaylist]);
   return (
     <>
       <div className="descripcion-lg">
@@ -29,13 +14,13 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow }) => {
             className="img-thumbnail p-2"
             src={
               "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
-              playlist.iconoMundo
+              Playlist.iconoMundo
             }
             alt="..."
           />
 
           <div className="p-2 d-flex align-items-start flex-column">
-            <h3>{playlist.tituloPlaylist}</h3>
+            <h3>{Playlist.tituloPlaylist}</h3>
             <div className="d-flex justify-content-start">
               <Link
                 to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}
@@ -184,7 +169,7 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow }) => {
           </div>
 
           <div className="title-desc-container border p-2">
-            <p>{playlist.descripcionPlaylist}</p>
+            <p>{Playlist.descripcionPlaylist}</p>
           </div>
         </div>
       </div>
@@ -195,13 +180,13 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow }) => {
               className="img-thumbnail p-2"
               src={
                 "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
-                playlist.iconoMundo
+                Playlist.iconoMundo
               }
               alt="..."
             />
           </div>
           <div className="col">
-            <h3>{playlist.tituloPlaylist}</h3>
+            <h3>{Playlist.tituloPlaylist}</h3>
             <div className="d-flex justify-content-start">
               <button className="btn btn-primary play-button">
                 <svg
@@ -345,7 +330,7 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow }) => {
         </div>
         <div className="row">
           <div className="title-desc-container border p-2">
-            <p>{playlist.descripcionPlaylist}</p>
+            <p>{Playlist.descripcionPlaylist}</p>
           </div>
         </div>
       </div>
