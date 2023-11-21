@@ -33,15 +33,17 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
     setSearchText(inputText);
     const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
     setShowClearIcon(cleanedText.length > 0);
-
+  
     const matchingNames = titulosPlaylits.filter((name) =>
       name.toLowerCase().includes(cleanedText.toLowerCase())
     );
-
-    const filteredSuggestions = matchingNames.filter(
+  
+    const filteredSuggestionsSet = new Set(matchingNames);
+  
+    const filteredSuggestions = Array.from(filteredSuggestionsSet).filter(
       (name) => name.toLowerCase() !== cleanedText.toLowerCase()
     );
-
+  
     if (cleanedText.length === 0) {
       setSuggestions([]);
       setShowSuggestions(false);
