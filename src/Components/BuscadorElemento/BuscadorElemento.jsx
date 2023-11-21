@@ -25,6 +25,18 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos, ElementosObtenido
     }
   }, [ElementosObtenidos,elementos,(titulosElementos.length)]);
 
+  const fetchDataElementos = async () => {
+    try {
+      const elementosResponse = await api.get(
+        "/elemento_playlists/" + params.idPlaylist
+      );
+      elementosBuscados(elementosResponse.data.elementos);
+      noHayElementos(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleInputChange = (event) => {
     const inputText = event.target.value;
     setSearchText(inputText);
@@ -89,6 +101,7 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos, ElementosObtenido
     setShowClearIcon(false);
     setShowSuggestions(false);
     setSuggestions([]);
+    fetchDataElementos();
   };
 
   const handleMouseEnter = () => {
