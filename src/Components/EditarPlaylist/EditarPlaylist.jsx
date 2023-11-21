@@ -5,7 +5,6 @@ import { useState, useEffect, useRef } from "react";
 import api from "../../config/site.config";
 import { ModalConf } from "../ModalConfirmacion/ModalConf";
 import { useLocation } from "react-router-dom";
-import ModalConfPlaylist from "../ModalConfirmacion/ModalConfPlaylist";
 import ModalConfEdit from "../ModalConfirmacion/ModalConfEdit";
 import { SubirIconoNuevo } from "../icons";
 
@@ -16,22 +15,34 @@ const iconMap = {
   4: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/neptune.svg",
   5: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/mars.svg",
   6: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/haumea.svg",
+  7: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile.svg",
+  8: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/Java.svg",
+  9: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaConsole.svg",
+  10: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaIcon2.svg",
+  11: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile3.svg",
+  12: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile4.svg",
+  13: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFileClass.svg",
+  14: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaConsole2.svg",
+  15: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaProject.svg",
 };
 
-const EditarPlaylist = ({ IdPlaylist }) => {
+const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist }) => {
   const [planetSelected, setPlanetSelected] = useState();
   const [selectedIcon, setSelectedIcon] = useState();
   const [formState, setFormState] = useState({
     title: "",
     description: "",
     idMundo: planetSelected,
+    iconoMundo: '',
   });
   const { title, description, idMundo } = formState;
   const [error, setError] = useState({
     titleError: "",
     descriptionError: "",
+    iconError: "",
   });
   const fileInputRef = useRef(null);
+  const [file, setFile] = useState(null);
 
   const location = useLocation();
   const [buttonConf, setButtonConf] = useState('');
@@ -39,14 +50,20 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   useEffect(() => {
     const fetchDataPlaylist = async () => {
       const response = await api.get(`/playlist/valores/${IdPlaylist}`);
-      const { tituloPlaylist, descripcionPlaylist, idMundo } = response.data;
+      const { tituloPlaylist, descripcionPlaylist, idMundo, iconoMundo } = response.data[0];
       const originalValues = {
         title: tituloPlaylist,
         description: descripcionPlaylist,
         idMundo: idMundo,
+        iconoMundo: iconoMundo,
       };
       setFormState(originalValues);
-      setSelectedIcon(iconMap[idMundo]);
+      //setSelectedIcon(iconoMundo)
+      if(formState.idMundo > 15){
+        setSelectedIcon(`https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/${formState.iconoMundo}`); // Se ejecutará una vez al montar el componente
+      }else{
+        setSelectedIcon(iconMap[formState.idMundo])
+      }
 
       const modalElement = document.getElementById("modalEditarPlaylist");
       modalElement.addEventListener("show.bs.modal", () => {
@@ -58,7 +75,11 @@ const EditarPlaylist = ({ IdPlaylist }) => {
   }, [IdPlaylist]);
 
   useEffect(() => {
-    setSelectedIcon(iconMap[formState.idMundo]); // Se ejecutará una vez al montar el componente
+    if(formState.idMundo > 15){
+      setSelectedIcon(`https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/${formState.iconoMundo}`); // Se ejecutará una vez al montar el componente
+    }else{
+      setSelectedIcon(iconMap[formState.idMundo])
+    }
   }, [formState.idMundo]);
 
   useEffect(() => {
@@ -68,6 +89,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       setButtonConf('#ModalConfirmacionEdicion')
     }
   }, [location])
+
   const onInputChange = ({ target }) => {
     const { name, value } = target;
     setFormState({
@@ -77,63 +99,93 @@ const EditarPlaylist = ({ IdPlaylist }) => {
     setError({
       titleError: "",
       descriptionError: "",
+      iconError: ''
     });
   };
 
   const fetchData = async () => {
-    const resetFormAndError = () => {
-      setFormState({
-        title: "",
-        description: "",
-        idMundo: 0,
-      });
+    if(!error.titleError && !error.descriptionError && !error.iconError){
+
+      const resetFormAndError = () => {
+        setFormState({
+          title: "",
+          description: "",
+          idMundo: 0,
+        });
+        setError({
+          titleError: "",
+          descriptionError: "",
+          iconError: ''
+        });
+      };
+  
+      const errors = {}; // Objeto para rastrear errores
+  
+      try {
+        await api.put("playlist/titulo", {
+          tituloPlaylist: formState.title,
+          idPlaylist: IdPlaylist,
+        });
+      } catch (error) {
+        if (error.response && error.response.data) {
+          errors.titleError =
+            error.response.data.errors?.tituloPlaylist?.[0] || "";
+        }
+      }
+  
+      try {
+        await api.put("playlist/descripcion", {
+          descripcionPlaylist: formState.description,
+          idPlaylist: IdPlaylist,
+        });
+      } catch (error) {
+        if (error.response && error.response.data) {
+          errors.descriptionError =
+            error.response.data.errors?.descripcionPlaylist?.[0] || "";
+        }
+      }
+  
+      const formData = new FormData();
+      let queryParams = {};
+  
+      if (file) {
+        formData.append("iconoPersonalizado", file);
+        queryParams = {
+          idPlaylist: IdPlaylist,
+        };
+      } else {
+        queryParams = {
+          idMundo: formState.idMundo,
+          idPlaylist: IdPlaylist,
+        };
+      }
+  
+      if(!errors.titleError && !errors.descriptionError){
+        try {
+          await api.post("playlist/icono", formData, {
+            params: queryParams,
+          });
+        } catch (error) {
+          console.log(error.response)
+          if (error.response && error.response.data) {
+            errors.iconoError =
+              error.response.data.errors?.iconoPersonalizado?.[0] || "";
+          }
+        }
+      }
+      
+      // Actualizamos el estado de errores con el objeto de errores
       setError({
-        titleError: "",
-        descriptionError: "",
+        titleError: errors.titleError,
+        descriptionError: errors.descriptionError,
+        iconError: errors.iconoError,
       });
-    };
-
-    const errors = {}; // Objeto para rastrear errores
-
-    try {
-      await api.put("playlist/titulo", {
-        tituloPlaylist: formState.title,
-        idPlaylist: IdPlaylist,
-      });
-    } catch (error) {
-      if (error.response && error.response.data) {
-        errors.titleError =
-          error.response.data.errors?.tituloPlaylist?.[0] || "";
+  
+      // Solo recargamos la página si no hay errores
+      if (!errors.titleError && !errors.descriptionError && !errors.iconoError) {
+        resetFormAndError();
+        document.getElementById("btnModalConfirm").click();
       }
-    }
-
-    try {
-      await api.put("playlist/descripcion", {
-        descripcionPlaylist: formState.description,
-        idPlaylist: IdPlaylist,
-      });
-    } catch (error) {
-      if (error.response && error.response.data) {
-        errors.descriptionError =
-          error.response.data.errors?.descripcionPlaylist?.[0] || "";
-      }
-    }
-
-    await api.put("playlist/icono", {
-      idMundo: formState.idMundo,
-      idPlaylist: IdPlaylist,
-    });
-
-    // Actualizamos el estado de errores con el objeto de errores
-    setError({
-      titleError: errors.titleError,
-      descriptionError: errors.descriptionError,
-    });
-
-    // Solo recargamos la página si no hay errores
-    if (!errors.titleError && !errors.descriptionError) {
-      resetFormAndError();
-      document.getElementById("btnModalConfirm").click();
     }
   };
 
@@ -166,23 +218,40 @@ const EditarPlaylist = ({ IdPlaylist }) => {
 
   const handleFileButtonClick = () => {
     fileInputRef.current.click();
+    fileInputRef.current.value = null;
   };
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
-    console.log(file);
+
+    // Verificar si se seleccionó un archivo
+    if (!file) {
+      return;
+    }
+
+    setFile(file);
+    setError({ ...error, iconError: "" });
+
     const reader = new FileReader();
 
     reader.onload = () => {
       const uploadedIcon = reader.result; // Contiene la URL del icono subido
       // Actualiza el estado con el ícono subido o haz lo necesario para mostrar la vista previa
       setSelectedIcon(uploadedIcon);
+      // Verificar el tamaño del archivo (en bytes)
+      const maxSizeInBytes = 1024 * 1024; // 1MB
+      if (file.size > maxSizeInBytes) {
+        setError({
+          ...error,
+          iconError:
+            "El archivo es demasiado grande. Por favor, elige un archivo más pequeño.",
+        });
+        // Limpiar el input de archivo si es necesario
+        return;
+      }
     };
 
-    if (file) {
-      reader.readAsDataURL(file);
-      // Aquí puedes realizar la lógica para subir el archivo al servidor si es necesario
-    }
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -194,6 +263,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
           Texto="Tu playlist ha sido modificada con éxito."
           ide="ModalConfirmacionEdicion"
           TxtButton="Aceptar"
+          handleButton={actualizarPlaylist}
         />
       )}
       <button
@@ -206,7 +276,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
       >
         Launch demo modal
       </button>
-      <div className="modal fade" id="modalEditarPlaylist" tabIndex="-1">
+      <div className="modal fade" id="modalEditarPlaylist" tabIndex="-1" data-bs-backdrop="static">
         <div className="modal-dialog">
           <div className="modal-content">
             <div
@@ -218,6 +288,12 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                 className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                onClick={() => {
+                  setSelectedIcon(`https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/${formState.iconoMundo}`)
+                  setError({titleError: "",
+                  descriptionError: "",
+                  iconError: ''})
+                }}
               ></button>
             </div>
             <div className="modal-body">
@@ -262,9 +338,14 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                   </em>
                 </div>
                 <div className="row">
-                  <div className="col-auto">
-                  <div className="d-flex justify-content-center">
+                  <div className="col-6">
+                    <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
+                    </div>
+                    <div className="text-center" style={{width: '100%'}}>
+                      <em>
+                        <small className="">{error.iconError}</small>
+                      </em>
                     </div>
                     <div className="d-flex justify-content-center pt-3">
                       <SubirIconoNuevo />
@@ -282,13 +363,14 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                         accept=".svg, .png, .jpg, .jpeg"
                         onChange={handleFileUpload}
                       />
-                    </div>                  
+                    </div>
                   </div>
-                  <div className="col-auto" data-bs-theme="dark">
+                  <div className="col-5" data-bs-theme="dark">
                     <p className="col-form-label">Selecciona un ícono</p>
                     <select
-                      className="form-select custom-option"
+                      className="form-select custom-option custom-scrollbar"
                       value={idMundo}
+                      size={6}
                       onChange={(e) => {
                         const selected = e.target.value;
                         setPlanetSelected(selected);
@@ -297,6 +379,7 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                           ...formState,
                           idMundo: selected,
                         });
+                        console.log('iconoSelected', formState.idMundo)
                       }}
                     >
                       <option value="1">The moon</option>
@@ -305,6 +388,15 @@ const EditarPlaylist = ({ IdPlaylist }) => {
                       <option value="4">Neptune</option>
                       <option value="5">Mars</option>
                       <option value="6">Haumea</option>
+                      <option value="7">Java File</option>
+                      <option value="8">Java Coffee</option>
+                      <option value="9">Java Console</option>
+                      <option value="10">Java Logo</option>
+                      <option value="11">Java Code</option>
+                      <option value="12">Java Tea</option>
+                      <option value="13">Java Diagram</option>
+                      <option value="14">Java Web</option>
+                      <option value="15">Java Project</option>
                     </select>
                   </div>
                 </div>

@@ -28,16 +28,20 @@
     color: #F2F2F2;
 }
 
-.btn-confirm-modal{
+.form-select option {
+    border-radius: 2px;
+}
+
+.btn-confirm-modal {
     display: none;
 }
 
-.selected-icon{
+.selected-icon {
     max-width: 80%;
     max-height: 150px;
 }
 
-.btn-special{
+.btn-special {
     border-radius: 0.3125rem;
     border: 3px solid var(--Color-3, #227B9B);
     background: rgba(45, 53, 92, 0.00);
@@ -45,7 +49,7 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.btn-special:hover{
+.btn-special:hover {
     border-radius: 0.3125rem;
     border: 3px solid var(--Color-3, #227B9B);
     background: #227B9B;

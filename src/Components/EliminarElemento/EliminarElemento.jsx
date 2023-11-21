@@ -4,7 +4,7 @@ import api from "../../config/site.config";
 import PropTypes from "prop-types";
 //import { useNavigate } from "react-router-dom";
 
-export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => {
+export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento, actualizarElementos }) => {
 
   const handleDelete = async () => {
     try {
@@ -24,6 +24,7 @@ export const EliminarElemento = ({ Imagen, Titulo, IdPlaylist, IdElemento }) => 
           Texto={"El video se eliminó correctamente de tu playlist"}
           TxtButton="Aceptar"
           ide="ModalConfirmacionEliminar"
+          handleButton={actualizarElementos}
         />
 
         <div
@@ -109,5 +110,6 @@ EliminarElemento.propTypes = {
   Titulo: PropTypes.string.isRequired,
   IdPlaylist: PropTypes.number.isRequired,
   IdElemento: PropTypes.number.isRequired,
+  actualizarElementos: PropTypes.func
 };
 export default EliminarElemento;

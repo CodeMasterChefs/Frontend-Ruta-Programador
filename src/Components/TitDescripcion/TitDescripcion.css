@@ -8,7 +8,7 @@
 }
 
 .dropdown-button:hover{
-    border-color: transparent !important;  
+    border-color: transparent !important;
 }
 
 .heart-button {
@@ -26,6 +26,12 @@
 
 .dropdown-item:active {
     background: #227593 !important;
+    color: #f2f2f2 !important;
+}
+
+.dropdown-item:hover {
+    background: #61429b;
+    color: #f2f2f2;
 }
 
 .play-button{

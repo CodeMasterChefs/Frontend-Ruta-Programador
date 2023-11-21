@@ -9,7 +9,8 @@ const YouTubeEmbebido = ({ IdVideo }) => {
         const iframeContainer = document.querySelector('.ratio-16x9');
         const newIframe = document.createElement('iframe');
         newIframe.id = iframeID;
-        newIframe.src = `https://www.youtube.com/embed/${IdVideo}`;
+        newIframe.src = `https://www.youtube.com/embed/${IdVideo}?autoplay=1`;
+        newIframe.allow = 'autoplay';
         newIframe.allowFullscreen = true;
         iframeContainer.appendChild(newIframe);
         setIframeVisible(true);
@@ -29,7 +30,7 @@ const YouTubeEmbebido = ({ IdVideo }) => {
 
     return (
         <>
-            {iframeVisible && <iframe id={iframeID} src={`https://www.youtube.com/embed/${IdVideo}`} allowFullScreen></iframe>}
+            {iframeVisible && <iframe id={iframeID} src={`https://www.youtube.com/embed/${IdVideo}?autoplay=1`} allow='autoplay' allowFullScreen></iframe>}
         </>
     );
 };

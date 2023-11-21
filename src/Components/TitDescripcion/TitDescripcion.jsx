@@ -6,9 +6,8 @@ import { useEffect, useState } from "react";
 import api from "../../config/site.config";
 import BuscadorElemento from "../BuscadorElemento/BuscadorElemento";
 
-export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit, noHayElementosTit }) => {
+export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit, noHayElementosTit, Playlist}) => {
   let params = useParams();
-  const [playlist, setPlaylist] = useState({});
   const [elementos, setElementos] = useState([]);
   const [encontrado, setEncontrado] = useState(false);
   
@@ -42,14 +41,13 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit
             className="img-thumbnail p-2"
             src={
               "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
-              playlist.iconoMundo
+              Playlist.iconoMundo
             }
             alt="..."
           />
 
           <div className="p-2 d-flex align-items-start flex-column">
-            <h3>{playlist.tituloPlaylist}</h3>
-
+            <h3>{Playlist.tituloPlaylist}</h3>
             <div className="d-flex justify-content-start">
               <Link
                 to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}
@@ -198,7 +196,7 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit
           </div>
 
           <div className="title-desc-container border p-2">
-            <p>{playlist.descripcionPlaylist}</p>
+            <p>{Playlist.descripcionPlaylist}</p>
           </div>
         </div>
         <div className="">
@@ -212,19 +210,19 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit
               className="img-thumbnail p-2"
               src={
                 "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/" +
-                playlist.iconoMundo
+                Playlist.iconoMundo
               }
               alt="..."
             />
           </div>
           <div className="col">
-            <h3>{playlist.tituloPlaylist}</h3>
+            <h3>{Playlist.tituloPlaylist}</h3>
             <div className="d-flex justify-content-start">
               <button className="btn btn-primary play-button">
                 <svg
-                  width="30"
-                  height="30"
-                  viewBox="0 0 30 30"
+                  width="18"
+                  height="20"
+                  viewBox="3 7 20 20"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -362,7 +360,7 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit
         </div>
         <div className="row">
           <div className="title-desc-container border p-2">
-            <p>{playlist.descripcionPlaylist}</p>
+            <p>{Playlist.descripcionPlaylist}</p>
           </div>
         </div>
         <div className="">

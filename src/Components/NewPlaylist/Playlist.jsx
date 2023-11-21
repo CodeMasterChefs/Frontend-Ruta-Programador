@@ -12,6 +12,15 @@ const iconMap = {
   4: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/neptune.svg",
   5: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/mars.svg",
   6: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/haumea.svg",
+  7: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile.svg",
+  8: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/Java.svg",
+  9: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaConsole.svg",
+  10: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaIcon2.svg",
+  11: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile3.svg",
+  12: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFile4.svg",
+  13: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaFileClass.svg",
+  14: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaConsole2.svg",
+  15: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaProject.svg",
 };
 
 const Playlist = ({ CantPlaylists }) => {
@@ -67,35 +76,37 @@ const Playlist = ({ CantPlaylists }) => {
       };
     }
 
-    api
-      .post("playlist", formData, {
+    try {
+      const response = await api.post("playlist", formData, {
         params: queryParams,
-      })
-      .then((response) => {
-        console.log(response);
-        setFormState({
-          title: "",
-          description: "",
-          idMundo: 1,
-        });
-        setError({
-          titleError: "",
-          descriptionError: "",
-        });
-        setModalVisible(true);
-        document.getElementById("btnModalConfirmPlaylist").click();
-      })
-      .catch((error) => {
-        console.error(error.response.data);
-        if (error.response && error.response.data) {
-          setError({
-            titleError: error.response.data.errors?.tituloPlaylist?.[0] || "",
-            descriptionError:
-              error.response.data.errors?.descripcionPlaylist?.[0] || "",
-            iconError: error.response.data.errors?.iconoPersonalizado?.[0] || "",
-          });
-        }
       });
+
+      console.log(response);
+
+      setFormState({
+        title: "",
+        description: "",
+        idMundo: 1,
+      });
+      setError({
+        titleError: "",
+        descriptionError: "",
+      });
+      setModalVisible(true);
+      document.getElementById("btnModalConfirmPlaylist").click();
+    } catch (error) {
+      console.error("Error status:", error.response.status);
+      console.error("solo error", error.response.data);
+
+      if (error.response && error.response.data){
+        setError({
+          titleError: error.response.data.errors?.tituloPlaylist?.[0] || "",
+          descriptionError:
+            error.response.data.errors?.descripcionPlaylist?.[0] || "",
+          iconError: error.response.data.errors?.iconoPersonalizado?.[0] || "",
+        });
+      }
+    }
   };
   const handleCrear = async () => {
     try {
@@ -140,20 +151,35 @@ const Playlist = ({ CantPlaylists }) => {
 
   const handleFileUpload = (event) => {
     const file = event.target.files[0];
+
+    // Verificar si se seleccionó un archivo
+    if (!file) {
+      return;
+    }
+
     setFile(file);
-    setError({...error, iconError: ''})
+    setError({ ...error, iconError: "" });
+
     const reader = new FileReader();
 
     reader.onload = () => {
       const uploadedIcon = reader.result; // Contiene la URL del icono subido
       // Actualiza el estado con el ícono subido o haz lo necesario para mostrar la vista previa
       setSelectedIcon(uploadedIcon);
+      // Verificar el tamaño del archivo (en bytes)
+      const maxSizeInBytes = 1024 * 1024; // 1MB
+      if (file.size > maxSizeInBytes) {
+        setError({
+          ...error,
+          iconError:
+            "El archivo es demasiado grande. Por favor, elige un archivo más pequeño.",
+        });
+        // Limpiar el input de archivo si es necesario
+        return;
+      }
     };
 
-    if (file) {
-      reader.readAsDataURL(file);
-      // Aquí puedes realizar la lógica para subir el archivo al servidor si es necesario
-    }
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -169,7 +195,12 @@ const Playlist = ({ CantPlaylists }) => {
         Nueva Playlist
       </button>
 
-      <div className="modal fade" id="modalCrearPlaylist" tabIndex="-1">
+      <div
+        className="modal fade"
+        id="modalCrearPlaylist"
+        tabIndex="-1"
+        data-bs-backdrop="static"
+      >
         <div className="modal-dialog">
           <div className="modal-content">
             <div
@@ -187,7 +218,12 @@ const Playlist = ({ CantPlaylists }) => {
                     description: "",
                     idMundo: 1,
                   });
-                  setSelectedIcon(iconMap[1])
+                  setSelectedIcon(iconMap[1]);
+                  setError({
+                    titleError: "",
+                    descriptionError: "",
+                    iconError: "",
+                  });
                 }}
               ></button>
             </div>
@@ -233,18 +269,13 @@ const Playlist = ({ CantPlaylists }) => {
                   </em>
                 </div>
                 <div className="row">
-                  <div className="col-auto">
+                  <div className="col-6">
                     <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                     </div>
-                    <div className="text-center" style={{width: '100%'}}>
-                      <em>
-                        <small className="">{error.iconError}</small>
-                      </em>
-                    </div>
-                    <div className="d-flex justify-content-center pt-3">
+                    <div className="d-flex justify-content-center pb-3">
                       <SubirIconoNuevo />
-                      <button 
+                      <button
                         type="button"
                         className="btn btn-special mx-2"
                         onClick={handleFileButtonClick}
@@ -259,13 +290,19 @@ const Playlist = ({ CantPlaylists }) => {
                         onChange={handleFileUpload}
                       />
                     </div>
+                    <div className="text-center" style={{ width: "100%" }}>
+                      <em>
+                        <small className="">{error.iconError}</small>
+                      </em>
+                    </div>
                   </div>
-                  <div className="col-auto" data-bs-theme="dark">
+                  <div className="col-5" data-bs-theme="dark">
                     <p className="col-form-label">Selecciona un ícono</p>
                     <select
-                      className="form-select"
+                      className="form-select custom-scrollbar"
                       id="planetIcon"
                       value={idMundo}
+                      size={6}
                       onChange={(e) => {
                         const selected = e.target.value;
                         setPlanetSelected(selected);
@@ -274,8 +311,8 @@ const Playlist = ({ CantPlaylists }) => {
                           ...formState,
                           idMundo: selected,
                         });
-                        setError({...error, iconError: ''})
-                        setFile(null)
+                        setError({ ...error, iconError: "" });
+                        setFile(null);
                       }}
                     >
                       <option value="1">The moon</option>
@@ -284,6 +321,15 @@ const Playlist = ({ CantPlaylists }) => {
                       <option value="4">Neptune</option>
                       <option value="5">Mars</option>
                       <option value="6">Haumea</option>
+                      <option value="7">Java File</option>
+                      <option value="8">Java Coffee</option>
+                      <option value="9">Java Console</option>
+                      <option value="10">Java Logo</option>
+                      <option value="11">Java Code</option>
+                      <option value="12">Java Tea</option>
+                      <option value="13">Java Diagram</option>
+                      <option value="14">Java Web</option>
+                      <option value="15">Java Project</option>
                     </select>
                   </div>
                 </div>

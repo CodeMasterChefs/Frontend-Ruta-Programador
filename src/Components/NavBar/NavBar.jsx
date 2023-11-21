@@ -49,7 +49,7 @@ const NavBar = () => {
           </div>
 
           <div className="d-flex align-items-center">
-            <span className="">
+            <span>
               <Link className="Icons" type="button" to="/">
                 <HomeIcon />
               </Link>

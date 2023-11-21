@@ -16,6 +16,13 @@ const MiPlaylist = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [playlist, setPlaylist] = useState({
+      idPlaylist: null,
+      tituloPlaylist: "",
+      descripcionPlaylist: "",
+      idMundo: null,
+      iconoMundo: ""
+  });
   const [elementos, setElementos] = useState([]);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
@@ -30,23 +37,35 @@ const MiPlaylist = () => {
     setEncontrado(seEncontro);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const elementosResponse = await api.get(
-          "/elemento_playlists/" + params.idPlaylist
-        );
-        setElementos(elementosResponse.data.elementos);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-        setError(error.response.data.errors[0]);
-        setLoading(false);
-      }
-    };
+  const fetchDataElementos = async () => {
+    try {
+      const elementosResponse = await api.get(
+        "/elemento_playlists/" + params.idPlaylist
+      );
+      setElementos(elementosResponse.data.elementos);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.errors[0]);
+      setLoading(false);
+    }
+  };
 
-    fetchData();
-  }, [params.idPlaylist, elementos]);
+  const fetchDataPlaylist = async () => {
+    const id = Number(params.idPlaylist);
+    try {
+      const playlistResponse = await api.get("/playlist/valores/" + id);
+      setPlaylist(playlistResponse.data[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchDataElementos();
+    fetchDataPlaylist();
+  }, [params.idPlaylist]);
+
   return (
     <div className="container">
       {loading ? (
@@ -64,13 +83,14 @@ const MiPlaylist = () => {
         <>
           <br></br>
           <TitDescripcion
+            Playlist={playlist}
             IdPrimerVideo={elementos[0]?.idVideoYoutube}
             handleShow={handleShow}
             elementosBuscadosTit={OnBuscadorElementos}
             noHayElementosTit={OnNoHay}
           />
 
-          <EditarPlaylist IdPlaylist={Number(params.idPlaylist)} />
+          <EditarPlaylist IdPlaylist={Number(params.idPlaylist)} actualizarPlaylist={fetchDataPlaylist}/>
           <EliminarPlaylist
             IdPlaylist={Number(params.idPlaylist)}
             show={show}
@@ -101,7 +121,7 @@ const MiPlaylist = () => {
           <div className="titulo-link">
             {elementos.length === 0 ? (
               <div className="d-flex justify-content-center align-items-center d-inline">
-                <Aniadir />
+                <Aniadir actualizarElementos={fetchDataElementos}/>
                 <p className="m-0 ms-2">Añadir contenido</p>
               </div>
             ) : encontrado ? (
@@ -122,13 +142,14 @@ const MiPlaylist = () => {
                     UrlImg={elemento.urlImg}
                     KeyOrderValue={index + 1}
                     className="fileplaylist-item"
-                    IdPlaylist={params.idPlaylist}
+                    IdPlaylist={Number(params.idPlaylist)}
                     IdElemento={elemento.idElemento}
                     IdVideo={elemento.idVideoYoutube}
+                    actualizarElementos={fetchDataElementos}
                   />
                 ))}
                 <div className="add-playlist-container">
-                  <Aniadir />
+                  <Aniadir actualizarElementos={fetchDataElementos}/>
                 </div>
               </div>
             )}

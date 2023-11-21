@@ -5,7 +5,7 @@ import api from "../../config/site.config";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
 
-export const Aniadir = () => {
+export const Aniadir = ({actualizarElementos}) => {
   let params = useParams();
   const [modalVisible, setModalVisible] = useState(false);
   const [url, setUrl] = useState("");
@@ -26,11 +26,12 @@ export const Aniadir = () => {
         idPlaylist: params.idPlaylist,
       });
 
+
       setUrl(url);
       setError({ urlError: "" });
 
       // Actualiza el estado modalVisible después de que la solicitud tenga éxito.
-      setModalVisible(true);
+      //setModalVisible(true);
 
       // console.log(modalVisible); // Aquí modalVisible debería reflejar true
     } catch (error) {
@@ -79,6 +80,7 @@ export const Aniadir = () => {
         Texto="Tu video fue agregado correctamente."
         ide="ModalConfirmacionAniadir"
         TxtButton="Aceptar"
+        handleButton={actualizarElementos}
       />
       <button
         type="button"
@@ -192,5 +194,8 @@ export const Aniadir = () => {
   );
 };
 
-export default Aniadir;
+Aniadir.propTypes = {
+  actualizarElementos: PropTypes.func
+}
 
+export default Aniadir;
