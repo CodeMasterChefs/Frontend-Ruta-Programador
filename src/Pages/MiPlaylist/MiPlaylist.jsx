@@ -28,6 +28,7 @@ const MiPlaylist = () => {
   const [loading, setLoading] = useState(true);
   const [encontrado, setEncontrado] = useState(false);
 
+
   const fetchDataElementos = async () => {
     try {
       const elementosResponse = await api.get(
@@ -80,10 +81,8 @@ const MiPlaylist = () => {
             elementosBuscadosTit={(elementosBuscados) => {
               setElementos(elementosBuscados);
             }}
-            noHayElementosTit={(result) => {
-              setEncontrado(result);
-              console.log(result);
-            }}
+            noHayElementosTit={(result) => setEncontrado(result)}
+            Elementos={elementos}
           />
 
           <EditarPlaylist

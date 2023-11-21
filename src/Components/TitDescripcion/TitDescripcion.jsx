@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import "./TitDescripcion.css";
 import { Link, useParams } from "react-router-dom";
 import BuscadorElemento from "../BuscadorElemento/BuscadorElemento";
+import { propTypes } from "react-bootstrap/esm/Image";
 
-export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit, noHayElementosTit, Playlist}) => {
+export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit, noHayElementosTit, Playlist, Elementos}) => {
   let params = useParams();
   
   const OnBuscadorElementos = (elementosBuscados) => {
@@ -182,7 +183,11 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit
           </div>
         </div>
         <div className="">
-          <BuscadorElemento></BuscadorElemento>
+        <BuscadorElemento
+            elementosBuscados={OnBuscadorElementos}
+            noHayElementos={OnNoHay}
+            ElementosObtenidos={Elementos}
+          />
         </div>
       </div>
       <div className="descripcion-md">
@@ -349,6 +354,7 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit
           <BuscadorElemento
             elementosBuscados={OnBuscadorElementos}
             noHayElementos={OnNoHay}
+            ElementosObtenidos={Elementos}
           />
         </div>
       </div>
@@ -362,4 +368,5 @@ TitDescripcion.propTypes = {
   elementosBuscadosTit: PropTypes.func.isRequired,
   noHayElementosTit: PropTypes.bool.isRequired,
   Playlist: PropTypes.object.isRequired,
+  Elementos: PropTypes.array.isRequired,
 };

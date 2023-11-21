@@ -7,7 +7,7 @@ import api from "../../config/site.config";
 import { LupaIcon } from "../icons/LupaIcon.jsx";
 import { useParams } from "react-router-dom";
 
-const BuscadorElemento = ({ elementosBuscados, noHayElementos }) => {
+const BuscadorElemento = ({ elementosBuscados, noHayElementos, ElementosObtenidos }) => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [elementos, setElementos] = useState([]);
@@ -17,21 +17,13 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos }) => {
   const params = useParams();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const elementosResponse = await api.get(
-          "/elemento_playlists/" + params.idPlaylist
-        );
-        setElementos(elementosResponse.data.elementos);
-      } catch (error) {
-        console.log(error);
-      }
-
-    };
-    fetchData();
-    const titulos = elementos.map((elemento) => elemento.tituloElemento);
-    setTitulosElementos(titulos);
-  }, [params.idPlaylist]);
+    setElementos(ElementosObtenidos);
+    if (titulosElementos.length === 0) {
+      const titulos = ElementosObtenidos.map((elemento) => elemento.tituloElemento);
+      setTitulosElementos(titulos);
+      console.log(titulos);
+    }
+  }, [ElementosObtenidos,elementos,(titulosElementos.length)]);
 
   const handleInputChange = (event) => {
     const inputText = event.target.value;
@@ -71,15 +63,18 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos }) => {
     if (searchText.trim().length > 0) {
       cargarElemetosBuscados(searchText.trim());
       setShowSuggestions(false);
-      console.log("EntroalSearch")
+      console.log("EntroalSearch");
     }
   };
 
   const cargarElemetosBuscados = async (tituloElemento) => {
-    
     try {
       const response = await api.get(
-        "busquedaElementos?" + "texto="+tituloElemento+"&idPlaylist="+params.idPlaylist
+        "busquedaElementos?" +
+          "texto=" +
+          tituloElemento +
+          "&idPlaylist=" +
+          params.idPlaylist
       );
       console.log(response);
       elementosBuscados(response.data.elementos);
@@ -185,6 +180,7 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos }) => {
 BuscadorElemento.propTypes = {
   elementosBuscados: PropTypes.func.isRequired,
   noHayElementos: PropTypes.bool.isRequired,
+  ElementosObtenidos: PropTypes.array.isRequired,
 };
 
 export default BuscadorElemento;
