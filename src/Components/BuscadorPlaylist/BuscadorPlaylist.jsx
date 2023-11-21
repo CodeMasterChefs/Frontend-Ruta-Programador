@@ -28,6 +28,7 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
     try {
       const response = await api.get("/playlist/1");
       playlistsBuscadas(response.data);
+      noHay(false);
     } catch (error) {
       console.log(error);
     }

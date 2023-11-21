@@ -28,23 +28,6 @@ const MiPlaylist = () => {
   const [loading, setLoading] = useState(true);
   const [encontrado, setEncontrado] = useState(false);
 
-  const OnBuscadorElementos = (elementosBuscados) => {
-    console.log("Elementos mandados", elementosBuscados);
-    // Utiliza una función en setElementos para asegurar la actualización correcta
-    setElementos((prevElementos) => {
-      // Aquí puedes realizar cualquier lógica adicional antes de actualizar el estado
-      // Por ejemplo, puedes verificar si elementosBuscados es un array no vacío antes de actualizar
-      const nuevosElementos =
-        elementosBuscados.length > 0 ? elementosBuscados : prevElementos;
-
-      console.log("Elementos Desde mi playlist:", nuevosElementos);
-      return nuevosElementos;
-    });
-  };
-
-  const OnNoHay = (seEncontro) => {
-    setEncontrado(seEncontro);
-  };
 
   const fetchDataElementos = async () => {
     try {
@@ -98,7 +81,10 @@ const MiPlaylist = () => {
             elementosBuscadosTit={(elementosBuscados) => {
               setElementos(elementosBuscados);
             }}
-            noHayElementosTit={(result) => setEncontrado(result)}
+            noHayElementosTit={(result) => {
+              setEncontrado(result);
+              console.log(result);
+            }}
           />
 
           <EditarPlaylist

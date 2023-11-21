@@ -9,8 +9,6 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit
   
   const OnBuscadorElementos = (elementosBuscados) => {
     elementosBuscadosTit(elementosBuscados);
-    console.log("DesdeTit", elementosBuscados);
-    console.log("Titmandados:", elementosBuscados);
   };
 
   const OnNoHay = (result) => {
