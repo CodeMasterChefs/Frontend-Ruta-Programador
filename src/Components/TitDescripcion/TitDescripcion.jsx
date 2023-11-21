@@ -359,7 +359,7 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit
 TitDescripcion.propTypes = {
   handleShow: PropTypes.func.isRequired,
   IdPrimerVideo: PropTypes.number.isRequired,
-  elementosBuscadosTit: PropTypes.array.isRequired,
+  elementosBuscadosTit: PropTypes.func.isRequired,
   noHayElementosTit: PropTypes.bool.isRequired,
   Playlist: PropTypes.object.isRequired,
 };

@@ -28,7 +28,6 @@ const MiPlaylist = () => {
   const [loading, setLoading] = useState(true);
   const [encontrado, setEncontrado] = useState(false);
 
-
   const fetchDataElementos = async () => {
     try {
       const elementosResponse = await api.get(

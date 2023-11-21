@@ -31,7 +31,7 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos }) => {
     fetchData();
     const titulos = elementos.map((elemento) => elemento.tituloElemento);
     setTitulosElementos(titulos);
-  }, [params.idPlaylist, elementos]);
+  }, [params.idPlaylist]);
 
   const handleInputChange = (event) => {
     const inputText = event.target.value;
@@ -183,7 +183,7 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos }) => {
 };
 
 BuscadorElemento.propTypes = {
-  elementosBuscados: PropTypes.array.isRequired,
+  elementosBuscados: PropTypes.func.isRequired,
   noHayElementos: PropTypes.bool.isRequired,
 };
 
