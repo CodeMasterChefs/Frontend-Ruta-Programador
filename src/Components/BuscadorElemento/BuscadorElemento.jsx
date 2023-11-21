@@ -34,7 +34,6 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos }) => {
   }, [params.idPlaylist, elementos]);
 
   const handleInputChange = (event) => {
-    console.log(titulosElementos)
     const inputText = event.target.value;
     setSearchText(inputText);
     const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
@@ -61,7 +60,6 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos }) => {
   const handleSuggestionClick = (name) => {
     setShowClearIcon(false);
     setSearchText(name);
-    console.log(name)
     cargarElemetosBuscados(name);
     setSuggestions([]);
     setSearchText("");
@@ -83,8 +81,6 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos }) => {
       const response = await api.get(
         "busquedaElementos?" + "texto="+tituloElemento+"&idPlaylist="+params.idPlaylist
       );
-      console.log("entro")
-      console.log(tituloElemento)
       console.log(response);
       elementosBuscados(response.data.elementos);
       noHayElementos(false);

@@ -17,11 +17,11 @@ const MiPlaylist = () => {
   const handleShow = () => setShow(true);
 
   const [playlist, setPlaylist] = useState({
-      idPlaylist: null,
-      tituloPlaylist: "",
-      descripcionPlaylist: "",
-      idMundo: null,
-      iconoMundo: ""
+    idPlaylist: null,
+    tituloPlaylist: "",
+    descripcionPlaylist: "",
+    idMundo: null,
+    iconoMundo: "",
   });
   const [elementos, setElementos] = useState([]);
   const [error, setError] = useState();
@@ -29,8 +29,17 @@ const MiPlaylist = () => {
   const [encontrado, setEncontrado] = useState(false);
 
   const OnBuscadorElementos = (elementosBuscados) => {
-    setElementos(elementosBuscados);
-    console.log(elementosBuscados);
+    console.log("Elementos mandados", elementosBuscados);
+    // Utiliza una función en setElementos para asegurar la actualización correcta
+    setElementos((prevElementos) => {
+      // Aquí puedes realizar cualquier lógica adicional antes de actualizar el estado
+      // Por ejemplo, puedes verificar si elementosBuscados es un array no vacío antes de actualizar
+      const nuevosElementos =
+        elementosBuscados.length > 0 ? elementosBuscados : prevElementos;
+
+      console.log("Elementos Desde mi playlist:", nuevosElementos);
+      return nuevosElementos;
+    });
   };
 
   const OnNoHay = (seEncontro) => {
@@ -86,11 +95,16 @@ const MiPlaylist = () => {
             Playlist={playlist}
             IdPrimerVideo={elementos[0]?.idVideoYoutube}
             handleShow={handleShow}
-            elementosBuscadosTit={OnBuscadorElementos}
-            noHayElementosTit={OnNoHay}
+            elementosBuscadosTit={(elementosBuscados) => {
+              setElementos(elementosBuscados);
+            }}
+            noHayElementosTit={(result) => setEncontrado(result)}
           />
 
-          <EditarPlaylist IdPlaylist={Number(params.idPlaylist)} actualizarPlaylist={fetchDataPlaylist}/>
+          <EditarPlaylist
+            IdPlaylist={Number(params.idPlaylist)}
+            actualizarPlaylist={fetchDataPlaylist}
+          />
           <EliminarPlaylist
             IdPlaylist={Number(params.idPlaylist)}
             show={show}
@@ -121,7 +135,7 @@ const MiPlaylist = () => {
           <div className="titulo-link">
             {elementos.length === 0 ? (
               <div className="d-flex justify-content-center align-items-center d-inline">
-                <Aniadir actualizarElementos={fetchDataElementos}/>
+                <Aniadir actualizarElementos={fetchDataElementos} />
                 <p className="m-0 ms-2">Añadir contenido</p>
               </div>
             ) : encontrado ? (
@@ -149,7 +163,7 @@ const MiPlaylist = () => {
                   />
                 ))}
                 <div className="add-playlist-container">
-                  <Aniadir actualizarElementos={fetchDataElementos}/>
+                  <Aniadir actualizarElementos={fetchDataElementos} />
                 </div>
               </div>
             )}

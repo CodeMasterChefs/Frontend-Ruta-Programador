@@ -2,22 +2,19 @@ import PropTypes from "prop-types";
 
 import "./TitDescripcion.css";
 import { Link, useParams } from "react-router-dom";
-import { useState } from "react";
 import BuscadorElemento from "../BuscadorElemento/BuscadorElemento";
 
 export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit, noHayElementosTit, Playlist}) => {
   let params = useParams();
-  const [elementos, setElementos] = useState([]);
-  const [encontrado, setEncontrado] = useState(false);
   
   const OnBuscadorElementos = (elementosBuscados) => {
-    setElementos(elementosBuscados);
-    elementosBuscadosTit(elementos);
-  }
+    elementosBuscadosTit(elementosBuscados);
+    console.log("DesdeTit", elementosBuscados);
+    console.log("Titmandados:", elementosBuscados);
+  };
 
   const OnNoHay = (result) => {
-    setEncontrado(result);
-    noHayElementosTit(encontrado);
+    noHayElementosTit(result);
   };
 
   return (
