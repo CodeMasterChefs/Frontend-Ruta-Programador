@@ -7,7 +7,11 @@ import api from "../../config/site.config";
 import { LupaIcon } from "../icons/LupaIcon.jsx";
 import { useParams } from "react-router-dom";
 
-const BuscadorElemento = ({ elementosBuscados, noHayElementos, ElementosObtenidos }) => {
+const BuscadorElemento = ({
+  elementosBuscados,
+  noHayElementos,
+  ElementosObtenidos,
+}) => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [elementos, setElementos] = useState([]);
@@ -19,11 +23,13 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos, ElementosObtenido
   useEffect(() => {
     setElementos(ElementosObtenidos);
     if (titulosElementos.length === 0) {
-      const titulos = ElementosObtenidos.map((elemento) => elemento.tituloElemento);
+      const titulos = ElementosObtenidos.map(
+        (elemento) => elemento.tituloElemento
+      );
       setTitulosElementos(titulos);
       console.log(titulos);
     }
-  }, [ElementosObtenidos,elementos,(titulosElementos.length)]);
+  }, [ElementosObtenidos, elementos, titulosElementos.length]);
 
   const fetchDataElementos = async () => {
     try {
@@ -39,25 +45,33 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos, ElementosObtenido
 
   const handleInputChange = (event) => {
     const inputText = event.target.value;
-    setSearchText(inputText);
-    const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
-    setShowClearIcon(cleanedText.length > 0);
-
-    const matchingNames = titulosElementos.filter((name) =>
-      name.toLowerCase().includes(cleanedText.toLowerCase())
-    );
-
-    const filteredSuggestions = matchingNames.filter(
-      (name) => name.toLowerCase() !== cleanedText.toLowerCase()
-    );
-
-    if (cleanedText.length === 0) {
-      setSuggestions([]);
-      setShowSuggestions(false);
+  
+    // Verificar la longitud del texto y si hay espacios
+    if (inputText.length <= 800 && inputText.trim().length <= 800) {
+      setSearchText(inputText);
+      const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
+      setShowClearIcon(true); // Mostrar el icono cuando hay texto
+  
+      const matchingNames = titulosElementos.filter((name) =>
+        name.toLowerCase().includes(cleanedText.toLowerCase())
+      );
+  
+      const filteredSuggestionsSet = new Set(matchingNames);
+  
+      const filteredSuggestions = Array.from(filteredSuggestionsSet).filter(
+        (name) => name.toLowerCase() !== cleanedText.toLowerCase()
+      );
+  
+      if (cleanedText.length === 0) {
+        setSuggestions([]);
+        setShowSuggestions(false);
+      } else {
+        const limitedSuggestions = filteredSuggestions.slice(0, 5);
+        setSuggestions(limitedSuggestions);
+        setShowSuggestions(limitedSuggestions.length > 0);
+      }
     } else {
-      const limitedSuggestions = filteredSuggestions.slice(0, 5);
-      setSuggestions(limitedSuggestions);
-      setShowSuggestions(limitedSuggestions.length > 0);
+      setShowClearIcon(false); // Ocultar el icono cuando el texto es demasiado largo
     }
   };
 
@@ -74,6 +88,10 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos, ElementosObtenido
       cargarElemetosBuscados(searchText.trim());
       setShowSuggestions(false);
       console.log("EntroalSearch");
+    }
+    if (searchText.trim() == "") {
+      noHayElementos(true);
+      setShowClearIcon(true);
     }
   };
 
