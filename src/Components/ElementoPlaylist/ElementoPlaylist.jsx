@@ -30,7 +30,7 @@ const ElementoPlaylist = ({ IdPlaylist, TituloElemento, IdVideo, DuracionVideo, 
     return (
         <Link to={`/mis_playlists/${IdPlaylist}/reproducir?v=${IdVideo}&key=${KeyElemento}`} className='custom-link' id={IdVideo}>
             <div className={element_playlist_style + " mb-2"}>
-                <div className="row gx-2">
+                <div className="row gx-2 align-items-center">
                     <div className="col-4 col-sm-2 col-lg-3 d-flex flex-grow-1 align-items-center">
                         <div className="d-flex justify-content-start">
                             <div className="m-2">
