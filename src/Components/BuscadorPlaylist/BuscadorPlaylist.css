@@ -1,9 +1,16 @@
 
-.container-search {
-  position: relative;
-  width: 80%;
+@media (min-width: 764px) {
+  .container-search {
+    position: relative;
+    width: 50%;
+  }
 }
-
+@media (max-width: 764px) {
+  .container-search {
+    position: relative;
+    width: 90%;
+  }
+}
 
 @media (min-width: 764px) {
   .button-search {

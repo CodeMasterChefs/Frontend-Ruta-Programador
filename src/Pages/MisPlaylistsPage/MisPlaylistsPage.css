@@ -5,9 +5,6 @@
   align-items: center; /* Centra verticalmente */
   justify-content: center; /* Centra horizontalmente */
   }
-  .playlist-responsive{
-    display: flex;
-  }
   
   @media (max-width: 764px) {
     .col-search {
@@ -19,9 +16,9 @@
       order: 1; /* Cambia el orden del formulario para que esté después de "Nueva Playlist" en dispositivos móviles */
       margin-top: 10px;
     }
-  
-    .playlist-responsive {
-      margin-bottom: 20%;
+
+    .playlist-responsive{
+      margin-top: 30px;
     }
   }
  

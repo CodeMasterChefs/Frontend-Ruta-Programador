@@ -47,11 +47,11 @@ const MisPlaylistsPage = () => {
 
   return (
     <main className="col-sm-11">
-      <div className="row my-3 playlist-responsive">
+      <div className="row my-3">
         <div className="col-sm-5 align-items-center">
           <h3>Mis Playlists</h3>
         </div>
-        <div className="col-sm-4 d-flex justify-content-end col-search">
+        <div className="col-sm-6 d-flex justify-content-end col-search">
           <BuscadorPlaylist
             playlistsBuscadas={OnBuscardorPlaylist}
             noHay={OnNoHay}
@@ -71,7 +71,7 @@ const MisPlaylistsPage = () => {
             Asegúrate de que las palabras estén escritas correctamente o prueba con menos palabras clave o con otras distintas.
           </ErrorComponent>
         ) : playlists.length > 0 ? (
-          <div className="row row-cols-1 row-cols-md-5 g-4">
+          <div className="row row-cols-1 row-cols-md-5 g-4 playlist-responsive">
             {playlists.map((playlist) => (
               <Card
                 key={playlist.idPlaylist}
