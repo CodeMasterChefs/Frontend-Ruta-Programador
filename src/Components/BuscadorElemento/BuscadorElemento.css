@@ -1,11 +1,33 @@
 .form-search-element {
   padding: 0.3rem;
 }
-.container-search-element {
-  position: relative;
-  left: 0%;
-  width: 500px;
+
+@media (max-width: 700px) {
+  .container-search-element {
+    position: relative;
+    left: 0%;
+    width: 100%;
+  }
 }
+
+@media (min-width: 700px) and (max-width: 900px) {
+  .container-search-element {
+    position: relative;
+    left: 42%;
+    width: 60%;
+  }
+}
+
+@media (min-width: 900px) {
+  .container-search-element {
+    position: relative;
+    left: 55%;
+    width: 45%;
+  }
+}
+
+
+
 .input-search-element {
   width: 100% !important;
   height: 47px;
