@@ -40,23 +40,23 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
 
   const handleInputChange = (event) => {
     const inputText = event.target.value;
-
-    // Verificar la longitud del texto
-    if (inputText.length <= 800) {
+  
+    // Verificar la longitud del texto y si hay espacios
+    if (inputText.length <= 800 && inputText.trim().length <= 800) {
       setSearchText(inputText);
       const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
-      setShowClearIcon(cleanedText.length > 0);
-
+      setShowClearIcon(true); // Mostrar el icono cuando hay texto
+  
       const matchingNames = titulosPlaylits.filter((name) =>
         name.toLowerCase().includes(cleanedText.toLowerCase())
       );
-
+  
       const filteredSuggestionsSet = new Set(matchingNames);
-
+  
       const filteredSuggestions = Array.from(filteredSuggestionsSet).filter(
         (name) => name.toLowerCase() !== cleanedText.toLowerCase()
       );
-
+  
       if (cleanedText.length === 0) {
         setSuggestions([]);
         setShowSuggestions(false);
@@ -65,6 +65,8 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
         setSuggestions(limitedSuggestions);
         setShowSuggestions(limitedSuggestions.length > 0);
       }
+    } else {
+      setShowClearIcon(false); // Ocultar el icono cuando el texto es demasiado largo
     }
   };
 
@@ -80,6 +82,10 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
     if (searchText.trim().length > 0) {
       cargarPlaylistBuscadas(searchText.trim());
       setShowSuggestions(false);
+    }
+    if (searchText.trim() == ""){
+      noHay(true);
+      setShowClearIcon(true);
     }
   };
 
