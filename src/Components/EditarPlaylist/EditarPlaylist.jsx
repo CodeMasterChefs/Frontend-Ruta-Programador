@@ -244,7 +244,7 @@ const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist }) => {
         setError({
           ...error,
           iconError:
-            "El archivo es demasiado grande. Por favor, elige un archivo más pequeño.",
+            "El ícono personalizado no debe exceder 1MB.",
         });
         // Limpiar el input de archivo si es necesario
         return;
@@ -342,11 +342,6 @@ const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist }) => {
                     <div className="d-flex justify-content-center">
                       {loadSelectedIcon()} {/* Muestra el ícono seleccionado */}
                     </div>
-                    <div className="text-center" style={{width: '100%'}}>
-                      <em>
-                        <small className="">{error.iconError}</small>
-                      </em>
-                    </div>
                     <div className="d-flex justify-content-center pt-3">
                       <SubirIconoNuevo />
                       <button
@@ -363,6 +358,11 @@ const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist }) => {
                         accept=".svg, .png, .jpg, .jpeg"
                         onChange={handleFileUpload}
                       />
+                    </div>
+                    <div className="text-center" style={{width: '100%'}}>
+                      <em>
+                        <small className="">{error.iconError}</small>
+                      </em>
                     </div>
                   </div>
                   <div className="col-5" data-bs-theme="dark">

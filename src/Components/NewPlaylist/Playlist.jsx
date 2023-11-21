@@ -172,7 +172,7 @@ const Playlist = ({ CantPlaylists }) => {
         setError({
           ...error,
           iconError:
-            "El archivo es demasiado grande. Por favor, elige un archivo más pequeño.",
+            "El ícono personalizado no debe exceder 1MB.",
         });
         // Limpiar el input de archivo si es necesario
         return;
