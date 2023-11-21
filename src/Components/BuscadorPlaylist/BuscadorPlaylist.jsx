@@ -41,8 +41,11 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
   const handleInputChange = (event) => {
     const inputText = event.target.value;
   
-    // Verificar la longitud del texto y si hay espacios
-    if (inputText.length <= 800 && inputText.trim().length <= 800) {
+    // Verificar si el tamaño del texto es igual a cero
+    if (inputText.length === 0) {
+      setShowClearIcon(false); // Ocultar el icono cuando el texto está vacío
+      setSearchText("");
+    } else if (inputText.length <= 800 && inputText.trim().length <= 800) {
       setSearchText(inputText);
       const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
       setShowClearIcon(true); // Mostrar el icono cuando hay texto
