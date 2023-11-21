@@ -45,6 +45,7 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
     if (inputText.length === 0) {
       setShowClearIcon(false); // Ocultar el icono cuando el texto está vacío
       setSearchText("");
+      fetchCargarPlaylists();
     } else if (inputText.length <= 800 && inputText.trim().length <= 800) {
       setSearchText(inputText);
       const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
