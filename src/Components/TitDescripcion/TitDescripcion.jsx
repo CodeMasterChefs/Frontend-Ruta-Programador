@@ -6,33 +6,37 @@ import { useEffect, useState } from "react";
 import api from "../../config/site.config";
 import BuscadorElemento from "../BuscadorElemento/BuscadorElemento";
 
+export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit, noHayElementosTit }) => {
+  let params = useParams();
+  const [playlist, setPlaylist] = useState({});
+  const [elementos, setElementos] = useState([]);
+  const [encontrado, setEncontrado] = useState(false);
+  
+  const OnBuscadorElementos = (elementosBuscados) => {
+    setElementos(elementosBuscados);
+    elementosBuscadosTit(elementos);
+  }
 
-export const TitDescripcion = ({
-  IdPrimerVideo,
-  handleShow
-}) => {
+  const OnNoHay = (result) => {
+    setEncontrado(result);
+    noHayElementosTit(encontrado);
+  };
 
-  let params = useParams()
-  const [playlist, setPlaylist] = useState({})
-
-  useEffect(()=> {
+  useEffect(() => {
     const fetchData = async () => {
-      const id = Number(params.idPlaylist)
+      const id = Number(params.idPlaylist);
       try {
-        const playlistResponse = await api.get(
-          "/playlist/valores/" + id
-        );
+        const playlistResponse = await api.get("/playlist/valores/" + id);
         setPlaylist(playlistResponse.data[0]);
       } catch (error) {
         console.log(error);
       }
     };
-    fetchData()
-  }, [params.idPlaylist])
+    fetchData();
+  }, [params.idPlaylist]);
   return (
     <>
       <div className="descripcion-lg">
-       
         <div className="title-container d-flex justify-content-center align-items-center">
           <img
             className="img-thumbnail p-2"
@@ -42,12 +46,14 @@ export const TitDescripcion = ({
             }
             alt="..."
           />
-  
+
           <div className="p-2 d-flex align-items-start flex-column">
             <h3>{playlist.tituloPlaylist}</h3>
-           
+
             <div className="d-flex justify-content-start">
-              <Link to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
+              <Link
+                to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}
+              >
                 <button className="btn btn-primary play-button">
                   <svg
                     width="18"
@@ -80,7 +86,9 @@ export const TitDescripcion = ({
                 </button>
                 <ul className="dropdown-menu ">
                   <li>
-                    <Link to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}>
+                    <Link
+                      to={`/mis_playlists/${params.idPlaylist}/reproducir?v=${IdPrimerVideo}&key=1`}
+                    >
                       <button className="dropdown-item color-boton">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -184,20 +192,18 @@ export const TitDescripcion = ({
                       &nbsp;Eliminar Playlist
                     </button>
                   </li>
-                </ul>  
+                </ul>
               </div>
-            
             </div>
           </div>
-          
+
           <div className="title-desc-container border p-2">
             <p>{playlist.descripcionPlaylist}</p>
-            
           </div>
-         
         </div>
-        <div className=""><BuscadorElemento></BuscadorElemento></div>
-        
+        <div className="">
+          <BuscadorElemento></BuscadorElemento>
+        </div>
       </div>
       <div className="descripcion-md">
         <div className="row">
@@ -359,15 +365,20 @@ export const TitDescripcion = ({
             <p>{playlist.descripcionPlaylist}</p>
           </div>
         </div>
-        <div className=""><BuscadorElemento></BuscadorElemento></div>
-        
+        <div className="">
+          <BuscadorElemento
+            elementosBuscados={OnBuscadorElementos}
+            noHayElementos={OnNoHay}
+          />
+        </div>
       </div>
-
     </>
   );
 };
 
 TitDescripcion.propTypes = {
   handleShow: PropTypes.func.isRequired,
-  IdPrimerVideo: PropTypes.number.isRequired
+  IdPrimerVideo: PropTypes.number.isRequired,
+  elementosBuscadosTit: PropTypes.array.isRequired,
+  noHayElementosTit: PropTypes.bool.isRequired,
 };

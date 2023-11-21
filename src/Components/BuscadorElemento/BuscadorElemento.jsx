@@ -7,7 +7,7 @@ import api from "../../config/site.config";
 import { LupaIcon } from "../icons/LupaIcon.jsx";
 import { useParams } from "react-router-dom";
 
-const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
+const BuscadorElemento = ({ elementosBuscados, noHayElementos }) => {
   const [searchText, setSearchText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [elementos, setElementos] = useState([]);
@@ -61,7 +61,8 @@ const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
   const handleSuggestionClick = (name) => {
     setShowClearIcon(false);
     setSearchText(name);
-    cargarPlaylistBuscadas(name);
+    console.log(name)
+    cargarElemetosBuscados(name);
     setSuggestions([]);
     setSearchText("");
     setShowSuggestions(false);
@@ -70,22 +71,27 @@ const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
   const handleSearchButtonClick = () => {
     // Limpiar espacios antes de buscar
     if (searchText.trim().length > 0) {
-      cargarPlaylistBuscadas(searchText.trim());
+      cargarElemetosBuscados(searchText.trim());
       setShowSuggestions(false);
+      console.log("EntroalSearch")
     }
   };
 
-  const cargarPlaylistBuscadas = async (tituloPlay) => {
+  const cargarElemetosBuscados = async (tituloElemento) => {
+    
     try {
       const response = await api.get(
-        "playlist/buscar/?tituloPlaylist=" + tituloPlay
+        "busquedaElementos?" + "texto="+tituloElemento+"&idPlaylist="+params.idPlaylist
       );
-      playlistsBuscadas(response.data);
-      noHay(false);
+      console.log("entro")
+      console.log(tituloElemento)
+      console.log(response);
+      elementosBuscados(response.data.elementos);
+      noHayElementos(false);
       //Aqui se enviara las playlist a MisPlaylists
     } catch (error) {
       console.log(error);
-      noHay(true);
+      noHayElementos(true);
     }
   };
 
@@ -181,8 +187,8 @@ const BuscadorElemento = ({ playlistsBuscadas, noHay }) => {
 };
 
 BuscadorElemento.propTypes = {
-  playlistsBuscadas: PropTypes.array.isRequired,
-  noHay: PropTypes.bool.isRequired,
+  elementosBuscados: PropTypes.array.isRequired,
+  noHayElementos: PropTypes.bool.isRequired,
 };
 
 export default BuscadorElemento;

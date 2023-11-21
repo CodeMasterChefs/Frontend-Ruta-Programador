@@ -6,6 +6,7 @@ import EliminarPlaylist from "../../Components/EliminarPlaylist/EliminarPlaylist
 import api from "../../config/site.config";
 import Aniadir from "../../Components/AniadirElemento/Aniadir";
 import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
+import ErrorComponent from "../../Components/ErrorComponent/ErrorComponent";
 
 import { ClockIcon } from "../../Components/icons";
 import "./MiPlaylist.css";
@@ -18,6 +19,16 @@ const MiPlaylist = () => {
   const [elementos, setElementos] = useState([]);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
+  const [encontrado, setEncontrado] = useState(false);
+
+  const OnBuscadorElementos = (elementosBuscados) => {
+    setElementos(elementosBuscados);
+    console.log(elementosBuscados);
+  };
+
+  const OnNoHay = (seEncontro) => {
+    setEncontrado(seEncontro);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +43,6 @@ const MiPlaylist = () => {
         setError(error.response.data.errors[0]);
         setLoading(false);
       }
-
     };
 
     fetchData();
@@ -52,13 +62,14 @@ const MiPlaylist = () => {
         </div>
       ) : (
         <>
-        
           <br></br>
           <TitDescripcion
             IdPrimerVideo={elementos[0]?.idVideoYoutube}
             handleShow={handleShow}
+            elementosBuscadosTit={OnBuscadorElementos}
+            noHayElementosTit={OnNoHay}
           />
-         
+
           <EditarPlaylist IdPlaylist={Number(params.idPlaylist)} />
           <EliminarPlaylist
             IdPlaylist={Number(params.idPlaylist)}
@@ -88,11 +99,17 @@ const MiPlaylist = () => {
           </div>
           <br></br>
           <div className="titulo-link">
-            {elementos.length == 0 ? (
+            {elementos.length === 0 ? (
               <div className="d-flex justify-content-center align-items-center d-inline">
                 <Aniadir />
                 <p className="m-0 ms-2">Añadir contenido</p>
               </div>
+            ) : encontrado ? (
+              <ErrorComponent ErrorCode={404}>
+                No se encontraron resultados. <br />
+                Asegúrate de que las palabras estén escritas correctamente o
+                prueba con menos palabras clave o con otras distintas.
+              </ErrorComponent>
             ) : (
               <div>
                 {elementos.map((elemento, index) => (
