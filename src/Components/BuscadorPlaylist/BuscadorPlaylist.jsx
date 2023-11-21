@@ -40,27 +40,31 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
 
   const handleInputChange = (event) => {
     const inputText = event.target.value;
-    setSearchText(inputText);
-    const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
-    setShowClearIcon(cleanedText.length > 0);
-  
-    const matchingNames = titulosPlaylits.filter((name) =>
-      name.toLowerCase().includes(cleanedText.toLowerCase())
-    );
-  
-    const filteredSuggestionsSet = new Set(matchingNames);
-  
-    const filteredSuggestions = Array.from(filteredSuggestionsSet).filter(
-      (name) => name.toLowerCase() !== cleanedText.toLowerCase()
-    );
-  
-    if (cleanedText.length === 0) {
-      setSuggestions([]);
-      setShowSuggestions(false);
-    } else {
-      const limitedSuggestions = filteredSuggestions.slice(0, 5);
-      setSuggestions(limitedSuggestions);
-      setShowSuggestions(limitedSuggestions.length > 0);
+
+    // Verificar la longitud del texto
+    if (inputText.length <= 800) {
+      setSearchText(inputText);
+      const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
+      setShowClearIcon(cleanedText.length > 0);
+
+      const matchingNames = titulosPlaylits.filter((name) =>
+        name.toLowerCase().includes(cleanedText.toLowerCase())
+      );
+
+      const filteredSuggestionsSet = new Set(matchingNames);
+
+      const filteredSuggestions = Array.from(filteredSuggestionsSet).filter(
+        (name) => name.toLowerCase() !== cleanedText.toLowerCase()
+      );
+
+      if (cleanedText.length === 0) {
+        setSuggestions([]);
+        setShowSuggestions(false);
+      } else {
+        const limitedSuggestions = filteredSuggestions.slice(0, 5);
+        setSuggestions(limitedSuggestions);
+        setShowSuggestions(limitedSuggestions.length > 0);
+      }
     }
   };
 
