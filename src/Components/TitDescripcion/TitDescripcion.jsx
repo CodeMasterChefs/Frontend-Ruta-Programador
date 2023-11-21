@@ -2,8 +2,7 @@ import PropTypes from "prop-types";
 
 import "./TitDescripcion.css";
 import { Link, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import api from "../../config/site.config";
+import { useState } from "react";
 import BuscadorElemento from "../BuscadorElemento/BuscadorElemento";
 
 export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit, noHayElementosTit, Playlist}) => {
@@ -21,18 +20,6 @@ export const TitDescripcion = ({ IdPrimerVideo, handleShow, elementosBuscadosTit
     noHayElementosTit(encontrado);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const id = Number(params.idPlaylist);
-      try {
-        const playlistResponse = await api.get("/playlist/valores/" + id);
-        setPlaylist(playlistResponse.data[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, [params.idPlaylist]);
   return (
     <>
       <div className="descripcion-lg">
@@ -379,4 +366,5 @@ TitDescripcion.propTypes = {
   IdPrimerVideo: PropTypes.number.isRequired,
   elementosBuscadosTit: PropTypes.array.isRequired,
   noHayElementosTit: PropTypes.bool.isRequired,
+  Playlist: PropTypes.object.isRequired,
 };
