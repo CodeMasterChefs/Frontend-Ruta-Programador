@@ -24,6 +24,15 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
     }
   };
 
+  const fetchCargarPlaylists = async () => {
+    try {
+      const response = await api.get("/playlist/1");
+      playlistsBuscadas(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     fetchDataCargarTitulosPlaylists();
   }, []);
@@ -55,11 +64,9 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
   };
 
   const handleSuggestionClick = (name) => {
-    setShowClearIcon(false);
     setSearchText(name);
     cargarPlaylistBuscadas(name);
     setSuggestions([]);
-    setSearchText("");
     setShowSuggestions(false);
   };
 
@@ -90,6 +97,7 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
     setShowClearIcon(false);
     setShowSuggestions(false);
     setSuggestions([]);
+    fetchCargarPlaylists();
   };
 
   const handleMouseEnter = () => {
@@ -98,8 +106,6 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
 
   const handleMouseLeave = () => {
     setSuggestions([]);
-    setShowClearIcon(false);
-    setSearchText("");
     setShowSuggestions(false);
   };
 
