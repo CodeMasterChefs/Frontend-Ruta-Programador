@@ -50,11 +50,9 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos, ElementosObtenido
   };
 
   const handleSuggestionClick = (name) => {
-    setShowClearIcon(false);
     setSearchText(name);
     cargarElemetosBuscados(name);
     setSuggestions([]);
-    setSearchText("");
     setShowSuggestions(false);
   };
 
@@ -99,8 +97,6 @@ const BuscadorElemento = ({ elementosBuscados, noHayElementos, ElementosObtenido
 
   const handleMouseLeave = () => {
     setSuggestions([]);
-    setShowClearIcon(false);
-    setSearchText("");
     setShowSuggestions(false);
   };
 
