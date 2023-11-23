@@ -6,6 +6,7 @@ import EditarPlaylist from "../../Components/EditarPlaylist/EditarPlaylist";
 import "./MisPlaylistsPage.css";
 import BuscadorPlaylist from "../../Components/BuscadorPlaylist/BuscadorPlaylist";
 import ErrorComponent from "../../Components/ErrorComponent/ErrorComponent";
+import { PicandoLuna } from "../../Components/icons/PicandoLuna";
 
 const MisPlaylistsPage = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -68,7 +69,8 @@ const MisPlaylistsPage = () => {
         ) : encontrado ? (
           <ErrorComponent ErrorCode={404}>
             No se encontraron resultados. <br />
-            Asegúrate de que las palabras estén escritas correctamente o prueba con menos palabras clave o con otras distintas.
+            Asegúrate de que las palabras estén escritas correctamente o prueba
+            con menos palabras clave o con otras distintas.
           </ErrorComponent>
         ) : playlists.length > 0 ? (
           <div className="row row-cols-1 row-cols-md-5 g-4 playlist-responsive">
@@ -91,7 +93,14 @@ const MisPlaylistsPage = () => {
           </div>
         ) : (
           <p className="text-center py-4">
-            Empieza creando tus propias playlists.
+            <PicandoLuna></PicandoLuna>
+            <br />
+            <br />
+            <h4>
+              Da inicio a tu travesía espacial creando tu primera playlist.
+              <br />
+              ¡Buena suerte!
+            </h4>
           </p>
         )}
       </div>
