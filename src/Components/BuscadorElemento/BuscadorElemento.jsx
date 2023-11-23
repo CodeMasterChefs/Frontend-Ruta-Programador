@@ -51,6 +51,7 @@ const BuscadorElemento = ({
       setShowClearIcon(false); // Ocultar el icono cuando el texto está vacío
       setSearchText("");
       fetchDataElementos();
+      setShowSuggestions(false);
     } else if (inputText.length <= 800 && inputText.trim().length <= 800) {
       setSearchText(inputText);
       const cleanedText = inputText.trim(); // Limpiar espacios antes de buscar
@@ -66,7 +67,7 @@ const BuscadorElemento = ({
         (name) => name.toLowerCase() !== cleanedText.toLowerCase()
       );
   
-      if (cleanedText.length === 0) {
+      if (cleanedText.length == 0) {
         setSuggestions([]);
         setShowSuggestions(false);
       } else {
