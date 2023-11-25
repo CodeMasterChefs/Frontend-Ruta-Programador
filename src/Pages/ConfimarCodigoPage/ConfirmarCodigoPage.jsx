@@ -22,6 +22,7 @@ const ConfirmarCodigoPage = () => {
 
   const handleCodeChange = (index, value) => {
     setError("");
+    setEnvioEmail("")
     if (value.length <= 1) {
       const newVerificationCode = [...verificationCode];
       newVerificationCode[index] = value;
@@ -50,6 +51,7 @@ const ConfirmarCodigoPage = () => {
         email: emailValue,
       });
       //console.log("Hola");
+      setEnvioEmail('Se envió un nuevo código de verificación, revisa tu bandeja de entrada')
     } catch (error) {
       const errorText = error.response.data.message;
       setEnvioEmail(errorText);
@@ -139,7 +141,7 @@ const ConfirmarCodigoPage = () => {
               className="btn btn-link"
               onClick={() => {
                 volverEnviar();
-                setEnvioEmail(null);
+                //setEnvioEmail(null);
               }}
             >
               Volver a enviar código
