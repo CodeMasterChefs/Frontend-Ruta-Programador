@@ -74,58 +74,6 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlayli
               </Link>
             </li>
             <li>
-              <button className="dropdown-item color-boton">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="15"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                >
-                  <path
-                    d="M4.375 10.625L7.5 13.75L10.625 10.625H8.125V4.375H10.625L7.5 1.25L4.375 4.375H6.875V10.625H4.375Z"
-                    fill="#F2F2F2"
-                  />
-                </svg>
-                &nbsp;Mover
-              </button>
-            </li>
-            {/* Íconos comentados */}
-            {/* <li>
-              <button className="dropdown-item color-boton">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="15"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                >
-                  <path
-                    d="M6.87484 4.32121V1.61621L3.93297 4.55809L1.57422 6.91684L3.97484 8.91746L6.87484 11.3343V8.68746C11.9661 8.30371 13.7498 11.25 13.7498 11.25C13.7498 9.41433 13.5986 7.50934 12.1555 6.06684C10.478 4.38871 8.04859 4.26996 6.87484 4.32121Z"
-                    fill="#F2F2F2"
-                  />
-                </svg>
-                &nbsp;Compartir
-              </button>
-            </li> */}
-            {/* <li>
-              <button className="dropdown-item color-boton">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15"
-                  height="15"
-                  viewBox="0 0 15 15"
-                  fill="none"
-                >
-                  <path
-                    d="M10 1.25745L11.875 3.13245L10.4456 4.56245L8.57063 2.68745L10 1.25745ZM2.5 8.74995V10.6249H4.375L9.56187 5.44557L7.68687 3.57057L2.5 8.74995ZM2.5 12.4999H12.5V13.7499H2.5V12.4999Z"
-                    fill="#F2F2F2"
-                  />
-                </svg>
-                &nbsp;Editar playlist
-              </button>
-            </li> */}
-            <li>
               <button
                 type="button"
                 className="dropdown-item color-boton"
