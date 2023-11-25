@@ -3,10 +3,14 @@ import { dateFormater } from "../../utils/date-format";
 
 import "./FilePlaylist.css";
 import { EliminarElemento } from "../EliminarElemento/EliminarElemento";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlaylist, IdElemento, KeyElemento, IdVideo, actualizarElementos }) => {
 
+  const navigate = useNavigate();
+  const reproducir =() => {
+    navigate(`/mis_playlists/${IdPlaylist}/reproducir?v=${IdVideo}&key=${KeyElemento}`)
+  }
   return (
     <>
       <EliminarElemento Imagen={UrlImg} Titulo={Titulo} IdPlaylist={IdPlaylist} IdElemento={IdElemento} actualizarElementos={actualizarElementos} />
@@ -14,13 +18,13 @@ const Fileplaylist = ({ Titulo, Fecha, Duracion, KeyOrderValue, UrlImg, IdPlayli
         <div className="col-1 d-flex align-items-center justify-content-center">
           <p className="text-center filePlayListId">{KeyOrderValue}</p>
         </div>
-        <div className="col-7 d-flex align-items-center">
+        <div className="col-7 d-flex align-items-center" onClick={reproducir}>
           <img
             src={UrlImg}
             className="img-fluid imagen-personalizada"
             alt={UrlImg}
           />
-          <div className="col mx-5">{Titulo}</div>
+          <div className="col mx-5" onClick={reproducir}>{Titulo}</div>
         </div>
         <div className="col-2 d-flex align-items-center justify-content-center">
           <p className="text-center dateResponsive">{dateFormater(Fecha)}</p>

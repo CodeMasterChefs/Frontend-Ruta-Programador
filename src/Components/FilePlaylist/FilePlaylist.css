@@ -12,6 +12,9 @@
     border-color: transparent;
  }
 
+ .col-7, col{
+    cursor: pointer;
+ }
 .video-elente-file{
     border-top: 5px solid #100626; 
     border-bottom: 12px solid #100626;
