@@ -36,3 +36,13 @@
         transform: translate3d(10px, 0, 0);
     }
 }
+
+.container-error-text-image{
+    margin-top: 50px;
+}
+
+@media screen and (max-width: 770px) {
+    .container-error-text-image{
+        margin-top: 15px;
+    }
+}
