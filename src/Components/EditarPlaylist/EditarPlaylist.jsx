@@ -26,7 +26,7 @@ const iconMap = {
   15: "https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/JavaProject.svg",
 };
 
-const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist }) => {
+const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist}) => {
   const [planetSelected, setPlanetSelected] = useState();
   const [selectedIcon, setSelectedIcon] = useState();
   const [formState, setFormState] = useState({
