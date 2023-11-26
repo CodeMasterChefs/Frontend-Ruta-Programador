@@ -61,6 +61,7 @@ const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist }) => {
       //setSelectedIcon(iconoMundo)
       if(formState.idMundo > 15){
         setSelectedIcon(`https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/${formState.iconoMundo}`); // Se ejecutará una vez al montar el componente
+        setPlanetSelected(null)
       }else{
         setSelectedIcon(iconMap[formState.idMundo])
       }
@@ -77,6 +78,7 @@ const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist }) => {
   useEffect(() => {
     if(formState.idMundo > 15){
       setSelectedIcon(`https://backend-rutadelprogramador-production.up.railway.app/storage/iconoMundos/${formState.iconoMundo}`); // Se ejecutará una vez al montar el componente
+      setPlanetSelected(null)
     }else{
       setSelectedIcon(iconMap[formState.idMundo])
     }
@@ -381,7 +383,8 @@ const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist }) => {
                         });
                         console.log('iconoSelected', formState.idMundo)
                       }}
-                    >
+                    >                      
+                      <option style={{ display: 'none' }} value="-1">Selecciona</option>
                       <option value="1">The moon</option>
                       <option value="2">The earth</option>
                       <option value="3">Uranus</option>
