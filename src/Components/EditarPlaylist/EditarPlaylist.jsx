@@ -381,7 +381,7 @@ const EditarPlaylist = ({ IdPlaylist, actualizarPlaylist }) => {
                           ...formState,
                           idMundo: selected,
                         });
-                        console.log('iconoSelected', formState.idMundo)
+                        setFile(null)
                       }}
                     >                      
                       <option style={{ display: 'none' }} value="-1">Selecciona</option>
