@@ -117,21 +117,27 @@ const MiPlaylist = () => {
           <br></br>
           <div className="titulo-link">
             {elementos.length === 0 ? (
-              <div className="d-flex justify-content-center align-items-center d-inline">
-                <Aniadir actualizarElementos={fetchDataElementos} />
-                <p className="m-0 ms-2">Añadir contenido</p>
-              </div>
-            ) : (
-              encontrado && (
+              !encontrado ? (
+                // Código original si elementos.length es igual a 0 y encontrado es true
+                <div className="d-flex justify-content-center align-items-center d-inline">
+                  <Aniadir actualizarElementos={fetchDataElementos} />
+                  <p className="m-0 ms-2">Añadir contenido</p>
+                </div>
+              ) : (
+                // Código adicional si elementos.length es igual a 0 y encontrado es false
                 <ErrorComponent ErrorCode={404}>
                   No se encontraron resultados. <br />
-                  Asegúrate de que las palabras estén escritas correctamente o
-                  prueba con menos palabras clave o con otras distintas.
+                  Empieza por añadir contenido a tu playlist.
                 </ErrorComponent>
               )
-            )}
-            {!encontrado && elementos.length > 0 && (
-              <>
+            ) : encontrado ? (
+              <ErrorComponent ErrorCode={404}>
+                No se encontraron resultados. <br />
+                Asegúrate de que las palabras estén escritas correctamente o
+                prueba con menos palabras clave o con otras distintas.
+              </ErrorComponent>
+            ) : (
+              <div>
                 {elementos.map((elemento, index) => (
                   <Fileplaylist
                     key={index}
@@ -151,7 +157,7 @@ const MiPlaylist = () => {
                 <div className="add-playlist-container">
                   <Aniadir actualizarElementos={fetchDataElementos} />
                 </div>
-              </>
+              </div>
             )}
           </div>
           <br></br>
