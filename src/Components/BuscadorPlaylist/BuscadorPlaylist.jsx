@@ -97,7 +97,7 @@ const BuscadorPlaylist = ({ playlistsBuscadas, noHay }) => {
   const cargarPlaylistBuscadas = async (tituloPlay) => {
     try {
       const response = await api.get(
-        "playlist/buscar/?tituloPlaylist=" + tituloPlay
+        "playlist/buscar/?tituloPlaylist=" + encodeURIComponent(tituloPlay)
       );
       playlistsBuscadas(response.data);
       noHay(false);
