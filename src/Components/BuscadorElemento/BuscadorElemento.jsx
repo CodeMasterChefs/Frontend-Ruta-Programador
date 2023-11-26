@@ -92,29 +92,32 @@ const BuscadorElemento = ({
     if (searchText.trim().length > 0) {
       cargarElemetosBuscados(searchText.trim());
       setShowSuggestions(false);
-      console.log("EntroalSearch");
     }
     if (searchText.trim() == "") {
       noHayElementos(true);
       setShowClearIcon(true);
     }
+
+
   };
 
   const cargarElemetosBuscados = async (tituloElemento) => {
+    console.log(tituloElemento);
     try {
       const response = await api.get(
         "busquedaElementos?" +
           "texto=" +
-          tituloElemento +
+          encodeURIComponent(tituloElemento) + // Codificar el texto aquí
           "&idPlaylist=" +
           params.idPlaylist
       );
       console.log(response);
       elementosBuscados(response.data.elementos);
       noHayElementos(false);
-      //Aqui se enviara las playlist a MisPlaylists
+      // Aquí se enviarán las playlist a MisPlaylists
     } catch (error) {
       console.log(error);
+      console.log("No hay elementos xd");
       noHayElementos(true);
     }
   };

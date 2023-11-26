@@ -28,7 +28,6 @@ const MiPlaylist = () => {
   const [loading, setLoading] = useState(true);
   const [encontrado, setEncontrado] = useState(false);
 
-
   const fetchDataElementos = async () => {
     try {
       const elementosResponse = await api.get(
@@ -122,14 +121,17 @@ const MiPlaylist = () => {
                 <Aniadir actualizarElementos={fetchDataElementos} />
                 <p className="m-0 ms-2">Añadir contenido</p>
               </div>
-            ) : encontrado ? (
-              <ErrorComponent ErrorCode={404}>
-                No se encontraron resultados. <br />
-                Asegúrate de que las palabras estén escritas correctamente o
-                prueba con menos palabras clave o con otras distintas.
-              </ErrorComponent>
             ) : (
-              <div>
+              encontrado && (
+                <ErrorComponent ErrorCode={404}>
+                  No se encontraron resultados. <br />
+                  Asegúrate de que las palabras estén escritas correctamente o
+                  prueba con menos palabras clave o con otras distintas.
+                </ErrorComponent>
+              )
+            )}
+            {!encontrado && elementos.length > 0 && (
+              <>
                 {elementos.map((elemento, index) => (
                   <Fileplaylist
                     key={index}
@@ -149,7 +151,7 @@ const MiPlaylist = () => {
                 <div className="add-playlist-container">
                   <Aniadir actualizarElementos={fetchDataElementos} />
                 </div>
-              </div>
+              </>
             )}
           </div>
           <br></br>
